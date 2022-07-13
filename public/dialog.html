@@ -32,8 +32,8 @@
 		dialog.executorUrl = executorUrl;
 		dialog.capToken = capabilityToken;
 		dialog.showQrScanner = true
-		dialog.resolve = (executorUrl, capToken, client) => {
-			ipcRenderer.send('resolve', { executorUrl, capToken, client });
+		dialog.resolve = (executorUrl, capabilityToken, client) => {
+			ipcRenderer.send('resolve', { executorUrl, capabilityToken, client });
 		};
 		const container = document.getElementById("container")
 		console.log(container)

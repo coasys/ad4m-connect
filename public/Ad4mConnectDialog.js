@@ -27150,9 +27150,9 @@ type Subscription {
     		});
     	}
 
-    	function checkJwt(jwt) {
+    	function checkJwt(capabilityToken) {
     		return __awaiter(this, void 0, void 0, function* () {
-    			let ad4mClientJwt = generateCient(executorUrl, jwt);
+    			let ad4mClientJwt = generateCient(executorUrl, capabilityToken);
 
     			try {
     				let status = yield ad4mClientJwt.agent.status();
@@ -27165,7 +27165,7 @@ type Subscription {
     					100
     				);
 
-    				resolve(executorUrl, jwt, ad4mClientJwt);
+    				resolve(executorUrl, capabilityToken, ad4mClientJwt);
     			} catch(e) {
     				console.log(e);
     			}

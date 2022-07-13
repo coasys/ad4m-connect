@@ -81,13 +81,13 @@
         }
     }
 
-    async function checkJwt(jwt: string) {
-        let ad4mClientJwt = generateCient(executorUrl, jwt)
+    async function checkJwt(capabilityToken: string) {
+        let ad4mClientJwt = generateCient(executorUrl, capabilityToken)
         try {
             let status = await ad4mClientJwt.agent.status()
             console.log('agent status:', status)
             setTimeout(() => {}, 100)
-            resolve(executorUrl, jwt, ad4mClientJwt)
+            resolve(executorUrl, capabilityToken, ad4mClientJwt)
         }
         catch (e) {
             console.log(e)
