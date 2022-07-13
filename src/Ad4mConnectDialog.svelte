@@ -3,6 +3,7 @@
     import { Ad4mClient } from "@perspect3vism/ad4m";
     import { ApolloClient, InMemoryCache } from "@apollo/client";
     import { WebSocketLink } from "@apollo/client/link/ws";
+    import SubscriptionsTransportWs from "subscriptions-transport-ws"
     
     export let executorUrl: string
     export let capToken: string
