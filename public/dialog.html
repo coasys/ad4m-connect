@@ -31,13 +31,11 @@
 		dialog.appIconPath = appIconPath;
 		dialog.executorUrl = executorUrl;
 		dialog.capToken = capabilityToken;
-		dialog.showQrScanner = true
+		//dialog.showQrScanner = true
 		dialog.resolve = (executorUrl, capabilityToken, client) => {
 			ipcRenderer.send('resolve', { executorUrl, capabilityToken, client });
 		};
 		const container = document.getElementById("container")
-		console.log(container)
-		console.log(container.content)
 		container.appendChild(tempTarget)  
 		dialog.run();
 	}
