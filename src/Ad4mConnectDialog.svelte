@@ -17,6 +17,7 @@
     let code: string
     let validCode = true
     let corruptedJwt = false
+    let requestError = false
 
     function generateCient(uri:string, authorization: string|void) {
         const wsLink = new WebSocketLink({
@@ -65,7 +66,9 @@
             let ad4mClientWithoutJwt = generateCient(executorUrl, '')
             requestId = await ad4mClientWithoutJwt.agent.requestCapability("perspect3ve", "general purpose ad4m browser", "https://github.com/perspect3vism/perspect3ve", JSON.stringify(capabilities));
             console.log("auth request id: ", requestId);
+            requestError = undefined
         } catch (err) {
+            requestError = err
             console.log(err);
         }
     }
@@ -118,13 +121,16 @@
             Please enter or correct the AD4M executor URL:
             
             <div class="textfield">
-                <input bind:value={executorUrl} id="executor-url" />
+                <input class:error={requestError} bind:value={executorUrl} id="executor-url" />
                 {#if showQrScanner}
                     <div on:click={()=>{executorUrl = qrScanRequest()}}>
                         <span class="material-icons">qr_code</span>
                     </div>
                 {/if}
             </div>
+            {#if requestError}
+                <span class="error">{requestError}</span>
+            {/if}
 
             
 
@@ -144,7 +150,7 @@
             </span>
             <div class="textfield" label="Security Code">
                 <span>Security Code:</span>
-                <input bind:value={code} id="jwt-generation-code" />
+                <input class:error={!validCode} bind:value={code} id="security-code-input" />
             </div>
         
             <p>
@@ -200,6 +206,7 @@
 
   .textfield {
     display: flex;
+    margin: 15px;
   } 
 
   font-face {
@@ -229,6 +236,10 @@
     flex: auto;
 }
 
+#security-code-input {
+    margin: 0 10px;
+}
+
 .button {
     font-size: 18px;
     background-color: #9db2ef;
@@ -244,5 +255,11 @@
 
 .right {
     float: right;
+}
+
+.error {
+  border-style: dotted;
+  border-color: red;
+  color: red;
 }
 </style>

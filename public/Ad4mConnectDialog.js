@@ -75,6 +75,9 @@ var Ad4mConnectDialog = (function () {
             node.style.setProperty(key, value, important ? 'important' : '');
         }
     }
+    function toggle_class(element, name, toggle) {
+        element.classList[toggle ? 'add' : 'remove'](name);
+    }
     function attribute_to_object(attributes) {
         const result = {};
         for (const attribute of attributes) {
@@ -26695,13 +26698,15 @@ type Subscription {
     	let input;
     	let t3;
     	let t4;
-    	let p;
     	let t5;
+    	let p;
+    	let t6;
     	let button;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*appIconPath*/ ctx[2] && create_if_block_3(ctx);
-    	let if_block1 = /*showQrScanner*/ ctx[3] && create_if_block_2(ctx);
+    	let if_block0 = /*appIconPath*/ ctx[2] && create_if_block_4(ctx);
+    	let if_block1 = /*showQrScanner*/ ctx[3] && create_if_block_3(ctx);
+    	let if_block2 = /*requestError*/ ctx[8] && create_if_block_2(ctx);
 
     	return {
     		c() {
@@ -26715,12 +26720,15 @@ type Subscription {
     			t3 = space();
     			if (if_block1) if_block1.c();
     			t4 = space();
-    			p = element("p");
+    			if (if_block2) if_block2.c();
     			t5 = space();
+    			p = element("p");
+    			t6 = space();
     			button = element("button");
     			button.textContent = "Continue";
     			attr(span, "class", "app-name");
     			attr(input, "id", "executor-url");
+    			toggle_class(input, "error", /*requestError*/ ctx[8]);
     			attr(div, "class", "textfield");
     			attr(button, "class", "button primary right");
     		},
@@ -26736,14 +26744,16 @@ type Subscription {
     			append(div, t3);
     			if (if_block1) if_block1.m(div, null);
     			insert(target, t4, anchor);
-    			insert(target, p, anchor);
+    			if (if_block2) if_block2.m(target, anchor);
     			insert(target, t5, anchor);
+    			insert(target, p, anchor);
+    			insert(target, t6, anchor);
     			insert(target, button, anchor);
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler*/ ctx[12]),
-    					listen(button, "click", /*requestCapability*/ ctx[7])
+    					listen(input, "input", /*input_input_handler*/ ctx[14]),
+    					listen(button, "click", /*requestCapability*/ ctx[9])
     				];
 
     				mounted = true;
@@ -26756,7 +26766,7 @@ type Subscription {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_3(ctx);
+    					if_block0 = create_if_block_4(ctx);
     					if_block0.c();
     					if_block0.m(t2.parentNode, t2);
     				}
@@ -26769,17 +26779,34 @@ type Subscription {
     				set_input_value(input, /*executorUrl*/ ctx[0]);
     			}
 
+    			if (dirty & /*requestError*/ 256) {
+    				toggle_class(input, "error", /*requestError*/ ctx[8]);
+    			}
+
     			if (/*showQrScanner*/ ctx[3]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block_2(ctx);
+    					if_block1 = create_if_block_3(ctx);
     					if_block1.c();
     					if_block1.m(div, null);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
     				if_block1 = null;
+    			}
+
+    			if (/*requestError*/ ctx[8]) {
+    				if (if_block2) {
+    					if_block2.p(ctx, dirty);
+    				} else {
+    					if_block2 = create_if_block_2(ctx);
+    					if_block2.c();
+    					if_block2.m(t5.parentNode, t5);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
     			}
     		},
     		d(detaching) {
@@ -26790,8 +26817,10 @@ type Subscription {
     			if (detaching) detach(div);
     			if (if_block1) if_block1.d();
     			if (detaching) detach(t4);
-    			if (detaching) detach(p);
+    			if (if_block2) if_block2.d(detaching);
     			if (detaching) detach(t5);
+    			if (detaching) detach(p);
+    			if (detaching) detach(t6);
     			if (detaching) detach(button);
     			mounted = false;
     			run_all(dispose);
@@ -26799,8 +26828,8 @@ type Subscription {
     	};
     }
 
-    // (121:12) {#if appIconPath}
-    function create_if_block_3(ctx) {
+    // (124:12) {#if appIconPath}
+    function create_if_block_4(ctx) {
     	let div;
     	let img0;
     	let img0_src_value;
@@ -26847,8 +26876,8 @@ type Subscription {
     	};
     }
 
-    // (133:16) {#if showQrScanner}
-    function create_if_block_2(ctx) {
+    // (136:16) {#if showQrScanner}
+    function create_if_block_3(ctx) {
     	let div;
     	let mounted;
     	let dispose;
@@ -26862,7 +26891,7 @@ type Subscription {
     			insert(target, div, anchor);
 
     			if (!mounted) {
-    				dispose = listen(div, "click", /*click_handler*/ ctx[13]);
+    				dispose = listen(div, "click", /*click_handler*/ ctx[15]);
     				mounted = true;
     			}
     		},
@@ -26875,7 +26904,31 @@ type Subscription {
     	};
     }
 
-    // (149:8) {#if requestId}
+    // (142:12) {#if requestError}
+    function create_if_block_2(ctx) {
+    	let span;
+    	let t;
+
+    	return {
+    		c() {
+    			span = element("span");
+    			t = text(/*requestError*/ ctx[8]);
+    			attr(span, "class", "error");
+    		},
+    		m(target, anchor) {
+    			insert(target, span, anchor);
+    			append(span, t);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty & /*requestError*/ 256) set_data(t, /*requestError*/ ctx[8]);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(span);
+    		}
+    	};
+    }
+
+    // (155:8) {#if requestId}
     function create_if_block(ctx) {
     	let t0;
     	let span0;
@@ -26911,7 +26964,8 @@ type Subscription {
     			button1 = element("button");
     			button1.textContent = "Submit";
     			attr(span0, "class", "app-name");
-    			attr(input, "id", "jwt-generation-code");
+    			attr(input, "id", "security-code-input");
+    			toggle_class(input, "error", !/*validCode*/ ctx[7]);
     			attr(div, "class", "textfield");
     			attr(div, "label", "Security Code");
     			attr(button0, "class", "button");
@@ -26934,9 +26988,9 @@ type Subscription {
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler_1*/ ctx[14]),
-    					listen(button0, "click", /*click_handler_1*/ ctx[15]),
-    					listen(button1, "click", /*generateJwt*/ ctx[8])
+    					listen(input, "input", /*input_input_handler_1*/ ctx[16]),
+    					listen(button0, "click", /*click_handler_1*/ ctx[17]),
+    					listen(button1, "click", /*generateJwt*/ ctx[10])
     				];
 
     				mounted = true;
@@ -26945,6 +26999,10 @@ type Subscription {
     		p(ctx, dirty) {
     			if (dirty & /*code*/ 64 && input.value !== /*code*/ ctx[6]) {
     				set_input_value(input, /*code*/ ctx[6]);
+    			}
+
+    			if (dirty & /*validCode*/ 128) {
+    				toggle_class(input, "error", !/*validCode*/ ctx[7]);
     			}
     		},
     		d(detaching) {
@@ -27080,6 +27138,8 @@ type Subscription {
     	let { qrScanRequest } = $$props;
     	let requestId;
     	let code;
+    	let validCode = true;
+    	let requestError = false;
 
     	function generateCient(uri, authorization) {
     		const wsLink = new WebSocketLink({
@@ -27131,7 +27191,9 @@ type Subscription {
     				let ad4mClientWithoutJwt = generateCient(executorUrl, '');
     				$$invalidate(5, requestId = yield ad4mClientWithoutJwt.agent.requestCapability("perspect3ve", "general purpose ad4m browser", "https://github.com/perspect3vism/perspect3ve", JSON.stringify(capabilities)));
     				console.log("auth request id: ", requestId);
+    				$$invalidate(8, requestError = undefined);
     			} catch(err) {
+    				$$invalidate(8, requestError = err);
     				console.log(err);
     			}
     		});
@@ -27146,6 +27208,7 @@ type Subscription {
     				yield checkJwt(jwt);
     			} catch(err) {
     				console.log(err);
+    				$$invalidate(7, validCode = false);
     			}
     		});
     	}
@@ -27190,11 +27253,11 @@ type Subscription {
 
     	$$self.$$set = $$props => {
     		if ('executorUrl' in $$props) $$invalidate(0, executorUrl = $$props.executorUrl);
-    		if ('capToken' in $$props) $$invalidate(9, capToken = $$props.capToken);
+    		if ('capToken' in $$props) $$invalidate(11, capToken = $$props.capToken);
     		if ('appName' in $$props) $$invalidate(1, appName = $$props.appName);
     		if ('appIconPath' in $$props) $$invalidate(2, appIconPath = $$props.appIconPath);
     		if ('showQrScanner' in $$props) $$invalidate(3, showQrScanner = $$props.showQrScanner);
-    		if ('resolve' in $$props) $$invalidate(10, resolve = $$props.resolve);
+    		if ('resolve' in $$props) $$invalidate(12, resolve = $$props.resolve);
     		if ('qrScanRequest' in $$props) $$invalidate(4, qrScanRequest = $$props.qrScanRequest);
     	};
 
@@ -27206,6 +27269,8 @@ type Subscription {
     		qrScanRequest,
     		requestId,
     		code,
+    		validCode,
+    		requestError,
     		requestCapability,
     		generateJwt,
     		capToken,
@@ -27221,7 +27286,7 @@ type Subscription {
     class Ad4mConnectDialog extends SvelteElement {
     	constructor(options) {
     		super();
-    		this.shadowRoot.innerHTML = `<style>.dialog{padding:20px;font-family:sans-serif}.dialog-title{margin:30px;text-align:center;line-height:42px;font-size:30px}.title-logo{height:42px;margin-bottom:-12px}.app-name{font-weight:bold}.icons-connection{margin:20px 0;text-align:center}.link-icon{position:relative;top:-50px}.textfield{display:flex}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}#executor-url{flex:auto}.button{font-size:18px;background-color:#9db2ef;border-radius:6px;color:white;cursor:pointer;padding:5px 10px}.primary{background-color:#4383eb}.right{float:right}</style>`;
+    		this.shadowRoot.innerHTML = `<style>.dialog{padding:20px;font-family:sans-serif}.dialog-title{margin:30px;text-align:center;line-height:42px;font-size:30px}.title-logo{height:42px;margin-bottom:-12px}.app-name{font-weight:bold}.icons-connection{margin:20px 0;text-align:center}.link-icon{position:relative;top:-50px}.textfield{display:flex;margin:15px}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}#executor-url{flex:auto}#security-code-input{margin:0 10px}.button{font-size:18px;background-color:#9db2ef;border-radius:6px;color:white;cursor:pointer;padding:5px 10px}.primary{background-color:#4383eb}.right{float:right}.error{border-style:dotted;border-color:red;color:red}</style>`;
 
     		init(
     			this,
@@ -27235,13 +27300,13 @@ type Subscription {
     			safe_not_equal,
     			{
     				executorUrl: 0,
-    				capToken: 9,
+    				capToken: 11,
     				appName: 1,
     				appIconPath: 2,
     				showQrScanner: 3,
-    				resolve: 10,
+    				resolve: 12,
     				qrScanRequest: 4,
-    				run: 11
+    				run: 13
     			},
     			null
     		);
@@ -27281,7 +27346,7 @@ type Subscription {
     	}
 
     	get capToken() {
-    		return this.$$.ctx[9];
+    		return this.$$.ctx[11];
     	}
 
     	set capToken(capToken) {
@@ -27317,7 +27382,7 @@ type Subscription {
     	}
 
     	get resolve() {
-    		return this.$$.ctx[10];
+    		return this.$$.ctx[12];
     	}
 
     	set resolve(resolve) {
@@ -27335,7 +27400,7 @@ type Subscription {
     	}
 
     	get run() {
-    		return this.$$.ctx[11];
+    		return this.$$.ctx[13];
     	}
     }
 
