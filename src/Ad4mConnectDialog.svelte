@@ -9,6 +9,7 @@
     export let capToken: string
     export let appName: string
     export let appIconPath: string
+    export let capabilities: Array<object>
     export let showQrScanner: string|void
     export let resolve: (executorUrl: string, capToken: string, client: Ad4mClient)=>void
     export let reject: ()=>void
@@ -63,7 +64,6 @@
 
     async function requestCapability() {
         try {
-            let capabilities = [{"with":{"domain":"*","pointers":["*"]},"can":["*"]}]
             let ad4mClientWithoutJwt = generateCient(executorUrl, '')
             requestId = await ad4mClientWithoutJwt.agent.requestCapability("perspect3ve", "general purpose ad4m browser", "https://github.com/perspect3vism/perspect3ve", JSON.stringify(capabilities));
             console.log("auth request id: ", requestId);
@@ -111,7 +111,16 @@
     </div>
     <div class="dialog-content">
         {#if !requestId}
-            <span class="app-name">{appName}</span> needs to connect to your AD4M node/executor and request a unique capability token.
+            <span class="app-name">{appName}</span> needs to connect to your AD4M node/executor and request a capability token
+            for the following capabilities:
+            {#if capabilities && capabilities.length}
+                <ul>
+                    {#each capabilities as cap}
+                        <li>{cap.can} => {cap.with.domain}.{cap.with.pointers}</li>
+                    {/each}
+                </ul>
+            {/if}
+            
             {#if appIconPath}
                 <div class="icons-connection">
                     <img src="{appIconPath}" alt="App Logo" style="width: 150px">

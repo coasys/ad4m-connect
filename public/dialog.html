@@ -23,14 +23,15 @@
 <script>
 	const { ipcRenderer } = require("electron");
 	function run() {
-		const { appName, appIconPath, executorUrl, capabilityToken } = ipcRenderer.sendSync('get');
-		console.log({ appName, appIconPath, executorUrl, capabilityToken })
+		const { appName, appIconPath, executorUrl, capabilityToken, capabilities } = ipcRenderer.sendSync('get');
+		console.log({ appName, appIconPath, executorUrl, capabilityToken, capabilities })
 		const tempTarget = document.createElement('div')
 		const dialog = new Ad4mConnectDialog({ target: tempTarget });
 		dialog.appName = appName;
 		dialog.appIconPath = appIconPath;
 		dialog.executorUrl = executorUrl;
 		dialog.capToken = capabilityToken;
+		dialog.capabilities = capabilities
 		//dialog.showQrScanner = true
 		dialog.resolve = (executorUrl, capabilityToken, client) => {
 			ipcRenderer.send('resolve', { executorUrl, capabilityToken, client });
