@@ -11,6 +11,7 @@
     export let appIconPath: string
     export let showQrScanner: string|void
     export let resolve: (executorUrl: string, capToken: string, client: Ad4mClient)=>void
+    export let reject: ()=>void
     export let qrScanRequest: ()=>string
 
     let requestId: string|undefined
@@ -98,6 +99,7 @@
     } 
 </script>
 
+<div class="right material-icons pointer" on:click={reject}>close</div>
 <div class="dialog"
     aria-labelledby="dialog-title"
     aria-describedby="dialog-content"
@@ -255,6 +257,10 @@
 
 .right {
     float: right;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .error {

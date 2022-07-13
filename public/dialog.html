@@ -35,6 +35,9 @@
 		dialog.resolve = (executorUrl, capabilityToken, client) => {
 			ipcRenderer.send('resolve', { executorUrl, capabilityToken, client });
 		};
+		dialog.reject = () => {
+			ipcRenderer.send('reject')
+		}
 		const container = document.getElementById("container")
 		container.appendChild(tempTarget)  
 		dialog.run();
