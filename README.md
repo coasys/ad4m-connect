@@ -2,6 +2,8 @@
 
 This package makes it easy for AD4M apps to connect to a local or remote AD4M executor by handling all the complex things like finding the local executor port, requesting and storing a capability token, creating and recreating an Ad4mClient.
 
+[](screenshots/Screenshot_executor_url.png)!
+[](screenshots/Screenshot_security_code.png)!
 ## Usage (from Node / Electron)
 
 Install the package:
