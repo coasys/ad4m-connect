@@ -63,6 +63,7 @@ export function ad4mConnect(args){
     return new Promise((resolve, reject) => {
         const executorUrl = getExecutorUrl(dataPath)
         const capabilityToken = getCapToken(dataPath)
+        let win
 
         ipcMain.on('get', (event, arg) => {
             event.returnValue = {appName, appIconPath, executorUrl, capabilityToken, capabilities}
@@ -72,14 +73,16 @@ export function ad4mConnect(args){
             let { executorUrl, capabilityToken, client } = arg
             setExecutorUrl(executorUrl, dataPath)
             setCapToken(capabilityToken, dataPath)
+            win.close()
             resolve({ executorUrl, capabilityToken, client})
         })
 
         ipcMain.on('reject', (event, arg) => {
+            win.close()
             reject()
         })
 
-        const win = new BrowserWindow({
+        win = new BrowserWindow({
             width: 400,
             height: 600,
             webPreferences: {
