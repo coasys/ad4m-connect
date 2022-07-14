@@ -10,9 +10,13 @@ Install the package:
 ```npm install -s @perspect3vism/ad4m-connect```
 
 Import `ad4mConnect()`:
-```import { ad4mConnect } from '@perspect3vism/ad4m-connect'```
+```js
+import { ad4mConnect } from '@perspect3vism/ad4m-connect'
+```
 or
-```const { ad4mConnect } = require('@perspect3vism/ad4m-connect')```
+```js
+const { ad4mConnect } = require('@perspect3vism/ad4m-connect')
+```
 
 and then just call that function with parameters of your app:
 ```js
