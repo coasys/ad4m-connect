@@ -1,9 +1,10 @@
 <svelte:options tag="ad4m-connect-dialog"></svelte:options>
 <script lang="ts">
     import { Ad4mClient } from "@perspect3vism/ad4m";
-    import { ApolloClient, InMemoryCache } from "@apollo/client";
-    import { WebSocketLink } from "@apollo/client/link/ws";
-    import SubscriptionsTransportWs from "subscriptions-transport-ws"
+    import { ApolloClient, InMemoryCache } from "@apollo/client/core";
+    import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+    import { createClient } from 'graphql-ws';
+import { userInfo } from "os";
     
     export let executorUrl: string
     export let capToken: string
@@ -22,16 +23,15 @@
     let requestError = false
 
     function generateCient(uri:string, authorization: string|void) {
-        const wsLink = new WebSocketLink({
-            uri,
-            options: {
-                reconnect: true,
-                connectionParams: async () => {
-                    return { headers: { authorization }}
+        const wsLink = new GraphQLWsLink(
+        createClient({
+            url: uri,
+            connectionParams: () => {
+                return {
+                    headers: { authorization }
                 }
             },
-            webSocketImpl: WebSocket,
-        });
+        }));
         let apolloClient = new ApolloClient({
             link: wsLink,
             cache: new InMemoryCache({ resultCaching: false, addTypename: false }),

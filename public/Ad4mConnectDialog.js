@@ -343,10 +343,6 @@ var Ad4mConnectDialog = (function () {
     	}, fn(module, module.exports), module.exports;
     }
 
-    function getCjsExportFromNamespace (n) {
-    	return n && n['default'] || n;
-    }
-
     function commonjsRequire () {
     	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
     }
@@ -380,7 +376,7 @@ var Ad4mConnectDialog = (function () {
 
     var AgentClient$1 = {};
 
-    /*! *****************************************************************************
+    /******************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -399,112 +395,14 @@ var Ad4mConnectDialog = (function () {
     var extendStatics$1 = function(d, b) {
         extendStatics$1 = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics$1(d, b);
     };
 
     function __extends$1(d, b) {
-        extendStatics$1(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    }
-
-    var __assign$1 = function() {
-        __assign$1 = Object.assign || function __assign(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign$1.apply(this, arguments);
-    };
-
-    function __rest(s, e) {
-        var t = {};
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
-        if (s != null && typeof Object.getOwnPropertySymbols === "function")
-            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                    t[p[i]] = s[p[i]];
-            }
-        return t;
-    }
-
-    function __awaiter(thisArg, _arguments, P, generator) {
-        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-        return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-        });
-    }
-
-    function __generator(thisArg, body) {
-        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-        function verb(n) { return function (v) { return step([n, v]); }; }
-        function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-                if (y = 0, t) op = [op[0] & 2, t.value];
-                switch (op[0]) {
-                    case 0: case 1: t = op; break;
-                    case 4: _.label++; return { value: op[1], done: false };
-                    case 5: _.label++; y = op[1]; op = [0]; continue;
-                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                    default:
-                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                        if (t[2]) _.ops.pop();
-                        _.trys.pop(); continue;
-                }
-                op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-        }
-    }
-
-    function __spreadArrays() {
-        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-        for (var r = Array(s), k = 0, i = 0; i < il; i++)
-            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-                r[k] = a[j];
-        return r;
-    }
-
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-    /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-
-    function __extends(d, b) {
         if (typeof b !== "function" && b !== null)
             throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
+        extendStatics$1(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
@@ -515,7 +413,7 @@ var Ad4mConnectDialog = (function () {
         return obj;
     } : _a$3;
     var InvariantError = /** @class */ (function (_super) {
-        __extends(InvariantError, _super);
+        __extends$1(InvariantError, _super);
         function InvariantError(message) {
             if (message === void 0) { message = genericMessage; }
             var _this = _super.call(this, typeof message === "number"
@@ -533,16 +431,20 @@ var Ad4mConnectDialog = (function () {
             throw new InvariantError(message);
         }
     }
-    var verbosityLevels = ["log", "warn", "error", "silent"];
+    var verbosityLevels = ["debug", "log", "warn", "error", "silent"];
     var verbosityLevel = verbosityLevels.indexOf("log");
-    function wrapConsoleMethod(method) {
+    function wrapConsoleMethod(name) {
         return function () {
-            if (verbosityLevels.indexOf(method) >= verbosityLevel) {
-                return console[method].apply(console, arguments);
+            if (verbosityLevels.indexOf(name) >= verbosityLevel) {
+                // Default to console.log if this host environment happens not to provide
+                // all the console.* methods we need.
+                var method = console[name] || console.log;
+                return method.apply(console, arguments);
             }
         };
     }
     (function (invariant) {
+        invariant.debug = wrapConsoleMethod("debug");
         invariant.log = wrapConsoleMethod("log");
         invariant.warn = wrapConsoleMethod("warn");
         invariant.error = wrapConsoleMethod("error");
@@ -552,14 +454,89 @@ var Ad4mConnectDialog = (function () {
         verbosityLevel = Math.max(0, verbosityLevels.indexOf(level));
         return old;
     }
-    // Code that uses ts-invariant with rollup-plugin-invariant may want to
-    // import this process stub to avoid errors evaluating process.env.NODE_ENV.
-    // However, because most ESM-to-CJS compilers will rewrite the process import
-    // as tsInvariant.process, which prevents proper replacement by minifiers, we
-    // also export processStub, so you can import { invariant, processStub } from
-    // "ts-invariant" and assign processStub to a local variable named process.
-    (typeof process === "object" &&
-        typeof process.env === "object") ? process : { env: {} };
+
+    function maybe$1(thunk) {
+        try {
+            return thunk();
+        }
+        catch (_a) { }
+    }
+
+    var global$1 = (maybe$1(function () { return globalThis; }) ||
+        maybe$1(function () { return window; }) ||
+        maybe$1(function () { return self; }) ||
+        maybe$1(function () { return commonjsGlobal; }) || maybe$1(function () { return maybe$1.constructor("return this")(); }));
+
+    var __ = "__";
+    var GLOBAL_KEY = [__, __].join("DEV");
+    function getDEV() {
+        try {
+            return Boolean(__DEV__);
+        }
+        catch (_a) {
+            Object.defineProperty(global$1, GLOBAL_KEY, {
+                value: maybe$1(function () { return process.env.NODE_ENV; }) !== "production",
+                enumerable: false,
+                configurable: true,
+                writable: true,
+            });
+            return global$1[GLOBAL_KEY];
+        }
+    }
+    var DEV = getDEV();
+
+    function maybe(thunk) {
+      try { return thunk() } catch (_) {}
+    }
+
+    var safeGlobal = (
+      maybe(function() { return globalThis }) ||
+      maybe(function() { return window }) ||
+      maybe(function() { return self }) ||
+      maybe(function() { return commonjsGlobal }) ||
+      // We don't expect the Function constructor ever to be invoked at runtime, as
+      // long as at least one of globalThis, window, self, or global is defined, so
+      // we are under no obligation to make it easy for static analysis tools to
+      // detect syntactic usage of the Function constructor. If you think you can
+      // improve your static analysis to detect this obfuscation, think again. This
+      // is an arms race you cannot win, at least not in JavaScript.
+      maybe(function() { return maybe.constructor("return this")() })
+    );
+
+    var needToRemove = false;
+
+    function install() {
+      if (safeGlobal &&
+          !maybe(function() { return process.env.NODE_ENV }) &&
+          !maybe(function() { return process })) {
+        Object.defineProperty(safeGlobal, "process", {
+          value: {
+            env: {
+              // This default needs to be "production" instead of "development", to
+              // avoid the problem https://github.com/graphql/graphql-js/pull/2894
+              // will eventually solve, once merged and released.
+              NODE_ENV: "production",
+            },
+          },
+          // Let anyone else change global.process as they see fit, but hide it from
+          // Object.keys(global) enumeration.
+          configurable: true,
+          enumerable: false,
+          writable: true,
+        });
+        needToRemove = true;
+      }
+    }
+
+    // Call install() at least once, when this module is imported.
+    install();
+
+    function remove() {
+      if (needToRemove) {
+        delete safeGlobal.process;
+        needToRemove = false;
+      }
+    }
 
     function _typeof$3(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$3 = function _typeof(obj) { return typeof obj; }; } else { _typeof$3 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$3(obj); }
 
@@ -674,7 +651,7 @@ var Ad4mConnectDialog = (function () {
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
     function _defineProperties$2(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -757,7 +734,7 @@ var Ad4mConnectDialog = (function () {
 
         var _this;
 
-        _classCallCheck$1(this, GraphQLError);
+        _classCallCheck(this, GraphQLError);
 
         _this = _super.call(this, message);
         _this.name = 'GraphQLError';
@@ -4330,6 +4307,118 @@ var Ad4mConnectDialog = (function () {
       return maybeArray != null && maybeArray.some(isMultiline);
     }
 
+    function removeTemporaryGlobals() {
+        return typeof Source === "function" ? remove() : remove();
+    }
+
+    function checkDEV() {
+        __DEV__ ? invariant$1("boolean" === typeof DEV, DEV) : invariant$1("boolean" === typeof DEV, 36);
+    }
+    removeTemporaryGlobals();
+    checkDEV();
+
+    /******************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var __assign$1 = function() {
+        __assign$1 = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign$1.apply(this, arguments);
+    };
+
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    }
+
+    function __awaiter(thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    }
+
+    function __generator(thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    }
+
+    function __spreadArray(to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
+    }
+
     function shouldInclude(_a, variables) {
         var directives = _a.directives;
         if (!directives || !directives.length) {
@@ -4340,7 +4429,7 @@ var Ad4mConnectDialog = (function () {
             var evaledValue = false;
             if (ifArgument.value.kind === 'Variable') {
                 evaledValue = variables && variables[ifArgument.value.name.value];
-                process.env.NODE_ENV === "production" ? invariant$1(evaledValue !== void 0, 38) : invariant$1(evaledValue !== void 0, "Invalid variable referenced in @" + directive.name.value + " directive.");
+                __DEV__ ? invariant$1(evaledValue !== void 0, "Invalid variable referenced in @".concat(directive.name.value, " directive.")) : invariant$1(evaledValue !== void 0, 37);
             }
             else {
                 evaledValue = ifArgument.value.value;
@@ -4377,13 +4466,13 @@ var Ad4mConnectDialog = (function () {
                     return;
                 var directiveArguments = directive.arguments;
                 var directiveName = directive.name.value;
-                process.env.NODE_ENV === "production" ? invariant$1(directiveArguments && directiveArguments.length === 1, 39) : invariant$1(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @" + directiveName + " directive.");
+                __DEV__ ? invariant$1(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @".concat(directiveName, " directive.")) : invariant$1(directiveArguments && directiveArguments.length === 1, 38);
                 var ifArgument = directiveArguments[0];
-                process.env.NODE_ENV === "production" ? invariant$1(ifArgument.name && ifArgument.name.value === 'if', 40) : invariant$1(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @" + directiveName + " directive.");
+                __DEV__ ? invariant$1(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @".concat(directiveName, " directive.")) : invariant$1(ifArgument.name && ifArgument.name.value === 'if', 39);
                 var ifValue = ifArgument.value;
-                process.env.NODE_ENV === "production" ? invariant$1(ifValue &&
-                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 41) : invariant$1(ifValue &&
-                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @" + directiveName + " directive must be a variable or a boolean value.");
+                __DEV__ ? invariant$1(ifValue &&
+                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @".concat(directiveName, " directive must be a variable or a boolean value.")) : invariant$1(ifValue &&
+                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 40);
                 result.push({ directive: directive, ifArgument: ifArgument });
             });
         }
@@ -4395,18 +4484,18 @@ var Ad4mConnectDialog = (function () {
         var fragments = [];
         document.definitions.forEach(function (definition) {
             if (definition.kind === 'OperationDefinition') {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(42) : new InvariantError("Found a " + definition.operation + " operation" + (definition.name ? " named '" + definition.name.value + "'" : '') + ". " +
-                    'No operations are allowed when using a fragment as a query. Only fragments are allowed.');
+                throw __DEV__ ? new InvariantError("Found a ".concat(definition.operation, " operation").concat(definition.name ? " named '".concat(definition.name.value, "'") : '', ". ") +
+                    'No operations are allowed when using a fragment as a query. Only fragments are allowed.') : new InvariantError(41);
             }
             if (definition.kind === 'FragmentDefinition') {
                 fragments.push(definition);
             }
         });
         if (typeof actualFragmentName === 'undefined') {
-            process.env.NODE_ENV === "production" ? invariant$1(fragments.length === 1, 43) : invariant$1(fragments.length === 1, "Found " + fragments.length + " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.");
+            __DEV__ ? invariant$1(fragments.length === 1, "Found ".concat(fragments.length, " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.")) : invariant$1(fragments.length === 1, 42);
             actualFragmentName = fragments[0].name.value;
         }
-        var query = __assign$1(__assign$1({}, document), { definitions: __spreadArrays([
+        var query = __assign$1(__assign$1({}, document), { definitions: __spreadArray([
                 {
                     kind: 'OperationDefinition',
                     operation: 'query',
@@ -4423,7 +4512,7 @@ var Ad4mConnectDialog = (function () {
                         ],
                     },
                 }
-            ], document.definitions) });
+            ], document.definitions, true) });
         return query;
     }
     function createFragmentMap(fragments) {
@@ -4440,7 +4529,7 @@ var Ad4mConnectDialog = (function () {
                 return selection;
             case 'FragmentSpread': {
                 var fragment = fragmentMap && fragmentMap[selection.name.value];
-                process.env.NODE_ENV === "production" ? invariant$1(fragment, 44) : invariant$1(fragment, "No fragment named " + selection.name.value + ".");
+                __DEV__ ? invariant$1(fragment, "No fragment named ".concat(selection.name.value, ".")) : invariant$1(fragment, 43);
                 return fragment;
             }
             default:
@@ -4448,69 +4537,20 @@ var Ad4mConnectDialog = (function () {
         }
     }
 
-    var fastJsonStableStringify = function (data, opts) {
-        if (!opts) opts = {};
-        if (typeof opts === 'function') opts = { cmp: opts };
-        var cycles = (typeof opts.cycles === 'boolean') ? opts.cycles : false;
-
-        var cmp = opts.cmp && (function (f) {
-            return function (node) {
-                return function (a, b) {
-                    var aobj = { key: a, value: node[a] };
-                    var bobj = { key: b, value: node[b] };
-                    return f(aobj, bobj);
-                };
-            };
-        })(opts.cmp);
-
-        var seen = [];
-        return (function stringify (node) {
-            if (node && node.toJSON && typeof node.toJSON === 'function') {
-                node = node.toJSON();
-            }
-
-            if (node === undefined) return;
-            if (typeof node == 'number') return isFinite(node) ? '' + node : 'null';
-            if (typeof node !== 'object') return JSON.stringify(node);
-
-            var i, out;
-            if (Array.isArray(node)) {
-                out = '[';
-                for (i = 0; i < node.length; i++) {
-                    if (i) out += ',';
-                    out += stringify(node[i]) || 'null';
-                }
-                return out + ']';
-            }
-
-            if (node === null) return 'null';
-
-            if (seen.indexOf(node) !== -1) {
-                if (cycles) return JSON.stringify('__cycle__');
-                throw new TypeError('Converting circular structure to JSON');
-            }
-
-            var seenIndex = seen.push(node) - 1;
-            var keys = Object.keys(node).sort(cmp && cmp(node));
-            out = '';
-            for (i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                var value = stringify(node[key]);
-
-                if (!value) continue;
-                if (out) out += ',';
-                out += JSON.stringify(key) + ':' + value;
-            }
-            seen.splice(seenIndex, 1);
-            return '{' + out + '}';
-        })(data);
-    };
+    function isNonNullObject(obj) {
+        return obj !== null && typeof obj === 'object';
+    }
 
     function makeReference(id) {
         return { __ref: String(id) };
     }
     function isReference(obj) {
         return Boolean(obj && typeof obj === 'object' && typeof obj.__ref === 'string');
+    }
+    function isDocumentNode(value) {
+        return (isNonNullObject(value) &&
+            value.kind === "Document" &&
+            Array.isArray(value.definitions));
     }
     function isStringValue(value) {
         return value.kind === 'StringValue';
@@ -4571,9 +4611,9 @@ var Ad4mConnectDialog = (function () {
             argObj[name.value] = null;
         }
         else {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(53) : new InvariantError("The inline argument \"" + name.value + "\" of kind \"" + value.kind + "\"" +
+            throw __DEV__ ? new InvariantError("The inline argument \"".concat(name.value, "\" of kind \"").concat(value.kind, "\"") +
                 'is not supported. Use variables instead of inline arguments to ' +
-                'overcome this limitation.');
+                'overcome this limitation.') : new InvariantError(52);
         }
     }
     function storeKeyNameFromField(field, variables) {
@@ -4608,7 +4648,7 @@ var Ad4mConnectDialog = (function () {
         'rest',
         'export',
     ];
-    function getStoreKeyName(fieldName, args, directives) {
+    var getStoreKeyName = Object.assign(function (fieldName, args, directives) {
         if (args &&
             directives &&
             directives['connection'] &&
@@ -4623,7 +4663,7 @@ var Ad4mConnectDialog = (function () {
                 filterKeys.forEach(function (key) {
                     filteredArgs_1[key] = args[key];
                 });
-                return directives['connection']['key'] + "(" + JSON.stringify(filteredArgs_1) + ")";
+                return "".concat(directives['connection']['key'], "(").concat(stringify(filteredArgs_1), ")");
             }
             else {
                 return directives['connection']['key'];
@@ -4631,22 +4671,40 @@ var Ad4mConnectDialog = (function () {
         }
         var completeFieldName = fieldName;
         if (args) {
-            var stringifiedArgs = fastJsonStableStringify(args);
-            completeFieldName += "(" + stringifiedArgs + ")";
+            var stringifiedArgs = stringify(args);
+            completeFieldName += "(".concat(stringifiedArgs, ")");
         }
         if (directives) {
             Object.keys(directives).forEach(function (key) {
                 if (KNOWN_DIRECTIVES.indexOf(key) !== -1)
                     return;
                 if (directives[key] && Object.keys(directives[key]).length) {
-                    completeFieldName += "@" + key + "(" + JSON.stringify(directives[key]) + ")";
+                    completeFieldName += "@".concat(key, "(").concat(stringify(directives[key]), ")");
                 }
                 else {
-                    completeFieldName += "@" + key;
+                    completeFieldName += "@".concat(key);
                 }
             });
         }
         return completeFieldName;
+    }, {
+        setStringify: function (s) {
+            var previous = stringify;
+            stringify = s;
+            return previous;
+        },
+    });
+    var stringify = function defaultStringify(value) {
+        return JSON.stringify(value, stringifyReplacer);
+    };
+    function stringifyReplacer(_key, value) {
+        if (isNonNullObject(value) && !Array.isArray(value)) {
+            value = Object.keys(value).sort().reduce(function (copy, key) {
+                copy[key] = value[key];
+                return copy;
+            }, {});
+        }
+        return value;
     }
     function argumentsObjectFromField(field, variables) {
         if (field.arguments && field.arguments.length) {
@@ -4689,16 +4747,16 @@ var Ad4mConnectDialog = (function () {
     }
 
     function checkDocument(doc) {
-        process.env.NODE_ENV === "production" ? invariant$1(doc && doc.kind === 'Document', 45) : invariant$1(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
+        __DEV__ ? invariant$1(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$1(doc && doc.kind === 'Document', 44);
         var operations = doc.definitions
             .filter(function (d) { return d.kind !== 'FragmentDefinition'; })
             .map(function (definition) {
             if (definition.kind !== 'OperationDefinition') {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(46) : new InvariantError("Schema type definitions not allowed in queries. Found: \"" + definition.kind + "\"");
+                throw __DEV__ ? new InvariantError("Schema type definitions not allowed in queries. Found: \"".concat(definition.kind, "\"")) : new InvariantError(45);
             }
             return definition;
         });
-        process.env.NODE_ENV === "production" ? invariant$1(operations.length <= 1, 47) : invariant$1(operations.length <= 1, "Ambiguous GraphQL document: contains " + operations.length + " operations");
+        __DEV__ ? invariant$1(operations.length <= 1, "Ambiguous GraphQL document: contains ".concat(operations.length, " operations")) : invariant$1(operations.length <= 1, 46);
         return doc;
     }
     function getOperationDefinition(doc) {
@@ -4717,14 +4775,14 @@ var Ad4mConnectDialog = (function () {
     }
     function getQueryDefinition(doc) {
         var queryDef = getOperationDefinition(doc);
-        process.env.NODE_ENV === "production" ? invariant$1(queryDef && queryDef.operation === 'query', 48) : invariant$1(queryDef && queryDef.operation === 'query', 'Must contain a query definition.');
+        __DEV__ ? invariant$1(queryDef && queryDef.operation === 'query', 'Must contain a query definition.') : invariant$1(queryDef && queryDef.operation === 'query', 47);
         return queryDef;
     }
     function getFragmentDefinition(doc) {
-        process.env.NODE_ENV === "production" ? invariant$1(doc.kind === 'Document', 49) : invariant$1(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
-        process.env.NODE_ENV === "production" ? invariant$1(doc.definitions.length <= 1, 50) : invariant$1(doc.definitions.length <= 1, 'Fragment must have exactly one definition.');
+        __DEV__ ? invariant$1(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$1(doc.kind === 'Document', 48);
+        __DEV__ ? invariant$1(doc.definitions.length <= 1, 'Fragment must have exactly one definition.') : invariant$1(doc.definitions.length <= 1, 49);
         var fragmentDef = doc.definitions[0];
-        process.env.NODE_ENV === "production" ? invariant$1(fragmentDef.kind === 'FragmentDefinition', 51) : invariant$1(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.');
+        __DEV__ ? invariant$1(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.') : invariant$1(fragmentDef.kind === 'FragmentDefinition', 50);
         return fragmentDef;
     }
     function getMainDefinition(queryDoc) {
@@ -4747,7 +4805,7 @@ var Ad4mConnectDialog = (function () {
         if (fragmentDefinition) {
             return fragmentDefinition;
         }
-        throw process.env.NODE_ENV === "production" ? new InvariantError(52) : new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.');
+        throw __DEV__ ? new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.') : new InvariantError(51);
     }
     function getDefaultValues(definition) {
         var defaultValues = Object.create(null);
@@ -4864,8 +4922,8 @@ var Ad4mConnectDialog = (function () {
         }
         return modifiedDoc;
     }
-    function addTypenameToDocument(doc) {
-        return visit(checkDocument(doc), {
+    var addTypenameToDocument = Object.assign(function (doc) {
+        return visit(doc, {
             SelectionSet: {
                 enter: function (node, _key, parent) {
                     if (parent &&
@@ -4890,21 +4948,22 @@ var Ad4mConnectDialog = (function () {
                         field.directives.some(function (d) { return d.name.value === 'export'; })) {
                         return;
                     }
-                    return __assign$1(__assign$1({}, node), { selections: __spreadArrays(selections, [TYPENAME_FIELD]) });
+                    return __assign$1(__assign$1({}, node), { selections: __spreadArray(__spreadArray([], selections, true), [TYPENAME_FIELD], false) });
                 },
             },
         });
-    }
-    addTypenameToDocument.added = function (field) {
-        return field === TYPENAME_FIELD;
-    };
+    }, {
+        added: function (field) {
+            return field === TYPENAME_FIELD;
+        },
+    });
     var connectionRemoveConfig = {
         test: function (directive) {
             var willRemove = directive.name.value === 'connection';
             if (willRemove) {
                 if (!directive.arguments ||
                     !directive.arguments.some(function (arg) { return arg.name.value === 'key'; })) {
-                    process.env.NODE_ENV === "production" || invariant$1.warn('Removing an @connection directive even though it does not have a key. ' +
+                    __DEV__ && invariant$1.warn('Removing an @connection directive even though it does not have a key. ' +
                         'You may want to use the key parameter to specify a store key.');
                 }
             }
@@ -5047,9 +5106,6 @@ var Ad4mConnectDialog = (function () {
         }
         return target;
     }
-    function isObject$1(obj) {
-        return obj !== null && typeof obj === 'object';
-    }
     var defaultReconciler = function (target, source, property) {
         return this.merge(target[property], source[property]);
     };
@@ -5057,7 +5113,7 @@ var Ad4mConnectDialog = (function () {
         function DeepMerger(reconciler) {
             if (reconciler === void 0) { reconciler = defaultReconciler; }
             this.reconciler = reconciler;
-            this.isObject = isObject$1;
+            this.isObject = isNonNullObject;
             this.pastCopies = new Set();
         }
         DeepMerger.prototype.merge = function (target, source) {
@@ -5066,12 +5122,12 @@ var Ad4mConnectDialog = (function () {
             for (var _i = 2; _i < arguments.length; _i++) {
                 context[_i - 2] = arguments[_i];
             }
-            if (isObject$1(source) && isObject$1(target)) {
+            if (isNonNullObject(source) && isNonNullObject(target)) {
                 Object.keys(source).forEach(function (sourceKey) {
                     if (hasOwnProperty$5.call(target, sourceKey)) {
                         var targetValue = target[sourceKey];
                         if (source[sourceKey] !== targetValue) {
-                            var result = _this.reconciler.apply(_this, __spreadArrays([target, source, sourceKey], context));
+                            var result = _this.reconciler.apply(_this, __spreadArray([target, source, sourceKey], context, false));
                             if (result !== targetValue) {
                                 target = _this.shallowCopyForMerge(target);
                                 target[sourceKey] = result;
@@ -5088,32 +5144,31 @@ var Ad4mConnectDialog = (function () {
             return source;
         };
         DeepMerger.prototype.shallowCopyForMerge = function (value) {
-            if (isObject$1(value) && !this.pastCopies.has(value)) {
-                if (Array.isArray(value)) {
-                    value = value.slice(0);
+            if (isNonNullObject(value)) {
+                if (!this.pastCopies.has(value)) {
+                    if (Array.isArray(value)) {
+                        value = value.slice(0);
+                    }
+                    else {
+                        value = __assign$1({ __proto__: Object.getPrototypeOf(value) }, value);
+                    }
+                    this.pastCopies.add(value);
                 }
-                else {
-                    value = __assign$1({ __proto__: Object.getPrototypeOf(value) }, value);
-                }
-                this.pastCopies.add(value);
             }
             return value;
         };
         return DeepMerger;
     }());
 
-    var Observable$2 = {};
+    function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-    Object.defineProperty(Observable$2, "__esModule", {
-      value: true
-    });
-    Observable$2.Observable = void 0;
+    function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
     function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-    function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
     // === Symbol Support ===
     var hasSymbols = function () {
@@ -5154,11 +5209,11 @@ var Ad4mConnectDialog = (function () {
         }
       }
 
-      return ctor !== undefined ? ctor : Observable$1;
+      return ctor !== undefined ? ctor : Observable;
     }
 
     function isObservable(x) {
-      return x instanceof Observable$1; // SPEC: Brand check
+      return x instanceof Observable; // SPEC: Brand check
     }
 
     function hostReportError(e) {
@@ -5283,12 +5338,8 @@ var Ad4mConnectDialog = (function () {
       notifySubscription(subscription, type, value);
     }
 
-    var Subscription =
-    /*#__PURE__*/
-    function () {
+    var Subscription = /*#__PURE__*/function () {
       function Subscription(observer, subscriber) {
-        _classCallCheck(this, Subscription);
-
         // ASSERT: observer is an object
         // ASSERT: subscriber is callable
         this._cleanup = undefined;
@@ -5306,15 +5357,16 @@ var Ad4mConnectDialog = (function () {
         if (this._state === 'initializing') this._state = 'ready';
       }
 
-      _createClass(Subscription, [{
-        key: "unsubscribe",
-        value: function unsubscribe() {
-          if (this._state !== 'closed') {
-            closeSubscription(this);
-            cleanupSubscription(this);
-          }
+      var _proto = Subscription.prototype;
+
+      _proto.unsubscribe = function unsubscribe() {
+        if (this._state !== 'closed') {
+          closeSubscription(this);
+          cleanupSubscription(this);
         }
-      }, {
+      };
+
+      _createClass(Subscription, [{
         key: "closed",
         get: function () {
           return this._state === 'closed';
@@ -5324,31 +5376,26 @@ var Ad4mConnectDialog = (function () {
       return Subscription;
     }();
 
-    var SubscriptionObserver =
-    /*#__PURE__*/
-    function () {
+    var SubscriptionObserver = /*#__PURE__*/function () {
       function SubscriptionObserver(subscription) {
-        _classCallCheck(this, SubscriptionObserver);
-
         this._subscription = subscription;
       }
 
+      var _proto2 = SubscriptionObserver.prototype;
+
+      _proto2.next = function next(value) {
+        onNotify(this._subscription, 'next', value);
+      };
+
+      _proto2.error = function error(value) {
+        onNotify(this._subscription, 'error', value);
+      };
+
+      _proto2.complete = function complete() {
+        onNotify(this._subscription, 'complete');
+      };
+
       _createClass(SubscriptionObserver, [{
-        key: "next",
-        value: function next(value) {
-          onNotify(this._subscription, 'next', value);
-        }
-      }, {
-        key: "error",
-        value: function error(value) {
-          onNotify(this._subscription, 'error', value);
-        }
-      }, {
-        key: "complete",
-        value: function complete() {
-          onNotify(this._subscription, 'complete');
-        }
-      }, {
         key: "closed",
         get: function () {
           return this._subscription._state === 'closed';
@@ -5358,315 +5405,269 @@ var Ad4mConnectDialog = (function () {
       return SubscriptionObserver;
     }();
 
-    var Observable$1 =
-    /*#__PURE__*/
-    function () {
+    var Observable = /*#__PURE__*/function () {
       function Observable(subscriber) {
-        _classCallCheck(this, Observable);
-
         if (!(this instanceof Observable)) throw new TypeError('Observable cannot be called as a function');
         if (typeof subscriber !== 'function') throw new TypeError('Observable initializer must be a function');
         this._subscriber = subscriber;
       }
 
-      _createClass(Observable, [{
-        key: "subscribe",
-        value: function subscribe(observer) {
-          if (typeof observer !== 'object' || observer === null) {
-            observer = {
-              next: observer,
-              error: arguments[1],
-              complete: arguments[2]
-            };
+      var _proto3 = Observable.prototype;
+
+      _proto3.subscribe = function subscribe(observer) {
+        if (typeof observer !== 'object' || observer === null) {
+          observer = {
+            next: observer,
+            error: arguments[1],
+            complete: arguments[2]
+          };
+        }
+
+        return new Subscription(observer, this._subscriber);
+      };
+
+      _proto3.forEach = function forEach(fn) {
+        var _this = this;
+
+        return new Promise(function (resolve, reject) {
+          if (typeof fn !== 'function') {
+            reject(new TypeError(fn + ' is not a function'));
+            return;
           }
 
-          return new Subscription(observer, this._subscriber);
-        }
-      }, {
-        key: "forEach",
-        value: function forEach(fn) {
-          var _this = this;
+          function done() {
+            subscription.unsubscribe();
+            resolve();
+          }
 
-          return new Promise(function (resolve, reject) {
-            if (typeof fn !== 'function') {
-              reject(new TypeError(fn + ' is not a function'));
-              return;
-            }
-
-            function done() {
-              subscription.unsubscribe();
-              resolve();
-            }
-
-            var subscription = _this.subscribe({
-              next: function (value) {
-                try {
-                  fn(value, done);
-                } catch (e) {
-                  reject(e);
-                  subscription.unsubscribe();
-                }
-              },
-              error: reject,
-              complete: resolve
-            });
+          var subscription = _this.subscribe({
+            next: function (value) {
+              try {
+                fn(value, done);
+              } catch (e) {
+                reject(e);
+                subscription.unsubscribe();
+              }
+            },
+            error: reject,
+            complete: resolve
           });
-        }
-      }, {
-        key: "map",
-        value: function map(fn) {
-          var _this2 = this;
+        });
+      };
 
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            return _this2.subscribe({
-              next: function (value) {
+      _proto3.map = function map(fn) {
+        var _this2 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          return _this2.subscribe({
+            next: function (value) {
+              try {
+                value = fn(value);
+              } catch (e) {
+                return observer.error(e);
+              }
+
+              observer.next(value);
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              observer.complete();
+            }
+          });
+        });
+      };
+
+      _proto3.filter = function filter(fn) {
+        var _this3 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          return _this3.subscribe({
+            next: function (value) {
+              try {
+                if (!fn(value)) return;
+              } catch (e) {
+                return observer.error(e);
+              }
+
+              observer.next(value);
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              observer.complete();
+            }
+          });
+        });
+      };
+
+      _proto3.reduce = function reduce(fn) {
+        var _this4 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        var hasSeed = arguments.length > 1;
+        var hasValue = false;
+        var seed = arguments[1];
+        var acc = seed;
+        return new C(function (observer) {
+          return _this4.subscribe({
+            next: function (value) {
+              var first = !hasValue;
+              hasValue = true;
+
+              if (!first || hasSeed) {
+                try {
+                  acc = fn(acc, value);
+                } catch (e) {
+                  return observer.error(e);
+                }
+              } else {
+                acc = value;
+              }
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              if (!hasValue && !hasSeed) return observer.error(new TypeError('Cannot reduce an empty sequence'));
+              observer.next(acc);
+              observer.complete();
+            }
+          });
+        });
+      };
+
+      _proto3.concat = function concat() {
+        var _this5 = this;
+
+        for (var _len = arguments.length, sources = new Array(_len), _key = 0; _key < _len; _key++) {
+          sources[_key] = arguments[_key];
+        }
+
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          var subscription;
+          var index = 0;
+
+          function startNext(next) {
+            subscription = next.subscribe({
+              next: function (v) {
+                observer.next(v);
+              },
+              error: function (e) {
+                observer.error(e);
+              },
+              complete: function () {
+                if (index === sources.length) {
+                  subscription = undefined;
+                  observer.complete();
+                } else {
+                  startNext(C.from(sources[index++]));
+                }
+              }
+            });
+          }
+
+          startNext(_this5);
+          return function () {
+            if (subscription) {
+              subscription.unsubscribe();
+              subscription = undefined;
+            }
+          };
+        });
+      };
+
+      _proto3.flatMap = function flatMap(fn) {
+        var _this6 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          var subscriptions = [];
+
+          var outer = _this6.subscribe({
+            next: function (value) {
+              if (fn) {
                 try {
                   value = fn(value);
                 } catch (e) {
                   return observer.error(e);
                 }
-
-                observer.next(value);
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                observer.complete();
               }
-            });
-          });
-        }
-      }, {
-        key: "filter",
-        value: function filter(fn) {
-          var _this3 = this;
 
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            return _this3.subscribe({
-              next: function (value) {
-                try {
-                  if (!fn(value)) return;
-                } catch (e) {
-                  return observer.error(e);
-                }
-
-                observer.next(value);
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                observer.complete();
-              }
-            });
-          });
-        }
-      }, {
-        key: "reduce",
-        value: function reduce(fn) {
-          var _this4 = this;
-
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          var hasSeed = arguments.length > 1;
-          var hasValue = false;
-          var seed = arguments[1];
-          var acc = seed;
-          return new C(function (observer) {
-            return _this4.subscribe({
-              next: function (value) {
-                var first = !hasValue;
-                hasValue = true;
-
-                if (!first || hasSeed) {
-                  try {
-                    acc = fn(acc, value);
-                  } catch (e) {
-                    return observer.error(e);
-                  }
-                } else {
-                  acc = value;
-                }
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                if (!hasValue && !hasSeed) return observer.error(new TypeError('Cannot reduce an empty sequence'));
-                observer.next(acc);
-                observer.complete();
-              }
-            });
-          });
-        }
-      }, {
-        key: "concat",
-        value: function concat() {
-          var _this5 = this;
-
-          for (var _len = arguments.length, sources = new Array(_len), _key = 0; _key < _len; _key++) {
-            sources[_key] = arguments[_key];
-          }
-
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            var subscription;
-            var index = 0;
-
-            function startNext(next) {
-              subscription = next.subscribe({
-                next: function (v) {
-                  observer.next(v);
+              var inner = C.from(value).subscribe({
+                next: function (value) {
+                  observer.next(value);
                 },
                 error: function (e) {
                   observer.error(e);
                 },
                 complete: function () {
-                  if (index === sources.length) {
-                    subscription = undefined;
-                    observer.complete();
-                  } else {
-                    startNext(C.from(sources[index++]));
-                  }
+                  var i = subscriptions.indexOf(inner);
+                  if (i >= 0) subscriptions.splice(i, 1);
+                  completeIfDone();
                 }
               });
+              subscriptions.push(inner);
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              completeIfDone();
             }
-
-            startNext(_this5);
-            return function () {
-              if (subscription) {
-                subscription.unsubscribe();
-                subscription = undefined;
-              }
-            };
           });
-        }
-      }, {
-        key: "flatMap",
-        value: function flatMap(fn) {
-          var _this6 = this;
 
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            var subscriptions = [];
+          function completeIfDone() {
+            if (outer.closed && subscriptions.length === 0) observer.complete();
+          }
 
-            var outer = _this6.subscribe({
-              next: function (value) {
-                if (fn) {
-                  try {
-                    value = fn(value);
-                  } catch (e) {
-                    return observer.error(e);
-                  }
-                }
-
-                var inner = C.from(value).subscribe({
-                  next: function (value) {
-                    observer.next(value);
-                  },
-                  error: function (e) {
-                    observer.error(e);
-                  },
-                  complete: function () {
-                    var i = subscriptions.indexOf(inner);
-                    if (i >= 0) subscriptions.splice(i, 1);
-                    completeIfDone();
-                  }
-                });
-                subscriptions.push(inner);
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                completeIfDone();
-              }
+          return function () {
+            subscriptions.forEach(function (s) {
+              return s.unsubscribe();
             });
+            outer.unsubscribe();
+          };
+        });
+      };
 
-            function completeIfDone() {
-              if (outer.closed && subscriptions.length === 0) observer.complete();
-            }
+      _proto3[SymbolObservable] = function () {
+        return this;
+      };
 
-            return function () {
-              subscriptions.forEach(function (s) {
-                return s.unsubscribe();
-              });
-              outer.unsubscribe();
-            };
+      Observable.from = function from(x) {
+        var C = typeof this === 'function' ? this : Observable;
+        if (x == null) throw new TypeError(x + ' is not an object');
+        var method = getMethod(x, SymbolObservable);
+
+        if (method) {
+          var observable = method.call(x);
+          if (Object(observable) !== observable) throw new TypeError(observable + ' is not an object');
+          if (isObservable(observable) && observable.constructor === C) return observable;
+          return new C(function (observer) {
+            return observable.subscribe(observer);
           });
         }
-      }, {
-        key: SymbolObservable,
-        value: function () {
-          return this;
-        }
-      }], [{
-        key: "from",
-        value: function from(x) {
-          var C = typeof this === 'function' ? this : Observable;
-          if (x == null) throw new TypeError(x + ' is not an object');
-          var method = getMethod(x, SymbolObservable);
+
+        if (hasSymbol('iterator')) {
+          method = getMethod(x, SymbolIterator);
 
           if (method) {
-            var observable = method.call(x);
-            if (Object(observable) !== observable) throw new TypeError(observable + ' is not an object');
-            if (isObservable(observable) && observable.constructor === C) return observable;
-            return new C(function (observer) {
-              return observable.subscribe(observer);
-            });
-          }
-
-          if (hasSymbol('iterator')) {
-            method = getMethod(x, SymbolIterator);
-
-            if (method) {
-              return new C(function (observer) {
-                enqueue(function () {
-                  if (observer.closed) return;
-                  var _iteratorNormalCompletion = true;
-                  var _didIteratorError = false;
-                  var _iteratorError = undefined;
-
-                  try {
-                    for (var _iterator = method.call(x)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                      var _item = _step.value;
-                      observer.next(_item);
-                      if (observer.closed) return;
-                    }
-                  } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion && _iterator.return != null) {
-                        _iterator.return();
-                      }
-                    } finally {
-                      if (_didIteratorError) {
-                        throw _iteratorError;
-                      }
-                    }
-                  }
-
-                  observer.complete();
-                });
-              });
-            }
-          }
-
-          if (Array.isArray(x)) {
             return new C(function (observer) {
               enqueue(function () {
                 if (observer.closed) return;
 
-                for (var i = 0; i < x.length; ++i) {
-                  observer.next(x[i]);
+                for (var _iterator = _createForOfIteratorHelperLoose(method.call(x)), _step; !(_step = _iterator()).done;) {
+                  var item = _step.value;
+                  observer.next(item);
                   if (observer.closed) return;
                 }
 
@@ -5674,23 +5675,15 @@ var Ad4mConnectDialog = (function () {
               });
             });
           }
-
-          throw new TypeError(x + ' is not observable');
         }
-      }, {
-        key: "of",
-        value: function of() {
-          for (var _len2 = arguments.length, items = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            items[_key2] = arguments[_key2];
-          }
 
-          var C = typeof this === 'function' ? this : Observable;
+        if (Array.isArray(x)) {
           return new C(function (observer) {
             enqueue(function () {
               if (observer.closed) return;
 
-              for (var i = 0; i < items.length; ++i) {
-                observer.next(items[i]);
+              for (var i = 0; i < x.length; ++i) {
+                observer.next(x[i]);
                 if (observer.closed) return;
               }
 
@@ -5698,7 +5691,31 @@ var Ad4mConnectDialog = (function () {
             });
           });
         }
-      }, {
+
+        throw new TypeError(x + ' is not observable');
+      };
+
+      Observable.of = function of() {
+        for (var _len2 = arguments.length, items = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          items[_key2] = arguments[_key2];
+        }
+
+        var C = typeof this === 'function' ? this : Observable;
+        return new C(function (observer) {
+          enqueue(function () {
+            if (observer.closed) return;
+
+            for (var i = 0; i < items.length; ++i) {
+              observer.next(items[i]);
+              if (observer.closed) return;
+            }
+
+            observer.complete();
+          });
+        });
+      };
+
+      _createClass(Observable, null, [{
         key: SymbolSpecies,
         get: function () {
           return this;
@@ -5708,10 +5725,8 @@ var Ad4mConnectDialog = (function () {
       return Observable;
     }();
 
-    Observable$2.Observable = Observable$1;
-
     if (hasSymbols()) {
-      Object.defineProperty(Observable$1, Symbol('extensions'), {
+      Object.defineProperty(Observable, Symbol('extensions'), {
         value: {
           symbol: SymbolObservable,
           hostReportError: hostReportError
@@ -5719,10 +5734,6 @@ var Ad4mConnectDialog = (function () {
         configurable: true
       });
     }
-
-    var zenObservable = Observable$2.Observable;
-
-    var Observable = zenObservable;
 
     var toString$1 = Object.prototype.toString;
     function cloneDeep(value) {
@@ -5757,41 +5768,33 @@ var Ad4mConnectDialog = (function () {
         }
     }
 
-    function getEnv() {
-        if (typeof process !== 'undefined' && process.env.NODE_ENV) {
-            return process.env.NODE_ENV;
-        }
-        return 'development';
-    }
-    function isEnv(env) {
-        return getEnv() === env;
-    }
-    function isDevelopment() {
-        return isEnv('development') === true;
-    }
-    function isTest() {
-        return isEnv('test') === true;
-    }
-
-    function isObject(value) {
-        return value !== null && typeof value === "object";
-    }
     function deepFreeze(value) {
         var workSet = new Set([value]);
         workSet.forEach(function (obj) {
-            if (isObject(obj)) {
-                if (!Object.isFrozen(obj))
-                    Object.freeze(obj);
+            if (isNonNullObject(obj) && shallowFreeze(obj) === obj) {
                 Object.getOwnPropertyNames(obj).forEach(function (name) {
-                    if (isObject(obj[name]))
+                    if (isNonNullObject(obj[name]))
                         workSet.add(obj[name]);
                 });
             }
         });
         return value;
     }
+    function shallowFreeze(obj) {
+        if (__DEV__ && !Object.isFrozen(obj)) {
+            try {
+                Object.freeze(obj);
+            }
+            catch (e) {
+                if (e instanceof TypeError)
+                    return null;
+                throw e;
+            }
+        }
+        return obj;
+    }
     function maybeDeepFreeze(obj) {
-        if (process.env.NODE_ENV !== "production" && (isDevelopment() || isTest())) {
+        if (__DEV__) {
             deepFreeze(obj);
         }
         return obj;
@@ -5851,11 +5854,19 @@ var Ad4mConnectDialog = (function () {
         });
     }
 
+    var canUseWeakMap = typeof WeakMap === 'function' &&
+        maybe$1(function () { return navigator.product; }) !== 'ReactNative';
+    var canUseWeakSet = typeof WeakSet === 'function';
+    var canUseSymbol = typeof Symbol === 'function' &&
+        typeof Symbol.for === 'function';
+    typeof maybe$1(function () { return window.document.createElement; }) === "function";
+    maybe$1(function () { return navigator.userAgent.indexOf("jsdom") >= 0; }) || false;
+
     function fixObservableSubclass(subclass) {
         function set(key) {
             Object.defineProperty(subclass, key, { value: Observable });
         }
-        if (typeof Symbol === "function" && Symbol.species) {
+        if (canUseSymbol && Symbol.species) {
             set(Symbol.species);
         }
         set("@@species");
@@ -5866,7 +5877,7 @@ var Ad4mConnectDialog = (function () {
         return value && typeof value.then === "function";
     }
     var Concast = (function (_super) {
-        __extends$1(Concast, _super);
+        __extends(Concast, _super);
         function Concast(sources) {
             var _this = _super.call(this, function (observer) {
                 _this.addObserver(observer);
@@ -5889,7 +5900,7 @@ var Ad4mConnectDialog = (function () {
                     var sub = _this.sub;
                     if (sub !== null) {
                         if (sub)
-                            Promise.resolve().then(function () { return sub.unsubscribe(); });
+                            setTimeout(function () { return sub.unsubscribe(); });
                         _this.sub = null;
                         _this.latest = ["error", error];
                         _this.reject(error);
@@ -5897,9 +5908,12 @@ var Ad4mConnectDialog = (function () {
                     }
                 },
                 complete: function () {
-                    if (_this.sub !== null) {
+                    var sub = _this.sub;
+                    if (sub !== null) {
                         var value = _this.sources.shift();
                         if (!value) {
+                            if (sub)
+                                setTimeout(function () { return sub.unsubscribe(); });
                             _this.sub = null;
                             if (_this.latest &&
                                 _this.latest[0] === "next") {
@@ -5967,7 +5981,7 @@ var Ad4mConnectDialog = (function () {
             if (this.observers.delete(observer) &&
                 --this.addCount < 1 &&
                 !quietly) {
-                this.handlers.error(new Error("Observable cancelled prematurely"));
+                this.handlers.complete();
             }
         };
         Concast.prototype.cleanup = function (callback) {
@@ -6001,9 +6015,6 @@ var Ad4mConnectDialog = (function () {
         return (result.errors && result.errors.length > 0) || false;
     }
 
-    var canUseWeakMap = typeof WeakMap === 'function' && !(typeof navigator === 'object' &&
-        navigator.product === 'ReactNative');
-
     function compact() {
         var objects = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -6023,6 +6034,26 @@ var Ad4mConnectDialog = (function () {
         return result;
     }
 
+    var prefixCounts = new Map();
+    function makeUniqueId(prefix) {
+        var count = prefixCounts.get(prefix) || 1;
+        prefixCounts.set(prefix, count + 1);
+        return "".concat(prefix, ":").concat(count, ":").concat(Math.random().toString(36).slice(2));
+    }
+
+    function stringifyForDisplay(value) {
+        var undefId = makeUniqueId("stringifyForDisplay");
+        return JSON.stringify(value, function (key, value) {
+            return value === void 0 ? undefId : value;
+        }).split(JSON.stringify(undefId)).join("<undefined>");
+    }
+
+    function mergeOptions(defaults, options) {
+        return compact(defaults, options, options.variables && {
+            variables: __assign$1(__assign$1({}, (defaults && defaults.variables)), options.variables),
+        });
+    }
+
     function fromError(errorValue) {
         return new Observable(function (observer) {
             observer.error(errorValue);
@@ -6035,7 +6066,7 @@ var Ad4mConnectDialog = (function () {
             observable.subscribe({
                 next: function (data) {
                     if (completed) {
-                        process.env.NODE_ENV === "production" || invariant$1.warn("Promise Wrapper does not support multiple results from Observable");
+                        __DEV__ && invariant$1.warn("Promise Wrapper does not support multiple results from Observable");
                     }
                     else {
                         completed = true;
@@ -6078,7 +6109,7 @@ var Ad4mConnectDialog = (function () {
         for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
             var key = _a[_i];
             if (OPERATION_FIELDS.indexOf(key) < 0) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(26) : new InvariantError("illegal argument: " + key);
+                throw __DEV__ ? new InvariantError("illegal argument: ".concat(key)) : new InvariantError(24);
             }
         }
         return operation;
@@ -6132,7 +6163,7 @@ var Ad4mConnectDialog = (function () {
         return link.request.length <= 1;
     }
     var LinkError = (function (_super) {
-        __extends$1(LinkError, _super);
+        __extends(LinkError, _super);
         function LinkError(message, link) {
             var _this = _super.call(this, message) || this;
             _this.link = link;
@@ -6177,7 +6208,7 @@ var Ad4mConnectDialog = (function () {
         ApolloLink.concat = function (first, second) {
             var firstLink = toLink(first);
             if (isTerminating(firstLink)) {
-                process.env.NODE_ENV === "production" || invariant$1.warn(new LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
+                __DEV__ && invariant$1.warn(new LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
                 return firstLink;
             }
             var nextLink = toLink(second);
@@ -6201,7 +6232,7 @@ var Ad4mConnectDialog = (function () {
             return ApolloLink.concat(this, next);
         };
         ApolloLink.prototype.request = function (operation, forward) {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(21) : new InvariantError('request is not implemented');
+            throw __DEV__ ? new InvariantError('request is not implemented') : new InvariantError(19);
         };
         ApolloLink.prototype.onError = function (error, observer) {
             if (observer && observer.error) {
@@ -6227,7 +6258,7 @@ var Ad4mConnectDialog = (function () {
 
     var execute = ApolloLink.execute;
 
-    var version = '3.3.20';
+    var version = '3.6.9';
 
     var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
     function parseAndCheckHttpResponse(operations) {
@@ -6248,14 +6279,14 @@ var Ad4mConnectDialog = (function () {
         })
             .then(function (result) {
             if (response.status >= 300) {
-                throwServerError(response, result, "Response not successful: Received status code " + response.status);
+                throwServerError(response, result, "Response not successful: Received status code ".concat(response.status));
             }
             if (!Array.isArray(result) &&
                 !hasOwnProperty$4.call(result, 'data') &&
                 !hasOwnProperty$4.call(result, 'errors')) {
-                throwServerError(response, result, "Server response was missing for query '" + (Array.isArray(operations)
+                throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations)
                     ? operations.map(function (op) { return op.operationName; })
-                    : operations.operationName) + "'.");
+                    : operations.operationName, "'."));
             }
             return result;
         }); };
@@ -6267,7 +6298,7 @@ var Ad4mConnectDialog = (function () {
             serialized = JSON.stringify(p);
         }
         catch (e) {
-            var parseError = process.env.NODE_ENV === "production" ? new InvariantError(23) : new InvariantError("Network request failed. " + label + " is not serializable: " + e.message);
+            var parseError = __DEV__ ? new InvariantError("Network request failed. ".concat(label, " is not serializable: ").concat(e.message)) : new InvariantError(21);
             parseError.parseError = e;
             throw parseError;
         }
@@ -6290,17 +6321,28 @@ var Ad4mConnectDialog = (function () {
         headers: defaultHeaders,
         options: defaultOptions,
     };
-    var selectHttpOptionsAndBody = function (operation, fallbackConfig) {
+    var defaultPrinter = function (ast, printer) { return printer(ast); };
+    function selectHttpOptionsAndBody(operation, fallbackConfig) {
         var configs = [];
         for (var _i = 2; _i < arguments.length; _i++) {
             configs[_i - 2] = arguments[_i];
         }
-        var options = __assign$1(__assign$1({}, fallbackConfig.options), { headers: fallbackConfig.headers, credentials: fallbackConfig.credentials });
-        var http = fallbackConfig.http || {};
+        configs.unshift(fallbackConfig);
+        return selectHttpOptionsAndBodyInternal.apply(void 0, __spreadArray([operation,
+            defaultPrinter], configs, false));
+    }
+    function selectHttpOptionsAndBodyInternal(operation, printer) {
+        var configs = [];
+        for (var _i = 2; _i < arguments.length; _i++) {
+            configs[_i - 2] = arguments[_i];
+        }
+        var options = {};
+        var http = {};
         configs.forEach(function (config) {
-            options = __assign$1(__assign$1(__assign$1({}, options), config.options), { headers: __assign$1(__assign$1({}, options.headers), config.headers) });
-            if (config.credentials)
+            options = __assign$1(__assign$1(__assign$1({}, options), config.options), { headers: __assign$1(__assign$1({}, options.headers), headersToLowerCase(config.headers)) });
+            if (config.credentials) {
                 options.credentials = config.credentials;
+            }
             http = __assign$1(__assign$1({}, http), config.http);
         });
         var operationName = operation.operationName, extensions = operation.extensions, variables = operation.variables, query = operation.query;
@@ -6308,16 +6350,26 @@ var Ad4mConnectDialog = (function () {
         if (http.includeExtensions)
             body.extensions = extensions;
         if (http.includeQuery)
-            body.query = print(query);
+            body.query = printer(query, print);
         return {
             options: options,
             body: body,
         };
-    };
+    }
+    function headersToLowerCase(headers) {
+        if (headers) {
+            var normalized_1 = Object.create(null);
+            Object.keys(Object(headers)).forEach(function (name) {
+                normalized_1[name.toLowerCase()] = headers[name];
+            });
+            return normalized_1;
+        }
+        return headers;
+    }
 
     var checkFetcher = function (fetcher) {
         if (!fetcher && typeof fetch === 'undefined') {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(22) : new InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ");
+            throw __DEV__ ? new InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ") : new InvariantError(20);
         }
     };
 
@@ -6346,7 +6398,7 @@ var Ad4mConnectDialog = (function () {
     function rewriteURIForGET(chosenURI, body) {
         var queryParams = [];
         var addQueryParam = function (key, value) {
-            queryParams.push(key + "=" + encodeURIComponent(value));
+            queryParams.push("".concat(key, "=").concat(encodeURIComponent(value)));
         };
         if ('query' in body) {
             addQueryParam('query', body.query);
@@ -6385,12 +6437,12 @@ var Ad4mConnectDialog = (function () {
         return { newURI: newURI };
     }
 
+    var backupFetch = maybe$1(function () { return fetch; });
     var createHttpLink = function (linkOptions) {
         if (linkOptions === void 0) { linkOptions = {}; }
-        var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, fetcher = linkOptions.fetch, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, _b = linkOptions.includeUnusedVariables, includeUnusedVariables = _b === void 0 ? false : _b, requestOptions = __rest(linkOptions, ["uri", "fetch", "includeExtensions", "useGETForQueries", "includeUnusedVariables"]);
-        checkFetcher(fetcher);
-        if (!fetcher) {
-            fetcher = fetch;
+        var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, preferredFetch = linkOptions.fetch, _b = linkOptions.print, print = _b === void 0 ? defaultPrinter : _b, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, _c = linkOptions.includeUnusedVariables, includeUnusedVariables = _c === void 0 ? false : _c, requestOptions = __rest(linkOptions, ["uri", "fetch", "print", "includeExtensions", "useGETForQueries", "includeUnusedVariables"]);
+        if (__DEV__) {
+            checkFetcher(preferredFetch || backupFetch);
         }
         var linkConfig = {
             http: { includeExtensions: includeExtensions },
@@ -6418,7 +6470,7 @@ var Ad4mConnectDialog = (function () {
                 credentials: context.credentials,
                 headers: contextHeaders,
             };
-            var _b = selectHttpOptionsAndBody(operation, fallbackHttpConfig, linkConfig, contextConfig), options = _b.options, body = _b.body;
+            var _b = selectHttpOptionsAndBodyInternal(operation, print, fallbackHttpConfig, linkConfig, contextConfig), options = _b.options, body = _b.body;
             if (body.variables && !includeUnusedVariables) {
                 var unusedNames_1 = new Set(Object.keys(body.variables));
                 visit(operation.query, {
@@ -6465,7 +6517,8 @@ var Ad4mConnectDialog = (function () {
                 }
             }
             return new Observable(function (observer) {
-                fetcher(chosenURI, options)
+                var currentFetch = preferredFetch || maybe$1(function () { return fetch; }) || backupFetch;
+                currentFetch(chosenURI, options)
                     .then(function (response) {
                     operation.setContext({ response: response });
                     return response;
@@ -6493,7 +6546,7 @@ var Ad4mConnectDialog = (function () {
     };
 
     var HttpLink = (function (_super) {
-        __extends$1(HttpLink, _super);
+        __extends(HttpLink, _super);
         function HttpLink(options) {
             if (options === void 0) { options = {}; }
             var _this = _super.call(this, createHttpLink(options).request) || this;
@@ -6696,474 +6749,6 @@ var Ad4mConnectDialog = (function () {
         }
         bSet.add(b);
         return false;
-    }
-
-    function isApolloError(err) {
-        return err.hasOwnProperty('graphQLErrors');
-    }
-    var generateErrorMessage = function (err) {
-        var message = '';
-        if (isNonEmptyArray(err.graphQLErrors)) {
-            err.graphQLErrors.forEach(function (graphQLError) {
-                var errorMessage = graphQLError
-                    ? graphQLError.message
-                    : 'Error message not found.';
-                message += errorMessage + "\n";
-            });
-        }
-        if (err.networkError) {
-            message += err.networkError.message + "\n";
-        }
-        message = message.replace(/\n$/, '');
-        return message;
-    };
-    var ApolloError = (function (_super) {
-        __extends$1(ApolloError, _super);
-        function ApolloError(_a) {
-            var graphQLErrors = _a.graphQLErrors, networkError = _a.networkError, errorMessage = _a.errorMessage, extraInfo = _a.extraInfo;
-            var _this = _super.call(this, errorMessage) || this;
-            _this.graphQLErrors = graphQLErrors || [];
-            _this.networkError = networkError || null;
-            _this.message = errorMessage || generateErrorMessage(_this);
-            _this.extraInfo = extraInfo;
-            _this.__proto__ = ApolloError.prototype;
-            return _this;
-        }
-        return ApolloError;
-    }(Error));
-
-    var NetworkStatus;
-    (function (NetworkStatus) {
-        NetworkStatus[NetworkStatus["loading"] = 1] = "loading";
-        NetworkStatus[NetworkStatus["setVariables"] = 2] = "setVariables";
-        NetworkStatus[NetworkStatus["fetchMore"] = 3] = "fetchMore";
-        NetworkStatus[NetworkStatus["refetch"] = 4] = "refetch";
-        NetworkStatus[NetworkStatus["poll"] = 6] = "poll";
-        NetworkStatus[NetworkStatus["ready"] = 7] = "ready";
-        NetworkStatus[NetworkStatus["error"] = 8] = "error";
-    })(NetworkStatus || (NetworkStatus = {}));
-    function isNetworkRequestInFlight(networkStatus) {
-        return networkStatus ? networkStatus < 7 : false;
-    }
-
-    var Reobserver = (function () {
-        function Reobserver(observer, options, fetch, shouldFetch) {
-            this.observer = observer;
-            this.options = options;
-            this.fetch = fetch;
-            this.shouldFetch = shouldFetch;
-        }
-        Reobserver.prototype.reobserve = function (newOptions, newNetworkStatus) {
-            if (newOptions) {
-                this.updateOptions(newOptions);
-            }
-            else {
-                this.updatePolling();
-            }
-            var concast = this.fetch(this.options, newNetworkStatus);
-            if (this.concast) {
-                this.concast.removeObserver(this.observer, true);
-            }
-            concast.addObserver(this.observer);
-            return (this.concast = concast).promise;
-        };
-        Reobserver.prototype.updateOptions = function (newOptions) {
-            Object.assign(this.options, compact(newOptions));
-            this.updatePolling();
-            return this;
-        };
-        Reobserver.prototype.stop = function () {
-            if (this.concast) {
-                this.concast.removeObserver(this.observer);
-                delete this.concast;
-            }
-            if (this.pollingInfo) {
-                clearTimeout(this.pollingInfo.timeout);
-                this.options.pollInterval = 0;
-                this.updatePolling();
-            }
-        };
-        Reobserver.prototype.updatePolling = function () {
-            var _this = this;
-            var _a = this, pollingInfo = _a.pollingInfo, pollInterval = _a.options.pollInterval;
-            if (!pollInterval) {
-                if (pollingInfo) {
-                    clearTimeout(pollingInfo.timeout);
-                    delete this.pollingInfo;
-                }
-                return;
-            }
-            if (pollingInfo &&
-                pollingInfo.interval === pollInterval) {
-                return;
-            }
-            process.env.NODE_ENV === "production" ? invariant$1(pollInterval, 20) : invariant$1(pollInterval, 'Attempted to start a polling query without a polling interval.');
-            if (this.shouldFetch === false) {
-                return;
-            }
-            var info = pollingInfo || (this.pollingInfo = {});
-            info.interval = pollInterval;
-            var maybeFetch = function () {
-                if (_this.pollingInfo) {
-                    if (_this.shouldFetch && _this.shouldFetch()) {
-                        _this.reobserve({
-                            fetchPolicy: "network-only",
-                            nextFetchPolicy: _this.options.fetchPolicy || "cache-first",
-                        }, NetworkStatus.poll).then(poll, poll);
-                    }
-                    else {
-                        poll();
-                    }
-                }
-            };
-            var poll = function () {
-                var info = _this.pollingInfo;
-                if (info) {
-                    clearTimeout(info.timeout);
-                    info.timeout = setTimeout(maybeFetch, info.interval);
-                }
-            };
-            poll();
-        };
-        return Reobserver;
-    }());
-
-    var warnedAboutUpdateQuery = false;
-    var ObservableQuery = (function (_super) {
-        __extends$1(ObservableQuery, _super);
-        function ObservableQuery(_a) {
-            var queryManager = _a.queryManager, queryInfo = _a.queryInfo, options = _a.options;
-            var _this = _super.call(this, function (observer) {
-                return _this.onSubscribe(observer);
-            }) || this;
-            _this.observers = new Set();
-            _this.subscriptions = new Set();
-            _this.observer = {
-                next: function (result) {
-                    if (_this.lastError || _this.isDifferentFromLastResult(result)) {
-                        _this.updateLastResult(result);
-                        iterateObserversSafely(_this.observers, 'next', result);
-                    }
-                },
-                error: function (error) {
-                    _this.updateLastResult(__assign$1(__assign$1({}, _this.lastResult), { error: error, errors: error.graphQLErrors, networkStatus: NetworkStatus.error, loading: false }));
-                    iterateObserversSafely(_this.observers, 'error', _this.lastError = error);
-                },
-            };
-            _this.isTornDown = false;
-            _this.options = options;
-            _this.queryId = queryManager.generateQueryId();
-            var opDef = getOperationDefinition(options.query);
-            _this.queryName = opDef && opDef.name && opDef.name.value;
-            _this.queryManager = queryManager;
-            _this.queryInfo = queryInfo;
-            return _this;
-        }
-        Object.defineProperty(ObservableQuery.prototype, "variables", {
-            get: function () {
-                return this.options.variables;
-            },
-            enumerable: false,
-            configurable: true
-        });
-        ObservableQuery.prototype.result = function () {
-            var _this = this;
-            return new Promise(function (resolve, reject) {
-                var observer = {
-                    next: function (result) {
-                        resolve(result);
-                        _this.observers.delete(observer);
-                        if (!_this.observers.size) {
-                            _this.queryManager.removeQuery(_this.queryId);
-                        }
-                        setTimeout(function () {
-                            subscription.unsubscribe();
-                        }, 0);
-                    },
-                    error: reject,
-                };
-                var subscription = _this.subscribe(observer);
-            });
-        };
-        ObservableQuery.prototype.getCurrentResult = function (saveAsLastResult) {
-            if (saveAsLastResult === void 0) { saveAsLastResult = true; }
-            var lastResult = this.lastResult;
-            var networkStatus = this.queryInfo.networkStatus ||
-                (lastResult && lastResult.networkStatus) ||
-                NetworkStatus.ready;
-            var result = __assign$1(__assign$1({}, lastResult), { loading: isNetworkRequestInFlight(networkStatus), networkStatus: networkStatus });
-            if (this.isTornDown) {
-                return result;
-            }
-            var _a = this.options.fetchPolicy, fetchPolicy = _a === void 0 ? 'cache-first' : _a;
-            if (fetchPolicy === 'no-cache' ||
-                fetchPolicy === 'network-only') {
-                delete result.partial;
-            }
-            else if (!result.data ||
-                !this.queryManager.transform(this.options.query).hasForcedResolvers) {
-                var diff = this.queryInfo.getDiff();
-                result.data = (diff.complete ||
-                    this.options.returnPartialData) ? diff.result : void 0;
-                if (diff.complete) {
-                    if (result.networkStatus === NetworkStatus.loading &&
-                        (fetchPolicy === 'cache-first' ||
-                            fetchPolicy === 'cache-only')) {
-                        result.networkStatus = NetworkStatus.ready;
-                        result.loading = false;
-                    }
-                    delete result.partial;
-                }
-                else {
-                    result.partial = true;
-                }
-            }
-            if (saveAsLastResult) {
-                this.updateLastResult(result);
-            }
-            return result;
-        };
-        ObservableQuery.prototype.isDifferentFromLastResult = function (newResult) {
-            return !equal(this.lastResultSnapshot, newResult);
-        };
-        ObservableQuery.prototype.getLastResult = function () {
-            return this.lastResult;
-        };
-        ObservableQuery.prototype.getLastError = function () {
-            return this.lastError;
-        };
-        ObservableQuery.prototype.resetLastResults = function () {
-            delete this.lastResult;
-            delete this.lastResultSnapshot;
-            delete this.lastError;
-            this.isTornDown = false;
-        };
-        ObservableQuery.prototype.resetQueryStoreErrors = function () {
-            this.queryManager.resetErrors(this.queryId);
-        };
-        ObservableQuery.prototype.refetch = function (variables) {
-            var reobserveOptions = {
-                pollInterval: 0,
-            };
-            var fetchPolicy = this.options.fetchPolicy;
-            if (fetchPolicy !== 'no-cache' &&
-                fetchPolicy !== 'cache-and-network') {
-                reobserveOptions.fetchPolicy = 'network-only';
-                reobserveOptions.nextFetchPolicy = fetchPolicy || "cache-first";
-            }
-            if (variables && !equal(this.options.variables, variables)) {
-                reobserveOptions.variables = this.options.variables = __assign$1(__assign$1({}, this.options.variables), variables);
-            }
-            return this.newReobserver(false).reobserve(reobserveOptions, NetworkStatus.refetch);
-        };
-        ObservableQuery.prototype.fetchMore = function (fetchMoreOptions) {
-            var _this = this;
-            var combinedOptions = __assign$1(__assign$1({}, (fetchMoreOptions.query ? fetchMoreOptions : __assign$1(__assign$1(__assign$1({}, this.options), fetchMoreOptions), { variables: __assign$1(__assign$1({}, this.options.variables), fetchMoreOptions.variables) }))), { fetchPolicy: "no-cache" });
-            var qid = this.queryManager.generateQueryId();
-            if (combinedOptions.notifyOnNetworkStatusChange) {
-                this.queryInfo.networkStatus = NetworkStatus.fetchMore;
-                this.observe();
-            }
-            return this.queryManager.fetchQuery(qid, combinedOptions, NetworkStatus.fetchMore).then(function (fetchMoreResult) {
-                var data = fetchMoreResult.data;
-                var updateQuery = fetchMoreOptions.updateQuery;
-                if (updateQuery) {
-                    if (process.env.NODE_ENV !== "production" &&
-                        !warnedAboutUpdateQuery) {
-                        process.env.NODE_ENV === "production" || invariant$1.warn("The updateQuery callback for fetchMore is deprecated, and will be removed\nin the next major version of Apollo Client.\n\nPlease convert updateQuery functions to field policies with appropriate\nread and merge functions, or use/adapt a helper function (such as\nconcatPagination, offsetLimitPagination, or relayStylePagination) from\n@apollo/client/utilities.\n\nThe field policy system handles pagination more effectively than a\nhand-written updateQuery function, and you only need to define the policy\nonce, rather than every time you call fetchMore.");
-                        warnedAboutUpdateQuery = true;
-                    }
-                    _this.updateQuery(function (previous) { return updateQuery(previous, {
-                        fetchMoreResult: data,
-                        variables: combinedOptions.variables,
-                    }); });
-                }
-                else {
-                    _this.queryManager.cache.writeQuery({
-                        query: combinedOptions.query,
-                        variables: combinedOptions.variables,
-                        data: data,
-                    });
-                }
-                return fetchMoreResult;
-            }).finally(function () {
-                _this.queryManager.stopQuery(qid);
-                _this.reobserve();
-            });
-        };
-        ObservableQuery.prototype.subscribeToMore = function (options) {
-            var _this = this;
-            var subscription = this.queryManager
-                .startGraphQLSubscription({
-                query: options.document,
-                variables: options.variables,
-                context: options.context,
-            })
-                .subscribe({
-                next: function (subscriptionData) {
-                    var updateQuery = options.updateQuery;
-                    if (updateQuery) {
-                        _this.updateQuery(function (previous, _a) {
-                            var variables = _a.variables;
-                            return updateQuery(previous, {
-                                subscriptionData: subscriptionData,
-                                variables: variables,
-                            });
-                        });
-                    }
-                },
-                error: function (err) {
-                    if (options.onError) {
-                        options.onError(err);
-                        return;
-                    }
-                    process.env.NODE_ENV === "production" || invariant$1.error('Unhandled GraphQL subscription error', err);
-                },
-            });
-            this.subscriptions.add(subscription);
-            return function () {
-                if (_this.subscriptions.delete(subscription)) {
-                    subscription.unsubscribe();
-                }
-            };
-        };
-        ObservableQuery.prototype.setOptions = function (newOptions) {
-            return this.reobserve(newOptions);
-        };
-        ObservableQuery.prototype.setVariables = function (variables) {
-            if (equal(this.variables, variables)) {
-                return this.observers.size
-                    ? this.result()
-                    : Promise.resolve();
-            }
-            this.options.variables = variables;
-            if (!this.observers.size) {
-                return Promise.resolve();
-            }
-            var _a = this.options.fetchPolicy, fetchPolicy = _a === void 0 ? 'cache-first' : _a;
-            var reobserveOptions = {
-                fetchPolicy: fetchPolicy,
-                variables: variables,
-            };
-            if (fetchPolicy !== 'cache-first' &&
-                fetchPolicy !== 'no-cache' &&
-                fetchPolicy !== 'network-only') {
-                reobserveOptions.fetchPolicy = 'cache-and-network';
-                reobserveOptions.nextFetchPolicy = fetchPolicy;
-            }
-            return this.reobserve(reobserveOptions, NetworkStatus.setVariables);
-        };
-        ObservableQuery.prototype.updateQuery = function (mapFn) {
-            var _a;
-            var queryManager = this.queryManager;
-            var result = queryManager.cache.diff({
-                query: this.options.query,
-                variables: this.variables,
-                previousResult: (_a = this.lastResult) === null || _a === void 0 ? void 0 : _a.data,
-                returnPartialData: true,
-                optimistic: false,
-            }).result;
-            var newResult = mapFn(result, {
-                variables: this.variables,
-            });
-            if (newResult) {
-                queryManager.cache.writeQuery({
-                    query: this.options.query,
-                    data: newResult,
-                    variables: this.variables,
-                });
-                queryManager.broadcastQueries();
-            }
-        };
-        ObservableQuery.prototype.startPolling = function (pollInterval) {
-            this.getReobserver().updateOptions({ pollInterval: pollInterval });
-        };
-        ObservableQuery.prototype.stopPolling = function () {
-            if (this.reobserver) {
-                this.reobserver.updateOptions({ pollInterval: 0 });
-            }
-        };
-        ObservableQuery.prototype.updateLastResult = function (newResult) {
-            var previousResult = this.lastResult;
-            this.lastResult = newResult;
-            this.lastResultSnapshot = this.queryManager.assumeImmutableResults
-                ? newResult
-                : cloneDeep(newResult);
-            if (!isNonEmptyArray(newResult.errors)) {
-                delete this.lastError;
-            }
-            return previousResult;
-        };
-        ObservableQuery.prototype.onSubscribe = function (observer) {
-            var _this = this;
-            if (observer === this.observer) {
-                return function () { };
-            }
-            try {
-                var subObserver = observer._subscription._observer;
-                if (subObserver && !subObserver.error) {
-                    subObserver.error = defaultSubscriptionObserverErrorCallback;
-                }
-            }
-            catch (_a) { }
-            var first = !this.observers.size;
-            this.observers.add(observer);
-            if (this.lastError) {
-                observer.error && observer.error(this.lastError);
-            }
-            else if (this.lastResult) {
-                observer.next && observer.next(this.lastResult);
-            }
-            if (first) {
-                this.reobserve().catch(function (_) {
-                });
-            }
-            return function () {
-                if (_this.observers.delete(observer) && !_this.observers.size) {
-                    _this.tearDownQuery();
-                }
-            };
-        };
-        ObservableQuery.prototype.getReobserver = function () {
-            return this.reobserver || (this.reobserver = this.newReobserver(true));
-        };
-        ObservableQuery.prototype.newReobserver = function (shareOptions) {
-            var _this = this;
-            var _a = this, queryManager = _a.queryManager, queryId = _a.queryId;
-            queryManager.setObservableQuery(this);
-            return new Reobserver(this.observer, shareOptions ? this.options : __assign$1({}, this.options), function (currentOptions, newNetworkStatus) {
-                queryManager.setObservableQuery(_this);
-                return queryManager.fetchQueryObservable(queryId, currentOptions, newNetworkStatus);
-            }, !queryManager.ssrMode && (function () { return !isNetworkRequestInFlight(_this.queryInfo.networkStatus); }));
-        };
-        ObservableQuery.prototype.reobserve = function (newOptions, newNetworkStatus) {
-            this.isTornDown = false;
-            return this.getReobserver().reobserve(newOptions, newNetworkStatus);
-        };
-        ObservableQuery.prototype.observe = function () {
-            this.observer.next(this.getCurrentResult(false));
-        };
-        ObservableQuery.prototype.hasObservers = function () {
-            return this.observers.size > 0;
-        };
-        ObservableQuery.prototype.tearDownQuery = function () {
-            if (this.isTornDown)
-                return;
-            if (this.reobserver) {
-                this.reobserver.stop();
-                delete this.reobserver;
-            }
-            this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
-            this.subscriptions.clear();
-            this.queryManager.stopQuery(this.queryId);
-            this.observers.clear();
-            this.isTornDown = true;
-        };
-        return ObservableQuery;
-    }(Observable));
-    fixObservableSubclass(ObservableQuery);
-    function defaultSubscriptionObserverErrorCallback(error) {
-        process.env.NODE_ENV === "production" || invariant$1.error('Unhandled error', error.message, error.stack);
     }
 
     // A [trie](https://en.wikipedia.org/wiki/Trie) data structure that holds
@@ -7880,6 +7465,14 @@ var Ad4mConnectDialog = (function () {
         function ApolloCache() {
             this.getFragmentDoc = wrap(getFragmentQueryDocument);
         }
+        ApolloCache.prototype.batch = function (options) {
+            var _this = this;
+            var optimisticId = typeof options.optimistic === "string" ? options.optimistic :
+                options.optimistic === false ? null : void 0;
+            var updateResult;
+            this.performTransaction(function () { return updateResult = options.update(_this); }, optimisticId);
+            return updateResult;
+        };
         ApolloCache.prototype.recordOptimisticTransaction = function (transaction, optimisticId) {
             this.performTransaction(transaction, optimisticId);
         };
@@ -7900,40 +7493,49 @@ var Ad4mConnectDialog = (function () {
         };
         ApolloCache.prototype.readQuery = function (options, optimistic) {
             if (optimistic === void 0) { optimistic = !!options.optimistic; }
-            return this.read({
-                rootId: options.id || 'ROOT_QUERY',
-                query: options.query,
-                variables: options.variables,
-                returnPartialData: options.returnPartialData,
-                optimistic: optimistic,
-            });
+            return this.read(__assign$1(__assign$1({}, options), { rootId: options.id || 'ROOT_QUERY', optimistic: optimistic }));
         };
         ApolloCache.prototype.readFragment = function (options, optimistic) {
             if (optimistic === void 0) { optimistic = !!options.optimistic; }
-            return this.read({
-                query: this.getFragmentDoc(options.fragment, options.fragmentName),
-                variables: options.variables,
-                rootId: options.id,
-                returnPartialData: options.returnPartialData,
-                optimistic: optimistic,
+            return this.read(__assign$1(__assign$1({}, options), { query: this.getFragmentDoc(options.fragment, options.fragmentName), rootId: options.id, optimistic: optimistic }));
+        };
+        ApolloCache.prototype.writeQuery = function (_a) {
+            var id = _a.id, data = _a.data, options = __rest(_a, ["id", "data"]);
+            return this.write(Object.assign(options, {
+                dataId: id || 'ROOT_QUERY',
+                result: data,
+            }));
+        };
+        ApolloCache.prototype.writeFragment = function (_a) {
+            var id = _a.id, data = _a.data, fragment = _a.fragment, fragmentName = _a.fragmentName, options = __rest(_a, ["id", "data", "fragment", "fragmentName"]);
+            return this.write(Object.assign(options, {
+                query: this.getFragmentDoc(fragment, fragmentName),
+                dataId: id,
+                result: data,
+            }));
+        };
+        ApolloCache.prototype.updateQuery = function (options, update) {
+            return this.batch({
+                update: function (cache) {
+                    var value = cache.readQuery(options);
+                    var data = update(value);
+                    if (data === void 0 || data === null)
+                        return value;
+                    cache.writeQuery(__assign$1(__assign$1({}, options), { data: data }));
+                    return data;
+                },
             });
         };
-        ApolloCache.prototype.writeQuery = function (options) {
-            return this.write({
-                dataId: options.id || 'ROOT_QUERY',
-                result: options.data,
-                query: options.query,
-                variables: options.variables,
-                broadcast: options.broadcast,
-            });
-        };
-        ApolloCache.prototype.writeFragment = function (options) {
-            return this.write({
-                dataId: options.id,
-                result: options.data,
-                variables: options.variables,
-                query: this.getFragmentDoc(options.fragment, options.fragmentName),
-                broadcast: options.broadcast,
+        ApolloCache.prototype.updateFragment = function (options, update) {
+            return this.batch({
+                update: function (cache) {
+                    var value = cache.readFragment(options);
+                    var data = update(value);
+                    if (data === void 0 || data === null)
+                        return value;
+                    cache.writeFragment(__assign$1(__assign$1({}, options), { data: data }));
+                    return data;
+                },
             });
         };
         return ApolloCache;
@@ -7944,17 +7546,46 @@ var Ad4mConnectDialog = (function () {
     })(Cache || (Cache = {}));
 
     var MissingFieldError = (function () {
-        function MissingFieldError(message, path, query, clientOnly, variables) {
+        function MissingFieldError(message, path, query, variables) {
             this.message = message;
             this.path = path;
             this.query = query;
-            this.clientOnly = clientOnly;
             this.variables = variables;
         }
         return MissingFieldError;
     }());
 
     var hasOwn = Object.prototype.hasOwnProperty;
+    function defaultDataIdFromObject(_a, context) {
+        var __typename = _a.__typename, id = _a.id, _id = _a._id;
+        if (typeof __typename === "string") {
+            if (context) {
+                context.keyObject =
+                    id !== void 0 ? { id: id } :
+                        _id !== void 0 ? { _id: _id } :
+                            void 0;
+            }
+            if (id === void 0)
+                id = _id;
+            if (id !== void 0) {
+                return "".concat(__typename, ":").concat((typeof id === "number" ||
+                    typeof id === "string") ? id : JSON.stringify(id));
+            }
+        }
+    }
+    var defaultConfig = {
+        dataIdFromObject: defaultDataIdFromObject,
+        addTypename: true,
+        resultCaching: true,
+        canonizeResults: false,
+    };
+    function normalizeConfig(config) {
+        return compact(defaultConfig, config);
+    }
+    function shouldCanonizeResults(config) {
+        var value = config.canonizeResults;
+        return value === void 0 ? defaultConfig.canonizeResults : value;
+    }
     function getTypenameFromStoreObject(store, objectOrReference) {
         return isReference(objectOrReference)
             ? store.get(objectOrReference.__ref, "__typename")
@@ -7966,8 +7597,8 @@ var Ad4mConnectDialog = (function () {
         return match ? match[0] : storeFieldName;
     }
     function selectionSetMatchesResult(selectionSet, result, variables) {
-        if (result && typeof result === "object") {
-            return Array.isArray(result)
+        if (isNonNullObject(result)) {
+            return isArray(result)
                 ? result.every(function (item) { return selectionSetMatchesResult(selectionSet, item, variables); })
                 : selectionSet.selections.every(function (field) {
                     if (isField(field) && shouldInclude(field, variables)) {
@@ -7982,14 +7613,14 @@ var Ad4mConnectDialog = (function () {
         return false;
     }
     function storeValueIsStoreObject(value) {
-        return value !== null &&
-            typeof value === "object" &&
+        return isNonNullObject(value) &&
             !isReference(value) &&
-            !Array.isArray(value);
+            !isArray(value);
     }
     function makeProcessedFieldsMerger() {
         return new DeepMerger;
     }
+    var isArray = function (a) { return Array.isArray(a); };
 
     var DELETE = Object.create(null);
     var delModifier = function () { return DELETE; };
@@ -8062,9 +7693,22 @@ var Ad4mConnectDialog = (function () {
                 return Object.create(null);
             }
         };
-        EntityStore.prototype.merge = function (dataId, incoming) {
+        EntityStore.prototype.merge = function (older, newer) {
             var _this = this;
-            var existing = this.lookup(dataId);
+            var dataId;
+            if (isReference(older))
+                older = older.__ref;
+            if (isReference(newer))
+                newer = newer.__ref;
+            var existing = typeof older === "string"
+                ? this.lookup(dataId = older)
+                : older;
+            var incoming = typeof newer === "string"
+                ? this.lookup(dataId = newer)
+                : newer;
+            if (!incoming)
+                return;
+            __DEV__ ? invariant$1(typeof dataId === "string", "store.merge expects a string ID") : invariant$1(typeof dataId === "string", 1);
             var merged = new DeepMerger(storeObjectReconciler).merge(existing, incoming);
             this.data[dataId] = merged;
             if (merged !== existing) {
@@ -8086,6 +7730,11 @@ var Ad4mConnectDialog = (function () {
                             }
                         }
                     });
+                    if (fieldsToDirty_1.__typename &&
+                        !(existing && existing.__typename) &&
+                        this.policies.rootTypenamesById[dataId] === merged.__typename) {
+                        delete fieldsToDirty_1.__typename;
+                    }
                     Object.keys(fieldsToDirty_1).forEach(function (fieldName) { return _this.group.dirty(dataId, fieldName); });
                 }
             }
@@ -8118,8 +7767,7 @@ var Ad4mConnectDialog = (function () {
                         : fields[storeFieldName] || fields[fieldName];
                     if (modify) {
                         var newValue = modify === delModifier ? DELETE :
-                            modify(maybeDeepFreeze(fieldValue), __assign$1(__assign$1({}, sharedDetails_1), { fieldName: fieldName,
-                                storeFieldName: storeFieldName, storage: _this.getStorage(dataId, storeFieldName) }));
+                            modify(maybeDeepFreeze(fieldValue), __assign$1(__assign$1({}, sharedDetails_1), { fieldName: fieldName, storeFieldName: storeFieldName, storage: _this.getStorage(dataId, storeFieldName) }));
                         if (newValue === INVALIDATE) {
                             _this.group.dirty(dataId, storeFieldName);
                         }
@@ -8167,14 +7815,14 @@ var Ad4mConnectDialog = (function () {
             }
             return false;
         };
-        EntityStore.prototype.evict = function (options) {
+        EntityStore.prototype.evict = function (options, limit) {
             var evicted = false;
             if (options.id) {
                 if (hasOwn.call(this.data, options.id)) {
                     evicted = this.delete(options.id, options.fieldName, options.args);
                 }
-                if (this instanceof Layer) {
-                    evicted = this.parent.evict(options) || evicted;
+                if (this instanceof Layer && this !== limit) {
+                    evicted = this.parent.evict(options, limit) || evicted;
                 }
                 if (options.fieldName || evicted) {
                     this.group.dirty(options.id, options.fieldName || "__exists");
@@ -8261,37 +7909,43 @@ var Ad4mConnectDialog = (function () {
         EntityStore.prototype.findChildRefIds = function (dataId) {
             if (!hasOwn.call(this.refs, dataId)) {
                 var found_1 = this.refs[dataId] = Object.create(null);
-                var workSet_1 = new Set([this.data[dataId]]);
-                var canTraverse_1 = function (obj) { return obj !== null && typeof obj === 'object'; };
+                var root = this.data[dataId];
+                if (!root)
+                    return found_1;
+                var workSet_1 = new Set([root]);
                 workSet_1.forEach(function (obj) {
                     if (isReference(obj)) {
                         found_1[obj.__ref] = true;
                     }
-                    else if (canTraverse_1(obj)) {
-                        Object.values(obj)
-                            .filter(canTraverse_1)
-                            .forEach(workSet_1.add, workSet_1);
+                    if (isNonNullObject(obj)) {
+                        Object.keys(obj).forEach(function (key) {
+                            var child = obj[key];
+                            if (isNonNullObject(child)) {
+                                workSet_1.add(child);
+                            }
+                        });
                     }
                 });
             }
             return this.refs[dataId];
         };
         EntityStore.prototype.makeCacheKey = function () {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-            }
-            return this.group.keyMaker.lookupArray(args);
+            return this.group.keyMaker.lookupArray(arguments);
         };
         return EntityStore;
     }());
     var CacheGroup = (function () {
-        function CacheGroup(caching) {
+        function CacheGroup(caching, parent) {
+            if (parent === void 0) { parent = null; }
             this.caching = caching;
+            this.parent = parent;
             this.d = null;
-            this.keyMaker = new Trie(canUseWeakMap);
-            this.d = caching ? dep() : null;
+            this.resetCaching();
         }
+        CacheGroup.prototype.resetCaching = function () {
+            this.d = this.caching ? dep() : null;
+            this.keyMaker = new Trie(canUseWeakMap);
+        };
         CacheGroup.prototype.depend = function (dataId, storeFieldName) {
             if (this.d) {
                 this.d(makeDepKey(dataId, storeFieldName));
@@ -8299,11 +7953,14 @@ var Ad4mConnectDialog = (function () {
                 if (fieldName !== storeFieldName) {
                     this.d(makeDepKey(dataId, fieldName));
                 }
+                if (this.parent) {
+                    this.parent.depend(dataId, storeFieldName);
+                }
             }
         };
         CacheGroup.prototype.dirty = function (dataId, storeFieldName) {
             if (this.d) {
-                this.d.dirty(makeDepKey(dataId, storeFieldName));
+                this.d.dirty(makeDepKey(dataId, storeFieldName), storeFieldName === "__exists" ? "forget" : "setDirty");
             }
         };
         return CacheGroup;
@@ -8311,20 +7968,25 @@ var Ad4mConnectDialog = (function () {
     function makeDepKey(dataId, storeFieldName) {
         return storeFieldName + '#' + dataId;
     }
+    function maybeDependOnExistenceOfEntity(store, entityId) {
+        if (supportsResultCaching(store)) {
+            store.group.depend(entityId, "__exists");
+        }
+    }
     (function (EntityStore) {
         var Root = (function (_super) {
-            __extends$1(Root, _super);
+            __extends(Root, _super);
             function Root(_a) {
                 var policies = _a.policies, _b = _a.resultCaching, resultCaching = _b === void 0 ? true : _b, seed = _a.seed;
                 var _this = _super.call(this, policies, new CacheGroup(resultCaching)) || this;
+                _this.stump = new Stump(_this);
                 _this.storageTrie = new Trie(canUseWeakMap);
-                _this.sharedLayerGroup = new CacheGroup(resultCaching);
                 if (seed)
                     _this.replace(seed);
                 return _this;
             }
             Root.prototype.addLayer = function (layerId, replay) {
-                return new Layer(layerId, this, replay, this.sharedLayerGroup);
+                return this.stump.addLayer(layerId, replay);
             };
             Root.prototype.removeLayer = function () {
                 return this;
@@ -8337,7 +7999,7 @@ var Ad4mConnectDialog = (function () {
         EntityStore.Root = Root;
     })(EntityStore || (EntityStore = {}));
     var Layer = (function (_super) {
-        __extends$1(Layer, _super);
+        __extends(Layer, _super);
         function Layer(id, parent, replay, group) {
             var _this = _super.call(this, parent.policies, group) || this;
             _this.id = id;
@@ -8356,8 +8018,23 @@ var Ad4mConnectDialog = (function () {
             if (layerId === this.id) {
                 if (this.group.caching) {
                     Object.keys(this.data).forEach(function (dataId) {
-                        if (_this.data[dataId] !== parent.lookup(dataId)) {
+                        var ownStoreObject = _this.data[dataId];
+                        var parentStoreObject = parent["lookup"](dataId);
+                        if (!parentStoreObject) {
                             _this.delete(dataId);
+                        }
+                        else if (!ownStoreObject) {
+                            _this.group.dirty(dataId, "__exists");
+                            Object.keys(parentStoreObject).forEach(function (storeFieldName) {
+                                _this.group.dirty(dataId, storeFieldName);
+                            });
+                        }
+                        else if (ownStoreObject !== parentStoreObject) {
+                            Object.keys(ownStoreObject).forEach(function (storeFieldName) {
+                                if (!equal(ownStoreObject[storeFieldName], parentStoreObject[storeFieldName])) {
+                                    _this.group.dirty(dataId, storeFieldName);
+                                }
+                            });
                         }
                     });
                 }
@@ -8382,6 +8059,19 @@ var Ad4mConnectDialog = (function () {
         };
         return Layer;
     }(EntityStore));
+    var Stump = (function (_super) {
+        __extends(Stump, _super);
+        function Stump(root) {
+            return _super.call(this, "EntityStore.Stump", root, function () { }, new CacheGroup(root.group.caching, root.group)) || this;
+        }
+        Stump.prototype.removeLayer = function () {
+            return this;
+        };
+        Stump.prototype.merge = function () {
+            return this.parent.merge.apply(this.parent, arguments);
+        };
+        return Stump;
+    }(Layer));
     function storeObjectReconciler(existingObject, incomingObject, property) {
         var existingValue = existingObject[property];
         var incomingValue = incomingObject[property];
@@ -8391,31 +8081,165 @@ var Ad4mConnectDialog = (function () {
         return !!(store instanceof EntityStore && store.group.caching);
     }
 
-    function missingFromInvariant(err, context) {
-        return new MissingFieldError(err.message, context.path.slice(), context.query, context.clientOnly, context.variables);
+    function shallowCopy(value) {
+        if (isNonNullObject(value)) {
+            return isArray(value)
+                ? value.slice(0)
+                : __assign$1({ __proto__: Object.getPrototypeOf(value) }, value);
+        }
+        return value;
+    }
+    var ObjectCanon = (function () {
+        function ObjectCanon() {
+            this.known = new (canUseWeakSet ? WeakSet : Set)();
+            this.pool = new Trie(canUseWeakMap);
+            this.passes = new WeakMap();
+            this.keysByJSON = new Map();
+            this.empty = this.admit({});
+        }
+        ObjectCanon.prototype.isKnown = function (value) {
+            return isNonNullObject(value) && this.known.has(value);
+        };
+        ObjectCanon.prototype.pass = function (value) {
+            if (isNonNullObject(value)) {
+                var copy = shallowCopy(value);
+                this.passes.set(copy, value);
+                return copy;
+            }
+            return value;
+        };
+        ObjectCanon.prototype.admit = function (value) {
+            var _this = this;
+            if (isNonNullObject(value)) {
+                var original = this.passes.get(value);
+                if (original)
+                    return original;
+                var proto = Object.getPrototypeOf(value);
+                switch (proto) {
+                    case Array.prototype: {
+                        if (this.known.has(value))
+                            return value;
+                        var array = value.map(this.admit, this);
+                        var node = this.pool.lookupArray(array);
+                        if (!node.array) {
+                            this.known.add(node.array = array);
+                            if (__DEV__) {
+                                Object.freeze(array);
+                            }
+                        }
+                        return node.array;
+                    }
+                    case null:
+                    case Object.prototype: {
+                        if (this.known.has(value))
+                            return value;
+                        var proto_1 = Object.getPrototypeOf(value);
+                        var array_1 = [proto_1];
+                        var keys = this.sortedKeys(value);
+                        array_1.push(keys.json);
+                        var firstValueIndex_1 = array_1.length;
+                        keys.sorted.forEach(function (key) {
+                            array_1.push(_this.admit(value[key]));
+                        });
+                        var node = this.pool.lookupArray(array_1);
+                        if (!node.object) {
+                            var obj_1 = node.object = Object.create(proto_1);
+                            this.known.add(obj_1);
+                            keys.sorted.forEach(function (key, i) {
+                                obj_1[key] = array_1[firstValueIndex_1 + i];
+                            });
+                            if (__DEV__) {
+                                Object.freeze(obj_1);
+                            }
+                        }
+                        return node.object;
+                    }
+                }
+            }
+            return value;
+        };
+        ObjectCanon.prototype.sortedKeys = function (obj) {
+            var keys = Object.keys(obj);
+            var node = this.pool.lookupArray(keys);
+            if (!node.keys) {
+                keys.sort();
+                var json = JSON.stringify(keys);
+                if (!(node.keys = this.keysByJSON.get(json))) {
+                    this.keysByJSON.set(json, node.keys = { sorted: keys, json: json });
+                }
+            }
+            return node.keys;
+        };
+        return ObjectCanon;
+    }());
+    var canonicalStringify = Object.assign(function (value) {
+        if (isNonNullObject(value)) {
+            if (stringifyCanon === void 0) {
+                resetCanonicalStringify();
+            }
+            var canonical = stringifyCanon.admit(value);
+            var json = stringifyCache.get(canonical);
+            if (json === void 0) {
+                stringifyCache.set(canonical, json = JSON.stringify(canonical));
+            }
+            return json;
+        }
+        return JSON.stringify(value);
+    }, {
+        reset: resetCanonicalStringify,
+    });
+    var stringifyCanon;
+    var stringifyCache;
+    function resetCanonicalStringify() {
+        stringifyCanon = new ObjectCanon;
+        stringifyCache = new (canUseWeakMap ? WeakMap : Map)();
+    }
+
+    function execSelectionSetKeyArgs(options) {
+        return [
+            options.selectionSet,
+            options.objectOrReference,
+            options.context,
+            options.context.canonizeResults,
+        ];
     }
     var StoreReader = (function () {
         function StoreReader(config) {
             var _this = this;
-            this.config = config;
-            this.executeSelectionSet = wrap(function (options) { return _this.execSelectionSetImpl(options); }, {
-                keyArgs: function (options) {
-                    return [
-                        options.selectionSet,
-                        options.objectOrReference,
-                        options.context,
-                    ];
-                },
-                makeCacheKey: function (selectionSet, parent, context) {
+            this.knownResults = new (canUseWeakMap ? WeakMap : Map)();
+            this.config = compact(config, {
+                addTypename: config.addTypename !== false,
+                canonizeResults: shouldCanonizeResults(config),
+            });
+            this.canon = config.canon || new ObjectCanon;
+            this.executeSelectionSet = wrap(function (options) {
+                var _a;
+                var canonizeResults = options.context.canonizeResults;
+                var peekArgs = execSelectionSetKeyArgs(options);
+                peekArgs[3] = !canonizeResults;
+                var other = (_a = _this.executeSelectionSet).peek.apply(_a, peekArgs);
+                if (other) {
+                    if (canonizeResults) {
+                        return __assign$1(__assign$1({}, other), { result: _this.canon.admit(other.result) });
+                    }
+                    return other;
+                }
+                maybeDependOnExistenceOfEntity(options.context.store, options.enclosingRef.__ref);
+                return _this.execSelectionSetImpl(options);
+            }, {
+                max: this.config.resultCacheMaxSize,
+                keyArgs: execSelectionSetKeyArgs,
+                makeCacheKey: function (selectionSet, parent, context, canonizeResults) {
                     if (supportsResultCaching(context.store)) {
-                        return context.store.makeCacheKey(selectionSet, isReference(parent) ? parent.__ref : parent, context.varString);
+                        return context.store.makeCacheKey(selectionSet, isReference(parent) ? parent.__ref : parent, context.varString, canonizeResults);
                     }
                 }
             });
-            this.knownResults = new WeakMap();
             this.executeSubSelectedArray = wrap(function (options) {
+                maybeDependOnExistenceOfEntity(options.context.store, options.enclosingRef.__ref);
                 return _this.execSubSelectedArrayImpl(options);
             }, {
+                max: this.config.resultCacheMaxSize,
                 makeCacheKey: function (_a) {
                     var field = _a.field, array = _a.array, context = _a.context;
                     if (supportsResultCaching(context.store)) {
@@ -8423,40 +8247,46 @@ var Ad4mConnectDialog = (function () {
                     }
                 }
             });
-            this.config = __assign$1({ addTypename: true }, config);
         }
+        StoreReader.prototype.resetCanon = function () {
+            this.canon = new ObjectCanon;
+        };
         StoreReader.prototype.diffQueryAgainstStore = function (_a) {
-            var store = _a.store, query = _a.query, _b = _a.rootId, rootId = _b === void 0 ? 'ROOT_QUERY' : _b, variables = _a.variables, _c = _a.returnPartialData, returnPartialData = _c === void 0 ? true : _c;
+            var store = _a.store, query = _a.query, _b = _a.rootId, rootId = _b === void 0 ? 'ROOT_QUERY' : _b, variables = _a.variables, _c = _a.returnPartialData, returnPartialData = _c === void 0 ? true : _c, _d = _a.canonizeResults, canonizeResults = _d === void 0 ? this.config.canonizeResults : _d;
             var policies = this.config.cache.policies;
             variables = __assign$1(__assign$1({}, getDefaultValues(getQueryDefinition(query))), variables);
+            var rootRef = makeReference(rootId);
             var execResult = this.executeSelectionSet({
                 selectionSet: getMainDefinition(query).selectionSet,
-                objectOrReference: makeReference(rootId),
+                objectOrReference: rootRef,
+                enclosingRef: rootRef,
                 context: {
                     store: store,
                     query: query,
                     policies: policies,
                     variables: variables,
-                    varString: JSON.stringify(variables),
+                    varString: canonicalStringify(variables),
+                    canonizeResults: canonizeResults,
                     fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
-                    path: [],
-                    clientOnly: false,
                 },
             });
-            var hasMissingFields = execResult.missing && execResult.missing.length > 0;
-            if (hasMissingFields && !returnPartialData) {
-                throw execResult.missing[0];
+            var missing;
+            if (execResult.missing) {
+                missing = [new MissingFieldError(firstMissing(execResult.missing), execResult.missing, query, variables)];
+                if (!returnPartialData) {
+                    throw missing[0];
+                }
             }
             return {
                 result: execResult.result,
-                missing: execResult.missing,
-                complete: !hasMissingFields,
+                complete: !missing,
+                missing: missing,
             };
         };
         StoreReader.prototype.isFresh = function (result, parent, selectionSet, context) {
             if (supportsResultCaching(context.store) &&
                 this.knownResults.get(result) === selectionSet) {
-                var latest = this.executeSelectionSet.peek(selectionSet, parent, context);
+                var latest = this.executeSelectionSet.peek(selectionSet, parent, context, this.canon.isKnown(result));
                 if (latest && result === latest.result) {
                     return true;
                 }
@@ -8465,36 +8295,35 @@ var Ad4mConnectDialog = (function () {
         };
         StoreReader.prototype.execSelectionSetImpl = function (_a) {
             var _this = this;
-            var selectionSet = _a.selectionSet, objectOrReference = _a.objectOrReference, context = _a.context;
+            var selectionSet = _a.selectionSet, objectOrReference = _a.objectOrReference, enclosingRef = _a.enclosingRef, context = _a.context;
             if (isReference(objectOrReference) &&
                 !context.policies.rootTypenamesById[objectOrReference.__ref] &&
                 !context.store.has(objectOrReference.__ref)) {
                 return {
-                    result: {},
-                    missing: [missingFromInvariant(process.env.NODE_ENV === "production" ? new InvariantError(4) : new InvariantError("Dangling reference to missing " + objectOrReference.__ref + " object"), context)],
+                    result: this.canon.empty,
+                    missing: "Dangling reference to missing ".concat(objectOrReference.__ref, " object"),
                 };
             }
             var variables = context.variables, policies = context.policies, store = context.store;
-            var objectsToMerge = [];
-            var finalResult = { result: null };
             var typename = store.getFieldValue(objectOrReference, "__typename");
+            var objectsToMerge = [];
+            var missing;
+            var missingMerger = new DeepMerger();
             if (this.config.addTypename &&
                 typeof typename === "string" &&
                 !policies.rootIdsByTypename[typename]) {
                 objectsToMerge.push({ __typename: typename });
             }
-            function getMissing() {
-                return finalResult.missing || (finalResult.missing = []);
-            }
-            function handleMissing(result) {
+            function handleMissing(result, resultName) {
                 var _a;
-                if (result.missing)
-                    (_a = getMissing()).push.apply(_a, result.missing);
+                if (result.missing) {
+                    missing = missingMerger.merge(missing, (_a = {}, _a[resultName] = result.missing, _a));
+                }
                 return result.result;
             }
             var workSet = new Set(selectionSet.selections);
             workSet.forEach(function (selection) {
-                var _a;
+                var _a, _b;
                 if (!shouldInclude(selection, variables))
                     return;
                 if (isField(selection)) {
@@ -8505,42 +8334,39 @@ var Ad4mConnectDialog = (function () {
                         from: objectOrReference,
                     }, context);
                     var resultName = resultKeyNameFromField(selection);
-                    context.path.push(resultName);
-                    var wasClientOnly = context.clientOnly;
-                    context.clientOnly = wasClientOnly || !!(selection.directives &&
-                        selection.directives.some(function (d) { return d.name.value === "client"; }));
                     if (fieldValue === void 0) {
                         if (!addTypenameToDocument.added(selection)) {
-                            getMissing().push(missingFromInvariant(process.env.NODE_ENV === "production" ? new InvariantError(5) : new InvariantError("Can't find field '" + selection.name.value + "' on " + (isReference(objectOrReference)
-                                ? objectOrReference.__ref + " object"
-                                : "object " + JSON.stringify(objectOrReference, null, 2))), context));
+                            missing = missingMerger.merge(missing, (_a = {},
+                                _a[resultName] = "Can't find field '".concat(selection.name.value, "' on ").concat(isReference(objectOrReference)
+                                    ? objectOrReference.__ref + " object"
+                                    : "object " + JSON.stringify(objectOrReference, null, 2)),
+                                _a));
                         }
                     }
-                    else if (Array.isArray(fieldValue)) {
+                    else if (isArray(fieldValue)) {
                         fieldValue = handleMissing(_this.executeSubSelectedArray({
                             field: selection,
                             array: fieldValue,
+                            enclosingRef: enclosingRef,
                             context: context,
-                        }));
+                        }), resultName);
                     }
                     else if (!selection.selectionSet) {
-                        if (process.env.NODE_ENV !== 'production') {
-                            assertSelectionSetForIdValue(context.store, selection, fieldValue);
-                            maybeDeepFreeze(fieldValue);
+                        if (context.canonizeResults) {
+                            fieldValue = _this.canon.pass(fieldValue);
                         }
                     }
                     else if (fieldValue != null) {
                         fieldValue = handleMissing(_this.executeSelectionSet({
                             selectionSet: selection.selectionSet,
                             objectOrReference: fieldValue,
+                            enclosingRef: isReference(fieldValue) ? fieldValue : enclosingRef,
                             context: context,
-                        }));
+                        }), resultName);
                     }
                     if (fieldValue !== void 0) {
-                        objectsToMerge.push((_a = {}, _a[resultName] = fieldValue, _a));
+                        objectsToMerge.push((_b = {}, _b[resultName] = fieldValue, _b));
                     }
-                    context.clientOnly = wasClientOnly;
-                    invariant$1(context.path.pop() === resultName);
                 }
                 else {
                     var fragment = getFragmentFromSelection(selection, context.fragmentMap);
@@ -8549,23 +8375,26 @@ var Ad4mConnectDialog = (function () {
                     }
                 }
             });
-            finalResult.result = mergeDeepArray(objectsToMerge);
-            if (process.env.NODE_ENV !== 'production') {
-                Object.freeze(finalResult.result);
+            var result = mergeDeepArray(objectsToMerge);
+            var finalResult = { result: result, missing: missing };
+            var frozen = context.canonizeResults
+                ? this.canon.admit(finalResult)
+                : maybeDeepFreeze(finalResult);
+            if (frozen.result) {
+                this.knownResults.set(frozen.result, selectionSet);
             }
-            this.knownResults.set(finalResult.result, selectionSet);
-            return finalResult;
+            return frozen;
         };
         StoreReader.prototype.execSubSelectedArrayImpl = function (_a) {
             var _this = this;
-            var field = _a.field, array = _a.array, context = _a.context;
+            var field = _a.field, array = _a.array, enclosingRef = _a.enclosingRef, context = _a.context;
             var missing;
+            var missingMerger = new DeepMerger();
             function handleMissing(childResult, i) {
+                var _a;
                 if (childResult.missing) {
-                    missing = missing || [];
-                    missing.push.apply(missing, childResult.missing);
+                    missing = missingMerger.merge(missing, (_a = {}, _a[i] = childResult.missing, _a));
                 }
-                invariant$1(context.path.pop() === i);
                 return childResult.result;
             }
             if (field.selectionSet) {
@@ -8575,11 +8404,11 @@ var Ad4mConnectDialog = (function () {
                 if (item === null) {
                     return null;
                 }
-                context.path.push(i);
-                if (Array.isArray(item)) {
+                if (isArray(item)) {
                     return handleMissing(_this.executeSubSelectedArray({
                         field: field,
                         array: item,
+                        enclosingRef: enclosingRef,
                         context: context,
                     }), i);
                 }
@@ -8587,294 +8416,44 @@ var Ad4mConnectDialog = (function () {
                     return handleMissing(_this.executeSelectionSet({
                         selectionSet: field.selectionSet,
                         objectOrReference: item,
+                        enclosingRef: isReference(item) ? item : enclosingRef,
                         context: context,
                     }), i);
                 }
-                if (process.env.NODE_ENV !== 'production') {
+                if (__DEV__) {
                     assertSelectionSetForIdValue(context.store, field, item);
                 }
-                invariant$1(context.path.pop() === i);
                 return item;
             });
-            if (process.env.NODE_ENV !== 'production') {
-                Object.freeze(array);
-            }
-            return { result: array, missing: missing };
+            return {
+                result: context.canonizeResults ? this.canon.admit(array) : array,
+                missing: missing,
+            };
         };
         return StoreReader;
     }());
+    function firstMissing(tree) {
+        try {
+            JSON.stringify(tree, function (_, value) {
+                if (typeof value === "string")
+                    throw value;
+                return value;
+            });
+        }
+        catch (result) {
+            return result;
+        }
+    }
     function assertSelectionSetForIdValue(store, field, fieldValue) {
         if (!field.selectionSet) {
             var workSet_1 = new Set([fieldValue]);
             workSet_1.forEach(function (value) {
-                if (value && typeof value === "object") {
-                    process.env.NODE_ENV === "production" ? invariant$1(!isReference(value), 6) : invariant$1(!isReference(value), "Missing selection set for object of type " + getTypenameFromStoreObject(store, value) + " returned for query field " + field.name.value);
+                if (isNonNullObject(value)) {
+                    __DEV__ ? invariant$1(!isReference(value), "Missing selection set for object of type ".concat(getTypenameFromStoreObject(store, value), " returned for query field ").concat(field.name.value)) : invariant$1(!isReference(value), 5);
                     Object.values(value).forEach(workSet_1.add, workSet_1);
                 }
             });
         }
-    }
-
-    var StoreWriter = (function () {
-        function StoreWriter(cache, reader) {
-            this.cache = cache;
-            this.reader = reader;
-        }
-        StoreWriter.prototype.writeToStore = function (_a) {
-            var query = _a.query, result = _a.result, dataId = _a.dataId, store = _a.store, variables = _a.variables;
-            var operationDefinition = getOperationDefinition(query);
-            var merger = makeProcessedFieldsMerger();
-            variables = __assign$1(__assign$1({}, getDefaultValues(operationDefinition)), variables);
-            var ref = this.processSelectionSet({
-                result: result || Object.create(null),
-                dataId: dataId,
-                selectionSet: operationDefinition.selectionSet,
-                mergeTree: { map: new Map },
-                context: {
-                    store: store,
-                    written: Object.create(null),
-                    merge: function (existing, incoming) {
-                        return merger.merge(existing, incoming);
-                    },
-                    variables: variables,
-                    varString: JSON.stringify(variables),
-                    fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
-                },
-            });
-            if (!isReference(ref)) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(7) : new InvariantError("Could not identify object " + JSON.stringify(result));
-            }
-            store.retain(ref.__ref);
-            return ref;
-        };
-        StoreWriter.prototype.processSelectionSet = function (_a) {
-            var _this = this;
-            var dataId = _a.dataId, result = _a.result, selectionSet = _a.selectionSet, context = _a.context, mergeTree = _a.mergeTree;
-            var policies = this.cache.policies;
-            var _b = policies.identify(result, selectionSet, context.fragmentMap), id = _b[0], keyObject = _b[1];
-            dataId = dataId || id;
-            if ("string" === typeof dataId) {
-                var sets = context.written[dataId] || (context.written[dataId] = []);
-                var ref = makeReference(dataId);
-                if (sets.indexOf(selectionSet) >= 0)
-                    return ref;
-                sets.push(selectionSet);
-                if (this.reader && this.reader.isFresh(result, ref, selectionSet, context)) {
-                    return ref;
-                }
-            }
-            var incomingFields = Object.create(null);
-            if (keyObject) {
-                incomingFields = context.merge(incomingFields, keyObject);
-            }
-            var typename = (dataId && policies.rootTypenamesById[dataId]) ||
-                getTypenameFromResult(result, selectionSet, context.fragmentMap) ||
-                (dataId && context.store.get(dataId, "__typename"));
-            if ("string" === typeof typename) {
-                incomingFields.__typename = typename;
-            }
-            var workSet = new Set(selectionSet.selections);
-            workSet.forEach(function (selection) {
-                var _a;
-                if (!shouldInclude(selection, context.variables))
-                    return;
-                if (isField(selection)) {
-                    var resultFieldKey = resultKeyNameFromField(selection);
-                    var value = result[resultFieldKey];
-                    if (typeof value !== 'undefined') {
-                        var storeFieldName = policies.getStoreFieldName({
-                            typename: typename,
-                            fieldName: selection.name.value,
-                            field: selection,
-                            variables: context.variables,
-                        });
-                        var childTree = getChildMergeTree(mergeTree, storeFieldName);
-                        var incomingValue = _this.processFieldValue(value, selection, context, childTree);
-                        var childTypename = selection.selectionSet
-                            && context.store.getFieldValue(incomingValue, "__typename")
-                            || void 0;
-                        var merge = policies.getMergeFunction(typename, selection.name.value, childTypename);
-                        if (merge) {
-                            childTree.info = {
-                                field: selection,
-                                typename: typename,
-                                merge: merge,
-                            };
-                        }
-                        else {
-                            maybeRecycleChildMergeTree(mergeTree, storeFieldName);
-                        }
-                        incomingFields = context.merge(incomingFields, (_a = {},
-                            _a[storeFieldName] = incomingValue,
-                            _a));
-                    }
-                    else if (policies.usingPossibleTypes &&
-                        !hasDirectives(["defer", "client"], selection)) {
-                        throw process.env.NODE_ENV === "production" ? new InvariantError(8) : new InvariantError("Missing field '" + resultFieldKey + "' in " + JSON.stringify(result, null, 2).substring(0, 100));
-                    }
-                }
-                else {
-                    var fragment = getFragmentFromSelection(selection, context.fragmentMap);
-                    if (fragment &&
-                        policies.fragmentMatches(fragment, typename, result, context.variables)) {
-                        fragment.selectionSet.selections.forEach(workSet.add, workSet);
-                    }
-                }
-            });
-            if ("string" === typeof dataId) {
-                var entityRef_1 = makeReference(dataId);
-                if (mergeTree.map.size) {
-                    incomingFields = this.applyMerges(mergeTree, entityRef_1, incomingFields, context);
-                }
-                if (process.env.NODE_ENV !== "production") {
-                    var hasSelectionSet_1 = function (storeFieldName) {
-                        return fieldsWithSelectionSets_1.has(fieldNameFromStoreName(storeFieldName));
-                    };
-                    var fieldsWithSelectionSets_1 = new Set();
-                    workSet.forEach(function (selection) {
-                        if (isField(selection) && selection.selectionSet) {
-                            fieldsWithSelectionSets_1.add(selection.name.value);
-                        }
-                    });
-                    var hasMergeFunction_1 = function (storeFieldName) {
-                        var childTree = mergeTree.map.get(storeFieldName);
-                        return Boolean(childTree && childTree.info && childTree.info.merge);
-                    };
-                    Object.keys(incomingFields).forEach(function (storeFieldName) {
-                        if (hasSelectionSet_1(storeFieldName) &&
-                            !hasMergeFunction_1(storeFieldName)) {
-                            warnAboutDataLoss(entityRef_1, incomingFields, storeFieldName, context.store);
-                        }
-                    });
-                }
-                context.store.merge(dataId, incomingFields);
-                return entityRef_1;
-            }
-            return incomingFields;
-        };
-        StoreWriter.prototype.processFieldValue = function (value, field, context, mergeTree) {
-            var _this = this;
-            if (!field.selectionSet || value === null) {
-                return process.env.NODE_ENV === 'production' ? value : cloneDeep(value);
-            }
-            if (Array.isArray(value)) {
-                return value.map(function (item, i) {
-                    var value = _this.processFieldValue(item, field, context, getChildMergeTree(mergeTree, i));
-                    maybeRecycleChildMergeTree(mergeTree, i);
-                    return value;
-                });
-            }
-            return this.processSelectionSet({
-                result: value,
-                selectionSet: field.selectionSet,
-                context: context,
-                mergeTree: mergeTree,
-            });
-        };
-        StoreWriter.prototype.applyMerges = function (mergeTree, existing, incoming, context, getStorageArgs) {
-            var _a;
-            var _this = this;
-            if (mergeTree.map.size && !isReference(incoming)) {
-                var e_1 = (!Array.isArray(incoming) &&
-                    (isReference(existing) || storeValueIsStoreObject(existing))) ? existing : void 0;
-                var i_1 = incoming;
-                if (e_1 && !getStorageArgs) {
-                    getStorageArgs = [isReference(e_1) ? e_1.__ref : e_1];
-                }
-                var changedFields_1;
-                var getValue_1 = function (from, name) {
-                    return Array.isArray(from)
-                        ? (typeof name === "number" ? from[name] : void 0)
-                        : context.store.getFieldValue(from, String(name));
-                };
-                mergeTree.map.forEach(function (childTree, storeFieldName) {
-                    if (getStorageArgs) {
-                        getStorageArgs.push(storeFieldName);
-                    }
-                    var eVal = getValue_1(e_1, storeFieldName);
-                    var iVal = getValue_1(i_1, storeFieldName);
-                    var aVal = _this.applyMerges(childTree, eVal, iVal, context, getStorageArgs);
-                    if (aVal !== iVal) {
-                        changedFields_1 = changedFields_1 || new Map;
-                        changedFields_1.set(storeFieldName, aVal);
-                    }
-                    if (getStorageArgs) {
-                        invariant$1(getStorageArgs.pop() === storeFieldName);
-                    }
-                });
-                if (changedFields_1) {
-                    incoming = (Array.isArray(i_1) ? i_1.slice(0) : __assign$1({}, i_1));
-                    changedFields_1.forEach(function (value, name) {
-                        incoming[name] = value;
-                    });
-                }
-            }
-            if (mergeTree.info) {
-                return this.cache.policies.runMergeFunction(existing, incoming, mergeTree.info, context, getStorageArgs && (_a = context.store).getStorage.apply(_a, getStorageArgs));
-            }
-            return incoming;
-        };
-        return StoreWriter;
-    }());
-    var emptyMergeTreePool = [];
-    function getChildMergeTree(_a, name) {
-        var map = _a.map;
-        if (!map.has(name)) {
-            map.set(name, emptyMergeTreePool.pop() || { map: new Map });
-        }
-        return map.get(name);
-    }
-    function maybeRecycleChildMergeTree(_a, name) {
-        var map = _a.map;
-        var childTree = map.get(name);
-        if (childTree &&
-            !childTree.info &&
-            !childTree.map.size) {
-            emptyMergeTreePool.push(childTree);
-            map.delete(name);
-        }
-    }
-    var warnings = new Set();
-    function warnAboutDataLoss(existingRef, incomingObj, storeFieldName, store) {
-        var getChild = function (objOrRef) {
-            var child = store.getFieldValue(objOrRef, storeFieldName);
-            return typeof child === "object" && child;
-        };
-        var existing = getChild(existingRef);
-        if (!existing)
-            return;
-        var incoming = getChild(incomingObj);
-        if (!incoming)
-            return;
-        if (isReference(existing))
-            return;
-        if (equal(existing, incoming))
-            return;
-        if (Object.keys(existing).every(function (key) { return store.getFieldValue(incoming, key) !== void 0; })) {
-            return;
-        }
-        var parentType = store.getFieldValue(existingRef, "__typename") ||
-            store.getFieldValue(incomingObj, "__typename");
-        var fieldName = fieldNameFromStoreName(storeFieldName);
-        var typeDotName = parentType + "." + fieldName;
-        if (warnings.has(typeDotName))
-            return;
-        warnings.add(typeDotName);
-        var childTypenames = [];
-        if (!Array.isArray(existing) &&
-            !Array.isArray(incoming)) {
-            [existing, incoming].forEach(function (child) {
-                var typename = store.getFieldValue(child, "__typename");
-                if (typeof typename === "string" &&
-                    !childTypenames.includes(typename)) {
-                    childTypenames.push(typename);
-                }
-            });
-        }
-        process.env.NODE_ENV === "production" || invariant$1.warn("Cache data may be lost when replacing the " + fieldName + " field of a " + parentType + " object.\n\nTo address this problem (which is not a bug in Apollo Client), " + (childTypenames.length
-            ? "either ensure all objects of type " +
-                childTypenames.join(" and ") + " have an ID or a custom merge function, or "
-            : "") + "define a custom merge function for the " + typeDotName + " field, so InMemoryCache can safely merge these objects:\n\n  existing: " + JSON.stringify(existing).slice(0, 1000) + "\n  incoming: " + JSON.stringify(incoming).slice(0, 1000) + "\n\nFor more information about these options, please refer to the documentation:\n\n  * Ensuring entity objects have IDs: https://go.apollo.dev/c/generating-unique-identifiers\n  * Defining custom merge functions: https://go.apollo.dev/c/merging-non-normalized-objects\n");
     }
 
     var cacheSlot = new Slot();
@@ -8940,27 +8519,126 @@ var Ad4mConnectDialog = (function () {
         }
     }
 
+    var specifierInfoCache = Object.create(null);
+    function lookupSpecifierInfo(spec) {
+        var cacheKey = JSON.stringify(spec);
+        return specifierInfoCache[cacheKey] ||
+            (specifierInfoCache[cacheKey] = Object.create(null));
+    }
+    function keyFieldsFnFromSpecifier(specifier) {
+        var info = lookupSpecifierInfo(specifier);
+        return info.keyFieldsFn || (info.keyFieldsFn = function (object, context) {
+            var extract = function (from, key) { return context.readField(key, from); };
+            var keyObject = context.keyObject = collectSpecifierPaths(specifier, function (schemaKeyPath) {
+                var extracted = extractKeyPath(context.storeObject, schemaKeyPath, extract);
+                if (extracted === void 0 &&
+                    object !== context.storeObject &&
+                    hasOwn.call(object, schemaKeyPath[0])) {
+                    extracted = extractKeyPath(object, schemaKeyPath, extractKey);
+                }
+                __DEV__ ? invariant$1(extracted !== void 0, "Missing field '".concat(schemaKeyPath.join('.'), "' while extracting keyFields from ").concat(JSON.stringify(object))) : invariant$1(extracted !== void 0, 2);
+                return extracted;
+            });
+            return "".concat(context.typename, ":").concat(JSON.stringify(keyObject));
+        });
+    }
+    function keyArgsFnFromSpecifier(specifier) {
+        var info = lookupSpecifierInfo(specifier);
+        return info.keyArgsFn || (info.keyArgsFn = function (args, _a) {
+            var field = _a.field, variables = _a.variables, fieldName = _a.fieldName;
+            var collected = collectSpecifierPaths(specifier, function (keyPath) {
+                var firstKey = keyPath[0];
+                var firstChar = firstKey.charAt(0);
+                if (firstChar === "@") {
+                    if (field && isNonEmptyArray(field.directives)) {
+                        var directiveName_1 = firstKey.slice(1);
+                        var d = field.directives.find(function (d) { return d.name.value === directiveName_1; });
+                        var directiveArgs = d && argumentsObjectFromField(d, variables);
+                        return directiveArgs && extractKeyPath(directiveArgs, keyPath.slice(1));
+                    }
+                    return;
+                }
+                if (firstChar === "$") {
+                    var variableName = firstKey.slice(1);
+                    if (variables && hasOwn.call(variables, variableName)) {
+                        var varKeyPath = keyPath.slice(0);
+                        varKeyPath[0] = variableName;
+                        return extractKeyPath(variables, varKeyPath);
+                    }
+                    return;
+                }
+                if (args) {
+                    return extractKeyPath(args, keyPath);
+                }
+            });
+            var suffix = JSON.stringify(collected);
+            if (args || suffix !== "{}") {
+                fieldName += ":" + suffix;
+            }
+            return fieldName;
+        });
+    }
+    function collectSpecifierPaths(specifier, extractor) {
+        var merger = new DeepMerger;
+        return getSpecifierPaths(specifier).reduce(function (collected, path) {
+            var _a;
+            var toMerge = extractor(path);
+            if (toMerge !== void 0) {
+                for (var i = path.length - 1; i >= 0; --i) {
+                    toMerge = (_a = {}, _a[path[i]] = toMerge, _a);
+                }
+                collected = merger.merge(collected, toMerge);
+            }
+            return collected;
+        }, Object.create(null));
+    }
+    function getSpecifierPaths(spec) {
+        var info = lookupSpecifierInfo(spec);
+        if (!info.paths) {
+            var paths_1 = info.paths = [];
+            var currentPath_1 = [];
+            spec.forEach(function (s, i) {
+                if (isArray(s)) {
+                    getSpecifierPaths(s).forEach(function (p) { return paths_1.push(currentPath_1.concat(p)); });
+                    currentPath_1.length = 0;
+                }
+                else {
+                    currentPath_1.push(s);
+                    if (!isArray(spec[i + 1])) {
+                        paths_1.push(currentPath_1.slice(0));
+                        currentPath_1.length = 0;
+                    }
+                }
+            });
+        }
+        return info.paths;
+    }
+    function extractKey(object, key) {
+        return object[key];
+    }
+    function extractKeyPath(object, path, extract) {
+        extract = extract || extractKey;
+        return normalize$1(path.reduce(function reducer(obj, key) {
+            return isArray(obj)
+                ? obj.map(function (child) { return reducer(child, key); })
+                : obj && extract(obj, key);
+        }, object));
+    }
+    function normalize$1(value) {
+        if (isNonNullObject(value)) {
+            if (isArray(value)) {
+                return value.map(normalize$1);
+            }
+            return collectSpecifierPaths(Object.keys(value).sort(), function (path) { return extractKeyPath(value, path); });
+        }
+        return value;
+    }
+
+    getStoreKeyName.setStringify(canonicalStringify);
     function argsFromFieldSpecifier(spec) {
         return spec.args !== void 0 ? spec.args :
             spec.field ? argumentsObjectFromField(spec.field, spec.variables) : null;
     }
-    var defaultDataIdFromObject = function (_a, context) {
-        var __typename = _a.__typename, id = _a.id, _id = _a._id;
-        if (typeof __typename === "string") {
-            if (context) {
-                context.keyObject =
-                    id !== void 0 ? { id: id } :
-                        _id !== void 0 ? { _id: _id } :
-                            void 0;
-            }
-            if (id === void 0)
-                id = _id;
-            if (id !== void 0) {
-                return __typename + ":" + ((typeof id === "number" ||
-                    typeof id === "string") ? id : JSON.stringify(id));
-            }
-        }
-    };
     var nullKeyFieldsFn = function () { return void 0; };
     var simpleKeyArgsFn = function (_args, context) { return context.fieldName; };
     var mergeTrueFn = function (existing, incoming, _a) {
@@ -8990,24 +8668,28 @@ var Ad4mConnectDialog = (function () {
                 this.addTypePolicies(config.typePolicies);
             }
         }
-        Policies.prototype.identify = function (object, selectionSet, fragmentMap) {
-            var typename = selectionSet && fragmentMap
-                ? getTypenameFromResult(object, selectionSet, fragmentMap)
-                : object.__typename;
+        Policies.prototype.identify = function (object, partialContext) {
+            var _a;
+            var policies = this;
+            var typename = partialContext && (partialContext.typename ||
+                ((_a = partialContext.storeObject) === null || _a === void 0 ? void 0 : _a.__typename)) || object.__typename;
             if (typename === this.rootTypenamesById.ROOT_QUERY) {
                 return ["ROOT_QUERY"];
             }
-            var context = {
-                typename: typename,
-                selectionSet: selectionSet,
-                fragmentMap: fragmentMap,
-            };
+            var storeObject = partialContext && partialContext.storeObject || object;
+            var context = __assign$1(__assign$1({}, partialContext), { typename: typename, storeObject: storeObject, readField: partialContext && partialContext.readField || function () {
+                    var options = normalizeReadFieldOptions(arguments, storeObject);
+                    return policies.readField(options, {
+                        store: policies.cache["data"],
+                        variables: options.variables,
+                    });
+                } });
             var id;
             var policy = typename && this.getTypePolicy(typename);
             var keyFn = policy && policy.keyFn || this.config.dataIdFromObject;
             while (keyFn) {
                 var specifierOrId = keyFn(object, context);
-                if (Array.isArray(specifierOrId)) {
+                if (isArray(specifierOrId)) {
                     keyFn = keyFieldsFnFromSpecifier(specifierOrId);
                 }
                 else {
@@ -9050,7 +8732,7 @@ var Ad4mConnectDialog = (function () {
             setMerge(existing, incoming.merge);
             existing.keyFn =
                 keyFields === false ? nullKeyFieldsFn :
-                    Array.isArray(keyFields) ? keyFieldsFnFromSpecifier(keyFields) :
+                    isArray(keyFields) ? keyFieldsFnFromSpecifier(keyFields) :
                         typeof keyFields === "function" ? keyFields :
                             existing.keyFn;
             if (fields) {
@@ -9064,7 +8746,7 @@ var Ad4mConnectDialog = (function () {
                         var keyArgs = incoming.keyArgs, read = incoming.read, merge = incoming.merge;
                         existing.keyFn =
                             keyArgs === false ? simpleKeyArgsFn :
-                                Array.isArray(keyArgs) ? keyArgsFnFromSpecifier(keyArgs) :
+                                isArray(keyArgs) ? keyArgsFnFromSpecifier(keyArgs) :
                                     typeof keyArgs === "function" ? keyArgs :
                                         existing.keyFn;
                         if (typeof read === "function") {
@@ -9083,7 +8765,7 @@ var Ad4mConnectDialog = (function () {
             var rootId = "ROOT_" + which.toUpperCase();
             var old = this.rootTypenamesById[rootId];
             if (typename !== old) {
-                process.env.NODE_ENV === "production" ? invariant$1(!old || old === which, 1) : invariant$1(!old || old === which, "Cannot change root " + which + " __typename more than once");
+                __DEV__ ? invariant$1(!old || old === which, "Cannot change root ".concat(which, " __typename more than once")) : invariant$1(!old || old === which, 3);
                 if (old)
                     delete this.rootIdsByTypename[old];
                 this.rootIdsByTypename[typename] = rootId;
@@ -9167,7 +8849,7 @@ var Ad4mConnectDialog = (function () {
                     if (supertypeSet.has(supertype)) {
                         if (!typenameSupertypeSet.has(supertype)) {
                             if (checkingFuzzySubtypes) {
-                                process.env.NODE_ENV === "production" || invariant$1.warn("Inferring subtype " + typename + " of supertype " + supertype);
+                                __DEV__ && invariant$1.warn("Inferring subtype ".concat(typename, " of supertype ").concat(supertype));
                             }
                             typenameSupertypeSet.add(supertype);
                         }
@@ -9209,7 +8891,7 @@ var Ad4mConnectDialog = (function () {
                 var args = argsFromFieldSpecifier(fieldSpec);
                 while (keyFn) {
                     var specifierOrString = keyFn(args, context);
-                    if (Array.isArray(specifierOrString)) {
+                    if (isArray(specifierOrString)) {
                         keyFn = keyArgsFnFromSpecifier(specifierOrString);
                     }
                     else {
@@ -9255,6 +8937,10 @@ var Ad4mConnectDialog = (function () {
             }
             return existing;
         };
+        Policies.prototype.getReadFunction = function (typename, fieldName) {
+            var policy = this.getFieldPolicy(typename, fieldName, false);
+            return policy && policy.read;
+        };
         Policies.prototype.getMergeFunction = function (parentTypename, fieldName, childTypename) {
             var policy = this.getFieldPolicy(parentTypename, fieldName, false);
             var merge = policy && policy.merge;
@@ -9267,10 +8953,13 @@ var Ad4mConnectDialog = (function () {
         Policies.prototype.runMergeFunction = function (existing, incoming, _a, context, storage) {
             var field = _a.field, typename = _a.typename, merge = _a.merge;
             if (merge === mergeTrueFn) {
-                return makeMergeObjectsFunction(context.store.getFieldValue)(existing, incoming);
+                return makeMergeObjectsFunction(context.store)(existing, incoming);
             }
             if (merge === mergeFalseFn) {
                 return incoming;
+            }
+            if (context.overwrite) {
+                existing = void 0;
             }
             return merge(existing, incoming, makeFieldFunctionOptions(this, void 0, { typename: typename, fieldName: field.name.value, field: field, variables: context.variables }, context, storage || Object.create(null)));
         };
@@ -9280,7 +8969,7 @@ var Ad4mConnectDialog = (function () {
         var storeFieldName = policies.getStoreFieldName(fieldSpec);
         var fieldName = fieldNameFromStoreName(storeFieldName);
         var variables = fieldSpec.variables || context.variables;
-        var _a = context.store, getFieldValue = _a.getFieldValue, toReference = _a.toReference, canRead = _a.canRead;
+        var _a = context.store, toReference = _a.toReference, canRead = _a.canRead;
         return {
             args: argsFromFieldSpecifier(fieldSpec),
             field: fieldSpec.field || null,
@@ -9292,127 +8981,460 @@ var Ad4mConnectDialog = (function () {
             storage: storage,
             cache: policies.cache,
             canRead: canRead,
-            readField: function (fieldNameOrOptions, from) {
-                var options = typeof fieldNameOrOptions === "string" ? {
-                    fieldName: fieldNameOrOptions,
-                    from: from,
-                } : __assign$1({}, fieldNameOrOptions);
-                if (void 0 === options.from) {
-                    options.from = objectOrReference;
-                }
-                if (void 0 === options.variables) {
-                    options.variables = variables;
-                }
-                return policies.readField(options, context);
+            readField: function () {
+                return policies.readField(normalizeReadFieldOptions(arguments, objectOrReference, variables), context);
             },
-            mergeObjects: makeMergeObjectsFunction(getFieldValue),
+            mergeObjects: makeMergeObjectsFunction(context.store),
         };
     }
-    function makeMergeObjectsFunction(getFieldValue) {
-        return function mergeObjects(existing, incoming) {
-            if (Array.isArray(existing) || Array.isArray(incoming)) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(2) : new InvariantError("Cannot automatically merge arrays");
+    function normalizeReadFieldOptions(readFieldArgs, objectOrReference, variables) {
+        var fieldNameOrOptions = readFieldArgs[0], from = readFieldArgs[1], argc = readFieldArgs.length;
+        var options;
+        if (typeof fieldNameOrOptions === "string") {
+            options = {
+                fieldName: fieldNameOrOptions,
+                from: argc > 1 ? from : objectOrReference,
+            };
+        }
+        else {
+            options = __assign$1({}, fieldNameOrOptions);
+            if (!hasOwn.call(options, "from")) {
+                options.from = objectOrReference;
             }
-            if (existing && typeof existing === "object" &&
-                incoming && typeof incoming === "object") {
-                var eType = getFieldValue(existing, "__typename");
-                var iType = getFieldValue(incoming, "__typename");
+        }
+        if (__DEV__ && options.from === void 0) {
+            __DEV__ && invariant$1.warn("Undefined 'from' passed to readField with arguments ".concat(stringifyForDisplay(Array.from(readFieldArgs))));
+        }
+        if (void 0 === options.variables) {
+            options.variables = variables;
+        }
+        return options;
+    }
+    function makeMergeObjectsFunction(store) {
+        return function mergeObjects(existing, incoming) {
+            if (isArray(existing) || isArray(incoming)) {
+                throw __DEV__ ? new InvariantError("Cannot automatically merge arrays") : new InvariantError(4);
+            }
+            if (isNonNullObject(existing) &&
+                isNonNullObject(incoming)) {
+                var eType = store.getFieldValue(existing, "__typename");
+                var iType = store.getFieldValue(incoming, "__typename");
                 var typesDiffer = eType && iType && eType !== iType;
-                if (typesDiffer ||
-                    !storeValueIsStoreObject(existing) ||
-                    !storeValueIsStoreObject(incoming)) {
+                if (typesDiffer) {
                     return incoming;
                 }
-                return __assign$1(__assign$1({}, existing), incoming);
+                if (isReference(existing) &&
+                    storeValueIsStoreObject(incoming)) {
+                    store.merge(existing.__ref, incoming);
+                    return existing;
+                }
+                if (storeValueIsStoreObject(existing) &&
+                    isReference(incoming)) {
+                    store.merge(existing, incoming.__ref);
+                    return incoming;
+                }
+                if (storeValueIsStoreObject(existing) &&
+                    storeValueIsStoreObject(incoming)) {
+                    return __assign$1(__assign$1({}, existing), incoming);
+                }
             }
             return incoming;
         };
     }
-    function keyArgsFnFromSpecifier(specifier) {
-        return function (args, context) {
-            return args ? context.fieldName + ":" + JSON.stringify(computeKeyObject(args, specifier, false)) : context.fieldName;
-        };
+
+    function getContextFlavor(context, clientOnly, deferred) {
+        var key = "".concat(clientOnly).concat(deferred);
+        var flavored = context.flavors.get(key);
+        if (!flavored) {
+            context.flavors.set(key, flavored = (context.clientOnly === clientOnly &&
+                context.deferred === deferred) ? context : __assign$1(__assign$1({}, context), { clientOnly: clientOnly, deferred: deferred }));
+        }
+        return flavored;
     }
-    function keyFieldsFnFromSpecifier(specifier) {
-        var trie = new Trie(canUseWeakMap);
-        return function (object, context) {
-            var aliasMap;
-            if (context.selectionSet && context.fragmentMap) {
-                var info = trie.lookupArray([
-                    context.selectionSet,
-                    context.fragmentMap,
-                ]);
-                aliasMap = info.aliasMap || (info.aliasMap = makeAliasMap(context.selectionSet, context.fragmentMap));
+    var StoreWriter = (function () {
+        function StoreWriter(cache, reader) {
+            this.cache = cache;
+            this.reader = reader;
+        }
+        StoreWriter.prototype.writeToStore = function (store, _a) {
+            var _this = this;
+            var query = _a.query, result = _a.result, dataId = _a.dataId, variables = _a.variables, overwrite = _a.overwrite;
+            var operationDefinition = getOperationDefinition(query);
+            var merger = makeProcessedFieldsMerger();
+            variables = __assign$1(__assign$1({}, getDefaultValues(operationDefinition)), variables);
+            var context = {
+                store: store,
+                written: Object.create(null),
+                merge: function (existing, incoming) {
+                    return merger.merge(existing, incoming);
+                },
+                variables: variables,
+                varString: canonicalStringify(variables),
+                fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
+                overwrite: !!overwrite,
+                incomingById: new Map,
+                clientOnly: false,
+                deferred: false,
+                flavors: new Map,
+            };
+            var ref = this.processSelectionSet({
+                result: result || Object.create(null),
+                dataId: dataId,
+                selectionSet: operationDefinition.selectionSet,
+                mergeTree: { map: new Map },
+                context: context,
+            });
+            if (!isReference(ref)) {
+                throw __DEV__ ? new InvariantError("Could not identify object ".concat(JSON.stringify(result))) : new InvariantError(6);
             }
-            var keyObject = context.keyObject =
-                computeKeyObject(object, specifier, true, aliasMap);
-            return context.typename + ":" + JSON.stringify(keyObject);
+            context.incomingById.forEach(function (_a, dataId) {
+                var storeObject = _a.storeObject, mergeTree = _a.mergeTree, fieldNodeSet = _a.fieldNodeSet;
+                var entityRef = makeReference(dataId);
+                if (mergeTree && mergeTree.map.size) {
+                    var applied = _this.applyMerges(mergeTree, entityRef, storeObject, context);
+                    if (isReference(applied)) {
+                        return;
+                    }
+                    storeObject = applied;
+                }
+                if (__DEV__ && !context.overwrite) {
+                    var fieldsWithSelectionSets_1 = Object.create(null);
+                    fieldNodeSet.forEach(function (field) {
+                        if (field.selectionSet) {
+                            fieldsWithSelectionSets_1[field.name.value] = true;
+                        }
+                    });
+                    var hasSelectionSet_1 = function (storeFieldName) {
+                        return fieldsWithSelectionSets_1[fieldNameFromStoreName(storeFieldName)] === true;
+                    };
+                    var hasMergeFunction_1 = function (storeFieldName) {
+                        var childTree = mergeTree && mergeTree.map.get(storeFieldName);
+                        return Boolean(childTree && childTree.info && childTree.info.merge);
+                    };
+                    Object.keys(storeObject).forEach(function (storeFieldName) {
+                        if (hasSelectionSet_1(storeFieldName) &&
+                            !hasMergeFunction_1(storeFieldName)) {
+                            warnAboutDataLoss(entityRef, storeObject, storeFieldName, context.store);
+                        }
+                    });
+                }
+                store.merge(dataId, storeObject);
+            });
+            store.retain(ref.__ref);
+            return ref;
         };
-    }
-    function makeAliasMap(selectionSet, fragmentMap) {
-        var map = Object.create(null);
-        var workQueue = new Set([selectionSet]);
-        workQueue.forEach(function (selectionSet) {
-            selectionSet.selections.forEach(function (selection) {
-                if (isField(selection)) {
-                    if (selection.alias) {
-                        var responseKey = selection.alias.value;
-                        var storeKey = selection.name.value;
-                        if (storeKey !== responseKey) {
-                            var aliases = map.aliases || (map.aliases = Object.create(null));
-                            aliases[storeKey] = responseKey;
+        StoreWriter.prototype.processSelectionSet = function (_a) {
+            var _this = this;
+            var dataId = _a.dataId, result = _a.result, selectionSet = _a.selectionSet, context = _a.context, mergeTree = _a.mergeTree;
+            var policies = this.cache.policies;
+            var incoming = Object.create(null);
+            var typename = (dataId && policies.rootTypenamesById[dataId]) ||
+                getTypenameFromResult(result, selectionSet, context.fragmentMap) ||
+                (dataId && context.store.get(dataId, "__typename"));
+            if ("string" === typeof typename) {
+                incoming.__typename = typename;
+            }
+            var readField = function () {
+                var options = normalizeReadFieldOptions(arguments, incoming, context.variables);
+                if (isReference(options.from)) {
+                    var info = context.incomingById.get(options.from.__ref);
+                    if (info) {
+                        var result_1 = policies.readField(__assign$1(__assign$1({}, options), { from: info.storeObject }), context);
+                        if (result_1 !== void 0) {
+                            return result_1;
                         }
                     }
-                    if (selection.selectionSet) {
-                        var subsets = map.subsets || (map.subsets = Object.create(null));
-                        subsets[selection.name.value] =
-                            makeAliasMap(selection.selectionSet, fragmentMap);
-                    }
                 }
-                else {
-                    var fragment = getFragmentFromSelection(selection, fragmentMap);
-                    if (fragment) {
-                        workQueue.add(fragment.selectionSet);
+                return policies.readField(options, context);
+            };
+            var fieldNodeSet = new Set();
+            this.flattenFields(selectionSet, result, context, typename).forEach(function (context, field) {
+                var _a;
+                var resultFieldKey = resultKeyNameFromField(field);
+                var value = result[resultFieldKey];
+                fieldNodeSet.add(field);
+                if (value !== void 0) {
+                    var storeFieldName = policies.getStoreFieldName({
+                        typename: typename,
+                        fieldName: field.name.value,
+                        field: field,
+                        variables: context.variables,
+                    });
+                    var childTree = getChildMergeTree(mergeTree, storeFieldName);
+                    var incomingValue = _this.processFieldValue(value, field, field.selectionSet
+                        ? getContextFlavor(context, false, false)
+                        : context, childTree);
+                    var childTypename = void 0;
+                    if (field.selectionSet &&
+                        (isReference(incomingValue) ||
+                            storeValueIsStoreObject(incomingValue))) {
+                        childTypename = readField("__typename", incomingValue);
                     }
+                    var merge = policies.getMergeFunction(typename, field.name.value, childTypename);
+                    if (merge) {
+                        childTree.info = {
+                            field: field,
+                            typename: typename,
+                            merge: merge,
+                        };
+                    }
+                    else {
+                        maybeRecycleChildMergeTree(mergeTree, storeFieldName);
+                    }
+                    incoming = context.merge(incoming, (_a = {},
+                        _a[storeFieldName] = incomingValue,
+                        _a));
+                }
+                else if (__DEV__ &&
+                    !context.clientOnly &&
+                    !context.deferred &&
+                    !addTypenameToDocument.added(field) &&
+                    !policies.getReadFunction(typename, field.name.value)) {
+                    __DEV__ && invariant$1.error("Missing field '".concat(resultKeyNameFromField(field), "' while writing result ").concat(JSON.stringify(result, null, 2)).substring(0, 1000));
                 }
             });
-        });
-        return map;
-    }
-    function computeKeyObject(response, specifier, strict, aliasMap) {
-        var keyObj = Object.create(null);
-        var prevKey;
-        specifier.forEach(function (s) {
-            if (Array.isArray(s)) {
-                if (typeof prevKey === "string") {
-                    var subsets = aliasMap && aliasMap.subsets;
-                    var subset = subsets && subsets[prevKey];
-                    keyObj[prevKey] = computeKeyObject(response[prevKey], s, strict, subset);
+            try {
+                var _b = policies.identify(result, {
+                    typename: typename,
+                    selectionSet: selectionSet,
+                    fragmentMap: context.fragmentMap,
+                    storeObject: incoming,
+                    readField: readField,
+                }), id = _b[0], keyObject = _b[1];
+                dataId = dataId || id;
+                if (keyObject) {
+                    incoming = context.merge(incoming, keyObject);
                 }
             }
-            else {
-                var aliases = aliasMap && aliasMap.aliases;
-                var responseName = aliases && aliases[s] || s;
-                if (hasOwn.call(response, responseName)) {
-                    keyObj[prevKey = s] = response[responseName];
+            catch (e) {
+                if (!dataId)
+                    throw e;
+            }
+            if ("string" === typeof dataId) {
+                var dataRef = makeReference(dataId);
+                var sets = context.written[dataId] || (context.written[dataId] = []);
+                if (sets.indexOf(selectionSet) >= 0)
+                    return dataRef;
+                sets.push(selectionSet);
+                if (this.reader && this.reader.isFresh(result, dataRef, selectionSet, context)) {
+                    return dataRef;
+                }
+                var previous_1 = context.incomingById.get(dataId);
+                if (previous_1) {
+                    previous_1.storeObject = context.merge(previous_1.storeObject, incoming);
+                    previous_1.mergeTree = mergeMergeTrees(previous_1.mergeTree, mergeTree);
+                    fieldNodeSet.forEach(function (field) { return previous_1.fieldNodeSet.add(field); });
                 }
                 else {
-                    process.env.NODE_ENV === "production" ? invariant$1(!strict, 3) : invariant$1(!strict, "Missing field '" + responseName + "' while computing key fields");
-                    prevKey = void 0;
+                    context.incomingById.set(dataId, {
+                        storeObject: incoming,
+                        mergeTree: mergeTreeIsEmpty(mergeTree) ? void 0 : mergeTree,
+                        fieldNodeSet: fieldNodeSet,
+                    });
+                }
+                return dataRef;
+            }
+            return incoming;
+        };
+        StoreWriter.prototype.processFieldValue = function (value, field, context, mergeTree) {
+            var _this = this;
+            if (!field.selectionSet || value === null) {
+                return __DEV__ ? cloneDeep(value) : value;
+            }
+            if (isArray(value)) {
+                return value.map(function (item, i) {
+                    var value = _this.processFieldValue(item, field, context, getChildMergeTree(mergeTree, i));
+                    maybeRecycleChildMergeTree(mergeTree, i);
+                    return value;
+                });
+            }
+            return this.processSelectionSet({
+                result: value,
+                selectionSet: field.selectionSet,
+                context: context,
+                mergeTree: mergeTree,
+            });
+        };
+        StoreWriter.prototype.flattenFields = function (selectionSet, result, context, typename) {
+            if (typename === void 0) { typename = getTypenameFromResult(result, selectionSet, context.fragmentMap); }
+            var fieldMap = new Map();
+            var policies = this.cache.policies;
+            var limitingTrie = new Trie(false);
+            (function flatten(selectionSet, inheritedContext) {
+                var visitedNode = limitingTrie.lookup(selectionSet, inheritedContext.clientOnly, inheritedContext.deferred);
+                if (visitedNode.visited)
+                    return;
+                visitedNode.visited = true;
+                selectionSet.selections.forEach(function (selection) {
+                    if (!shouldInclude(selection, context.variables))
+                        return;
+                    var clientOnly = inheritedContext.clientOnly, deferred = inheritedContext.deferred;
+                    if (!(clientOnly && deferred) &&
+                        isNonEmptyArray(selection.directives)) {
+                        selection.directives.forEach(function (dir) {
+                            var name = dir.name.value;
+                            if (name === "client")
+                                clientOnly = true;
+                            if (name === "defer") {
+                                var args = argumentsObjectFromField(dir, context.variables);
+                                if (!args || args.if !== false) {
+                                    deferred = true;
+                                }
+                            }
+                        });
+                    }
+                    if (isField(selection)) {
+                        var existing = fieldMap.get(selection);
+                        if (existing) {
+                            clientOnly = clientOnly && existing.clientOnly;
+                            deferred = deferred && existing.deferred;
+                        }
+                        fieldMap.set(selection, getContextFlavor(context, clientOnly, deferred));
+                    }
+                    else {
+                        var fragment = getFragmentFromSelection(selection, context.fragmentMap);
+                        if (fragment &&
+                            policies.fragmentMatches(fragment, typename, result, context.variables)) {
+                            flatten(fragment.selectionSet, getContextFlavor(context, clientOnly, deferred));
+                        }
+                    }
+                });
+            })(selectionSet, context);
+            return fieldMap;
+        };
+        StoreWriter.prototype.applyMerges = function (mergeTree, existing, incoming, context, getStorageArgs) {
+            var _a;
+            var _this = this;
+            if (mergeTree.map.size && !isReference(incoming)) {
+                var e_1 = (!isArray(incoming) &&
+                    (isReference(existing) || storeValueIsStoreObject(existing))) ? existing : void 0;
+                var i_1 = incoming;
+                if (e_1 && !getStorageArgs) {
+                    getStorageArgs = [isReference(e_1) ? e_1.__ref : e_1];
+                }
+                var changedFields_1;
+                var getValue_1 = function (from, name) {
+                    return isArray(from)
+                        ? (typeof name === "number" ? from[name] : void 0)
+                        : context.store.getFieldValue(from, String(name));
+                };
+                mergeTree.map.forEach(function (childTree, storeFieldName) {
+                    var eVal = getValue_1(e_1, storeFieldName);
+                    var iVal = getValue_1(i_1, storeFieldName);
+                    if (void 0 === iVal)
+                        return;
+                    if (getStorageArgs) {
+                        getStorageArgs.push(storeFieldName);
+                    }
+                    var aVal = _this.applyMerges(childTree, eVal, iVal, context, getStorageArgs);
+                    if (aVal !== iVal) {
+                        changedFields_1 = changedFields_1 || new Map;
+                        changedFields_1.set(storeFieldName, aVal);
+                    }
+                    if (getStorageArgs) {
+                        invariant$1(getStorageArgs.pop() === storeFieldName);
+                    }
+                });
+                if (changedFields_1) {
+                    incoming = (isArray(i_1) ? i_1.slice(0) : __assign$1({}, i_1));
+                    changedFields_1.forEach(function (value, name) {
+                        incoming[name] = value;
+                    });
                 }
             }
-        });
-        return keyObj;
+            if (mergeTree.info) {
+                return this.cache.policies.runMergeFunction(existing, incoming, mergeTree.info, context, getStorageArgs && (_a = context.store).getStorage.apply(_a, getStorageArgs));
+            }
+            return incoming;
+        };
+        return StoreWriter;
+    }());
+    var emptyMergeTreePool = [];
+    function getChildMergeTree(_a, name) {
+        var map = _a.map;
+        if (!map.has(name)) {
+            map.set(name, emptyMergeTreePool.pop() || { map: new Map });
+        }
+        return map.get(name);
+    }
+    function mergeMergeTrees(left, right) {
+        if (left === right || !right || mergeTreeIsEmpty(right))
+            return left;
+        if (!left || mergeTreeIsEmpty(left))
+            return right;
+        var info = left.info && right.info ? __assign$1(__assign$1({}, left.info), right.info) : left.info || right.info;
+        var needToMergeMaps = left.map.size && right.map.size;
+        var map = needToMergeMaps ? new Map :
+            left.map.size ? left.map : right.map;
+        var merged = { info: info, map: map };
+        if (needToMergeMaps) {
+            var remainingRightKeys_1 = new Set(right.map.keys());
+            left.map.forEach(function (leftTree, key) {
+                merged.map.set(key, mergeMergeTrees(leftTree, right.map.get(key)));
+                remainingRightKeys_1.delete(key);
+            });
+            remainingRightKeys_1.forEach(function (key) {
+                merged.map.set(key, mergeMergeTrees(right.map.get(key), left.map.get(key)));
+            });
+        }
+        return merged;
+    }
+    function mergeTreeIsEmpty(tree) {
+        return !tree || !(tree.info || tree.map.size);
+    }
+    function maybeRecycleChildMergeTree(_a, name) {
+        var map = _a.map;
+        var childTree = map.get(name);
+        if (childTree && mergeTreeIsEmpty(childTree)) {
+            emptyMergeTreePool.push(childTree);
+            map.delete(name);
+        }
+    }
+    var warnings = new Set();
+    function warnAboutDataLoss(existingRef, incomingObj, storeFieldName, store) {
+        var getChild = function (objOrRef) {
+            var child = store.getFieldValue(objOrRef, storeFieldName);
+            return typeof child === "object" && child;
+        };
+        var existing = getChild(existingRef);
+        if (!existing)
+            return;
+        var incoming = getChild(incomingObj);
+        if (!incoming)
+            return;
+        if (isReference(existing))
+            return;
+        if (equal(existing, incoming))
+            return;
+        if (Object.keys(existing).every(function (key) { return store.getFieldValue(incoming, key) !== void 0; })) {
+            return;
+        }
+        var parentType = store.getFieldValue(existingRef, "__typename") ||
+            store.getFieldValue(incomingObj, "__typename");
+        var fieldName = fieldNameFromStoreName(storeFieldName);
+        var typeDotName = "".concat(parentType, ".").concat(fieldName);
+        if (warnings.has(typeDotName))
+            return;
+        warnings.add(typeDotName);
+        var childTypenames = [];
+        if (!isArray(existing) &&
+            !isArray(incoming)) {
+            [existing, incoming].forEach(function (child) {
+                var typename = store.getFieldValue(child, "__typename");
+                if (typeof typename === "string" &&
+                    !childTypenames.includes(typename)) {
+                    childTypenames.push(typename);
+                }
+            });
+        }
+        __DEV__ && invariant$1.warn("Cache data may be lost when replacing the ".concat(fieldName, " field of a ").concat(parentType, " object.\n\nTo address this problem (which is not a bug in Apollo Client), ").concat(childTypenames.length
+            ? "either ensure all objects of type " +
+                childTypenames.join(" and ") + " have an ID or a custom merge function, or "
+            : "", "define a custom merge function for the ").concat(typeDotName, " field, so InMemoryCache can safely merge these objects:\n\n  existing: ").concat(JSON.stringify(existing).slice(0, 1000), "\n  incoming: ").concat(JSON.stringify(incoming).slice(0, 1000), "\n\nFor more information about these options, please refer to the documentation:\n\n  * Ensuring entity objects have IDs: https://go.apollo.dev/c/generating-unique-identifiers\n  * Defining custom merge functions: https://go.apollo.dev/c/merging-non-normalized-objects\n"));
     }
 
-    var defaultConfig = {
-        dataIdFromObject: defaultDataIdFromObject,
-        addTypename: true,
-        resultCaching: true,
-        typePolicies: {},
-    };
     var InMemoryCache = (function (_super) {
-        __extends$1(InMemoryCache, _super);
+        __extends(InMemoryCache, _super);
         function InMemoryCache(config) {
             if (config === void 0) { config = {}; }
             var _this = _super.call(this) || this;
@@ -9420,19 +9442,7 @@ var Ad4mConnectDialog = (function () {
             _this.typenameDocumentCache = new Map();
             _this.makeVar = makeVar;
             _this.txCount = 0;
-            _this.maybeBroadcastWatch = wrap(function (c, fromOptimisticTransaction) {
-                return _this.broadcastWatch.call(_this, c, !!fromOptimisticTransaction);
-            }, {
-                makeCacheKey: function (c) {
-                    var store = c.optimistic ? _this.optimisticData : _this.data;
-                    if (supportsResultCaching(store)) {
-                        var optimistic = c.optimistic, rootId = c.rootId, variables = c.variables;
-                        return store.makeCacheKey(c.query, c.callback, JSON.stringify({ optimistic: optimistic, rootId: rootId, variables: variables }));
-                    }
-                }
-            });
-            _this.watchDep = dep();
-            _this.config = __assign$1(__assign$1({}, defaultConfig), config);
+            _this.config = normalizeConfig(config);
             _this.addTypename = !!_this.config.addTypename;
             _this.policies = new Policies({
                 cache: _this,
@@ -9440,18 +9450,48 @@ var Ad4mConnectDialog = (function () {
                 possibleTypes: _this.config.possibleTypes,
                 typePolicies: _this.config.typePolicies,
             });
-            _this.data = new EntityStore.Root({
-                policies: _this.policies,
-                resultCaching: _this.config.resultCaching,
-            });
-            _this.optimisticData = _this.data;
-            _this.storeWriter = new StoreWriter(_this, _this.storeReader = new StoreReader({
-                cache: _this,
-                addTypename: _this.addTypename,
-            }));
+            _this.init();
             return _this;
         }
+        InMemoryCache.prototype.init = function () {
+            var rootStore = this.data = new EntityStore.Root({
+                policies: this.policies,
+                resultCaching: this.config.resultCaching,
+            });
+            this.optimisticData = rootStore.stump;
+            this.resetResultCache();
+        };
+        InMemoryCache.prototype.resetResultCache = function (resetResultIdentities) {
+            var _this = this;
+            var previousReader = this.storeReader;
+            this.storeWriter = new StoreWriter(this, this.storeReader = new StoreReader({
+                cache: this,
+                addTypename: this.addTypename,
+                resultCacheMaxSize: this.config.resultCacheMaxSize,
+                canonizeResults: shouldCanonizeResults(this.config),
+                canon: resetResultIdentities
+                    ? void 0
+                    : previousReader && previousReader.canon,
+            }));
+            this.maybeBroadcastWatch = wrap(function (c, options) {
+                return _this.broadcastWatch(c, options);
+            }, {
+                max: this.config.resultCacheMaxSize,
+                makeCacheKey: function (c) {
+                    var store = c.optimistic ? _this.optimisticData : _this.data;
+                    if (supportsResultCaching(store)) {
+                        var optimistic = c.optimistic, rootId = c.rootId, variables = c.variables;
+                        return store.makeCacheKey(c.query, c.callback, canonicalStringify({ optimistic: optimistic, rootId: rootId, variables: variables }));
+                    }
+                }
+            });
+            new Set([
+                this.data.group,
+                this.optimisticData.group,
+            ]).forEach(function (group) { return group.resetCaching(); });
+        };
         InMemoryCache.prototype.restore = function (data) {
+            this.init();
             if (data)
                 this.data.replace(data);
             return this;
@@ -9463,14 +9503,7 @@ var Ad4mConnectDialog = (function () {
         InMemoryCache.prototype.read = function (options) {
             var _a = options.returnPartialData, returnPartialData = _a === void 0 ? false : _a;
             try {
-                return this.storeReader.diffQueryAgainstStore({
-                    store: options.optimistic ? this.optimisticData : this.data,
-                    query: options.query,
-                    variables: options.variables,
-                    rootId: options.rootId,
-                    config: this.config,
-                    returnPartialData: returnPartialData,
-                }).result || null;
+                return this.storeReader.diffQueryAgainstStore(__assign$1(__assign$1({}, options), { store: options.optimistic ? this.optimisticData : this.data, config: this.config, returnPartialData: returnPartialData })).result || null;
             }
             catch (e) {
                 if (e instanceof MissingFieldError) {
@@ -9482,13 +9515,7 @@ var Ad4mConnectDialog = (function () {
         InMemoryCache.prototype.write = function (options) {
             try {
                 ++this.txCount;
-                return this.storeWriter.writeToStore({
-                    store: this.data,
-                    query: options.query,
-                    result: options.result,
-                    dataId: options.dataId,
-                    variables: options.variables,
-                });
+                return this.storeWriter.writeToStore(this.data, options);
             }
             finally {
                 if (!--this.txCount && options.broadcast !== false) {
@@ -9514,14 +9541,7 @@ var Ad4mConnectDialog = (function () {
             }
         };
         InMemoryCache.prototype.diff = function (options) {
-            return this.storeReader.diffQueryAgainstStore({
-                store: options.optimistic ? this.optimisticData : this.data,
-                rootId: options.id || "ROOT_QUERY",
-                query: options.query,
-                variables: options.variables,
-                returnPartialData: options.returnPartialData,
-                config: this.config,
-            });
+            return this.storeReader.diffQueryAgainstStore(__assign$1(__assign$1({}, options), { store: options.optimistic ? this.optimisticData : this.data, rootId: options.id || "ROOT_QUERY", config: this.config }));
         };
         InMemoryCache.prototype.watch = function (watch) {
             var _this = this;
@@ -9536,12 +9556,21 @@ var Ad4mConnectDialog = (function () {
                 if (_this.watches.delete(watch) && !_this.watches.size) {
                     forgetCache(_this);
                 }
-                _this.watchDep.dirty(watch);
                 _this.maybeBroadcastWatch.forget(watch);
             };
         };
-        InMemoryCache.prototype.gc = function () {
-            return this.optimisticData.gc();
+        InMemoryCache.prototype.gc = function (options) {
+            canonicalStringify.reset();
+            var ids = this.optimisticData.gc();
+            if (options && !this.txCount) {
+                if (options.resetResultCache) {
+                    this.resetResultCache(options.resetResultIdentities);
+                }
+                else if (options.resetResultIdentities) {
+                    this.storeReader.resetCanon();
+                }
+            }
+            return ids;
         };
         InMemoryCache.prototype.retain = function (rootId, optimistic) {
             return (optimistic ? this.optimisticData : this.data).retain(rootId);
@@ -9550,8 +9579,14 @@ var Ad4mConnectDialog = (function () {
             return (optimistic ? this.optimisticData : this.data).release(rootId);
         };
         InMemoryCache.prototype.identify = function (object) {
-            return isReference(object) ? object.__ref :
-                this.policies.identify(object)[0];
+            if (isReference(object))
+                return object.__ref;
+            try {
+                return this.policies.identify(object)[0];
+            }
+            catch (e) {
+                __DEV__ && invariant$1.warn(e);
+            }
         };
         InMemoryCache.prototype.evict = function (options) {
             if (!options.id) {
@@ -9562,7 +9597,7 @@ var Ad4mConnectDialog = (function () {
             }
             try {
                 ++this.txCount;
-                return this.optimisticData.evict(options);
+                return this.optimisticData.evict(options, this.data);
             }
             finally {
                 if (!--this.txCount && options.broadcast !== false) {
@@ -9570,10 +9605,18 @@ var Ad4mConnectDialog = (function () {
                 }
             }
         };
-        InMemoryCache.prototype.reset = function () {
-            this.data.clear();
-            this.optimisticData = this.data;
-            this.broadcastWatches();
+        InMemoryCache.prototype.reset = function (options) {
+            var _this = this;
+            this.init();
+            canonicalStringify.reset();
+            if (options && options.discardWatches) {
+                this.watches.forEach(function (watch) { return _this.maybeBroadcastWatch.forget(watch); });
+                this.watches.clear();
+                forgetCache(this);
+            }
+            else {
+                this.broadcastWatches();
+            }
             return Promise.resolve();
         };
         InMemoryCache.prototype.removeOptimistic = function (idToRemove) {
@@ -9583,8 +9626,10 @@ var Ad4mConnectDialog = (function () {
                 this.broadcastWatches();
             }
         };
-        InMemoryCache.prototype.performTransaction = function (transaction, optimisticId) {
+        InMemoryCache.prototype.batch = function (options) {
             var _this = this;
+            var update = options.update, _a = options.optimistic, optimistic = _a === void 0 ? true : _a, removeOptimistic = options.removeOptimistic, onWatchUpdated = options.onWatchUpdated;
+            var updateResult;
             var perform = function (layer) {
                 var _a = _this, data = _a.data, optimisticData = _a.optimisticData;
                 ++_this.txCount;
@@ -9592,7 +9637,7 @@ var Ad4mConnectDialog = (function () {
                     _this.data = _this.optimisticData = layer;
                 }
                 try {
-                    transaction(_this);
+                    return updateResult = update(_this);
                 }
                 finally {
                     --_this.txCount;
@@ -9600,18 +9645,47 @@ var Ad4mConnectDialog = (function () {
                     _this.optimisticData = optimisticData;
                 }
             };
-            var fromOptimisticTransaction = false;
-            if (typeof optimisticId === 'string') {
-                this.optimisticData = this.optimisticData.addLayer(optimisticId, perform);
-                fromOptimisticTransaction = true;
+            var alreadyDirty = new Set();
+            if (onWatchUpdated && !this.txCount) {
+                this.broadcastWatches(__assign$1(__assign$1({}, options), { onWatchUpdated: function (watch) {
+                        alreadyDirty.add(watch);
+                        return false;
+                    } }));
             }
-            else if (optimisticId === null) {
+            if (typeof optimistic === 'string') {
+                this.optimisticData = this.optimisticData.addLayer(optimistic, perform);
+            }
+            else if (optimistic === false) {
                 perform(this.data);
             }
             else {
                 perform();
             }
-            this.broadcastWatches(fromOptimisticTransaction);
+            if (typeof removeOptimistic === "string") {
+                this.optimisticData = this.optimisticData.removeLayer(removeOptimistic);
+            }
+            if (onWatchUpdated && alreadyDirty.size) {
+                this.broadcastWatches(__assign$1(__assign$1({}, options), { onWatchUpdated: function (watch, diff) {
+                        var result = onWatchUpdated.call(this, watch, diff);
+                        if (result !== false) {
+                            alreadyDirty.delete(watch);
+                        }
+                        return result;
+                    } }));
+                if (alreadyDirty.size) {
+                    alreadyDirty.forEach(function (watch) { return _this.maybeBroadcastWatch.dirty(watch); });
+                }
+            }
+            else {
+                this.broadcastWatches(options);
+            }
+            return updateResult;
+        };
+        InMemoryCache.prototype.performTransaction = function (update, optimisticId) {
+            return this.batch({
+                update: update,
+                optimistic: optimisticId || (optimisticId !== null),
+            });
         };
         InMemoryCache.prototype.transformDocument = function (document) {
             if (this.addTypename) {
@@ -9625,27 +9699,574 @@ var Ad4mConnectDialog = (function () {
             }
             return document;
         };
-        InMemoryCache.prototype.broadcastWatches = function (fromOptimisticTransaction) {
+        InMemoryCache.prototype.broadcastWatches = function (options) {
             var _this = this;
             if (!this.txCount) {
-                this.watches.forEach(function (c) { return _this.maybeBroadcastWatch(c, fromOptimisticTransaction); });
+                this.watches.forEach(function (c) { return _this.maybeBroadcastWatch(c, options); });
             }
         };
-        InMemoryCache.prototype.broadcastWatch = function (c, fromOptimisticTransaction) {
-            this.watchDep.dirty(c);
-            this.watchDep(c);
-            var diff = this.diff({
-                query: c.query,
-                variables: c.variables,
-                optimistic: c.optimistic,
-            });
-            if (c.optimistic && fromOptimisticTransaction) {
-                diff.fromOptimisticTransaction = true;
+        InMemoryCache.prototype.broadcastWatch = function (c, options) {
+            var lastDiff = c.lastDiff;
+            var diff = this.diff(c);
+            if (options) {
+                if (c.optimistic &&
+                    typeof options.optimistic === "string") {
+                    diff.fromOptimisticTransaction = true;
+                }
+                if (options.onWatchUpdated &&
+                    options.onWatchUpdated.call(this, c, diff, lastDiff) === false) {
+                    return;
+                }
             }
-            c.callback(diff);
+            if (!lastDiff || !equal(lastDiff.result, diff.result)) {
+                c.callback(c.lastDiff = diff, lastDiff);
+            }
         };
         return InMemoryCache;
     }(ApolloCache));
+
+    function isApolloError(err) {
+        return err.hasOwnProperty('graphQLErrors');
+    }
+    var generateErrorMessage = function (err) {
+        var message = '';
+        if (isNonEmptyArray(err.graphQLErrors) || isNonEmptyArray(err.clientErrors)) {
+            var errors = (err.graphQLErrors || [])
+                .concat(err.clientErrors || []);
+            errors.forEach(function (error) {
+                var errorMessage = error
+                    ? error.message
+                    : 'Error message not found.';
+                message += "".concat(errorMessage, "\n");
+            });
+        }
+        if (err.networkError) {
+            message += "".concat(err.networkError.message, "\n");
+        }
+        message = message.replace(/\n$/, '');
+        return message;
+    };
+    var ApolloError = (function (_super) {
+        __extends(ApolloError, _super);
+        function ApolloError(_a) {
+            var graphQLErrors = _a.graphQLErrors, clientErrors = _a.clientErrors, networkError = _a.networkError, errorMessage = _a.errorMessage, extraInfo = _a.extraInfo;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.graphQLErrors = graphQLErrors || [];
+            _this.clientErrors = clientErrors || [];
+            _this.networkError = networkError || null;
+            _this.message = errorMessage || generateErrorMessage(_this);
+            _this.extraInfo = extraInfo;
+            _this.__proto__ = ApolloError.prototype;
+            return _this;
+        }
+        return ApolloError;
+    }(Error));
+
+    var NetworkStatus;
+    (function (NetworkStatus) {
+        NetworkStatus[NetworkStatus["loading"] = 1] = "loading";
+        NetworkStatus[NetworkStatus["setVariables"] = 2] = "setVariables";
+        NetworkStatus[NetworkStatus["fetchMore"] = 3] = "fetchMore";
+        NetworkStatus[NetworkStatus["refetch"] = 4] = "refetch";
+        NetworkStatus[NetworkStatus["poll"] = 6] = "poll";
+        NetworkStatus[NetworkStatus["ready"] = 7] = "ready";
+        NetworkStatus[NetworkStatus["error"] = 8] = "error";
+    })(NetworkStatus || (NetworkStatus = {}));
+    function isNetworkRequestInFlight(networkStatus) {
+        return networkStatus ? networkStatus < 7 : false;
+    }
+
+    var assign = Object.assign, hasOwnProperty$1 = Object.hasOwnProperty;
+    var ObservableQuery = (function (_super) {
+        __extends(ObservableQuery, _super);
+        function ObservableQuery(_a) {
+            var queryManager = _a.queryManager, queryInfo = _a.queryInfo, options = _a.options;
+            var _this = _super.call(this, function (observer) {
+                try {
+                    var subObserver = observer._subscription._observer;
+                    if (subObserver && !subObserver.error) {
+                        subObserver.error = defaultSubscriptionObserverErrorCallback;
+                    }
+                }
+                catch (_a) { }
+                var first = !_this.observers.size;
+                _this.observers.add(observer);
+                var last = _this.last;
+                if (last && last.error) {
+                    observer.error && observer.error(last.error);
+                }
+                else if (last && last.result) {
+                    observer.next && observer.next(last.result);
+                }
+                if (first) {
+                    _this.reobserve().catch(function () { });
+                }
+                return function () {
+                    if (_this.observers.delete(observer) && !_this.observers.size) {
+                        _this.tearDownQuery();
+                    }
+                };
+            }) || this;
+            _this.observers = new Set();
+            _this.subscriptions = new Set();
+            _this.queryInfo = queryInfo;
+            _this.queryManager = queryManager;
+            _this.isTornDown = false;
+            var _b = queryManager.defaultOptions.watchQuery, _c = _b === void 0 ? {} : _b, _d = _c.fetchPolicy, defaultFetchPolicy = _d === void 0 ? "cache-first" : _d;
+            var _e = options.fetchPolicy, fetchPolicy = _e === void 0 ? defaultFetchPolicy : _e, _f = options.initialFetchPolicy, initialFetchPolicy = _f === void 0 ? (fetchPolicy === "standby" ? defaultFetchPolicy : fetchPolicy) : _f;
+            _this.options = __assign$1(__assign$1({}, options), { initialFetchPolicy: initialFetchPolicy, fetchPolicy: fetchPolicy });
+            _this.queryId = queryInfo.queryId || queryManager.generateQueryId();
+            var opDef = getOperationDefinition(_this.query);
+            _this.queryName = opDef && opDef.name && opDef.name.value;
+            return _this;
+        }
+        Object.defineProperty(ObservableQuery.prototype, "query", {
+            get: function () {
+                return this.queryManager.transform(this.options.query).document;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(ObservableQuery.prototype, "variables", {
+            get: function () {
+                return this.options.variables;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ObservableQuery.prototype.result = function () {
+            var _this = this;
+            return new Promise(function (resolve, reject) {
+                var observer = {
+                    next: function (result) {
+                        resolve(result);
+                        _this.observers.delete(observer);
+                        if (!_this.observers.size) {
+                            _this.queryManager.removeQuery(_this.queryId);
+                        }
+                        setTimeout(function () {
+                            subscription.unsubscribe();
+                        }, 0);
+                    },
+                    error: reject,
+                };
+                var subscription = _this.subscribe(observer);
+            });
+        };
+        ObservableQuery.prototype.getCurrentResult = function (saveAsLastResult) {
+            if (saveAsLastResult === void 0) { saveAsLastResult = true; }
+            var lastResult = this.getLastResult(true);
+            var networkStatus = this.queryInfo.networkStatus ||
+                (lastResult && lastResult.networkStatus) ||
+                NetworkStatus.ready;
+            var result = __assign$1(__assign$1({}, lastResult), { loading: isNetworkRequestInFlight(networkStatus), networkStatus: networkStatus });
+            var _a = this.options.fetchPolicy, fetchPolicy = _a === void 0 ? "cache-first" : _a;
+            if (fetchPolicy === 'network-only' ||
+                fetchPolicy === 'no-cache' ||
+                fetchPolicy === 'standby' ||
+                this.queryManager.transform(this.options.query).hasForcedResolvers) ;
+            else {
+                var diff = this.queryInfo.getDiff();
+                if (diff.complete || this.options.returnPartialData) {
+                    result.data = diff.result;
+                }
+                if (equal(result.data, {})) {
+                    result.data = void 0;
+                }
+                if (diff.complete) {
+                    delete result.partial;
+                    if (diff.complete &&
+                        result.networkStatus === NetworkStatus.loading &&
+                        (fetchPolicy === 'cache-first' ||
+                            fetchPolicy === 'cache-only')) {
+                        result.networkStatus = NetworkStatus.ready;
+                        result.loading = false;
+                    }
+                }
+                else {
+                    result.partial = true;
+                }
+                if (__DEV__ &&
+                    !diff.complete &&
+                    !this.options.partialRefetch &&
+                    !result.loading &&
+                    !result.data &&
+                    !result.error) {
+                    logMissingFieldErrors(diff.missing);
+                }
+            }
+            if (saveAsLastResult) {
+                this.updateLastResult(result);
+            }
+            return result;
+        };
+        ObservableQuery.prototype.isDifferentFromLastResult = function (newResult) {
+            return !this.last || !equal(this.last.result, newResult);
+        };
+        ObservableQuery.prototype.getLast = function (key, variablesMustMatch) {
+            var last = this.last;
+            if (last &&
+                last[key] &&
+                (!variablesMustMatch || equal(last.variables, this.variables))) {
+                return last[key];
+            }
+        };
+        ObservableQuery.prototype.getLastResult = function (variablesMustMatch) {
+            return this.getLast("result", variablesMustMatch);
+        };
+        ObservableQuery.prototype.getLastError = function (variablesMustMatch) {
+            return this.getLast("error", variablesMustMatch);
+        };
+        ObservableQuery.prototype.resetLastResults = function () {
+            delete this.last;
+            this.isTornDown = false;
+        };
+        ObservableQuery.prototype.resetQueryStoreErrors = function () {
+            this.queryManager.resetErrors(this.queryId);
+        };
+        ObservableQuery.prototype.refetch = function (variables) {
+            var _a;
+            var reobserveOptions = {
+                pollInterval: 0,
+            };
+            var fetchPolicy = this.options.fetchPolicy;
+            if (fetchPolicy === 'cache-and-network') {
+                reobserveOptions.fetchPolicy = fetchPolicy;
+            }
+            else if (fetchPolicy === 'no-cache') {
+                reobserveOptions.fetchPolicy = 'no-cache';
+            }
+            else {
+                reobserveOptions.fetchPolicy = 'network-only';
+            }
+            if (__DEV__ && variables && hasOwnProperty$1.call(variables, "variables")) {
+                var queryDef = getQueryDefinition(this.query);
+                var vars = queryDef.variableDefinitions;
+                if (!vars || !vars.some(function (v) { return v.variable.name.value === "variables"; })) {
+                    __DEV__ && invariant$1.warn("Called refetch(".concat(JSON.stringify(variables), ") for query ").concat(((_a = queryDef.name) === null || _a === void 0 ? void 0 : _a.value) || JSON.stringify(queryDef), ", which does not declare a $variables variable.\nDid you mean to call refetch(variables) instead of refetch({ variables })?"));
+                }
+            }
+            if (variables && !equal(this.options.variables, variables)) {
+                reobserveOptions.variables = this.options.variables = __assign$1(__assign$1({}, this.options.variables), variables);
+            }
+            this.queryInfo.resetLastWrite();
+            return this.reobserve(reobserveOptions, NetworkStatus.refetch);
+        };
+        ObservableQuery.prototype.fetchMore = function (fetchMoreOptions) {
+            var _this = this;
+            var combinedOptions = __assign$1(__assign$1({}, (fetchMoreOptions.query ? fetchMoreOptions : __assign$1(__assign$1(__assign$1(__assign$1({}, this.options), { query: this.query }), fetchMoreOptions), { variables: __assign$1(__assign$1({}, this.options.variables), fetchMoreOptions.variables) }))), { fetchPolicy: "no-cache" });
+            var qid = this.queryManager.generateQueryId();
+            var queryInfo = this.queryInfo;
+            var originalNetworkStatus = queryInfo.networkStatus;
+            queryInfo.networkStatus = NetworkStatus.fetchMore;
+            if (combinedOptions.notifyOnNetworkStatusChange) {
+                this.observe();
+            }
+            var updatedQuerySet = new Set();
+            return this.queryManager.fetchQuery(qid, combinedOptions, NetworkStatus.fetchMore).then(function (fetchMoreResult) {
+                _this.queryManager.removeQuery(qid);
+                if (queryInfo.networkStatus === NetworkStatus.fetchMore) {
+                    queryInfo.networkStatus = originalNetworkStatus;
+                }
+                _this.queryManager.cache.batch({
+                    update: function (cache) {
+                        var updateQuery = fetchMoreOptions.updateQuery;
+                        if (updateQuery) {
+                            cache.updateQuery({
+                                query: _this.query,
+                                variables: _this.variables,
+                                returnPartialData: true,
+                                optimistic: false,
+                            }, function (previous) { return updateQuery(previous, {
+                                fetchMoreResult: fetchMoreResult.data,
+                                variables: combinedOptions.variables,
+                            }); });
+                        }
+                        else {
+                            cache.writeQuery({
+                                query: combinedOptions.query,
+                                variables: combinedOptions.variables,
+                                data: fetchMoreResult.data,
+                            });
+                        }
+                    },
+                    onWatchUpdated: function (watch) {
+                        updatedQuerySet.add(watch.query);
+                    },
+                });
+                return fetchMoreResult;
+            }).finally(function () {
+                if (!updatedQuerySet.has(_this.query)) {
+                    reobserveCacheFirst(_this);
+                }
+            });
+        };
+        ObservableQuery.prototype.subscribeToMore = function (options) {
+            var _this = this;
+            var subscription = this.queryManager
+                .startGraphQLSubscription({
+                query: options.document,
+                variables: options.variables,
+                context: options.context,
+            })
+                .subscribe({
+                next: function (subscriptionData) {
+                    var updateQuery = options.updateQuery;
+                    if (updateQuery) {
+                        _this.updateQuery(function (previous, _a) {
+                            var variables = _a.variables;
+                            return updateQuery(previous, {
+                                subscriptionData: subscriptionData,
+                                variables: variables,
+                            });
+                        });
+                    }
+                },
+                error: function (err) {
+                    if (options.onError) {
+                        options.onError(err);
+                        return;
+                    }
+                    __DEV__ && invariant$1.error('Unhandled GraphQL subscription error', err);
+                },
+            });
+            this.subscriptions.add(subscription);
+            return function () {
+                if (_this.subscriptions.delete(subscription)) {
+                    subscription.unsubscribe();
+                }
+            };
+        };
+        ObservableQuery.prototype.setOptions = function (newOptions) {
+            return this.reobserve(newOptions);
+        };
+        ObservableQuery.prototype.setVariables = function (variables) {
+            if (equal(this.variables, variables)) {
+                return this.observers.size
+                    ? this.result()
+                    : Promise.resolve();
+            }
+            this.options.variables = variables;
+            if (!this.observers.size) {
+                return Promise.resolve();
+            }
+            return this.reobserve({
+                fetchPolicy: this.options.initialFetchPolicy,
+                variables: variables,
+            }, NetworkStatus.setVariables);
+        };
+        ObservableQuery.prototype.updateQuery = function (mapFn) {
+            var queryManager = this.queryManager;
+            var result = queryManager.cache.diff({
+                query: this.options.query,
+                variables: this.variables,
+                returnPartialData: true,
+                optimistic: false,
+            }).result;
+            var newResult = mapFn(result, {
+                variables: this.variables,
+            });
+            if (newResult) {
+                queryManager.cache.writeQuery({
+                    query: this.options.query,
+                    data: newResult,
+                    variables: this.variables,
+                });
+                queryManager.broadcastQueries();
+            }
+        };
+        ObservableQuery.prototype.startPolling = function (pollInterval) {
+            this.options.pollInterval = pollInterval;
+            this.updatePolling();
+        };
+        ObservableQuery.prototype.stopPolling = function () {
+            this.options.pollInterval = 0;
+            this.updatePolling();
+        };
+        ObservableQuery.prototype.applyNextFetchPolicy = function (reason, options) {
+            if (options.nextFetchPolicy) {
+                var _a = options.fetchPolicy, fetchPolicy = _a === void 0 ? "cache-first" : _a, _b = options.initialFetchPolicy, initialFetchPolicy = _b === void 0 ? fetchPolicy : _b;
+                if (fetchPolicy === "standby") ;
+                else if (typeof options.nextFetchPolicy === "function") {
+                    options.fetchPolicy = options.nextFetchPolicy(fetchPolicy, {
+                        reason: reason,
+                        options: options,
+                        observable: this,
+                        initialFetchPolicy: initialFetchPolicy,
+                    });
+                }
+                else if (reason === "variables-changed") {
+                    options.fetchPolicy = initialFetchPolicy;
+                }
+                else {
+                    options.fetchPolicy = options.nextFetchPolicy;
+                }
+            }
+            return options.fetchPolicy;
+        };
+        ObservableQuery.prototype.fetch = function (options, newNetworkStatus) {
+            this.queryManager.setObservableQuery(this);
+            return this.queryManager.fetchQueryObservable(this.queryId, options, newNetworkStatus);
+        };
+        ObservableQuery.prototype.updatePolling = function () {
+            var _this = this;
+            if (this.queryManager.ssrMode) {
+                return;
+            }
+            var _a = this, pollingInfo = _a.pollingInfo, pollInterval = _a.options.pollInterval;
+            if (!pollInterval) {
+                if (pollingInfo) {
+                    clearTimeout(pollingInfo.timeout);
+                    delete this.pollingInfo;
+                }
+                return;
+            }
+            if (pollingInfo &&
+                pollingInfo.interval === pollInterval) {
+                return;
+            }
+            __DEV__ ? invariant$1(pollInterval, 'Attempted to start a polling query without a polling interval.') : invariant$1(pollInterval, 10);
+            var info = pollingInfo || (this.pollingInfo = {});
+            info.interval = pollInterval;
+            var maybeFetch = function () {
+                if (_this.pollingInfo) {
+                    if (!isNetworkRequestInFlight(_this.queryInfo.networkStatus)) {
+                        _this.reobserve({
+                            fetchPolicy: "network-only",
+                        }, NetworkStatus.poll).then(poll, poll);
+                    }
+                    else {
+                        poll();
+                    }
+                }
+            };
+            var poll = function () {
+                var info = _this.pollingInfo;
+                if (info) {
+                    clearTimeout(info.timeout);
+                    info.timeout = setTimeout(maybeFetch, info.interval);
+                }
+            };
+            poll();
+        };
+        ObservableQuery.prototype.updateLastResult = function (newResult, variables) {
+            if (variables === void 0) { variables = this.variables; }
+            this.last = __assign$1(__assign$1({}, this.last), { result: this.queryManager.assumeImmutableResults
+                    ? newResult
+                    : cloneDeep(newResult), variables: variables });
+            if (!isNonEmptyArray(newResult.errors)) {
+                delete this.last.error;
+            }
+            return this.last;
+        };
+        ObservableQuery.prototype.reobserve = function (newOptions, newNetworkStatus) {
+            var _this = this;
+            this.isTornDown = false;
+            var useDisposableConcast = newNetworkStatus === NetworkStatus.refetch ||
+                newNetworkStatus === NetworkStatus.fetchMore ||
+                newNetworkStatus === NetworkStatus.poll;
+            var oldVariables = this.options.variables;
+            var oldFetchPolicy = this.options.fetchPolicy;
+            var mergedOptions = compact(this.options, newOptions || {});
+            var options = useDisposableConcast
+                ? mergedOptions
+                : assign(this.options, mergedOptions);
+            if (!useDisposableConcast) {
+                this.updatePolling();
+                if (newOptions &&
+                    newOptions.variables &&
+                    !equal(newOptions.variables, oldVariables) &&
+                    options.fetchPolicy !== "standby" &&
+                    options.fetchPolicy === oldFetchPolicy) {
+                    this.applyNextFetchPolicy("variables-changed", options);
+                    if (newNetworkStatus === void 0) {
+                        newNetworkStatus = NetworkStatus.setVariables;
+                    }
+                }
+            }
+            var variables = options.variables && __assign$1({}, options.variables);
+            var concast = this.fetch(options, newNetworkStatus);
+            var observer = {
+                next: function (result) {
+                    _this.reportResult(result, variables);
+                },
+                error: function (error) {
+                    _this.reportError(error, variables);
+                },
+            };
+            if (!useDisposableConcast) {
+                if (this.concast && this.observer) {
+                    this.concast.removeObserver(this.observer);
+                }
+                this.concast = concast;
+                this.observer = observer;
+            }
+            concast.addObserver(observer);
+            return concast.promise;
+        };
+        ObservableQuery.prototype.observe = function () {
+            this.reportResult(this.getCurrentResult(false), this.variables);
+        };
+        ObservableQuery.prototype.reportResult = function (result, variables) {
+            var lastError = this.getLastError();
+            if (lastError || this.isDifferentFromLastResult(result)) {
+                if (lastError || !result.partial || this.options.returnPartialData) {
+                    this.updateLastResult(result, variables);
+                }
+                iterateObserversSafely(this.observers, 'next', result);
+            }
+        };
+        ObservableQuery.prototype.reportError = function (error, variables) {
+            var errorResult = __assign$1(__assign$1({}, this.getLastResult()), { error: error, errors: error.graphQLErrors, networkStatus: NetworkStatus.error, loading: false });
+            this.updateLastResult(errorResult, variables);
+            iterateObserversSafely(this.observers, 'error', this.last.error = error);
+        };
+        ObservableQuery.prototype.hasObservers = function () {
+            return this.observers.size > 0;
+        };
+        ObservableQuery.prototype.tearDownQuery = function () {
+            if (this.isTornDown)
+                return;
+            if (this.concast && this.observer) {
+                this.concast.removeObserver(this.observer);
+                delete this.concast;
+                delete this.observer;
+            }
+            this.stopPolling();
+            this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
+            this.subscriptions.clear();
+            this.queryManager.stopQuery(this.queryId);
+            this.observers.clear();
+            this.isTornDown = true;
+        };
+        return ObservableQuery;
+    }(Observable));
+    fixObservableSubclass(ObservableQuery);
+    function reobserveCacheFirst(obsQuery) {
+        var _a = obsQuery.options, fetchPolicy = _a.fetchPolicy, nextFetchPolicy = _a.nextFetchPolicy;
+        if (fetchPolicy === "cache-and-network" ||
+            fetchPolicy === "network-only") {
+            return obsQuery.reobserve({
+                fetchPolicy: "cache-first",
+                nextFetchPolicy: function () {
+                    this.nextFetchPolicy = nextFetchPolicy;
+                    if (typeof nextFetchPolicy === "function") {
+                        return nextFetchPolicy.apply(this, arguments);
+                    }
+                    return fetchPolicy;
+                },
+            });
+        }
+        return obsQuery.reobserve();
+    }
+    function defaultSubscriptionObserverErrorCallback(error) {
+        __DEV__ && invariant$1.error('Unhandled error', error.message, error.stack);
+    }
+    function logMissingFieldErrors(missing) {
+        if (__DEV__ && missing) {
+            __DEV__ && invariant$1.debug("Missing cache result fields: ".concat(JSON.stringify(missing)), missing);
+        }
+    }
 
     var LocalState = (function () {
         function LocalState(_a) {
@@ -9710,8 +10331,7 @@ var Ad4mConnectDialog = (function () {
         };
         LocalState.prototype.prepareContext = function (context) {
             var cache = this.cache;
-            return __assign$1(__assign$1({}, context), { cache: cache,
-                getCacheKey: function (obj) {
+            return __assign$1(__assign$1({}, context), { cache: cache, getCacheKey: function (obj) {
                     return cache.identify(obj);
                 } });
         };
@@ -9775,8 +10395,7 @@ var Ad4mConnectDialog = (function () {
                     _a = this, cache = _a.cache, client = _a.client;
                     execContext = {
                         fragmentMap: fragmentMap,
-                        context: __assign$1(__assign$1({}, context), { cache: cache,
-                            client: client }),
+                        context: __assign$1(__assign$1({}, context), { cache: cache, client: client }),
                         variables: variables,
                         fragmentMatcher: fragmentMatcher,
                         defaultOperationType: defaultOperationType,
@@ -9818,7 +10437,7 @@ var Ad4mConnectDialog = (function () {
                             }
                             else {
                                 fragment = fragmentMap[selection.name.value];
-                                process.env.NODE_ENV === "production" ? invariant$1(fragment, 11) : invariant$1(fragment, "No fragment named " + selection.name.value);
+                                __DEV__ ? invariant$1(fragment, "No fragment named ".concat(selection.name.value)) : invariant$1(fragment, 9);
                             }
                             if (fragment && fragment.typeCondition) {
                                 typeCondition = fragment.typeCondition.name.value;
@@ -9927,16 +10546,17 @@ var Ad4mConnectDialog = (function () {
         }
     }
     var QueryInfo = (function () {
-        function QueryInfo(cache) {
-            this.cache = cache;
+        function QueryInfo(queryManager, queryId) {
+            if (queryId === void 0) { queryId = queryManager.generateQueryId(); }
+            this.queryId = queryId;
             this.listeners = new Set();
             this.document = null;
             this.lastRequestId = 1;
             this.subscriptions = new Set();
             this.stopped = false;
             this.dirty = false;
-            this.diff = null;
             this.observableQuery = null;
+            var cache = this.cache = queryManager.cache;
             if (!destructiveMethodCounts.has(cache)) {
                 destructiveMethodCounts.set(cache, 0);
                 wrapDestructiveCacheMethod(cache, "evict");
@@ -9952,7 +10572,7 @@ var Ad4mConnectDialog = (function () {
                 networkStatus = NetworkStatus.setVariables;
             }
             if (!equal(query.variables, this.variables)) {
-                this.diff = null;
+                this.lastDiff = void 0;
             }
             Object.assign(this, {
                 document: query.document,
@@ -9971,28 +10591,47 @@ var Ad4mConnectDialog = (function () {
         };
         QueryInfo.prototype.reset = function () {
             cancelNotifyTimeout(this);
-            this.diff = null;
+            this.lastDiff = void 0;
             this.dirty = false;
         };
         QueryInfo.prototype.getDiff = function (variables) {
             if (variables === void 0) { variables = this.variables; }
-            if (this.diff && equal(variables, this.variables)) {
-                return this.diff;
+            var options = this.getDiffOptions(variables);
+            if (this.lastDiff && equal(options, this.lastDiff.options)) {
+                return this.lastDiff.diff;
             }
             this.updateWatch(this.variables = variables);
-            return this.diff = this.cache.diff({
+            var oq = this.observableQuery;
+            if (oq && oq.options.fetchPolicy === "no-cache") {
+                return { complete: false };
+            }
+            var diff = this.cache.diff(options);
+            this.updateLastDiff(diff, options);
+            return diff;
+        };
+        QueryInfo.prototype.updateLastDiff = function (diff, options) {
+            this.lastDiff = diff ? {
+                diff: diff,
+                options: options || this.getDiffOptions(),
+            } : void 0;
+        };
+        QueryInfo.prototype.getDiffOptions = function (variables) {
+            var _a;
+            if (variables === void 0) { variables = this.variables; }
+            return {
                 query: this.document,
                 variables: variables,
                 returnPartialData: true,
                 optimistic: true,
-            });
+                canonizeResults: (_a = this.observableQuery) === null || _a === void 0 ? void 0 : _a.options.canonizeResults,
+            };
         };
         QueryInfo.prototype.setDiff = function (diff) {
             var _this = this;
-            var oldDiff = this.diff;
-            this.diff = diff;
+            var oldDiff = this.lastDiff && this.lastDiff.diff;
+            this.updateLastDiff(diff);
             if (!this.dirty &&
-                (diff && diff.result) !== (oldDiff && oldDiff.result)) {
+                !equal(oldDiff && oldDiff.result, diff && diff.result)) {
                 this.dirty = true;
                 if (!this.notifyTimeout) {
                     this.notifyTimeout = setTimeout(function () { return _this.notify(); }, 0);
@@ -10010,11 +10649,12 @@ var Ad4mConnectDialog = (function () {
             if (oq) {
                 oq["queryInfo"] = this;
                 this.listeners.add(this.oqListener = function () {
-                    if (_this.getDiff().fromOptimisticTransaction) {
+                    var diff = _this.getDiff();
+                    if (diff.fromOptimisticTransaction) {
                         oq["observe"]();
                     }
                     else {
-                        oq.reobserve();
+                        reobserveCacheFirst(oq);
                     }
                 });
             }
@@ -10049,7 +10689,7 @@ var Ad4mConnectDialog = (function () {
                 this.stopped = true;
                 this.reset();
                 this.cancel();
-                delete this.cancel;
+                this.cancel = QueryInfo.prototype.cancel;
                 this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
                 var oq = this.observableQuery;
                 if (oq)
@@ -10064,17 +10704,15 @@ var Ad4mConnectDialog = (function () {
             if (oq && oq.options.fetchPolicy === "no-cache") {
                 return;
             }
+            var watchOptions = __assign$1(__assign$1({}, this.getDiffOptions(variables)), { watcher: this, callback: function (diff) { return _this.setDiff(diff); } });
             if (!this.lastWatch ||
-                this.lastWatch.query !== this.document ||
-                !equal(variables, this.lastWatch.variables)) {
+                !equal(watchOptions, this.lastWatch)) {
                 this.cancel();
-                this.cancel = this.cache.watch(this.lastWatch = {
-                    query: this.document,
-                    variables: variables,
-                    optimistic: true,
-                    callback: function (diff) { return _this.setDiff(diff); },
-                });
+                this.cancel = this.cache.watch(this.lastWatch = watchOptions);
             }
+        };
+        QueryInfo.prototype.resetLastWrite = function () {
+            this.lastWrite = void 0;
         };
         QueryInfo.prototype.shouldWrite = function (result, variables) {
             var lastWrite = this.lastWrite;
@@ -10083,14 +10721,14 @@ var Ad4mConnectDialog = (function () {
                 equal(variables, lastWrite.variables) &&
                 equal(result.data, lastWrite.result.data));
         };
-        QueryInfo.prototype.markResult = function (result, options, allowCacheWrite) {
+        QueryInfo.prototype.markResult = function (result, options, cacheWriteBehavior) {
             var _this = this;
             this.graphQLErrors = isNonEmptyArray(result.errors) ? result.errors : [];
             this.reset();
             if (options.fetchPolicy === 'no-cache') {
-                this.diff = { result: result.data, complete: true };
+                this.updateLastDiff({ result: result.data, complete: true }, this.getDiffOptions(options.variables));
             }
-            else if (!this.stopped && allowCacheWrite) {
+            else if (cacheWriteBehavior !== 0) {
                 if (shouldWriteResult(result, options.errorPolicy)) {
                     this.cache.performTransaction(function (cache) {
                         if (_this.shouldWrite(result, options.variables)) {
@@ -10098,6 +10736,7 @@ var Ad4mConnectDialog = (function () {
                                 query: _this.document,
                                 data: result.data,
                                 variables: options.variables,
+                                overwrite: cacheWriteBehavior === 1,
                             });
                             _this.lastWrite = {
                                 result: result,
@@ -10106,21 +10745,18 @@ var Ad4mConnectDialog = (function () {
                             };
                         }
                         else {
-                            if (_this.diff && _this.diff.complete) {
-                                result.data = _this.diff.result;
+                            if (_this.lastDiff &&
+                                _this.lastDiff.diff.complete) {
+                                result.data = _this.lastDiff.diff.result;
                                 return;
                             }
                         }
-                        var diff = cache.diff({
-                            query: _this.document,
-                            variables: options.variables,
-                            returnPartialData: true,
-                            optimistic: true,
-                        });
+                        var diffOptions = _this.getDiffOptions(options.variables);
+                        var diff = cache.diff(diffOptions);
                         if (!_this.stopped) {
                             _this.updateWatch(options.variables);
                         }
-                        _this.diff = diff;
+                        _this.updateLastDiff(diff, diffOptions);
                         if (diff.complete) {
                             result.data = diff.result;
                         }
@@ -10160,10 +10796,10 @@ var Ad4mConnectDialog = (function () {
         return writeWithErrors;
     }
 
-    var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
     var QueryManager = (function () {
         function QueryManager(_a) {
-            var cache = _a.cache, link = _a.link, _b = _a.queryDeduplication, queryDeduplication = _b === void 0 ? false : _b, onBroadcast = _a.onBroadcast, _c = _a.ssrMode, ssrMode = _c === void 0 ? false : _c, _d = _a.clientAwareness, clientAwareness = _d === void 0 ? {} : _d, localState = _a.localState, assumeImmutableResults = _a.assumeImmutableResults;
+            var cache = _a.cache, link = _a.link, defaultOptions = _a.defaultOptions, _b = _a.queryDeduplication, queryDeduplication = _b === void 0 ? false : _b, onBroadcast = _a.onBroadcast, _c = _a.ssrMode, ssrMode = _c === void 0 ? false : _c, _d = _a.clientAwareness, clientAwareness = _d === void 0 ? {} : _d, localState = _a.localState, assumeImmutableResults = _a.assumeImmutableResults;
             this.clientAwareness = {};
             this.queries = new Map();
             this.fetchCancelFns = new Map();
@@ -10174,6 +10810,7 @@ var Ad4mConnectDialog = (function () {
             this.inFlightLinkObservables = new Map();
             this.cache = cache;
             this.link = link;
+            this.defaultOptions = defaultOptions || Object.create(null);
             this.queryDeduplication = queryDeduplication;
             this.clientAwareness = clientAwareness;
             this.localState = localState || new LocalState({ cache: cache });
@@ -10188,29 +10825,32 @@ var Ad4mConnectDialog = (function () {
             this.queries.forEach(function (_info, queryId) {
                 _this.stopQueryNoBroadcast(queryId);
             });
-            this.cancelPendingFetches(process.env.NODE_ENV === "production" ? new InvariantError(12) : new InvariantError('QueryManager stopped while query was in flight'));
+            this.cancelPendingFetches(__DEV__ ? new InvariantError('QueryManager stopped while query was in flight') : new InvariantError(11));
         };
         QueryManager.prototype.cancelPendingFetches = function (error) {
             this.fetchCancelFns.forEach(function (cancel) { return cancel(error); });
             this.fetchCancelFns.clear();
         };
         QueryManager.prototype.mutate = function (_a) {
-            var mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, updateQueries = _a.updateQueries, _b = _a.refetchQueries, refetchQueries = _b === void 0 ? [] : _b, _c = _a.awaitRefetchQueries, awaitRefetchQueries = _c === void 0 ? false : _c, updateWithProxyFn = _a.update, _d = _a.errorPolicy, errorPolicy = _d === void 0 ? 'none' : _d, fetchPolicy = _a.fetchPolicy, _e = _a.context, context = _e === void 0 ? {} : _e;
+            var _b, _c;
+            var mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, updateQueries = _a.updateQueries, _d = _a.refetchQueries, refetchQueries = _d === void 0 ? [] : _d, _e = _a.awaitRefetchQueries, awaitRefetchQueries = _e === void 0 ? false : _e, updateWithProxyFn = _a.update, onQueryUpdated = _a.onQueryUpdated, _f = _a.fetchPolicy, fetchPolicy = _f === void 0 ? ((_b = this.defaultOptions.mutate) === null || _b === void 0 ? void 0 : _b.fetchPolicy) || "network-only" : _f, _g = _a.errorPolicy, errorPolicy = _g === void 0 ? ((_c = this.defaultOptions.mutate) === null || _c === void 0 ? void 0 : _c.errorPolicy) || "none" : _g, keepRootFields = _a.keepRootFields, context = _a.context;
             return __awaiter(this, void 0, void 0, function () {
                 var mutationId, mutationStoreValue, self;
-                return __generator(this, function (_f) {
-                    switch (_f.label) {
+                return __generator(this, function (_h) {
+                    switch (_h.label) {
                         case 0:
-                            process.env.NODE_ENV === "production" ? invariant$1(mutation, 13) : invariant$1(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.');
-                            process.env.NODE_ENV === "production" ? invariant$1(!fetchPolicy || fetchPolicy === 'no-cache', 14) : invariant$1(!fetchPolicy || fetchPolicy === 'no-cache', "Mutations only support a 'no-cache' fetchPolicy. If you don't want to disable the cache, remove your fetchPolicy setting to proceed with the default mutation behavior.");
+                            __DEV__ ? invariant$1(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.') : invariant$1(mutation, 12);
+                            __DEV__ ? invariant$1(fetchPolicy === 'network-only' ||
+                                fetchPolicy === 'no-cache', "Mutations support only 'network-only' or 'no-cache' fetchPolicy strings. The default `network-only` behavior automatically writes mutation results to the cache. Passing `no-cache` skips the cache write.") : invariant$1(fetchPolicy === 'network-only' ||
+                                fetchPolicy === 'no-cache', 13);
                             mutationId = this.generateMutationId();
                             mutation = this.transform(mutation).document;
                             variables = this.getVariables(mutation, variables);
                             if (!this.transform(mutation).hasClientExports) return [3, 2];
                             return [4, this.localState.addExportedVariables(mutation, variables, context)];
                         case 1:
-                            variables = _f.sent();
-                            _f.label = 2;
+                            variables = (_h.sent());
+                            _h.label = 2;
                         case 2:
                             mutationStoreValue = this.mutationStore &&
                                 (this.mutationStore[mutationId] = {
@@ -10224,48 +10864,55 @@ var Ad4mConnectDialog = (function () {
                                     mutationId: mutationId,
                                     document: mutation,
                                     variables: variables,
+                                    fetchPolicy: fetchPolicy,
                                     errorPolicy: errorPolicy,
+                                    context: context,
                                     updateQueries: updateQueries,
                                     update: updateWithProxyFn,
+                                    keepRootFields: keepRootFields,
                                 });
                             }
                             this.broadcastQueries();
                             self = this;
                             return [2, new Promise(function (resolve, reject) {
-                                    var storeResult;
-                                    var error;
-                                    self.getObservableFromLink(mutation, __assign$1(__assign$1({}, context), { optimisticResponse: optimisticResponse }), variables, false).subscribe({
-                                        next: function (result) {
-                                            if (graphQLResultHasError(result) && errorPolicy === 'none') {
-                                                error = new ApolloError({
-                                                    graphQLErrors: result.errors,
-                                                });
-                                                return;
-                                            }
-                                            if (mutationStoreValue) {
-                                                mutationStoreValue.loading = false;
-                                                mutationStoreValue.error = null;
-                                            }
-                                            if (fetchPolicy !== 'no-cache') {
-                                                try {
-                                                    self.markMutationResult({
-                                                        mutationId: mutationId,
-                                                        result: result,
-                                                        document: mutation,
-                                                        variables: variables,
-                                                        errorPolicy: errorPolicy,
-                                                        updateQueries: updateQueries,
-                                                        update: updateWithProxyFn,
-                                                    });
-                                                }
-                                                catch (e) {
-                                                    error = new ApolloError({
-                                                        networkError: e,
-                                                    });
-                                                    return;
-                                                }
-                                            }
-                                            storeResult = result;
+                                    return asyncMap(self.getObservableFromLink(mutation, __assign$1(__assign$1({}, context), { optimisticResponse: optimisticResponse }), variables, false), function (result) {
+                                        if (graphQLResultHasError(result) && errorPolicy === 'none') {
+                                            throw new ApolloError({
+                                                graphQLErrors: result.errors,
+                                            });
+                                        }
+                                        if (mutationStoreValue) {
+                                            mutationStoreValue.loading = false;
+                                            mutationStoreValue.error = null;
+                                        }
+                                        var storeResult = __assign$1({}, result);
+                                        if (typeof refetchQueries === "function") {
+                                            refetchQueries = refetchQueries(storeResult);
+                                        }
+                                        if (errorPolicy === 'ignore' &&
+                                            graphQLResultHasError(storeResult)) {
+                                            delete storeResult.errors;
+                                        }
+                                        return self.markMutationResult({
+                                            mutationId: mutationId,
+                                            result: storeResult,
+                                            document: mutation,
+                                            variables: variables,
+                                            fetchPolicy: fetchPolicy,
+                                            errorPolicy: errorPolicy,
+                                            context: context,
+                                            update: updateWithProxyFn,
+                                            updateQueries: updateQueries,
+                                            awaitRefetchQueries: awaitRefetchQueries,
+                                            refetchQueries: refetchQueries,
+                                            removeOptimistic: optimisticResponse ? mutationId : void 0,
+                                            onQueryUpdated: onQueryUpdated,
+                                            keepRootFields: keepRootFields,
+                                        });
+                                    }).subscribe({
+                                        next: function (storeResult) {
+                                            self.broadcastQueries();
+                                            resolve(storeResult);
                                         },
                                         error: function (err) {
                                             if (mutationStoreValue) {
@@ -10276,60 +10923,9 @@ var Ad4mConnectDialog = (function () {
                                                 self.cache.removeOptimistic(mutationId);
                                             }
                                             self.broadcastQueries();
-                                            reject(new ApolloError({
+                                            reject(err instanceof ApolloError ? err : new ApolloError({
                                                 networkError: err,
                                             }));
-                                        },
-                                        complete: function () {
-                                            if (error && mutationStoreValue) {
-                                                mutationStoreValue.loading = false;
-                                                mutationStoreValue.error = error;
-                                            }
-                                            if (optimisticResponse) {
-                                                self.cache.removeOptimistic(mutationId);
-                                            }
-                                            self.broadcastQueries();
-                                            if (error) {
-                                                reject(error);
-                                                return;
-                                            }
-                                            if (typeof refetchQueries === 'function') {
-                                                refetchQueries = refetchQueries(storeResult);
-                                            }
-                                            var refetchQueryPromises = [];
-                                            if (isNonEmptyArray(refetchQueries)) {
-                                                refetchQueries.forEach(function (refetchQuery) {
-                                                    if (typeof refetchQuery === 'string') {
-                                                        self.queries.forEach(function (_a) {
-                                                            var observableQuery = _a.observableQuery;
-                                                            if (observableQuery &&
-                                                                observableQuery.hasObservers() &&
-                                                                observableQuery.queryName === refetchQuery) {
-                                                                refetchQueryPromises.push(observableQuery.refetch());
-                                                            }
-                                                        });
-                                                    }
-                                                    else {
-                                                        var queryOptions = {
-                                                            query: refetchQuery.query,
-                                                            variables: refetchQuery.variables,
-                                                            fetchPolicy: 'network-only',
-                                                        };
-                                                        if (refetchQuery.context) {
-                                                            queryOptions.context = refetchQuery.context;
-                                                        }
-                                                        refetchQueryPromises.push(self.query(queryOptions));
-                                                    }
-                                                });
-                                            }
-                                            Promise.all(awaitRefetchQueries ? refetchQueryPromises : []).then(function () {
-                                                if (errorPolicy === 'ignore' &&
-                                                    storeResult &&
-                                                    graphQLResultHasError(storeResult)) {
-                                                    delete storeResult.errors;
-                                                }
-                                                resolve(storeResult);
-                                            }, reject);
                                         },
                                     });
                                 })];
@@ -10340,19 +10936,22 @@ var Ad4mConnectDialog = (function () {
         QueryManager.prototype.markMutationResult = function (mutation, cache) {
             var _this = this;
             if (cache === void 0) { cache = this.cache; }
-            if (shouldWriteResult(mutation.result, mutation.errorPolicy)) {
-                var cacheWrites_1 = [{
-                        result: mutation.result.data,
-                        dataId: 'ROOT_MUTATION',
-                        query: mutation.document,
-                        variables: mutation.variables,
-                    }];
+            var result = mutation.result;
+            var cacheWrites = [];
+            var skipCache = mutation.fetchPolicy === "no-cache";
+            if (!skipCache && shouldWriteResult(result, mutation.errorPolicy)) {
+                cacheWrites.push({
+                    result: result.data,
+                    dataId: 'ROOT_MUTATION',
+                    query: mutation.document,
+                    variables: mutation.variables,
+                });
                 var updateQueries_1 = mutation.updateQueries;
                 if (updateQueries_1) {
                     this.queries.forEach(function (_a, queryId) {
                         var observableQuery = _a.observableQuery;
                         var queryName = observableQuery && observableQuery.queryName;
-                        if (!queryName || !hasOwnProperty$1.call(updateQueries_1, queryName)) {
+                        if (!queryName || !hasOwnProperty.call(updateQueries_1, queryName)) {
                             return;
                         }
                         var updater = updateQueries_1[queryName];
@@ -10365,12 +10964,12 @@ var Ad4mConnectDialog = (function () {
                         }), currentQueryResult = _c.result, complete = _c.complete;
                         if (complete && currentQueryResult) {
                             var nextQueryResult = updater(currentQueryResult, {
-                                mutationResult: mutation.result,
+                                mutationResult: result,
                                 queryName: document && getOperationName(document) || void 0,
                                 queryVariables: variables,
                             });
                             if (nextQueryResult) {
-                                cacheWrites_1.push({
+                                cacheWrites.push({
                                     result: nextQueryResult,
                                     dataId: 'ROOT_QUERY',
                                     query: document,
@@ -10380,14 +10979,57 @@ var Ad4mConnectDialog = (function () {
                         }
                     });
                 }
-                cache.performTransaction(function (c) {
-                    cacheWrites_1.forEach(function (write) { return c.write(write); });
-                    var update = mutation.update;
-                    if (update) {
-                        update(c, mutation.result);
-                    }
-                }, null);
             }
+            if (cacheWrites.length > 0 ||
+                mutation.refetchQueries ||
+                mutation.update ||
+                mutation.onQueryUpdated ||
+                mutation.removeOptimistic) {
+                var results_1 = [];
+                this.refetchQueries({
+                    updateCache: function (cache) {
+                        if (!skipCache) {
+                            cacheWrites.forEach(function (write) { return cache.write(write); });
+                        }
+                        var update = mutation.update;
+                        if (update) {
+                            if (!skipCache) {
+                                var diff = cache.diff({
+                                    id: "ROOT_MUTATION",
+                                    query: _this.transform(mutation.document).asQuery,
+                                    variables: mutation.variables,
+                                    optimistic: false,
+                                    returnPartialData: true,
+                                });
+                                if (diff.complete) {
+                                    result = __assign$1(__assign$1({}, result), { data: diff.result });
+                                }
+                            }
+                            update(cache, result, {
+                                context: mutation.context,
+                                variables: mutation.variables,
+                            });
+                        }
+                        if (!skipCache && !mutation.keepRootFields) {
+                            cache.modify({
+                                id: 'ROOT_MUTATION',
+                                fields: function (value, _a) {
+                                    var fieldName = _a.fieldName, DELETE = _a.DELETE;
+                                    return fieldName === "__typename" ? value : DELETE;
+                                },
+                            });
+                        }
+                    },
+                    include: mutation.refetchQueries,
+                    optimistic: false,
+                    removeOptimistic: mutation.removeOptimistic,
+                    onQueryUpdated: mutation.onQueryUpdated || null,
+                }).forEach(function (result) { return results_1.push(result); });
+                if (mutation.awaitRefetchQueries || mutation.onQueryUpdated) {
+                    return Promise.all(results_1).then(function () { return result; });
+                }
+            }
+            return Promise.resolve(result);
         };
         QueryManager.prototype.markMutationOptimistic = function (optimisticResponse, mutation) {
             var _this = this;
@@ -10399,7 +11041,7 @@ var Ad4mConnectDialog = (function () {
                     _this.markMutationResult(__assign$1(__assign$1({}, mutation), { result: { data: data } }), cache);
                 }
                 catch (error) {
-                    process.env.NODE_ENV === "production" || invariant$1.error(error);
+                    __DEV__ && invariant$1.error(error);
                 }
             }, mutation.mutationId);
         };
@@ -10439,6 +11081,13 @@ var Ad4mConnectDialog = (function () {
                     clientQuery: clientQuery,
                     serverQuery: serverQuery,
                     defaultVars: getDefaultValues(getOperationDefinition(transformed)),
+                    asQuery: __assign$1(__assign$1({}, transformed), { definitions: transformed.definitions.map(function (def) {
+                            if (def.kind === "OperationDefinition" &&
+                                def.operation !== "query") {
+                                return __assign$1(__assign$1({}, def), { operation: "query" });
+                            }
+                            return def;
+                        }) })
                 };
                 var add = function (doc) {
                     if (doc && !transformCache.has(doc)) {
@@ -10460,7 +11109,7 @@ var Ad4mConnectDialog = (function () {
             if (typeof options.notifyOnNetworkStatusChange === 'undefined') {
                 options.notifyOnNetworkStatusChange = false;
             }
-            var queryInfo = new QueryInfo(this.cache);
+            var queryInfo = new QueryInfo(this);
             var observable = new ObservableQuery({
                 queryManager: this,
                 queryInfo: queryInfo,
@@ -10468,20 +11117,20 @@ var Ad4mConnectDialog = (function () {
             });
             this.queries.set(observable.queryId, queryInfo);
             queryInfo.init({
-                document: options.query,
+                document: observable.query,
                 observableQuery: observable,
-                variables: options.variables,
+                variables: observable.variables,
             });
             return observable;
         };
-        QueryManager.prototype.query = function (options) {
+        QueryManager.prototype.query = function (options, queryId) {
             var _this = this;
-            process.env.NODE_ENV === "production" ? invariant$1(options.query, 15) : invariant$1(options.query, 'query option is required. You must specify your GraphQL document ' +
-                'in the query option.');
-            process.env.NODE_ENV === "production" ? invariant$1(options.query.kind === 'Document', 16) : invariant$1(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.');
-            process.env.NODE_ENV === "production" ? invariant$1(!options.returnPartialData, 17) : invariant$1(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.');
-            process.env.NODE_ENV === "production" ? invariant$1(!options.pollInterval, 18) : invariant$1(!options.pollInterval, 'pollInterval option only supported on watchQuery.');
-            var queryId = this.generateQueryId();
+            if (queryId === void 0) { queryId = this.generateQueryId(); }
+            __DEV__ ? invariant$1(options.query, 'query option is required. You must specify your GraphQL document ' +
+                'in the query option.') : invariant$1(options.query, 14);
+            __DEV__ ? invariant$1(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.') : invariant$1(options.query.kind === 'Document', 15);
+            __DEV__ ? invariant$1(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.') : invariant$1(!options.returnPartialData, 16);
+            __DEV__ ? invariant$1(!options.pollInterval, 'pollInterval option only supported on watchQuery.') : invariant$1(!options.pollInterval, 17);
             return this.fetchQuery(queryId, options).finally(function () { return _this.stopQuery(queryId); });
         };
         QueryManager.prototype.generateQueryId = function () {
@@ -10502,8 +11151,11 @@ var Ad4mConnectDialog = (function () {
             if (queryInfo)
                 queryInfo.stop();
         };
-        QueryManager.prototype.clearStore = function () {
-            this.cancelPendingFetches(process.env.NODE_ENV === "production" ? new InvariantError(19) : new InvariantError('Store reset while query was in flight (not completed in link chain)'));
+        QueryManager.prototype.clearStore = function (options) {
+            if (options === void 0) { options = {
+                discardWatches: true,
+            }; }
+            this.cancelPendingFetches(__DEV__ ? new InvariantError('Store reset while query was in flight (not completed in link chain)') : new InvariantError(18));
             this.queries.forEach(function (queryInfo) {
                 if (queryInfo.observableQuery) {
                     queryInfo.networkStatus = NetworkStatus.loading;
@@ -10515,29 +11167,89 @@ var Ad4mConnectDialog = (function () {
             if (this.mutationStore) {
                 this.mutationStore = Object.create(null);
             }
-            return this.cache.reset();
+            return this.cache.reset(options);
         };
-        QueryManager.prototype.resetStore = function () {
+        QueryManager.prototype.getObservableQueries = function (include) {
             var _this = this;
-            return this.clearStore().then(function () {
-                return _this.reFetchObservableQueries();
+            if (include === void 0) { include = "active"; }
+            var queries = new Map();
+            var queryNamesAndDocs = new Map();
+            var legacyQueryOptions = new Set();
+            if (Array.isArray(include)) {
+                include.forEach(function (desc) {
+                    if (typeof desc === "string") {
+                        queryNamesAndDocs.set(desc, false);
+                    }
+                    else if (isDocumentNode(desc)) {
+                        queryNamesAndDocs.set(_this.transform(desc).document, false);
+                    }
+                    else if (isNonNullObject(desc) && desc.query) {
+                        legacyQueryOptions.add(desc);
+                    }
+                });
+            }
+            this.queries.forEach(function (_a, queryId) {
+                var oq = _a.observableQuery, document = _a.document;
+                if (oq) {
+                    if (include === "all") {
+                        queries.set(queryId, oq);
+                        return;
+                    }
+                    var queryName = oq.queryName, fetchPolicy = oq.options.fetchPolicy;
+                    if (fetchPolicy === "standby" ||
+                        (include === "active" && !oq.hasObservers())) {
+                        return;
+                    }
+                    if (include === "active" ||
+                        (queryName && queryNamesAndDocs.has(queryName)) ||
+                        (document && queryNamesAndDocs.has(document))) {
+                        queries.set(queryId, oq);
+                        if (queryName)
+                            queryNamesAndDocs.set(queryName, true);
+                        if (document)
+                            queryNamesAndDocs.set(document, true);
+                    }
+                }
             });
+            if (legacyQueryOptions.size) {
+                legacyQueryOptions.forEach(function (options) {
+                    var queryId = makeUniqueId("legacyOneTimeQuery");
+                    var queryInfo = _this.getQuery(queryId).init({
+                        document: options.query,
+                        variables: options.variables,
+                    });
+                    var oq = new ObservableQuery({
+                        queryManager: _this,
+                        queryInfo: queryInfo,
+                        options: __assign$1(__assign$1({}, options), { fetchPolicy: "network-only" }),
+                    });
+                    invariant$1(oq.queryId === queryId);
+                    queryInfo.setObservableQuery(oq);
+                    queries.set(queryId, oq);
+                });
+            }
+            if (__DEV__ && queryNamesAndDocs.size) {
+                queryNamesAndDocs.forEach(function (included, nameOrDoc) {
+                    if (!included) {
+                        __DEV__ && invariant$1.warn("Unknown query ".concat(typeof nameOrDoc === "string" ? "named " : "").concat(JSON.stringify(nameOrDoc, null, 2), " requested in refetchQueries options.include array"));
+                    }
+                });
+            }
+            return queries;
         };
         QueryManager.prototype.reFetchObservableQueries = function (includeStandby) {
             var _this = this;
             if (includeStandby === void 0) { includeStandby = false; }
             var observableQueryPromises = [];
-            this.queries.forEach(function (_a, queryId) {
-                var observableQuery = _a.observableQuery;
-                if (observableQuery && observableQuery.hasObservers()) {
-                    var fetchPolicy = observableQuery.options.fetchPolicy;
-                    observableQuery.resetLastResults();
-                    if (fetchPolicy !== 'cache-only' &&
-                        (includeStandby || fetchPolicy !== 'standby')) {
-                        observableQueryPromises.push(observableQuery.refetch());
-                    }
-                    _this.getQuery(queryId).setDiff(null);
+            this.getObservableQueries(includeStandby ? "all" : "active").forEach(function (observableQuery, queryId) {
+                var fetchPolicy = observableQuery.options.fetchPolicy;
+                observableQuery.resetLastResults();
+                if (includeStandby ||
+                    (fetchPolicy !== "standby" &&
+                        fetchPolicy !== "cache-only")) {
+                    observableQueryPromises.push(observableQuery.refetch());
                 }
+                _this.getQuery(queryId).setDiff(null);
             });
             this.broadcastQueries();
             return Promise.all(observableQueryPromises);
@@ -10551,7 +11263,7 @@ var Ad4mConnectDialog = (function () {
             query = this.transform(query).document;
             variables = this.getVariables(query, variables);
             var makeObservable = function (variables) {
-                return _this.getObservableFromLink(query, context, variables, false).map(function (result) {
+                return _this.getObservableFromLink(query, context, variables).map(function (result) {
                     if (fetchPolicy !== 'no-cache') {
                         if (shouldWriteResult(result, errorPolicy)) {
                             _this.cache.write({
@@ -10591,8 +11303,10 @@ var Ad4mConnectDialog = (function () {
         };
         QueryManager.prototype.removeQuery = function (queryId) {
             this.fetchCancelFns.delete(queryId);
-            this.getQuery(queryId).stop();
-            this.queries.delete(queryId);
+            if (this.queries.has(queryId)) {
+                this.getQuery(queryId).stop();
+                this.queries.delete(queryId);
+            }
         };
         QueryManager.prototype.broadcastQueries = function () {
             if (this.onBroadcast)
@@ -10620,7 +11334,7 @@ var Ad4mConnectDialog = (function () {
                 if (deduplication) {
                     var byVariables_1 = inFlightLinkObservables_1.get(serverQuery) || new Map();
                     inFlightLinkObservables_1.set(serverQuery, byVariables_1);
-                    var varJson_1 = JSON.stringify(variables);
+                    var varJson_1 = canonicalStringify(variables);
                     observable = byVariables_1.get(varJson_1);
                     if (!observable) {
                         var concast = new Concast([
@@ -10660,7 +11374,7 @@ var Ad4mConnectDialog = (function () {
             }
             return observable;
         };
-        QueryManager.prototype.getResultsFromLink = function (queryInfo, allowCacheWrite, options) {
+        QueryManager.prototype.getResultsFromLink = function (queryInfo, cacheWriteBehavior, options) {
             var requestId = queryInfo.lastRequestId = this.generateRequestId();
             return asyncMap(this.getObservableFromLink(queryInfo.document, options.context, options.variables), function (result) {
                 var hasErrors = isNonEmptyArray(result.errors);
@@ -10670,16 +11384,17 @@ var Ad4mConnectDialog = (function () {
                             graphQLErrors: result.errors,
                         }));
                     }
-                    queryInfo.markResult(result, options, allowCacheWrite);
+                    queryInfo.markResult(result, options, cacheWriteBehavior);
                     queryInfo.markReady();
                 }
                 var aqr = {
                     data: result.data,
                     loading: false,
-                    networkStatus: queryInfo.networkStatus || NetworkStatus.ready,
+                    networkStatus: NetworkStatus.ready,
                 };
                 if (hasErrors && options.errorPolicy !== "ignore") {
                     aqr.errors = result.errors;
+                    aqr.networkStatus = NetworkStatus.error;
                 }
                 return aqr;
             }, function (networkError) {
@@ -10698,22 +11413,8 @@ var Ad4mConnectDialog = (function () {
             var query = this.transform(options.query).document;
             var variables = this.getVariables(query, options.variables);
             var queryInfo = this.getQuery(queryId);
-            var oldNetworkStatus = queryInfo.networkStatus;
-            var _a = options.fetchPolicy, fetchPolicy = _a === void 0 ? "cache-first" : _a, _b = options.errorPolicy, errorPolicy = _b === void 0 ? "none" : _b, _c = options.returnPartialData, returnPartialData = _c === void 0 ? false : _c, _d = options.notifyOnNetworkStatusChange, notifyOnNetworkStatusChange = _d === void 0 ? false : _d, _e = options.context, context = _e === void 0 ? {} : _e;
-            var mightUseNetwork = fetchPolicy === "cache-first" ||
-                fetchPolicy === "cache-and-network" ||
-                fetchPolicy === "network-only" ||
-                fetchPolicy === "no-cache";
-            if (mightUseNetwork &&
-                notifyOnNetworkStatusChange &&
-                typeof oldNetworkStatus === "number" &&
-                oldNetworkStatus !== networkStatus &&
-                isNetworkRequestInFlight(networkStatus)) {
-                if (fetchPolicy !== "cache-first") {
-                    fetchPolicy = "cache-and-network";
-                }
-                returnPartialData = true;
-            }
+            var defaults = this.defaultOptions.watchQuery;
+            var _a = options.fetchPolicy, fetchPolicy = _a === void 0 ? defaults && defaults.fetchPolicy || "cache-first" : _a, _b = options.errorPolicy, errorPolicy = _b === void 0 ? defaults && defaults.errorPolicy || "none" : _b, _c = options.returnPartialData, returnPartialData = _c === void 0 ? false : _c, _d = options.notifyOnNetworkStatusChange, notifyOnNetworkStatusChange = _d === void 0 ? false : _d, _e = options.context, context = _e === void 0 ? {} : _e;
             var normalized = Object.assign({}, options, {
                 query: query,
                 variables: variables,
@@ -10725,31 +11426,99 @@ var Ad4mConnectDialog = (function () {
             });
             var fromVariables = function (variables) {
                 normalized.variables = variables;
-                return _this.fetchQueryByPolicy(queryInfo, normalized, networkStatus);
+                var concastSources = _this.fetchQueryByPolicy(queryInfo, normalized, networkStatus);
+                if (normalized.fetchPolicy !== "standby" &&
+                    concastSources.length > 0 &&
+                    queryInfo.observableQuery) {
+                    queryInfo.observableQuery["applyNextFetchPolicy"]("after-fetch", options);
+                }
+                return concastSources;
             };
+            var cleanupCancelFn = function () { return _this.fetchCancelFns.delete(queryId); };
             this.fetchCancelFns.set(queryId, function (reason) {
-                Promise.resolve().then(function () { return concast.cancel(reason); });
+                cleanupCancelFn();
+                setTimeout(function () { return concast.cancel(reason); });
             });
             var concast = new Concast(this.transform(normalized.query).hasClientExports
                 ? this.localState.addExportedVariables(normalized.query, normalized.variables, normalized.context).then(fromVariables)
                 : fromVariables(normalized.variables));
-            concast.cleanup(function () {
-                _this.fetchCancelFns.delete(queryId);
-                var nextFetchPolicy = options.nextFetchPolicy;
-                if (nextFetchPolicy) {
-                    options.nextFetchPolicy = void 0;
-                    options.fetchPolicy = typeof nextFetchPolicy === "function"
-                        ? nextFetchPolicy.call(options, options.fetchPolicy || "cache-first")
-                        : nextFetchPolicy;
-                }
-            });
+            concast.promise.then(cleanupCancelFn, cleanupCancelFn);
             return concast;
         };
-        QueryManager.prototype.fetchQueryByPolicy = function (queryInfo, options, networkStatus) {
+        QueryManager.prototype.refetchQueries = function (_a) {
             var _this = this;
-            var query = options.query, variables = options.variables, fetchPolicy = options.fetchPolicy, errorPolicy = options.errorPolicy, returnPartialData = options.returnPartialData, context = options.context;
+            var updateCache = _a.updateCache, include = _a.include, _b = _a.optimistic, optimistic = _b === void 0 ? false : _b, _c = _a.removeOptimistic, removeOptimistic = _c === void 0 ? optimistic ? makeUniqueId("refetchQueries") : void 0 : _c, onQueryUpdated = _a.onQueryUpdated;
+            var includedQueriesById = new Map();
+            if (include) {
+                this.getObservableQueries(include).forEach(function (oq, queryId) {
+                    includedQueriesById.set(queryId, {
+                        oq: oq,
+                        lastDiff: _this.getQuery(queryId).getDiff(),
+                    });
+                });
+            }
+            var results = new Map;
+            if (updateCache) {
+                this.cache.batch({
+                    update: updateCache,
+                    optimistic: optimistic && removeOptimistic || false,
+                    removeOptimistic: removeOptimistic,
+                    onWatchUpdated: function (watch, diff, lastDiff) {
+                        var oq = watch.watcher instanceof QueryInfo &&
+                            watch.watcher.observableQuery;
+                        if (oq) {
+                            if (onQueryUpdated) {
+                                includedQueriesById.delete(oq.queryId);
+                                var result = onQueryUpdated(oq, diff, lastDiff);
+                                if (result === true) {
+                                    result = oq.refetch();
+                                }
+                                if (result !== false) {
+                                    results.set(oq, result);
+                                }
+                                return result;
+                            }
+                            if (onQueryUpdated !== null) {
+                                includedQueriesById.set(oq.queryId, { oq: oq, lastDiff: lastDiff, diff: diff });
+                            }
+                        }
+                    },
+                });
+            }
+            if (includedQueriesById.size) {
+                includedQueriesById.forEach(function (_a, queryId) {
+                    var oq = _a.oq, lastDiff = _a.lastDiff, diff = _a.diff;
+                    var result;
+                    if (onQueryUpdated) {
+                        if (!diff) {
+                            var info = oq["queryInfo"];
+                            info.reset();
+                            diff = info.getDiff();
+                        }
+                        result = onQueryUpdated(oq, diff, lastDiff);
+                    }
+                    if (!onQueryUpdated || result === true) {
+                        result = oq.refetch();
+                    }
+                    if (result !== false) {
+                        results.set(oq, result);
+                    }
+                    if (queryId.indexOf("legacyOneTimeQuery") >= 0) {
+                        _this.stopQueryNoBroadcast(queryId);
+                    }
+                });
+            }
+            if (removeOptimistic) {
+                this.cache.removeOptimistic(removeOptimistic);
+            }
+            return results;
+        };
+        QueryManager.prototype.fetchQueryByPolicy = function (queryInfo, _a, networkStatus) {
+            var _this = this;
+            var query = _a.query, variables = _a.variables, fetchPolicy = _a.fetchPolicy, refetchWritePolicy = _a.refetchWritePolicy, errorPolicy = _a.errorPolicy, returnPartialData = _a.returnPartialData, context = _a.context, notifyOnNetworkStatusChange = _a.notifyOnNetworkStatusChange;
+            var oldNetworkStatus = queryInfo.networkStatus;
             queryInfo.init({
-                document: query,
+                document: this.transform(query).document,
                 variables: variables,
                 networkStatus: networkStatus,
             });
@@ -10757,32 +11526,37 @@ var Ad4mConnectDialog = (function () {
             var resultsFromCache = function (diff, networkStatus) {
                 if (networkStatus === void 0) { networkStatus = queryInfo.networkStatus || NetworkStatus.loading; }
                 var data = diff.result;
-                if (process.env.NODE_ENV !== 'production' &&
-                    isNonEmptyArray(diff.missing) &&
-                    !equal(data, {}) &&
-                    !returnPartialData) {
-                    process.env.NODE_ENV === "production" || invariant$1.warn("Missing cache result fields: " + diff.missing.map(function (m) { return m.path.join('.'); }).join(', '), diff.missing);
+                if (__DEV__ &&
+                    !returnPartialData &&
+                    !equal(data, {})) {
+                    logMissingFieldErrors(diff.missing);
                 }
                 var fromData = function (data) { return Observable.of(__assign$1({ data: data, loading: isNetworkRequestInFlight(networkStatus), networkStatus: networkStatus }, (diff.complete ? null : { partial: true }))); };
-                if (_this.transform(query).hasForcedResolvers) {
+                if (data && _this.transform(query).hasForcedResolvers) {
                     return _this.localState.runResolvers({
                         document: query,
                         remoteResult: { data: data },
                         context: context,
                         variables: variables,
                         onlyRunForcedResolvers: true,
-                    }).then(function (resolved) { return fromData(resolved.data); });
+                    }).then(function (resolved) { return fromData(resolved.data || void 0); });
                 }
                 return fromData(data);
             };
-            var resultsFromLink = function (allowCacheWrite) {
-                return _this.getResultsFromLink(queryInfo, allowCacheWrite, {
-                    variables: variables,
-                    context: context,
-                    fetchPolicy: fetchPolicy,
-                    errorPolicy: errorPolicy,
-                });
-            };
+            var cacheWriteBehavior = fetchPolicy === "no-cache" ? 0 :
+                (networkStatus === NetworkStatus.refetch &&
+                    refetchWritePolicy !== "merge") ? 1
+                    : 2;
+            var resultsFromLink = function () { return _this.getResultsFromLink(queryInfo, cacheWriteBehavior, {
+                variables: variables,
+                context: context,
+                fetchPolicy: fetchPolicy,
+                errorPolicy: errorPolicy,
+            }); };
+            var shouldNotify = notifyOnNetworkStatusChange &&
+                typeof oldNetworkStatus === "number" &&
+                oldNetworkStatus !== networkStatus &&
+                isNetworkRequestInFlight(networkStatus);
             switch (fetchPolicy) {
                 default:
                 case "cache-first": {
@@ -10792,26 +11566,26 @@ var Ad4mConnectDialog = (function () {
                             resultsFromCache(diff, queryInfo.markReady()),
                         ];
                     }
-                    if (returnPartialData) {
+                    if (returnPartialData || shouldNotify) {
                         return [
                             resultsFromCache(diff),
-                            resultsFromLink(true),
+                            resultsFromLink(),
                         ];
                     }
                     return [
-                        resultsFromLink(true),
+                        resultsFromLink(),
                     ];
                 }
                 case "cache-and-network": {
                     var diff = readCache();
-                    if (diff.complete || returnPartialData) {
+                    if (diff.complete || returnPartialData || shouldNotify) {
                         return [
                             resultsFromCache(diff),
-                            resultsFromLink(true),
+                            resultsFromLink(),
                         ];
                     }
                     return [
-                        resultsFromLink(true),
+                        resultsFromLink(),
                     ];
                 }
                 case "cache-only":
@@ -10819,16 +11593,28 @@ var Ad4mConnectDialog = (function () {
                         resultsFromCache(readCache(), queryInfo.markReady()),
                     ];
                 case "network-only":
-                    return [resultsFromLink(true)];
+                    if (shouldNotify) {
+                        return [
+                            resultsFromCache(readCache()),
+                            resultsFromLink(),
+                        ];
+                    }
+                    return [resultsFromLink()];
                 case "no-cache":
-                    return [resultsFromLink(false)];
+                    if (shouldNotify) {
+                        return [
+                            resultsFromCache(queryInfo.getDiff()),
+                            resultsFromLink(),
+                        ];
+                    }
+                    return [resultsFromLink()];
                 case "standby":
                     return [];
             }
         };
         QueryManager.prototype.getQuery = function (queryId) {
             if (queryId && !this.queries.has(queryId)) {
-                this.queries.set(queryId, new QueryInfo(this.cache));
+                this.queries.set(queryId, new QueryInfo(this, queryId));
             }
             return this.queries.get(queryId);
         };
@@ -10841,20 +11627,14 @@ var Ad4mConnectDialog = (function () {
     }());
 
     var hasSuggestedDevtools = false;
-    function mergeOptions(defaults, options) {
-        return compact(defaults, options, options.variables && {
-            variables: __assign$1(__assign$1({}, defaults.variables), options.variables),
-        });
-    }
     var ApolloClient = (function () {
         function ApolloClient(options) {
             var _this = this;
-            this.defaultOptions = {};
             this.resetStoreCallbacks = [];
             this.clearStoreCallbacks = [];
             var uri = options.uri, credentials = options.credentials, headers = options.headers, cache = options.cache, _a = options.ssrMode, ssrMode = _a === void 0 ? false : _a, _b = options.ssrForceFetchDelay, ssrForceFetchDelay = _b === void 0 ? 0 : _b, _c = options.connectToDevTools, connectToDevTools = _c === void 0 ? typeof window === 'object' &&
                 !window.__APOLLO_CLIENT__ &&
-                process.env.NODE_ENV !== 'production' : _c, _d = options.queryDeduplication, queryDeduplication = _d === void 0 ? true : _d, defaultOptions = options.defaultOptions, _e = options.assumeImmutableResults, assumeImmutableResults = _e === void 0 ? false : _e, resolvers = options.resolvers, typeDefs = options.typeDefs, fragmentMatcher = options.fragmentMatcher, clientAwarenessName = options.name, clientAwarenessVersion = options.version;
+                __DEV__ : _c, _d = options.queryDeduplication, queryDeduplication = _d === void 0 ? true : _d, defaultOptions = options.defaultOptions, _e = options.assumeImmutableResults, assumeImmutableResults = _e === void 0 ? false : _e, resolvers = options.resolvers, typeDefs = options.typeDefs, fragmentMatcher = options.fragmentMatcher, clientAwarenessName = options.name, clientAwarenessVersion = options.version;
             var link = options.link;
             if (!link) {
                 link = uri
@@ -10862,15 +11642,15 @@ var Ad4mConnectDialog = (function () {
                     : ApolloLink.empty();
             }
             if (!cache) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(9) : new InvariantError("To initialize Apollo Client, you must specify a 'cache' property " +
+                throw __DEV__ ? new InvariantError("To initialize Apollo Client, you must specify a 'cache' property " +
                     "in the options object. \n" +
-                    "For more information, please visit: https://go.apollo.dev/c/docs");
+                    "For more information, please visit: https://go.apollo.dev/c/docs") : new InvariantError(7);
             }
             this.link = link;
             this.cache = cache;
             this.disableNetworkFetches = ssrMode || ssrForceFetchDelay > 0;
             this.queryDeduplication = queryDeduplication;
-            this.defaultOptions = defaultOptions || {};
+            this.defaultOptions = defaultOptions || Object.create(null);
             this.typeDefs = typeDefs;
             if (ssrForceFetchDelay) {
                 setTimeout(function () { return (_this.disableNetworkFetches = false); }, ssrForceFetchDelay);
@@ -10883,7 +11663,7 @@ var Ad4mConnectDialog = (function () {
             if (connectToDevTools && typeof window === 'object') {
                 window.__APOLLO_CLIENT__ = this;
             }
-            if (!hasSuggestedDevtools && process.env.NODE_ENV !== 'production') {
+            if (!hasSuggestedDevtools && __DEV__) {
                 hasSuggestedDevtools = true;
                 if (typeof window !== 'undefined' &&
                     window.document &&
@@ -10902,7 +11682,7 @@ var Ad4mConnectDialog = (function () {
                         }
                     }
                     if (url) {
-                        invariant$1.log("Download the Apollo DevTools for a better development " +
+                        __DEV__ && invariant$1.log("Download the Apollo DevTools for a better development " +
                             "experience: " + url);
                     }
                 }
@@ -10917,6 +11697,7 @@ var Ad4mConnectDialog = (function () {
             this.queryManager = new QueryManager({
                 cache: this.cache,
                 link: this.link,
+                defaultOptions: this.defaultOptions,
                 queryDeduplication: queryDeduplication,
                 ssrMode: ssrMode,
                 clientAwareness: {
@@ -10957,10 +11738,10 @@ var Ad4mConnectDialog = (function () {
             if (this.defaultOptions.query) {
                 options = mergeOptions(this.defaultOptions.query, options);
             }
-            process.env.NODE_ENV === "production" ? invariant$1(options.fetchPolicy !== 'cache-and-network', 10) : invariant$1(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
+            __DEV__ ? invariant$1(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
                 'client.query can only return a single result. Please use client.watchQuery ' +
                 'to receive multiple results from the cache and the network, or consider ' +
-                'using a different fetchPolicy, such as cache-first or network-only.');
+                'using a different fetchPolicy, such as cache-first or network-only.') : invariant$1(options.fetchPolicy !== 'cache-and-network', 8);
             if (this.disableNetworkFetches && options.fetchPolicy === 'network-only') {
                 options = __assign$1(__assign$1({}, options), { fetchPolicy: 'cache-first' });
             }
@@ -11000,14 +11781,18 @@ var Ad4mConnectDialog = (function () {
         ApolloClient.prototype.resetStore = function () {
             var _this = this;
             return Promise.resolve()
-                .then(function () { return _this.queryManager.clearStore(); })
+                .then(function () { return _this.queryManager.clearStore({
+                discardWatches: false,
+            }); })
                 .then(function () { return Promise.all(_this.resetStoreCallbacks.map(function (fn) { return fn(); })); })
                 .then(function () { return _this.reFetchObservableQueries(); });
         };
         ApolloClient.prototype.clearStore = function () {
             var _this = this;
             return Promise.resolve()
-                .then(function () { return _this.queryManager.clearStore(); })
+                .then(function () { return _this.queryManager.clearStore({
+                discardWatches: true,
+            }); })
                 .then(function () { return Promise.all(_this.clearStoreCallbacks.map(function (fn) { return fn(); })); });
         };
         ApolloClient.prototype.onResetStore = function (cb) {
@@ -11026,6 +11811,26 @@ var Ad4mConnectDialog = (function () {
         };
         ApolloClient.prototype.reFetchObservableQueries = function (includeStandby) {
             return this.queryManager.reFetchObservableQueries(includeStandby);
+        };
+        ApolloClient.prototype.refetchQueries = function (options) {
+            var map = this.queryManager.refetchQueries(options);
+            var queries = [];
+            var results = [];
+            map.forEach(function (result, obsQuery) {
+                queries.push(obsQuery);
+                results.push(result);
+            });
+            var result = Promise.all(results);
+            result.queries = queries;
+            result.results = results;
+            result.catch(function (error) {
+                __DEV__ && invariant$1.debug("In client.refetchQueries, Promise.all promise rejected with error ".concat(error));
+            });
+            return result;
+        };
+        ApolloClient.prototype.getObservableQueries = function (include) {
+            if (include === void 0) { include = "active"; }
+            return this.queryManager.getObservableQueries(include);
         };
         ApolloClient.prototype.extract = function (optimistic) {
             return this.cache.extract(optimistic);
@@ -11194,3273 +11999,12 @@ var Ad4mConnectDialog = (function () {
         gql_1.gql = extras.gql, gql_1.resetCaches = extras.resetCaches, gql_1.disableFragmentWarnings = extras.disableFragmentWarnings, gql_1.enableExperimentalFragmentVariables = extras.enableExperimentalFragmentVariables, gql_1.disableExperimentalFragmentVariables = extras.disableExperimentalFragmentVariables;
     })(gql || (gql = {}));
     gql["default"] = gql;
-    var gql$1 = gql;
 
-    var react = {exports: {}};
+    setVerbosity(DEV ? "log" : "silent");
 
-    var react_production_min = {};
-
-    /*
-    object-assign
-    (c) Sindre Sorhus
-    @license MIT
-    */
-    /* eslint-disable no-unused-vars */
-    var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-    var hasOwnProperty = Object.prototype.hasOwnProperty;
-    var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-    function toObject(val) {
-    	if (val === null || val === undefined) {
-    		throw new TypeError('Object.assign cannot be called with null or undefined');
-    	}
-
-    	return Object(val);
-    }
-
-    function shouldUseNative() {
-    	try {
-    		if (!Object.assign) {
-    			return false;
-    		}
-
-    		// Detect buggy property enumeration order in older V8 versions.
-
-    		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-    		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-    		test1[5] = 'de';
-    		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-    			return false;
-    		}
-
-    		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-    		var test2 = {};
-    		for (var i = 0; i < 10; i++) {
-    			test2['_' + String.fromCharCode(i)] = i;
-    		}
-    		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-    			return test2[n];
-    		});
-    		if (order2.join('') !== '0123456789') {
-    			return false;
-    		}
-
-    		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-    		var test3 = {};
-    		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-    			test3[letter] = letter;
-    		});
-    		if (Object.keys(Object.assign({}, test3)).join('') !==
-    				'abcdefghijklmnopqrst') {
-    			return false;
-    		}
-
-    		return true;
-    	} catch (err) {
-    		// We don't expect any of the above to throw, but better to be safe.
-    		return false;
-    	}
-    }
-
-    var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
-    	var from;
-    	var to = toObject(target);
-    	var symbols;
-
-    	for (var s = 1; s < arguments.length; s++) {
-    		from = Object(arguments[s]);
-
-    		for (var key in from) {
-    			if (hasOwnProperty.call(from, key)) {
-    				to[key] = from[key];
-    			}
-    		}
-
-    		if (getOwnPropertySymbols) {
-    			symbols = getOwnPropertySymbols(from);
-    			for (var i = 0; i < symbols.length; i++) {
-    				if (propIsEnumerable.call(from, symbols[i])) {
-    					to[symbols[i]] = from[symbols[i]];
-    				}
-    			}
-    		}
-    	}
-
-    	return to;
-    };
-
-    /** @license React v17.0.2
-     * react.production.min.js
-     *
-     * Copyright (c) Facebook, Inc. and its affiliates.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
-    var l=objectAssign,n=60103,p=60106;react_production_min.Fragment=60107;react_production_min.StrictMode=60108;react_production_min.Profiler=60114;var q=60109,r=60110,t=60112;react_production_min.Suspense=60113;var u=60115,v=60116;
-    if("function"===typeof Symbol&&Symbol.for){var w=Symbol.for;n=w("react.element");p=w("react.portal");react_production_min.Fragment=w("react.fragment");react_production_min.StrictMode=w("react.strict_mode");react_production_min.Profiler=w("react.profiler");q=w("react.provider");r=w("react.context");t=w("react.forward_ref");react_production_min.Suspense=w("react.suspense");u=w("react.memo");v=w("react.lazy");}var x="function"===typeof Symbol&&Symbol.iterator;
-    function y(a){if(null===a||"object"!==typeof a)return null;a=x&&a[x]||a["@@iterator"];return "function"===typeof a?a:null}function z(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return "Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}
-    var A={isMounted:function(){return !1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},B={};function C(a,b,c){this.props=a;this.context=b;this.refs=B;this.updater=c||A;}C.prototype.isReactComponent={};C.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error(z(85));this.updater.enqueueSetState(this,a,b,"setState");};C.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate");};
-    function D(){}D.prototype=C.prototype;function E(a,b,c){this.props=a;this.context=b;this.refs=B;this.updater=c||A;}var F=E.prototype=new D;F.constructor=E;l(F,C.prototype);F.isPureReactComponent=!0;var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
-    function J(a,b,c){var e,d={},k=null,h=null;if(null!=b)for(e in void 0!==b.ref&&(h=b.ref),void 0!==b.key&&(k=""+b.key),b)H.call(b,e)&&!I.hasOwnProperty(e)&&(d[e]=b[e]);var g=arguments.length-2;if(1===g)d.children=c;else if(1<g){for(var f=Array(g),m=0;m<g;m++)f[m]=arguments[m+2];d.children=f;}if(a&&a.defaultProps)for(e in g=a.defaultProps,g)void 0===d[e]&&(d[e]=g[e]);return {$$typeof:n,type:a,key:k,ref:h,props:d,_owner:G.current}}
-    function K(a,b){return {$$typeof:n,type:a.type,key:b,ref:a.ref,props:a.props,_owner:a._owner}}function L(a){return "object"===typeof a&&null!==a&&a.$$typeof===n}function escape(a){var b={"=":"=0",":":"=2"};return "$"+a.replace(/[=:]/g,function(a){return b[a]})}var M=/\/+/g;function N(a,b){return "object"===typeof a&&null!==a&&null!=a.key?escape(""+a.key):b.toString(36)}
-    function O(a,b,c,e,d){var k=typeof a;if("undefined"===k||"boolean"===k)a=null;var h=!1;if(null===a)h=!0;else switch(k){case "string":case "number":h=!0;break;case "object":switch(a.$$typeof){case n:case p:h=!0;}}if(h)return h=a,d=d(h),a=""===e?"."+N(h,0):e,Array.isArray(d)?(c="",null!=a&&(c=a.replace(M,"$&/")+"/"),O(d,b,c,"",function(a){return a})):null!=d&&(L(d)&&(d=K(d,c+(!d.key||h&&h.key===d.key?"":(""+d.key).replace(M,"$&/")+"/")+a)),b.push(d)),1;h=0;e=""===e?".":e+":";if(Array.isArray(a))for(var g=
-    0;g<a.length;g++){k=a[g];var f=e+N(k,g);h+=O(k,b,c,f,d);}else if(f=y(a),"function"===typeof f)for(a=f.call(a),g=0;!(k=a.next()).done;)k=k.value,f=e+N(k,g++),h+=O(k,b,c,f,d);else if("object"===k)throw b=""+a,Error(z(31,"[object Object]"===b?"object with keys {"+Object.keys(a).join(", ")+"}":b));return h}function P(a,b,c){if(null==a)return a;var e=[],d=0;O(a,e,"","",function(a){return b.call(c,a,d++)});return e}
-    function Q(a){if(-1===a._status){var b=a._result;b=b();a._status=0;a._result=b;b.then(function(b){0===a._status&&(b=b.default,a._status=1,a._result=b);},function(b){0===a._status&&(a._status=2,a._result=b);});}if(1===a._status)return a._result;throw a._result;}var R={current:null};function S(){var a=R.current;if(null===a)throw Error(z(321));return a}var T={ReactCurrentDispatcher:R,ReactCurrentBatchConfig:{transition:0},ReactCurrentOwner:G,IsSomeRendererActing:{current:!1},assign:l};
-    react_production_min.Children={map:P,forEach:function(a,b,c){P(a,function(){b.apply(this,arguments);},c);},count:function(a){var b=0;P(a,function(){b++;});return b},toArray:function(a){return P(a,function(a){return a})||[]},only:function(a){if(!L(a))throw Error(z(143));return a}};react_production_min.Component=C;react_production_min.PureComponent=E;react_production_min.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=T;
-    react_production_min.cloneElement=function(a,b,c){if(null===a||void 0===a)throw Error(z(267,a));var e=l({},a.props),d=a.key,k=a.ref,h=a._owner;if(null!=b){void 0!==b.ref&&(k=b.ref,h=G.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var g=a.type.defaultProps;for(f in b)H.call(b,f)&&!I.hasOwnProperty(f)&&(e[f]=void 0===b[f]&&void 0!==g?g[f]:b[f]);}var f=arguments.length-2;if(1===f)e.children=c;else if(1<f){g=Array(f);for(var m=0;m<f;m++)g[m]=arguments[m+2];e.children=g;}return {$$typeof:n,type:a.type,
-    key:d,ref:k,props:e,_owner:h}};react_production_min.createContext=function(a,b){void 0===b&&(b=null);a={$$typeof:r,_calculateChangedBits:b,_currentValue:a,_currentValue2:a,_threadCount:0,Provider:null,Consumer:null};a.Provider={$$typeof:q,_context:a};return a.Consumer=a};react_production_min.createElement=J;react_production_min.createFactory=function(a){var b=J.bind(null,a);b.type=a;return b};react_production_min.createRef=function(){return {current:null}};react_production_min.forwardRef=function(a){return {$$typeof:t,render:a}};react_production_min.isValidElement=L;
-    react_production_min.lazy=function(a){return {$$typeof:v,_payload:{_status:-1,_result:a},_init:Q}};react_production_min.memo=function(a,b){return {$$typeof:u,type:a,compare:void 0===b?null:b}};react_production_min.useCallback=function(a,b){return S().useCallback(a,b)};react_production_min.useContext=function(a,b){return S().useContext(a,b)};react_production_min.useDebugValue=function(){};react_production_min.useEffect=function(a,b){return S().useEffect(a,b)};react_production_min.useImperativeHandle=function(a,b,c){return S().useImperativeHandle(a,b,c)};
-    react_production_min.useLayoutEffect=function(a,b){return S().useLayoutEffect(a,b)};react_production_min.useMemo=function(a,b){return S().useMemo(a,b)};react_production_min.useReducer=function(a,b,c){return S().useReducer(a,b,c)};react_production_min.useRef=function(a){return S().useRef(a)};react_production_min.useState=function(a){return S().useState(a)};react_production_min.version="17.0.2";
-
-    var react_development = {};
-
-    /** @license React v17.0.2
-     * react.development.js
-     *
-     * Copyright (c) Facebook, Inc. and its affiliates.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
-
-    (function (exports) {
-
-    if (process.env.NODE_ENV !== "production") {
-      (function() {
-
-    var _assign = objectAssign;
-
-    // TODO: this is special because it gets imported during build.
-    var ReactVersion = '17.0.2';
-
-    // ATTENTION
-    // When adding new symbols to this file,
-    // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-    // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-    // nor polyfill, then a plain number is used for performance.
-    var REACT_ELEMENT_TYPE = 0xeac7;
-    var REACT_PORTAL_TYPE = 0xeaca;
-    exports.Fragment = 0xeacb;
-    exports.StrictMode = 0xeacc;
-    exports.Profiler = 0xead2;
-    var REACT_PROVIDER_TYPE = 0xeacd;
-    var REACT_CONTEXT_TYPE = 0xeace;
-    var REACT_FORWARD_REF_TYPE = 0xead0;
-    exports.Suspense = 0xead1;
-    var REACT_SUSPENSE_LIST_TYPE = 0xead8;
-    var REACT_MEMO_TYPE = 0xead3;
-    var REACT_LAZY_TYPE = 0xead4;
-    var REACT_BLOCK_TYPE = 0xead9;
-    var REACT_SERVER_BLOCK_TYPE = 0xeada;
-    var REACT_FUNDAMENTAL_TYPE = 0xead5;
-    var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
-    var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
-
-    if (typeof Symbol === 'function' && Symbol.for) {
-      var symbolFor = Symbol.for;
-      REACT_ELEMENT_TYPE = symbolFor('react.element');
-      REACT_PORTAL_TYPE = symbolFor('react.portal');
-      exports.Fragment = symbolFor('react.fragment');
-      exports.StrictMode = symbolFor('react.strict_mode');
-      exports.Profiler = symbolFor('react.profiler');
-      REACT_PROVIDER_TYPE = symbolFor('react.provider');
-      REACT_CONTEXT_TYPE = symbolFor('react.context');
-      REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
-      exports.Suspense = symbolFor('react.suspense');
-      REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
-      REACT_MEMO_TYPE = symbolFor('react.memo');
-      REACT_LAZY_TYPE = symbolFor('react.lazy');
-      REACT_BLOCK_TYPE = symbolFor('react.block');
-      REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
-      REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
-      symbolFor('react.scope');
-      symbolFor('react.opaque.id');
-      REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
-      symbolFor('react.offscreen');
-      REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
-    }
-
-    var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-    var FAUX_ITERATOR_SYMBOL = '@@iterator';
-    function getIteratorFn(maybeIterable) {
-      if (maybeIterable === null || typeof maybeIterable !== 'object') {
-        return null;
-      }
-
-      var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
-
-      if (typeof maybeIterator === 'function') {
-        return maybeIterator;
-      }
-
-      return null;
-    }
-
-    /**
-     * Keeps track of the current dispatcher.
-     */
-    var ReactCurrentDispatcher = {
-      /**
-       * @internal
-       * @type {ReactComponent}
-       */
-      current: null
-    };
-
-    /**
-     * Keeps track of the current batch's configuration such as how long an update
-     * should suspend for if it needs to.
-     */
-    var ReactCurrentBatchConfig = {
-      transition: 0
-    };
-
-    /**
-     * Keeps track of the current owner.
-     *
-     * The current owner is the component who should own any components that are
-     * currently being constructed.
-     */
-    var ReactCurrentOwner = {
-      /**
-       * @internal
-       * @type {ReactComponent}
-       */
-      current: null
-    };
-
-    var ReactDebugCurrentFrame = {};
-    var currentExtraStackFrame = null;
-    function setExtraStackFrame(stack) {
-      {
-        currentExtraStackFrame = stack;
-      }
-    }
-
-    {
-      ReactDebugCurrentFrame.setExtraStackFrame = function (stack) {
-        {
-          currentExtraStackFrame = stack;
-        }
-      }; // Stack implementation injected by the current renderer.
-
-
-      ReactDebugCurrentFrame.getCurrentStack = null;
-
-      ReactDebugCurrentFrame.getStackAddendum = function () {
-        var stack = ''; // Add an extra top frame while an element is being validated
-
-        if (currentExtraStackFrame) {
-          stack += currentExtraStackFrame;
-        } // Delegate to the injected renderer-specific implementation
-
-
-        var impl = ReactDebugCurrentFrame.getCurrentStack;
-
-        if (impl) {
-          stack += impl() || '';
-        }
-
-        return stack;
-      };
-    }
-
-    /**
-     * Used by act() to track whether you're inside an act() scope.
-     */
-    var IsSomeRendererActing = {
-      current: false
-    };
-
-    var ReactSharedInternals = {
-      ReactCurrentDispatcher: ReactCurrentDispatcher,
-      ReactCurrentBatchConfig: ReactCurrentBatchConfig,
-      ReactCurrentOwner: ReactCurrentOwner,
-      IsSomeRendererActing: IsSomeRendererActing,
-      // Used by renderers to avoid bundling object-assign twice in UMD bundles:
-      assign: _assign
-    };
-
-    {
-      ReactSharedInternals.ReactDebugCurrentFrame = ReactDebugCurrentFrame;
-    }
-
-    // by calls to these methods by a Babel plugin.
-    //
-    // In PROD (or in packages without access to React internals),
-    // they are left as they are instead.
-
-    function warn(format) {
-      {
-        for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-          args[_key - 1] = arguments[_key];
-        }
-
-        printWarning('warn', format, args);
-      }
-    }
-    function error(format) {
-      {
-        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-          args[_key2 - 1] = arguments[_key2];
-        }
-
-        printWarning('error', format, args);
-      }
-    }
-
-    function printWarning(level, format, args) {
-      // When changing this logic, you might want to also
-      // update consoleWithStackDev.www.js as well.
-      {
-        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-        var stack = ReactDebugCurrentFrame.getStackAddendum();
-
-        if (stack !== '') {
-          format += '%s';
-          args = args.concat([stack]);
-        }
-
-        var argsWithFormat = args.map(function (item) {
-          return '' + item;
-        }); // Careful: RN currently depends on this prefix
-
-        argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
-        // breaks IE9: https://github.com/facebook/react/issues/13610
-        // eslint-disable-next-line react-internal/no-production-logging
-
-        Function.prototype.apply.call(console[level], console, argsWithFormat);
-      }
-    }
-
-    var didWarnStateUpdateForUnmountedComponent = {};
-
-    function warnNoop(publicInstance, callerName) {
-      {
-        var _constructor = publicInstance.constructor;
-        var componentName = _constructor && (_constructor.displayName || _constructor.name) || 'ReactClass';
-        var warningKey = componentName + "." + callerName;
-
-        if (didWarnStateUpdateForUnmountedComponent[warningKey]) {
-          return;
-        }
-
-        error("Can't call %s on a component that is not yet mounted. " + 'This is a no-op, but it might indicate a bug in your application. ' + 'Instead, assign to `this.state` directly or define a `state = {};` ' + 'class property with the desired state in the %s component.', callerName, componentName);
-
-        didWarnStateUpdateForUnmountedComponent[warningKey] = true;
-      }
-    }
-    /**
-     * This is the abstract API for an update queue.
-     */
-
-
-    var ReactNoopUpdateQueue = {
-      /**
-       * Checks whether or not this composite component is mounted.
-       * @param {ReactClass} publicInstance The instance we want to test.
-       * @return {boolean} True if mounted, false otherwise.
-       * @protected
-       * @final
-       */
-      isMounted: function (publicInstance) {
-        return false;
-      },
-
-      /**
-       * Forces an update. This should only be invoked when it is known with
-       * certainty that we are **not** in a DOM transaction.
-       *
-       * You may want to call this when you know that some deeper aspect of the
-       * component's state has changed but `setState` was not called.
-       *
-       * This will not invoke `shouldComponentUpdate`, but it will invoke
-       * `componentWillUpdate` and `componentDidUpdate`.
-       *
-       * @param {ReactClass} publicInstance The instance that should rerender.
-       * @param {?function} callback Called after component is updated.
-       * @param {?string} callerName name of the calling function in the public API.
-       * @internal
-       */
-      enqueueForceUpdate: function (publicInstance, callback, callerName) {
-        warnNoop(publicInstance, 'forceUpdate');
-      },
-
-      /**
-       * Replaces all of the state. Always use this or `setState` to mutate state.
-       * You should treat `this.state` as immutable.
-       *
-       * There is no guarantee that `this.state` will be immediately updated, so
-       * accessing `this.state` after calling this method may return the old value.
-       *
-       * @param {ReactClass} publicInstance The instance that should rerender.
-       * @param {object} completeState Next state.
-       * @param {?function} callback Called after component is updated.
-       * @param {?string} callerName name of the calling function in the public API.
-       * @internal
-       */
-      enqueueReplaceState: function (publicInstance, completeState, callback, callerName) {
-        warnNoop(publicInstance, 'replaceState');
-      },
-
-      /**
-       * Sets a subset of the state. This only exists because _pendingState is
-       * internal. This provides a merging strategy that is not available to deep
-       * properties which is confusing. TODO: Expose pendingState or don't use it
-       * during the merge.
-       *
-       * @param {ReactClass} publicInstance The instance that should rerender.
-       * @param {object} partialState Next partial state to be merged with state.
-       * @param {?function} callback Called after component is updated.
-       * @param {?string} Name of the calling function in the public API.
-       * @internal
-       */
-      enqueueSetState: function (publicInstance, partialState, callback, callerName) {
-        warnNoop(publicInstance, 'setState');
-      }
-    };
-
-    var emptyObject = {};
-
-    {
-      Object.freeze(emptyObject);
-    }
-    /**
-     * Base class helpers for the updating state of a component.
-     */
-
-
-    function Component(props, context, updater) {
-      this.props = props;
-      this.context = context; // If a component has string refs, we will assign a different object later.
-
-      this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
-      // renderer.
-
-      this.updater = updater || ReactNoopUpdateQueue;
-    }
-
-    Component.prototype.isReactComponent = {};
-    /**
-     * Sets a subset of the state. Always use this to mutate
-     * state. You should treat `this.state` as immutable.
-     *
-     * There is no guarantee that `this.state` will be immediately updated, so
-     * accessing `this.state` after calling this method may return the old value.
-     *
-     * There is no guarantee that calls to `setState` will run synchronously,
-     * as they may eventually be batched together.  You can provide an optional
-     * callback that will be executed when the call to setState is actually
-     * completed.
-     *
-     * When a function is provided to setState, it will be called at some point in
-     * the future (not synchronously). It will be called with the up to date
-     * component arguments (state, props, context). These values can be different
-     * from this.* because your function may be called after receiveProps but before
-     * shouldComponentUpdate, and this new state, props, and context will not yet be
-     * assigned to this.
-     *
-     * @param {object|function} partialState Next partial state or function to
-     *        produce next partial state to be merged with current state.
-     * @param {?function} callback Called after state is updated.
-     * @final
-     * @protected
-     */
-
-    Component.prototype.setState = function (partialState, callback) {
-      if (!(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null)) {
-        {
-          throw Error( "setState(...): takes an object of state variables to update or a function which returns an object of state variables." );
-        }
-      }
-
-      this.updater.enqueueSetState(this, partialState, callback, 'setState');
-    };
-    /**
-     * Forces an update. This should only be invoked when it is known with
-     * certainty that we are **not** in a DOM transaction.
-     *
-     * You may want to call this when you know that some deeper aspect of the
-     * component's state has changed but `setState` was not called.
-     *
-     * This will not invoke `shouldComponentUpdate`, but it will invoke
-     * `componentWillUpdate` and `componentDidUpdate`.
-     *
-     * @param {?function} callback Called after update is complete.
-     * @final
-     * @protected
-     */
-
-
-    Component.prototype.forceUpdate = function (callback) {
-      this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
-    };
-    /**
-     * Deprecated APIs. These APIs used to exist on classic React classes but since
-     * we would like to deprecate them, we're not going to move them over to this
-     * modern base class. Instead, we define a getter that warns if it's accessed.
-     */
-
-
-    {
-      var deprecatedAPIs = {
-        isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
-        replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
-      };
-
-      var defineDeprecationWarning = function (methodName, info) {
-        Object.defineProperty(Component.prototype, methodName, {
-          get: function () {
-            warn('%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
-
-            return undefined;
-          }
-        });
-      };
-
-      for (var fnName in deprecatedAPIs) {
-        if (deprecatedAPIs.hasOwnProperty(fnName)) {
-          defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
-        }
-      }
-    }
-
-    function ComponentDummy() {}
-
-    ComponentDummy.prototype = Component.prototype;
-    /**
-     * Convenience component with default shallow equality check for sCU.
-     */
-
-    function PureComponent(props, context, updater) {
-      this.props = props;
-      this.context = context; // If a component has string refs, we will assign a different object later.
-
-      this.refs = emptyObject;
-      this.updater = updater || ReactNoopUpdateQueue;
-    }
-
-    var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
-    pureComponentPrototype.constructor = PureComponent; // Avoid an extra prototype jump for these methods.
-
-    _assign(pureComponentPrototype, Component.prototype);
-
-    pureComponentPrototype.isPureReactComponent = true;
-
-    // an immutable object with a single mutable value
-    function createRef() {
-      var refObject = {
-        current: null
-      };
-
-      {
-        Object.seal(refObject);
-      }
-
-      return refObject;
-    }
-
-    function getWrappedName(outerType, innerType, wrapperName) {
-      var functionName = innerType.displayName || innerType.name || '';
-      return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
-    }
-
-    function getContextName(type) {
-      return type.displayName || 'Context';
-    }
-
-    function getComponentName(type) {
-      if (type == null) {
-        // Host root, text node or just invalid type.
-        return null;
-      }
-
-      {
-        if (typeof type.tag === 'number') {
-          error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
-        }
-      }
-
-      if (typeof type === 'function') {
-        return type.displayName || type.name || null;
-      }
-
-      if (typeof type === 'string') {
-        return type;
-      }
-
-      switch (type) {
-        case exports.Fragment:
-          return 'Fragment';
-
-        case REACT_PORTAL_TYPE:
-          return 'Portal';
-
-        case exports.Profiler:
-          return 'Profiler';
-
-        case exports.StrictMode:
-          return 'StrictMode';
-
-        case exports.Suspense:
-          return 'Suspense';
-
-        case REACT_SUSPENSE_LIST_TYPE:
-          return 'SuspenseList';
-      }
-
-      if (typeof type === 'object') {
-        switch (type.$$typeof) {
-          case REACT_CONTEXT_TYPE:
-            var context = type;
-            return getContextName(context) + '.Consumer';
-
-          case REACT_PROVIDER_TYPE:
-            var provider = type;
-            return getContextName(provider._context) + '.Provider';
-
-          case REACT_FORWARD_REF_TYPE:
-            return getWrappedName(type, type.render, 'ForwardRef');
-
-          case REACT_MEMO_TYPE:
-            return getComponentName(type.type);
-
-          case REACT_BLOCK_TYPE:
-            return getComponentName(type._render);
-
-          case REACT_LAZY_TYPE:
-            {
-              var lazyComponent = type;
-              var payload = lazyComponent._payload;
-              var init = lazyComponent._init;
-
-              try {
-                return getComponentName(init(payload));
-              } catch (x) {
-                return null;
-              }
-            }
-        }
-      }
-
-      return null;
-    }
-
-    var hasOwnProperty = Object.prototype.hasOwnProperty;
-    var RESERVED_PROPS = {
-      key: true,
-      ref: true,
-      __self: true,
-      __source: true
-    };
-    var specialPropKeyWarningShown, specialPropRefWarningShown, didWarnAboutStringRefs;
-
-    {
-      didWarnAboutStringRefs = {};
-    }
-
-    function hasValidRef(config) {
-      {
-        if (hasOwnProperty.call(config, 'ref')) {
-          var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
-
-          if (getter && getter.isReactWarning) {
-            return false;
-          }
-        }
-      }
-
-      return config.ref !== undefined;
-    }
-
-    function hasValidKey(config) {
-      {
-        if (hasOwnProperty.call(config, 'key')) {
-          var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
-
-          if (getter && getter.isReactWarning) {
-            return false;
-          }
-        }
-      }
-
-      return config.key !== undefined;
-    }
-
-    function defineKeyPropWarningGetter(props, displayName) {
-      var warnAboutAccessingKey = function () {
-        {
-          if (!specialPropKeyWarningShown) {
-            specialPropKeyWarningShown = true;
-
-            error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
-          }
-        }
-      };
-
-      warnAboutAccessingKey.isReactWarning = true;
-      Object.defineProperty(props, 'key', {
-        get: warnAboutAccessingKey,
-        configurable: true
-      });
-    }
-
-    function defineRefPropWarningGetter(props, displayName) {
-      var warnAboutAccessingRef = function () {
-        {
-          if (!specialPropRefWarningShown) {
-            specialPropRefWarningShown = true;
-
-            error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
-          }
-        }
-      };
-
-      warnAboutAccessingRef.isReactWarning = true;
-      Object.defineProperty(props, 'ref', {
-        get: warnAboutAccessingRef,
-        configurable: true
-      });
-    }
-
-    function warnIfStringRefCannotBeAutoConverted(config) {
-      {
-        if (typeof config.ref === 'string' && ReactCurrentOwner.current && config.__self && ReactCurrentOwner.current.stateNode !== config.__self) {
-          var componentName = getComponentName(ReactCurrentOwner.current.type);
-
-          if (!didWarnAboutStringRefs[componentName]) {
-            error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', componentName, config.ref);
-
-            didWarnAboutStringRefs[componentName] = true;
-          }
-        }
-      }
-    }
-    /**
-     * Factory method to create a new React element. This no longer adheres to
-     * the class pattern, so do not use new to call it. Also, instanceof check
-     * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
-     * if something is a React Element.
-     *
-     * @param {*} type
-     * @param {*} props
-     * @param {*} key
-     * @param {string|object} ref
-     * @param {*} owner
-     * @param {*} self A *temporary* helper to detect places where `this` is
-     * different from the `owner` when React.createElement is called, so that we
-     * can warn. We want to get rid of owner and replace string `ref`s with arrow
-     * functions, and as long as `this` and owner are the same, there will be no
-     * change in behavior.
-     * @param {*} source An annotation object (added by a transpiler or otherwise)
-     * indicating filename, line number, and/or other information.
-     * @internal
-     */
-
-
-    var ReactElement = function (type, key, ref, self, source, owner, props) {
-      var element = {
-        // This tag allows us to uniquely identify this as a React Element
-        $$typeof: REACT_ELEMENT_TYPE,
-        // Built-in properties that belong on the element
-        type: type,
-        key: key,
-        ref: ref,
-        props: props,
-        // Record the component responsible for creating this element.
-        _owner: owner
-      };
-
-      {
-        // The validation flag is currently mutative. We put it on
-        // an external backing store so that we can freeze the whole object.
-        // This can be replaced with a WeakMap once they are implemented in
-        // commonly used development environments.
-        element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
-        // the validation flag non-enumerable (where possible, which should
-        // include every environment we run tests in), so the test framework
-        // ignores it.
-
-        Object.defineProperty(element._store, 'validated', {
-          configurable: false,
-          enumerable: false,
-          writable: true,
-          value: false
-        }); // self and source are DEV only properties.
-
-        Object.defineProperty(element, '_self', {
-          configurable: false,
-          enumerable: false,
-          writable: false,
-          value: self
-        }); // Two elements created in two different places should be considered
-        // equal for testing purposes and therefore we hide it from enumeration.
-
-        Object.defineProperty(element, '_source', {
-          configurable: false,
-          enumerable: false,
-          writable: false,
-          value: source
-        });
-
-        if (Object.freeze) {
-          Object.freeze(element.props);
-          Object.freeze(element);
-        }
-      }
-
-      return element;
-    };
-    /**
-     * Create and return a new ReactElement of the given type.
-     * See https://reactjs.org/docs/react-api.html#createelement
-     */
-
-    function createElement(type, config, children) {
-      var propName; // Reserved names are extracted
-
-      var props = {};
-      var key = null;
-      var ref = null;
-      var self = null;
-      var source = null;
-
-      if (config != null) {
-        if (hasValidRef(config)) {
-          ref = config.ref;
-
-          {
-            warnIfStringRefCannotBeAutoConverted(config);
-          }
-        }
-
-        if (hasValidKey(config)) {
-          key = '' + config.key;
-        }
-
-        self = config.__self === undefined ? null : config.__self;
-        source = config.__source === undefined ? null : config.__source; // Remaining properties are added to a new props object
-
-        for (propName in config) {
-          if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
-            props[propName] = config[propName];
-          }
-        }
-      } // Children can be more than one argument, and those are transferred onto
-      // the newly allocated props object.
-
-
-      var childrenLength = arguments.length - 2;
-
-      if (childrenLength === 1) {
-        props.children = children;
-      } else if (childrenLength > 1) {
-        var childArray = Array(childrenLength);
-
-        for (var i = 0; i < childrenLength; i++) {
-          childArray[i] = arguments[i + 2];
-        }
-
-        {
-          if (Object.freeze) {
-            Object.freeze(childArray);
-          }
-        }
-
-        props.children = childArray;
-      } // Resolve default props
-
-
-      if (type && type.defaultProps) {
-        var defaultProps = type.defaultProps;
-
-        for (propName in defaultProps) {
-          if (props[propName] === undefined) {
-            props[propName] = defaultProps[propName];
-          }
-        }
-      }
-
-      {
-        if (key || ref) {
-          var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
-
-          if (key) {
-            defineKeyPropWarningGetter(props, displayName);
-          }
-
-          if (ref) {
-            defineRefPropWarningGetter(props, displayName);
-          }
-        }
-      }
-
-      return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
-    }
-    function cloneAndReplaceKey(oldElement, newKey) {
-      var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
-      return newElement;
-    }
-    /**
-     * Clone and return a new ReactElement using element as the starting point.
-     * See https://reactjs.org/docs/react-api.html#cloneelement
-     */
-
-    function cloneElement(element, config, children) {
-      if (!!(element === null || element === undefined)) {
-        {
-          throw Error( "React.cloneElement(...): The argument must be a React element, but you passed " + element + "." );
-        }
-      }
-
-      var propName; // Original props are copied
-
-      var props = _assign({}, element.props); // Reserved names are extracted
-
-
-      var key = element.key;
-      var ref = element.ref; // Self is preserved since the owner is preserved.
-
-      var self = element._self; // Source is preserved since cloneElement is unlikely to be targeted by a
-      // transpiler, and the original source is probably a better indicator of the
-      // true owner.
-
-      var source = element._source; // Owner will be preserved, unless ref is overridden
-
-      var owner = element._owner;
-
-      if (config != null) {
-        if (hasValidRef(config)) {
-          // Silently steal the ref from the parent.
-          ref = config.ref;
-          owner = ReactCurrentOwner.current;
-        }
-
-        if (hasValidKey(config)) {
-          key = '' + config.key;
-        } // Remaining properties override existing props
-
-
-        var defaultProps;
-
-        if (element.type && element.type.defaultProps) {
-          defaultProps = element.type.defaultProps;
-        }
-
-        for (propName in config) {
-          if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
-            if (config[propName] === undefined && defaultProps !== undefined) {
-              // Resolve default props
-              props[propName] = defaultProps[propName];
-            } else {
-              props[propName] = config[propName];
-            }
-          }
-        }
-      } // Children can be more than one argument, and those are transferred onto
-      // the newly allocated props object.
-
-
-      var childrenLength = arguments.length - 2;
-
-      if (childrenLength === 1) {
-        props.children = children;
-      } else if (childrenLength > 1) {
-        var childArray = Array(childrenLength);
-
-        for (var i = 0; i < childrenLength; i++) {
-          childArray[i] = arguments[i + 2];
-        }
-
-        props.children = childArray;
-      }
-
-      return ReactElement(element.type, key, ref, self, source, owner, props);
-    }
-    /**
-     * Verifies the object is a ReactElement.
-     * See https://reactjs.org/docs/react-api.html#isvalidelement
-     * @param {?object} object
-     * @return {boolean} True if `object` is a ReactElement.
-     * @final
-     */
-
-    function isValidElement(object) {
-      return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-    }
-
-    var SEPARATOR = '.';
-    var SUBSEPARATOR = ':';
-    /**
-     * Escape and wrap key so it is safe to use as a reactid
-     *
-     * @param {string} key to be escaped.
-     * @return {string} the escaped key.
-     */
-
-    function escape(key) {
-      var escapeRegex = /[=:]/g;
-      var escaperLookup = {
-        '=': '=0',
-        ':': '=2'
-      };
-      var escapedString = key.replace(escapeRegex, function (match) {
-        return escaperLookup[match];
-      });
-      return '$' + escapedString;
-    }
-    /**
-     * TODO: Test that a single child and an array with one item have the same key
-     * pattern.
-     */
-
-
-    var didWarnAboutMaps = false;
-    var userProvidedKeyEscapeRegex = /\/+/g;
-
-    function escapeUserProvidedKey(text) {
-      return text.replace(userProvidedKeyEscapeRegex, '$&/');
-    }
-    /**
-     * Generate a key string that identifies a element within a set.
-     *
-     * @param {*} element A element that could contain a manual key.
-     * @param {number} index Index that is used if a manual key is not provided.
-     * @return {string}
-     */
-
-
-    function getElementKey(element, index) {
-      // Do some typechecking here since we call this blindly. We want to ensure
-      // that we don't block potential future ES APIs.
-      if (typeof element === 'object' && element !== null && element.key != null) {
-        // Explicit key
-        return escape('' + element.key);
-      } // Implicit key determined by the index in the set
-
-
-      return index.toString(36);
-    }
-
-    function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {
-      var type = typeof children;
-
-      if (type === 'undefined' || type === 'boolean') {
-        // All of the above are perceived as null.
-        children = null;
-      }
-
-      var invokeCallback = false;
-
-      if (children === null) {
-        invokeCallback = true;
-      } else {
-        switch (type) {
-          case 'string':
-          case 'number':
-            invokeCallback = true;
-            break;
-
-          case 'object':
-            switch (children.$$typeof) {
-              case REACT_ELEMENT_TYPE:
-              case REACT_PORTAL_TYPE:
-                invokeCallback = true;
-            }
-
-        }
-      }
-
-      if (invokeCallback) {
-        var _child = children;
-        var mappedChild = callback(_child); // If it's the only child, treat the name as if it was wrapped in an array
-        // so that it's consistent if the number of children grows:
-
-        var childKey = nameSoFar === '' ? SEPARATOR + getElementKey(_child, 0) : nameSoFar;
-
-        if (Array.isArray(mappedChild)) {
-          var escapedChildKey = '';
-
-          if (childKey != null) {
-            escapedChildKey = escapeUserProvidedKey(childKey) + '/';
-          }
-
-          mapIntoArray(mappedChild, array, escapedChildKey, '', function (c) {
-            return c;
-          });
-        } else if (mappedChild != null) {
-          if (isValidElement(mappedChild)) {
-            mappedChild = cloneAndReplaceKey(mappedChild, // Keep both the (mapped) and old keys if they differ, just as
-            // traverseAllChildren used to do for objects as children
-            escapedPrefix + ( // $FlowFixMe Flow incorrectly thinks React.Portal doesn't have a key
-            mappedChild.key && (!_child || _child.key !== mappedChild.key) ? // $FlowFixMe Flow incorrectly thinks existing element's key can be a number
-            escapeUserProvidedKey('' + mappedChild.key) + '/' : '') + childKey);
-          }
-
-          array.push(mappedChild);
-        }
-
-        return 1;
-      }
-
-      var child;
-      var nextName;
-      var subtreeCount = 0; // Count of children found in the current subtree.
-
-      var nextNamePrefix = nameSoFar === '' ? SEPARATOR : nameSoFar + SUBSEPARATOR;
-
-      if (Array.isArray(children)) {
-        for (var i = 0; i < children.length; i++) {
-          child = children[i];
-          nextName = nextNamePrefix + getElementKey(child, i);
-          subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
-        }
-      } else {
-        var iteratorFn = getIteratorFn(children);
-
-        if (typeof iteratorFn === 'function') {
-          var iterableChildren = children;
-
-          {
-            // Warn about using Maps as children
-            if (iteratorFn === iterableChildren.entries) {
-              if (!didWarnAboutMaps) {
-                warn('Using Maps as children is not supported. ' + 'Use an array of keyed ReactElements instead.');
-              }
-
-              didWarnAboutMaps = true;
-            }
-          }
-
-          var iterator = iteratorFn.call(iterableChildren);
-          var step;
-          var ii = 0;
-
-          while (!(step = iterator.next()).done) {
-            child = step.value;
-            nextName = nextNamePrefix + getElementKey(child, ii++);
-            subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
-          }
-        } else if (type === 'object') {
-          var childrenString = '' + children;
-
-          {
-            {
-              throw Error( "Objects are not valid as a React child (found: " + (childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString) + "). If you meant to render a collection of children, use an array instead." );
-            }
-          }
-        }
-      }
-
-      return subtreeCount;
-    }
-
-    /**
-     * Maps children that are typically specified as `props.children`.
-     *
-     * See https://reactjs.org/docs/react-api.html#reactchildrenmap
-     *
-     * The provided mapFunction(child, index) will be called for each
-     * leaf child.
-     *
-     * @param {?*} children Children tree container.
-     * @param {function(*, int)} func The map function.
-     * @param {*} context Context for mapFunction.
-     * @return {object} Object containing the ordered map of results.
-     */
-    function mapChildren(children, func, context) {
-      if (children == null) {
-        return children;
-      }
-
-      var result = [];
-      var count = 0;
-      mapIntoArray(children, result, '', '', function (child) {
-        return func.call(context, child, count++);
-      });
-      return result;
-    }
-    /**
-     * Count the number of children that are typically specified as
-     * `props.children`.
-     *
-     * See https://reactjs.org/docs/react-api.html#reactchildrencount
-     *
-     * @param {?*} children Children tree container.
-     * @return {number} The number of children.
-     */
-
-
-    function countChildren(children) {
-      var n = 0;
-      mapChildren(children, function () {
-        n++; // Don't return anything
-      });
-      return n;
-    }
-
-    /**
-     * Iterates through children that are typically specified as `props.children`.
-     *
-     * See https://reactjs.org/docs/react-api.html#reactchildrenforeach
-     *
-     * The provided forEachFunc(child, index) will be called for each
-     * leaf child.
-     *
-     * @param {?*} children Children tree container.
-     * @param {function(*, int)} forEachFunc
-     * @param {*} forEachContext Context for forEachContext.
-     */
-    function forEachChildren(children, forEachFunc, forEachContext) {
-      mapChildren(children, function () {
-        forEachFunc.apply(this, arguments); // Don't return anything.
-      }, forEachContext);
-    }
-    /**
-     * Flatten a children object (typically specified as `props.children`) and
-     * return an array with appropriately re-keyed children.
-     *
-     * See https://reactjs.org/docs/react-api.html#reactchildrentoarray
-     */
-
-
-    function toArray(children) {
-      return mapChildren(children, function (child) {
-        return child;
-      }) || [];
-    }
-    /**
-     * Returns the first child in a collection of children and verifies that there
-     * is only one child in the collection.
-     *
-     * See https://reactjs.org/docs/react-api.html#reactchildrenonly
-     *
-     * The current implementation of this function assumes that a single child gets
-     * passed without a wrapper, but the purpose of this helper function is to
-     * abstract away the particular structure of children.
-     *
-     * @param {?object} children Child collection structure.
-     * @return {ReactElement} The first and only `ReactElement` contained in the
-     * structure.
-     */
-
-
-    function onlyChild(children) {
-      if (!isValidElement(children)) {
-        {
-          throw Error( "React.Children.only expected to receive a single React element child." );
-        }
-      }
-
-      return children;
-    }
-
-    function createContext(defaultValue, calculateChangedBits) {
-      if (calculateChangedBits === undefined) {
-        calculateChangedBits = null;
-      } else {
-        {
-          if (calculateChangedBits !== null && typeof calculateChangedBits !== 'function') {
-            error('createContext: Expected the optional second argument to be a ' + 'function. Instead received: %s', calculateChangedBits);
-          }
-        }
-      }
-
-      var context = {
-        $$typeof: REACT_CONTEXT_TYPE,
-        _calculateChangedBits: calculateChangedBits,
-        // As a workaround to support multiple concurrent renderers, we categorize
-        // some renderers as primary and others as secondary. We only expect
-        // there to be two concurrent renderers at most: React Native (primary) and
-        // Fabric (secondary); React DOM (primary) and React ART (secondary).
-        // Secondary renderers store their context values on separate fields.
-        _currentValue: defaultValue,
-        _currentValue2: defaultValue,
-        // Used to track how many concurrent renderers this context currently
-        // supports within in a single renderer. Such as parallel server rendering.
-        _threadCount: 0,
-        // These are circular
-        Provider: null,
-        Consumer: null
-      };
-      context.Provider = {
-        $$typeof: REACT_PROVIDER_TYPE,
-        _context: context
-      };
-      var hasWarnedAboutUsingNestedContextConsumers = false;
-      var hasWarnedAboutUsingConsumerProvider = false;
-      var hasWarnedAboutDisplayNameOnConsumer = false;
-
-      {
-        // A separate object, but proxies back to the original context object for
-        // backwards compatibility. It has a different $$typeof, so we can properly
-        // warn for the incorrect usage of Context as a Consumer.
-        var Consumer = {
-          $$typeof: REACT_CONTEXT_TYPE,
-          _context: context,
-          _calculateChangedBits: context._calculateChangedBits
-        }; // $FlowFixMe: Flow complains about not setting a value, which is intentional here
-
-        Object.defineProperties(Consumer, {
-          Provider: {
-            get: function () {
-              if (!hasWarnedAboutUsingConsumerProvider) {
-                hasWarnedAboutUsingConsumerProvider = true;
-
-                error('Rendering <Context.Consumer.Provider> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Provider> instead?');
-              }
-
-              return context.Provider;
-            },
-            set: function (_Provider) {
-              context.Provider = _Provider;
-            }
-          },
-          _currentValue: {
-            get: function () {
-              return context._currentValue;
-            },
-            set: function (_currentValue) {
-              context._currentValue = _currentValue;
-            }
-          },
-          _currentValue2: {
-            get: function () {
-              return context._currentValue2;
-            },
-            set: function (_currentValue2) {
-              context._currentValue2 = _currentValue2;
-            }
-          },
-          _threadCount: {
-            get: function () {
-              return context._threadCount;
-            },
-            set: function (_threadCount) {
-              context._threadCount = _threadCount;
-            }
-          },
-          Consumer: {
-            get: function () {
-              if (!hasWarnedAboutUsingNestedContextConsumers) {
-                hasWarnedAboutUsingNestedContextConsumers = true;
-
-                error('Rendering <Context.Consumer.Consumer> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Consumer> instead?');
-              }
-
-              return context.Consumer;
-            }
-          },
-          displayName: {
-            get: function () {
-              return context.displayName;
-            },
-            set: function (displayName) {
-              if (!hasWarnedAboutDisplayNameOnConsumer) {
-                warn('Setting `displayName` on Context.Consumer has no effect. ' + "You should set it directly on the context with Context.displayName = '%s'.", displayName);
-
-                hasWarnedAboutDisplayNameOnConsumer = true;
-              }
-            }
-          }
-        }); // $FlowFixMe: Flow complains about missing properties because it doesn't understand defineProperty
-
-        context.Consumer = Consumer;
-      }
-
-      {
-        context._currentRenderer = null;
-        context._currentRenderer2 = null;
-      }
-
-      return context;
-    }
-
-    var Uninitialized = -1;
-    var Pending = 0;
-    var Resolved = 1;
-    var Rejected = 2;
-
-    function lazyInitializer(payload) {
-      if (payload._status === Uninitialized) {
-        var ctor = payload._result;
-        var thenable = ctor(); // Transition to the next state.
-
-        var pending = payload;
-        pending._status = Pending;
-        pending._result = thenable;
-        thenable.then(function (moduleObject) {
-          if (payload._status === Pending) {
-            var defaultExport = moduleObject.default;
-
-            {
-              if (defaultExport === undefined) {
-                error('lazy: Expected the result of a dynamic import() call. ' + 'Instead received: %s\n\nYour code should look like: \n  ' + // Break up imports to avoid accidentally parsing them as dependencies.
-                'const MyComponent = lazy(() => imp' + "ort('./MyComponent'))", moduleObject);
-              }
-            } // Transition to the next state.
-
-
-            var resolved = payload;
-            resolved._status = Resolved;
-            resolved._result = defaultExport;
-          }
-        }, function (error) {
-          if (payload._status === Pending) {
-            // Transition to the next state.
-            var rejected = payload;
-            rejected._status = Rejected;
-            rejected._result = error;
-          }
-        });
-      }
-
-      if (payload._status === Resolved) {
-        return payload._result;
-      } else {
-        throw payload._result;
-      }
-    }
-
-    function lazy(ctor) {
-      var payload = {
-        // We use these fields to store the result.
-        _status: -1,
-        _result: ctor
-      };
-      var lazyType = {
-        $$typeof: REACT_LAZY_TYPE,
-        _payload: payload,
-        _init: lazyInitializer
-      };
-
-      {
-        // In production, this would just set it on the object.
-        var defaultProps;
-        var propTypes; // $FlowFixMe
-
-        Object.defineProperties(lazyType, {
-          defaultProps: {
-            configurable: true,
-            get: function () {
-              return defaultProps;
-            },
-            set: function (newDefaultProps) {
-              error('React.lazy(...): It is not supported to assign `defaultProps` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
-
-              defaultProps = newDefaultProps; // Match production behavior more closely:
-              // $FlowFixMe
-
-              Object.defineProperty(lazyType, 'defaultProps', {
-                enumerable: true
-              });
-            }
-          },
-          propTypes: {
-            configurable: true,
-            get: function () {
-              return propTypes;
-            },
-            set: function (newPropTypes) {
-              error('React.lazy(...): It is not supported to assign `propTypes` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
-
-              propTypes = newPropTypes; // Match production behavior more closely:
-              // $FlowFixMe
-
-              Object.defineProperty(lazyType, 'propTypes', {
-                enumerable: true
-              });
-            }
-          }
-        });
-      }
-
-      return lazyType;
-    }
-
-    function forwardRef(render) {
-      {
-        if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
-          error('forwardRef requires a render function but received a `memo` ' + 'component. Instead of forwardRef(memo(...)), use ' + 'memo(forwardRef(...)).');
-        } else if (typeof render !== 'function') {
-          error('forwardRef requires a render function but was given %s.', render === null ? 'null' : typeof render);
-        } else {
-          if (render.length !== 0 && render.length !== 2) {
-            error('forwardRef render functions accept exactly two parameters: props and ref. %s', render.length === 1 ? 'Did you forget to use the ref parameter?' : 'Any additional parameter will be undefined.');
-          }
-        }
-
-        if (render != null) {
-          if (render.defaultProps != null || render.propTypes != null) {
-            error('forwardRef render functions do not support propTypes or defaultProps. ' + 'Did you accidentally pass a React component?');
-          }
-        }
-      }
-
-      var elementType = {
-        $$typeof: REACT_FORWARD_REF_TYPE,
-        render: render
-      };
-
-      {
-        var ownName;
-        Object.defineProperty(elementType, 'displayName', {
-          enumerable: false,
-          configurable: true,
-          get: function () {
-            return ownName;
-          },
-          set: function (name) {
-            ownName = name;
-
-            if (render.displayName == null) {
-              render.displayName = name;
-            }
-          }
-        });
-      }
-
-      return elementType;
-    }
-
-    // Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
-
-    var enableScopeAPI = false; // Experimental Create Event Handle API.
-
-    function isValidElementType(type) {
-      if (typeof type === 'string' || typeof type === 'function') {
-        return true;
-      } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
-
-
-      if (type === exports.Fragment || type === exports.Profiler || type === REACT_DEBUG_TRACING_MODE_TYPE || type === exports.StrictMode || type === exports.Suspense || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
-        return true;
-      }
-
-      if (typeof type === 'object' && type !== null) {
-        if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    function memo(type, compare) {
-      {
-        if (!isValidElementType(type)) {
-          error('memo: The first argument must be a component. Instead ' + 'received: %s', type === null ? 'null' : typeof type);
-        }
-      }
-
-      var elementType = {
-        $$typeof: REACT_MEMO_TYPE,
-        type: type,
-        compare: compare === undefined ? null : compare
-      };
-
-      {
-        var ownName;
-        Object.defineProperty(elementType, 'displayName', {
-          enumerable: false,
-          configurable: true,
-          get: function () {
-            return ownName;
-          },
-          set: function (name) {
-            ownName = name;
-
-            if (type.displayName == null) {
-              type.displayName = name;
-            }
-          }
-        });
-      }
-
-      return elementType;
-    }
-
-    function resolveDispatcher() {
-      var dispatcher = ReactCurrentDispatcher.current;
-
-      if (!(dispatcher !== null)) {
-        {
-          throw Error( "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem." );
-        }
-      }
-
-      return dispatcher;
-    }
-
-    function useContext(Context, unstable_observedBits) {
-      var dispatcher = resolveDispatcher();
-
-      {
-        if (unstable_observedBits !== undefined) {
-          error('useContext() second argument is reserved for future ' + 'use in React. Passing it is not supported. ' + 'You passed: %s.%s', unstable_observedBits, typeof unstable_observedBits === 'number' && Array.isArray(arguments[2]) ? '\n\nDid you call array.map(useContext)? ' + 'Calling Hooks inside a loop is not supported. ' + 'Learn more at https://reactjs.org/link/rules-of-hooks' : '');
-        } // TODO: add a more generic warning for invalid values.
-
-
-        if (Context._context !== undefined) {
-          var realContext = Context._context; // Don't deduplicate because this legitimately causes bugs
-          // and nobody should be using this in existing code.
-
-          if (realContext.Consumer === Context) {
-            error('Calling useContext(Context.Consumer) is not supported, may cause bugs, and will be ' + 'removed in a future major release. Did you mean to call useContext(Context) instead?');
-          } else if (realContext.Provider === Context) {
-            error('Calling useContext(Context.Provider) is not supported. ' + 'Did you mean to call useContext(Context) instead?');
-          }
-        }
-      }
-
-      return dispatcher.useContext(Context, unstable_observedBits);
-    }
-    function useState(initialState) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useState(initialState);
-    }
-    function useReducer(reducer, initialArg, init) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useReducer(reducer, initialArg, init);
-    }
-    function useRef(initialValue) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useRef(initialValue);
-    }
-    function useEffect(create, deps) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useEffect(create, deps);
-    }
-    function useLayoutEffect(create, deps) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useLayoutEffect(create, deps);
-    }
-    function useCallback(callback, deps) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useCallback(callback, deps);
-    }
-    function useMemo(create, deps) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useMemo(create, deps);
-    }
-    function useImperativeHandle(ref, create, deps) {
-      var dispatcher = resolveDispatcher();
-      return dispatcher.useImperativeHandle(ref, create, deps);
-    }
-    function useDebugValue(value, formatterFn) {
-      {
-        var dispatcher = resolveDispatcher();
-        return dispatcher.useDebugValue(value, formatterFn);
-      }
-    }
-
-    // Helpers to patch console.logs to avoid logging during side-effect free
-    // replaying on render function. This currently only patches the object
-    // lazily which won't cover if the log function was extracted eagerly.
-    // We could also eagerly patch the method.
-    var disabledDepth = 0;
-    var prevLog;
-    var prevInfo;
-    var prevWarn;
-    var prevError;
-    var prevGroup;
-    var prevGroupCollapsed;
-    var prevGroupEnd;
-
-    function disabledLog() {}
-
-    disabledLog.__reactDisabledLog = true;
-    function disableLogs() {
-      {
-        if (disabledDepth === 0) {
-          /* eslint-disable react-internal/no-production-logging */
-          prevLog = console.log;
-          prevInfo = console.info;
-          prevWarn = console.warn;
-          prevError = console.error;
-          prevGroup = console.group;
-          prevGroupCollapsed = console.groupCollapsed;
-          prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
-
-          var props = {
-            configurable: true,
-            enumerable: true,
-            value: disabledLog,
-            writable: true
-          }; // $FlowFixMe Flow thinks console is immutable.
-
-          Object.defineProperties(console, {
-            info: props,
-            log: props,
-            warn: props,
-            error: props,
-            group: props,
-            groupCollapsed: props,
-            groupEnd: props
-          });
-          /* eslint-enable react-internal/no-production-logging */
-        }
-
-        disabledDepth++;
-      }
-    }
-    function reenableLogs() {
-      {
-        disabledDepth--;
-
-        if (disabledDepth === 0) {
-          /* eslint-disable react-internal/no-production-logging */
-          var props = {
-            configurable: true,
-            enumerable: true,
-            writable: true
-          }; // $FlowFixMe Flow thinks console is immutable.
-
-          Object.defineProperties(console, {
-            log: _assign({}, props, {
-              value: prevLog
-            }),
-            info: _assign({}, props, {
-              value: prevInfo
-            }),
-            warn: _assign({}, props, {
-              value: prevWarn
-            }),
-            error: _assign({}, props, {
-              value: prevError
-            }),
-            group: _assign({}, props, {
-              value: prevGroup
-            }),
-            groupCollapsed: _assign({}, props, {
-              value: prevGroupCollapsed
-            }),
-            groupEnd: _assign({}, props, {
-              value: prevGroupEnd
-            })
-          });
-          /* eslint-enable react-internal/no-production-logging */
-        }
-
-        if (disabledDepth < 0) {
-          error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
-        }
-      }
-    }
-
-    var ReactCurrentDispatcher$1 = ReactSharedInternals.ReactCurrentDispatcher;
-    var prefix;
-    function describeBuiltInComponentFrame(name, source, ownerFn) {
-      {
-        if (prefix === undefined) {
-          // Extract the VM specific prefix used by each line.
-          try {
-            throw Error();
-          } catch (x) {
-            var match = x.stack.trim().match(/\n( *(at )?)/);
-            prefix = match && match[1] || '';
-          }
-        } // We use the prefix to ensure our stacks line up with native stack frames.
-
-
-        return '\n' + prefix + name;
-      }
-    }
-    var reentry = false;
-    var componentFrameCache;
-
-    {
-      var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
-      componentFrameCache = new PossiblyWeakMap();
-    }
-
-    function describeNativeComponentFrame(fn, construct) {
-      // If something asked for a stack inside a fake render, it should get ignored.
-      if (!fn || reentry) {
-        return '';
-      }
-
-      {
-        var frame = componentFrameCache.get(fn);
-
-        if (frame !== undefined) {
-          return frame;
-        }
-      }
-
-      var control;
-      reentry = true;
-      var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
-
-      Error.prepareStackTrace = undefined;
-      var previousDispatcher;
-
-      {
-        previousDispatcher = ReactCurrentDispatcher$1.current; // Set the dispatcher in DEV because this might be call in the render function
-        // for warnings.
-
-        ReactCurrentDispatcher$1.current = null;
-        disableLogs();
-      }
-
-      try {
-        // This should throw.
-        if (construct) {
-          // Something should be setting the props in the constructor.
-          var Fake = function () {
-            throw Error();
-          }; // $FlowFixMe
-
-
-          Object.defineProperty(Fake.prototype, 'props', {
-            set: function () {
-              // We use a throwing setter instead of frozen or non-writable props
-              // because that won't throw in a non-strict mode function.
-              throw Error();
-            }
-          });
-
-          if (typeof Reflect === 'object' && Reflect.construct) {
-            // We construct a different control for this case to include any extra
-            // frames added by the construct call.
-            try {
-              Reflect.construct(Fake, []);
-            } catch (x) {
-              control = x;
-            }
-
-            Reflect.construct(fn, [], Fake);
-          } else {
-            try {
-              Fake.call();
-            } catch (x) {
-              control = x;
-            }
-
-            fn.call(Fake.prototype);
-          }
-        } else {
-          try {
-            throw Error();
-          } catch (x) {
-            control = x;
-          }
-
-          fn();
-        }
-      } catch (sample) {
-        // This is inlined manually because closure doesn't do it for us.
-        if (sample && control && typeof sample.stack === 'string') {
-          // This extracts the first frame from the sample that isn't also in the control.
-          // Skipping one frame that we assume is the frame that calls the two.
-          var sampleLines = sample.stack.split('\n');
-          var controlLines = control.stack.split('\n');
-          var s = sampleLines.length - 1;
-          var c = controlLines.length - 1;
-
-          while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
-            // We expect at least one stack frame to be shared.
-            // Typically this will be the root most one. However, stack frames may be
-            // cut off due to maximum stack limits. In this case, one maybe cut off
-            // earlier than the other. We assume that the sample is longer or the same
-            // and there for cut off earlier. So we should find the root most frame in
-            // the sample somewhere in the control.
-            c--;
-          }
-
-          for (; s >= 1 && c >= 0; s--, c--) {
-            // Next we find the first one that isn't the same which should be the
-            // frame that called our sample function and the control.
-            if (sampleLines[s] !== controlLines[c]) {
-              // In V8, the first line is describing the message but other VMs don't.
-              // If we're about to return the first line, and the control is also on the same
-              // line, that's a pretty good indicator that our sample threw at same line as
-              // the control. I.e. before we entered the sample frame. So we ignore this result.
-              // This can happen if you passed a class to function component, or non-function.
-              if (s !== 1 || c !== 1) {
-                do {
-                  s--;
-                  c--; // We may still have similar intermediate frames from the construct call.
-                  // The next one that isn't the same should be our match though.
-
-                  if (c < 0 || sampleLines[s] !== controlLines[c]) {
-                    // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
-                    var _frame = '\n' + sampleLines[s].replace(' at new ', ' at ');
-
-                    {
-                      if (typeof fn === 'function') {
-                        componentFrameCache.set(fn, _frame);
-                      }
-                    } // Return the line we found.
-
-
-                    return _frame;
-                  }
-                } while (s >= 1 && c >= 0);
-              }
-
-              break;
-            }
-          }
-        }
-      } finally {
-        reentry = false;
-
-        {
-          ReactCurrentDispatcher$1.current = previousDispatcher;
-          reenableLogs();
-        }
-
-        Error.prepareStackTrace = previousPrepareStackTrace;
-      } // Fallback to just using the name if we couldn't make it throw.
-
-
-      var name = fn ? fn.displayName || fn.name : '';
-      var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
-
-      {
-        if (typeof fn === 'function') {
-          componentFrameCache.set(fn, syntheticFrame);
-        }
-      }
-
-      return syntheticFrame;
-    }
-    function describeFunctionComponentFrame(fn, source, ownerFn) {
-      {
-        return describeNativeComponentFrame(fn, false);
-      }
-    }
-
-    function shouldConstruct(Component) {
-      var prototype = Component.prototype;
-      return !!(prototype && prototype.isReactComponent);
-    }
-
-    function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
-
-      if (type == null) {
-        return '';
-      }
-
-      if (typeof type === 'function') {
-        {
-          return describeNativeComponentFrame(type, shouldConstruct(type));
-        }
-      }
-
-      if (typeof type === 'string') {
-        return describeBuiltInComponentFrame(type);
-      }
-
-      switch (type) {
-        case exports.Suspense:
-          return describeBuiltInComponentFrame('Suspense');
-
-        case REACT_SUSPENSE_LIST_TYPE:
-          return describeBuiltInComponentFrame('SuspenseList');
-      }
-
-      if (typeof type === 'object') {
-        switch (type.$$typeof) {
-          case REACT_FORWARD_REF_TYPE:
-            return describeFunctionComponentFrame(type.render);
-
-          case REACT_MEMO_TYPE:
-            // Memo may contain any component type so we recursively resolve it.
-            return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
-
-          case REACT_BLOCK_TYPE:
-            return describeFunctionComponentFrame(type._render);
-
-          case REACT_LAZY_TYPE:
-            {
-              var lazyComponent = type;
-              var payload = lazyComponent._payload;
-              var init = lazyComponent._init;
-
-              try {
-                // Lazy may contain any component type so we recursively resolve it.
-                return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-              } catch (x) {}
-            }
-        }
-      }
-
-      return '';
-    }
-
-    var loggedTypeFailures = {};
-    var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
-
-    function setCurrentlyValidatingElement(element) {
-      {
-        if (element) {
-          var owner = element._owner;
-          var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-          ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
-        } else {
-          ReactDebugCurrentFrame$1.setExtraStackFrame(null);
-        }
-      }
-    }
-
-    function checkPropTypes(typeSpecs, values, location, componentName, element) {
-      {
-        // $FlowFixMe This is okay but Flow doesn't know it.
-        var has = Function.call.bind(Object.prototype.hasOwnProperty);
-
-        for (var typeSpecName in typeSpecs) {
-          if (has(typeSpecs, typeSpecName)) {
-            var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
-            // fail the render phase where it didn't fail before. So we log it.
-            // After these have been cleaned up, we'll let them throw.
-
-            try {
-              // This is intentionally an invariant that gets caught. It's the same
-              // behavior as without this statement except with a better message.
-              if (typeof typeSpecs[typeSpecName] !== 'function') {
-                var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
-                err.name = 'Invariant Violation';
-                throw err;
-              }
-
-              error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
-            } catch (ex) {
-              error$1 = ex;
-            }
-
-            if (error$1 && !(error$1 instanceof Error)) {
-              setCurrentlyValidatingElement(element);
-
-              error('%s: type specification of %s' + ' `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error$1);
-
-              setCurrentlyValidatingElement(null);
-            }
-
-            if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
-              // Only monitor this failure once because there tends to be a lot of the
-              // same error.
-              loggedTypeFailures[error$1.message] = true;
-              setCurrentlyValidatingElement(element);
-
-              error('Failed %s type: %s', location, error$1.message);
-
-              setCurrentlyValidatingElement(null);
-            }
-          }
-        }
-      }
-    }
-
-    function setCurrentlyValidatingElement$1(element) {
-      {
-        if (element) {
-          var owner = element._owner;
-          var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-          setExtraStackFrame(stack);
-        } else {
-          setExtraStackFrame(null);
-        }
-      }
-    }
-
-    var propTypesMisspellWarningShown;
-
-    {
-      propTypesMisspellWarningShown = false;
-    }
-
-    function getDeclarationErrorAddendum() {
-      if (ReactCurrentOwner.current) {
-        var name = getComponentName(ReactCurrentOwner.current.type);
-
-        if (name) {
-          return '\n\nCheck the render method of `' + name + '`.';
-        }
-      }
-
-      return '';
-    }
-
-    function getSourceInfoErrorAddendum(source) {
-      if (source !== undefined) {
-        var fileName = source.fileName.replace(/^.*[\\\/]/, '');
-        var lineNumber = source.lineNumber;
-        return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
-      }
-
-      return '';
-    }
-
-    function getSourceInfoErrorAddendumForProps(elementProps) {
-      if (elementProps !== null && elementProps !== undefined) {
-        return getSourceInfoErrorAddendum(elementProps.__source);
-      }
-
-      return '';
-    }
-    /**
-     * Warn if there's no key explicitly set on dynamic arrays of children or
-     * object keys are not valid. This allows us to keep track of children between
-     * updates.
-     */
-
-
-    var ownerHasKeyUseWarning = {};
-
-    function getCurrentComponentErrorInfo(parentType) {
-      var info = getDeclarationErrorAddendum();
-
-      if (!info) {
-        var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
-
-        if (parentName) {
-          info = "\n\nCheck the top-level render call using <" + parentName + ">.";
-        }
-      }
-
-      return info;
-    }
-    /**
-     * Warn if the element doesn't have an explicit key assigned to it.
-     * This element is in an array. The array could grow and shrink or be
-     * reordered. All children that haven't already been validated are required to
-     * have a "key" property assigned to it. Error statuses are cached so a warning
-     * will only be shown once.
-     *
-     * @internal
-     * @param {ReactElement} element Element that requires a key.
-     * @param {*} parentType element's parent's type.
-     */
-
-
-    function validateExplicitKey(element, parentType) {
-      if (!element._store || element._store.validated || element.key != null) {
-        return;
-      }
-
-      element._store.validated = true;
-      var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
-
-      if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
-        return;
-      }
-
-      ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
-      // property, it may be the creator of the child that's responsible for
-      // assigning it a key.
-
-      var childOwner = '';
-
-      if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
-        // Give the component that originally created this child.
-        childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
-      }
-
-      {
-        setCurrentlyValidatingElement$1(element);
-
-        error('Each child in a list should have a unique "key" prop.' + '%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
-
-        setCurrentlyValidatingElement$1(null);
-      }
-    }
-    /**
-     * Ensure that every element either is passed in a static location, in an
-     * array with an explicit keys property defined, or in an object literal
-     * with valid key property.
-     *
-     * @internal
-     * @param {ReactNode} node Statically passed child of any type.
-     * @param {*} parentType node's parent's type.
-     */
-
-
-    function validateChildKeys(node, parentType) {
-      if (typeof node !== 'object') {
-        return;
-      }
-
-      if (Array.isArray(node)) {
-        for (var i = 0; i < node.length; i++) {
-          var child = node[i];
-
-          if (isValidElement(child)) {
-            validateExplicitKey(child, parentType);
-          }
-        }
-      } else if (isValidElement(node)) {
-        // This element was passed in a valid location.
-        if (node._store) {
-          node._store.validated = true;
-        }
-      } else if (node) {
-        var iteratorFn = getIteratorFn(node);
-
-        if (typeof iteratorFn === 'function') {
-          // Entry iterators used to provide implicit keys,
-          // but now we print a separate warning for them later.
-          if (iteratorFn !== node.entries) {
-            var iterator = iteratorFn.call(node);
-            var step;
-
-            while (!(step = iterator.next()).done) {
-              if (isValidElement(step.value)) {
-                validateExplicitKey(step.value, parentType);
-              }
-            }
-          }
-        }
-      }
-    }
-    /**
-     * Given an element, validate that its props follow the propTypes definition,
-     * provided by the type.
-     *
-     * @param {ReactElement} element
-     */
-
-
-    function validatePropTypes(element) {
-      {
-        var type = element.type;
-
-        if (type === null || type === undefined || typeof type === 'string') {
-          return;
-        }
-
-        var propTypes;
-
-        if (typeof type === 'function') {
-          propTypes = type.propTypes;
-        } else if (typeof type === 'object' && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
-        // Inner props are checked in the reconciler.
-        type.$$typeof === REACT_MEMO_TYPE)) {
-          propTypes = type.propTypes;
-        } else {
-          return;
-        }
-
-        if (propTypes) {
-          // Intentionally inside to avoid triggering lazy initializers:
-          var name = getComponentName(type);
-          checkPropTypes(propTypes, element.props, 'prop', name, element);
-        } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
-          propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
-
-          var _name = getComponentName(type);
-
-          error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
-        }
-
-        if (typeof type.getDefaultProps === 'function' && !type.getDefaultProps.isReactClassApproved) {
-          error('getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
-        }
-      }
-    }
-    /**
-     * Given a fragment, validate that it can only be provided with fragment props
-     * @param {ReactElement} fragment
-     */
-
-
-    function validateFragmentProps(fragment) {
-      {
-        var keys = Object.keys(fragment.props);
-
-        for (var i = 0; i < keys.length; i++) {
-          var key = keys[i];
-
-          if (key !== 'children' && key !== 'key') {
-            setCurrentlyValidatingElement$1(fragment);
-
-            error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
-
-            setCurrentlyValidatingElement$1(null);
-            break;
-          }
-        }
-
-        if (fragment.ref !== null) {
-          setCurrentlyValidatingElement$1(fragment);
-
-          error('Invalid attribute `ref` supplied to `React.Fragment`.');
-
-          setCurrentlyValidatingElement$1(null);
-        }
-      }
-    }
-    function createElementWithValidation(type, props, children) {
-      var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
-      // succeed and there will likely be errors in render.
-
-      if (!validType) {
-        var info = '';
-
-        if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
-        }
-
-        var sourceInfo = getSourceInfoErrorAddendumForProps(props);
-
-        if (sourceInfo) {
-          info += sourceInfo;
-        } else {
-          info += getDeclarationErrorAddendum();
-        }
-
-        var typeString;
-
-        if (type === null) {
-          typeString = 'null';
-        } else if (Array.isArray(type)) {
-          typeString = 'array';
-        } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
-          typeString = "<" + (getComponentName(type.type) || 'Unknown') + " />";
-          info = ' Did you accidentally export a JSX literal instead of a component?';
-        } else {
-          typeString = typeof type;
-        }
-
-        {
-          error('React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);
-        }
-      }
-
-      var element = createElement.apply(this, arguments); // The result can be nullish if a mock or a custom function is used.
-      // TODO: Drop this when these are no longer allowed as the type argument.
-
-      if (element == null) {
-        return element;
-      } // Skip key warning if the type isn't valid since our key validation logic
-      // doesn't expect a non-string/function type and can throw confusing errors.
-      // We don't want exception behavior to differ between dev and prod.
-      // (Rendering will throw with a helpful message and as soon as the type is
-      // fixed, the key warnings will appear.)
-
-
-      if (validType) {
-        for (var i = 2; i < arguments.length; i++) {
-          validateChildKeys(arguments[i], type);
-        }
-      }
-
-      if (type === exports.Fragment) {
-        validateFragmentProps(element);
-      } else {
-        validatePropTypes(element);
-      }
-
-      return element;
-    }
-    var didWarnAboutDeprecatedCreateFactory = false;
-    function createFactoryWithValidation(type) {
-      var validatedFactory = createElementWithValidation.bind(null, type);
-      validatedFactory.type = type;
-
-      {
-        if (!didWarnAboutDeprecatedCreateFactory) {
-          didWarnAboutDeprecatedCreateFactory = true;
-
-          warn('React.createFactory() is deprecated and will be removed in ' + 'a future major release. Consider using JSX ' + 'or use React.createElement() directly instead.');
-        } // Legacy hook: remove it
-
-
-        Object.defineProperty(validatedFactory, 'type', {
-          enumerable: false,
-          get: function () {
-            warn('Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
-
-            Object.defineProperty(this, 'type', {
-              value: type
-            });
-            return type;
-          }
-        });
-      }
-
-      return validatedFactory;
-    }
-    function cloneElementWithValidation(element, props, children) {
-      var newElement = cloneElement.apply(this, arguments);
-
-      for (var i = 2; i < arguments.length; i++) {
-        validateChildKeys(arguments[i], newElement.type);
-      }
-
-      validatePropTypes(newElement);
-      return newElement;
-    }
-
-    {
-
-      try {
-        var frozenObject = Object.freeze({});
-        /* eslint-disable no-new */
-
-        new Map([[frozenObject, null]]);
-        new Set([frozenObject]);
-        /* eslint-enable no-new */
-      } catch (e) {
-      }
-    }
-
-    var createElement$1 =  createElementWithValidation ;
-    var cloneElement$1 =  cloneElementWithValidation ;
-    var createFactory =  createFactoryWithValidation ;
-    var Children = {
-      map: mapChildren,
-      forEach: forEachChildren,
-      count: countChildren,
-      toArray: toArray,
-      only: onlyChild
-    };
-
-    exports.Children = Children;
-    exports.Component = Component;
-    exports.PureComponent = PureComponent;
-    exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
-    exports.cloneElement = cloneElement$1;
-    exports.createContext = createContext;
-    exports.createElement = createElement$1;
-    exports.createFactory = createFactory;
-    exports.createRef = createRef;
-    exports.forwardRef = forwardRef;
-    exports.isValidElement = isValidElement;
-    exports.lazy = lazy;
-    exports.memo = memo;
-    exports.useCallback = useCallback;
-    exports.useContext = useContext;
-    exports.useDebugValue = useDebugValue;
-    exports.useEffect = useEffect;
-    exports.useImperativeHandle = useImperativeHandle;
-    exports.useLayoutEffect = useLayoutEffect;
-    exports.useMemo = useMemo;
-    exports.useReducer = useReducer;
-    exports.useRef = useRef;
-    exports.useState = useState;
-    exports.version = ReactVersion;
-      })();
-    }
-    }(react_development));
-
-    if (process.env.NODE_ENV === 'production') {
-      react.exports = react_production_min;
-    } else {
-      react.exports = react_development;
-    }
-
-    var React = react.exports;
-
-    var cache$1 = new (canUseWeakMap ? WeakMap : Map)();
-    function getApolloContext() {
-        var context = cache$1.get(React.createContext);
-        if (!context) {
-            context = React.createContext({});
-            context.displayName = 'ApolloContext';
-            cache$1.set(React.createContext, context);
-        }
-        return context;
-    }
-
-    var ApolloConsumer = function (props) {
-        var ApolloContext = getApolloContext();
-        return React.createElement(ApolloContext.Consumer, null, function (context) {
-            process.env.NODE_ENV === "production" ? invariant$1(context && context.client, 27) : invariant$1(context && context.client, 'Could not find "client" in the context of ApolloConsumer. ' +
-                'Wrap the root component in an <ApolloProvider>.');
-            return props.children(context.client);
-        });
-    };
-
-    var ApolloProvider = function (_a) {
-        var client = _a.client, children = _a.children;
-        var ApolloContext = getApolloContext();
-        return React.createElement(ApolloContext.Consumer, null, function (context) {
-            if (context === void 0) { context = {}; }
-            if (client && context.client !== client) {
-                context = Object.assign({}, context, { client: client });
-            }
-            process.env.NODE_ENV === "production" ? invariant$1(context.client, 28) : invariant$1(context.client, 'ApolloProvider was not passed a client instance. Make ' +
-                'sure you pass in your client via the "client" prop.');
-            return (React.createElement(ApolloContext.Provider, { value: context }, children));
-        });
-    };
-
-    function useApolloClient() {
-        var client = React.useContext(getApolloContext()).client;
-        process.env.NODE_ENV === "production" ? invariant$1(client, 33) : invariant$1(client, 'No Apollo Client instance can be found. Please ensure that you ' +
-            'have called `ApolloProvider` higher up in your tree.');
-        return client;
-    }
-
-    var DocumentType;
-    (function (DocumentType) {
-        DocumentType[DocumentType["Query"] = 0] = "Query";
-        DocumentType[DocumentType["Mutation"] = 1] = "Mutation";
-        DocumentType[DocumentType["Subscription"] = 2] = "Subscription";
-    })(DocumentType || (DocumentType = {}));
-    var cache = new Map();
-    function operationName(type) {
-        var name;
-        switch (type) {
-            case DocumentType.Query:
-                name = 'Query';
-                break;
-            case DocumentType.Mutation:
-                name = 'Mutation';
-                break;
-            case DocumentType.Subscription:
-                name = 'Subscription';
-                break;
-        }
-        return name;
-    }
-    function parser(document) {
-        var cached = cache.get(document);
-        if (cached)
-            return cached;
-        var variables, type, name;
-        process.env.NODE_ENV === "production" ? invariant$1(!!document && !!document.kind, 34) : invariant$1(!!document && !!document.kind, "Argument of " + document + " passed to parser was not a valid GraphQL " +
-            "DocumentNode. You may need to use 'graphql-tag' or another method " +
-            "to convert your operation into a document");
-        var fragments = document.definitions.filter(function (x) { return x.kind === 'FragmentDefinition'; });
-        var queries = document.definitions.filter(function (x) {
-            return x.kind === 'OperationDefinition' && x.operation === 'query';
-        });
-        var mutations = document.definitions.filter(function (x) {
-            return x.kind === 'OperationDefinition' && x.operation === 'mutation';
-        });
-        var subscriptions = document.definitions.filter(function (x) {
-            return x.kind === 'OperationDefinition' && x.operation === 'subscription';
-        });
-        process.env.NODE_ENV === "production" ? invariant$1(!fragments.length ||
-            (queries.length || mutations.length || subscriptions.length), 35) : invariant$1(!fragments.length ||
-            (queries.length || mutations.length || subscriptions.length), "Passing only a fragment to 'graphql' is not yet supported. " +
-            "You must include a query, subscription or mutation as well");
-        process.env.NODE_ENV === "production" ? invariant$1(queries.length + mutations.length + subscriptions.length <= 1, 36) : invariant$1(queries.length + mutations.length + subscriptions.length <= 1, "react-apollo only supports a query, subscription, or a mutation per HOC. " +
-            (document + " had " + queries.length + " queries, " + subscriptions.length + " ") +
-            ("subscriptions and " + mutations.length + " mutations. ") +
-            "You can use 'compose' to join multiple operation types to a component");
-        type = queries.length ? DocumentType.Query : DocumentType.Mutation;
-        if (!queries.length && !mutations.length)
-            type = DocumentType.Subscription;
-        var definitions = queries.length
-            ? queries
-            : mutations.length
-                ? mutations
-                : subscriptions;
-        process.env.NODE_ENV === "production" ? invariant$1(definitions.length === 1, 37) : invariant$1(definitions.length === 1, "react-apollo only supports one definition per HOC. " + document + " had " +
-            (definitions.length + " definitions. ") +
-            "You can use 'compose' to join multiple operation types to a component");
-        var definition = definitions[0];
-        variables = definition.variableDefinitions || [];
-        if (definition.name && definition.name.kind === 'Name') {
-            name = definition.name.value;
-        }
-        else {
-            name = 'data';
-        }
-        var payload = { name: name, type: type, variables: variables };
-        cache.set(document, payload);
-        return payload;
-    }
-
-    var OperationData = (function () {
-        function OperationData(options, context) {
-            this.isMounted = false;
-            this.previousOptions = {};
-            this.context = {};
-            this.options = {};
-            this.options = options || {};
-            this.context = context || {};
-        }
-        OperationData.prototype.getOptions = function () {
-            return this.options;
-        };
-        OperationData.prototype.setOptions = function (newOptions, storePrevious) {
-            if (storePrevious === void 0) { storePrevious = false; }
-            if (storePrevious && !equal(this.options, newOptions)) {
-                this.previousOptions = this.options;
-            }
-            this.options = newOptions;
-        };
-        OperationData.prototype.unmount = function () {
-            this.isMounted = false;
-        };
-        OperationData.prototype.refreshClient = function () {
-            var client = (this.options && this.options.client) ||
-                (this.context && this.context.client);
-            process.env.NODE_ENV === "production" ? invariant$1(!!client, 29) : invariant$1(!!client, 'Could not find "client" in the context or passed in as an option. ' +
-                'Wrap the root component in an <ApolloProvider>, or pass an ' +
-                'ApolloClient instance in via options.');
-            var isNew = false;
-            if (client !== this.client) {
-                isNew = true;
-                this.client = client;
-                this.cleanup();
-            }
-            return {
-                client: this.client,
-                isNew: isNew
-            };
-        };
-        OperationData.prototype.verifyDocumentType = function (document, type) {
-            var operation = parser(document);
-            var requiredOperationName = operationName(type);
-            var usedOperationName = operationName(operation.type);
-            process.env.NODE_ENV === "production" ? invariant$1(operation.type === type, 30) : invariant$1(operation.type === type, "Running a " + requiredOperationName + " requires a graphql " +
-                (requiredOperationName + ", but a " + usedOperationName + " was used instead."));
-        };
-        return OperationData;
-    }());
-
-    var SubscriptionData = (function (_super) {
-        __extends$1(SubscriptionData, _super);
-        function SubscriptionData(_a) {
-            var options = _a.options, context = _a.context, setResult = _a.setResult;
-            var _this = _super.call(this, options, context) || this;
-            _this.currentObservable = {};
-            _this.setResult = setResult;
-            _this.initialize(options);
-            return _this;
-        }
-        SubscriptionData.prototype.execute = function (result) {
-            if (this.getOptions().skip === true) {
-                this.cleanup();
-                return {
-                    loading: false,
-                    error: undefined,
-                    data: undefined,
-                    variables: this.getOptions().variables
-                };
-            }
-            var currentResult = result;
-            if (this.refreshClient().isNew) {
-                currentResult = this.getLoadingResult();
-            }
-            var shouldResubscribe = this.getOptions().shouldResubscribe;
-            if (typeof shouldResubscribe === 'function') {
-                shouldResubscribe = !!shouldResubscribe(this.getOptions());
-            }
-            if (shouldResubscribe !== false &&
-                this.previousOptions &&
-                Object.keys(this.previousOptions).length > 0 &&
-                (this.previousOptions.subscription !== this.getOptions().subscription ||
-                    !equal(this.previousOptions.variables, this.getOptions().variables) ||
-                    this.previousOptions.skip !== this.getOptions().skip)) {
-                this.cleanup();
-                currentResult = this.getLoadingResult();
-            }
-            this.initialize(this.getOptions());
-            this.startSubscription();
-            this.previousOptions = this.getOptions();
-            return __assign$1(__assign$1({}, currentResult), { variables: this.getOptions().variables });
-        };
-        SubscriptionData.prototype.afterExecute = function () {
-            this.isMounted = true;
-        };
-        SubscriptionData.prototype.cleanup = function () {
-            this.endSubscription();
-            delete this.currentObservable.query;
-        };
-        SubscriptionData.prototype.initialize = function (options) {
-            if (this.currentObservable.query || this.getOptions().skip === true)
-                return;
-            this.currentObservable.query = this.refreshClient().client.subscribe({
-                query: options.subscription,
-                variables: options.variables,
-                fetchPolicy: options.fetchPolicy,
-                context: options.context,
-            });
-        };
-        SubscriptionData.prototype.startSubscription = function () {
-            if (this.currentObservable.subscription)
-                return;
-            this.currentObservable.subscription = this.currentObservable.query.subscribe({
-                next: this.updateCurrentData.bind(this),
-                error: this.updateError.bind(this),
-                complete: this.completeSubscription.bind(this)
-            });
-        };
-        SubscriptionData.prototype.getLoadingResult = function () {
-            return {
-                loading: true,
-                error: undefined,
-                data: undefined
-            };
-        };
-        SubscriptionData.prototype.updateResult = function (result) {
-            if (this.isMounted) {
-                this.setResult(result);
-            }
-        };
-        SubscriptionData.prototype.updateCurrentData = function (result) {
-            var onSubscriptionData = this.getOptions().onSubscriptionData;
-            this.updateResult({
-                data: result.data,
-                loading: false,
-                error: undefined
-            });
-            if (onSubscriptionData) {
-                onSubscriptionData({
-                    client: this.refreshClient().client,
-                    subscriptionData: result
-                });
-            }
-        };
-        SubscriptionData.prototype.updateError = function (error) {
-            this.updateResult({
-                error: error,
-                loading: false
-            });
-        };
-        SubscriptionData.prototype.completeSubscription = function () {
-            var _this = this;
-            Promise.resolve().then(function () {
-                var onSubscriptionComplete = _this.getOptions().onSubscriptionComplete;
-                if (onSubscriptionComplete)
-                    onSubscriptionComplete();
-                _this.endSubscription();
-            });
-        };
-        SubscriptionData.prototype.endSubscription = function () {
-            if (this.currentObservable.subscription) {
-                this.currentObservable.subscription.unsubscribe();
-                delete this.currentObservable.subscription;
-            }
-        };
-        return SubscriptionData;
-    }(OperationData));
-
-    var MutationData = (function (_super) {
-        __extends$1(MutationData, _super);
-        function MutationData(_a) {
-            var options = _a.options, context = _a.context, result = _a.result, setResult = _a.setResult;
-            var _this = _super.call(this, options, context) || this;
-            _this.runMutation = function (mutationFunctionOptions) {
-                if (mutationFunctionOptions === void 0) { mutationFunctionOptions = {}; }
-                _this.onMutationStart();
-                var mutationId = _this.generateNewMutationId();
-                return _this.mutate(mutationFunctionOptions)
-                    .then(function (response) {
-                    _this.onMutationCompleted(response, mutationId);
-                    return response;
-                })
-                    .catch(function (error) {
-                    var onError = _this.getOptions().onError;
-                    _this.onMutationError(error, mutationId);
-                    if (onError) {
-                        onError(error);
-                        return {
-                            data: undefined,
-                            errors: error,
-                        };
-                    }
-                    else {
-                        throw error;
-                    }
-                });
-            };
-            _this.verifyDocumentType(options.mutation, DocumentType.Mutation);
-            _this.result = result;
-            _this.setResult = setResult;
-            _this.mostRecentMutationId = 0;
-            return _this;
-        }
-        MutationData.prototype.execute = function (result) {
-            this.isMounted = true;
-            this.verifyDocumentType(this.getOptions().mutation, DocumentType.Mutation);
-            return [
-                this.runMutation,
-                __assign$1(__assign$1({}, result), { client: this.refreshClient().client })
-            ];
-        };
-        MutationData.prototype.afterExecute = function () {
-            this.isMounted = true;
-            return this.unmount.bind(this);
-        };
-        MutationData.prototype.cleanup = function () {
-        };
-        MutationData.prototype.mutate = function (options) {
-            return this.refreshClient().client.mutate(mergeOptions(this.getOptions(), options));
-        };
-        MutationData.prototype.onMutationStart = function () {
-            if (!this.result.loading && !this.getOptions().ignoreResults) {
-                this.updateResult({
-                    loading: true,
-                    error: undefined,
-                    data: undefined,
-                    called: true
-                });
-            }
-        };
-        MutationData.prototype.onMutationCompleted = function (response, mutationId) {
-            var _a = this.getOptions(), onCompleted = _a.onCompleted, ignoreResults = _a.ignoreResults;
-            var data = response.data, errors = response.errors;
-            var error = errors && errors.length > 0
-                ? new ApolloError({ graphQLErrors: errors })
-                : undefined;
-            var callOncomplete = function () {
-                return onCompleted ? onCompleted(data) : null;
-            };
-            if (this.isMostRecentMutation(mutationId) && !ignoreResults) {
-                this.updateResult({
-                    called: true,
-                    loading: false,
-                    data: data,
-                    error: error
-                });
-            }
-            callOncomplete();
-        };
-        MutationData.prototype.onMutationError = function (error, mutationId) {
-            if (this.isMostRecentMutation(mutationId)) {
-                this.updateResult({
-                    loading: false,
-                    error: error,
-                    data: undefined,
-                    called: true
-                });
-            }
-        };
-        MutationData.prototype.generateNewMutationId = function () {
-            return ++this.mostRecentMutationId;
-        };
-        MutationData.prototype.isMostRecentMutation = function (mutationId) {
-            return this.mostRecentMutationId === mutationId;
-        };
-        MutationData.prototype.updateResult = function (result) {
-            if (this.isMounted &&
-                (!this.previousResult || !equal(this.previousResult, result))) {
-                this.setResult(result);
-                this.previousResult = result;
-                return result;
-            }
-        };
-        return MutationData;
-    }(OperationData));
-
-    var QueryData = (function (_super) {
-        __extends$1(QueryData, _super);
-        function QueryData(_a) {
-            var options = _a.options, context = _a.context, onNewData = _a.onNewData;
-            var _this = _super.call(this, options, context) || this;
-            _this.runLazy = false;
-            _this.previous = Object.create(null);
-            _this.runLazyQuery = function (options) {
-                _this.cleanup();
-                _this.runLazy = true;
-                _this.lazyOptions = options;
-                _this.onNewData();
-            };
-            _this.getQueryResult = function () {
-                var result = _this.observableQueryFields();
-                var options = _this.getOptions();
-                if (options.skip) {
-                    result = __assign$1(__assign$1({}, result), { data: undefined, error: undefined, loading: false, networkStatus: NetworkStatus.ready, called: true });
-                }
-                else if (_this.currentObservable) {
-                    var currentResult = _this.currentObservable.getCurrentResult();
-                    var data = currentResult.data, loading = currentResult.loading, partial = currentResult.partial, networkStatus = currentResult.networkStatus, errors = currentResult.errors;
-                    var error = currentResult.error;
-                    if (errors && errors.length > 0) {
-                        error = new ApolloError({ graphQLErrors: errors });
-                    }
-                    result = __assign$1(__assign$1({}, result), { data: data,
-                        loading: loading,
-                        networkStatus: networkStatus,
-                        error: error, called: true });
-                    if (loading) ;
-                    else if (error) {
-                        Object.assign(result, {
-                            data: (_this.currentObservable.getLastResult() || {})
-                                .data
-                        });
-                    }
-                    else {
-                        var fetchPolicy = _this.currentObservable.options.fetchPolicy;
-                        var partialRefetch = options.partialRefetch;
-                        if (partialRefetch &&
-                            partial &&
-                            (!data || Object.keys(data).length === 0) &&
-                            fetchPolicy !== 'cache-only') {
-                            Object.assign(result, {
-                                loading: true,
-                                networkStatus: NetworkStatus.loading
-                            });
-                            result.refetch();
-                            return result;
-                        }
-                    }
-                }
-                result.client = _this.client;
-                _this.setOptions(options, true);
-                var previousResult = _this.previous.result;
-                _this.previous.loading =
-                    previousResult && previousResult.loading || false;
-                result.previousData = previousResult &&
-                    (previousResult.data || previousResult.previousData);
-                _this.previous.result = result;
-                _this.currentObservable && _this.currentObservable.resetQueryStoreErrors();
-                return result;
-            };
-            _this.obsRefetch = function (variables) { var _a; return (_a = _this.currentObservable) === null || _a === void 0 ? void 0 : _a.refetch(variables); };
-            _this.obsFetchMore = function (fetchMoreOptions) { return _this.currentObservable.fetchMore(fetchMoreOptions); };
-            _this.obsUpdateQuery = function (mapFn) { return _this.currentObservable.updateQuery(mapFn); };
-            _this.obsStartPolling = function (pollInterval) {
-                var _a;
-                (_a = _this.currentObservable) === null || _a === void 0 ? void 0 : _a.startPolling(pollInterval);
-            };
-            _this.obsStopPolling = function () {
-                var _a;
-                (_a = _this.currentObservable) === null || _a === void 0 ? void 0 : _a.stopPolling();
-            };
-            _this.obsSubscribeToMore = function (options) { return _this.currentObservable.subscribeToMore(options); };
-            _this.onNewData = onNewData;
-            return _this;
-        }
-        QueryData.prototype.execute = function () {
-            this.refreshClient();
-            var _a = this.getOptions(), skip = _a.skip, query = _a.query;
-            if (skip || query !== this.previous.query) {
-                this.removeQuerySubscription();
-                this.removeObservable(!skip);
-                this.previous.query = query;
-            }
-            this.updateObservableQuery();
-            if (this.isMounted)
-                this.startQuerySubscription();
-            return this.getExecuteSsrResult() || this.getExecuteResult();
-        };
-        QueryData.prototype.executeLazy = function () {
-            return !this.runLazy
-                ? [
-                    this.runLazyQuery,
-                    {
-                        loading: false,
-                        networkStatus: NetworkStatus.ready,
-                        called: false,
-                        data: undefined
-                    }
-                ]
-                : [this.runLazyQuery, this.execute()];
-        };
-        QueryData.prototype.fetchData = function () {
-            var _this = this;
-            var options = this.getOptions();
-            if (options.skip || options.ssr === false)
-                return false;
-            return new Promise(function (resolve) { return _this.startQuerySubscription(resolve); });
-        };
-        QueryData.prototype.afterExecute = function (_a) {
-            var _b = (_a === void 0 ? {} : _a).lazy, lazy = _b === void 0 ? false : _b;
-            this.isMounted = true;
-            if (!lazy || this.runLazy) {
-                this.handleErrorOrCompleted();
-            }
-            this.previousOptions = this.getOptions();
-            return this.unmount.bind(this);
-        };
-        QueryData.prototype.cleanup = function () {
-            this.removeQuerySubscription();
-            this.removeObservable(true);
-            delete this.previous.result;
-        };
-        QueryData.prototype.getOptions = function () {
-            var options = _super.prototype.getOptions.call(this);
-            if (this.lazyOptions) {
-                options.variables = __assign$1(__assign$1({}, options.variables), this.lazyOptions.variables);
-                options.context = __assign$1(__assign$1({}, options.context), this.lazyOptions.context);
-            }
-            if (this.runLazy) {
-                delete options.skip;
-            }
-            return options;
-        };
-        QueryData.prototype.ssrInitiated = function () {
-            return this.context && this.context.renderPromises;
-        };
-        QueryData.prototype.getExecuteResult = function () {
-            var result = this.getQueryResult();
-            this.startQuerySubscription();
-            return result;
-        };
-        QueryData.prototype.getExecuteSsrResult = function () {
-            var _a = this.getOptions(), ssr = _a.ssr, skip = _a.skip;
-            var ssrDisabled = ssr === false;
-            var fetchDisabled = this.refreshClient().client.disableNetworkFetches;
-            var ssrLoading = __assign$1({ loading: true, networkStatus: NetworkStatus.loading, called: true, data: undefined, stale: false, client: this.client }, this.observableQueryFields());
-            if (ssrDisabled && (this.ssrInitiated() || fetchDisabled)) {
-                this.previous.result = ssrLoading;
-                return ssrLoading;
-            }
-            if (this.ssrInitiated()) {
-                var result = this.getQueryResult() || ssrLoading;
-                if (result.loading && !skip) {
-                    this.context.renderPromises.addQueryPromise(this, function () { return null; });
-                }
-                return result;
-            }
-        };
-        QueryData.prototype.prepareObservableQueryOptions = function () {
-            var options = this.getOptions();
-            this.verifyDocumentType(options.query, DocumentType.Query);
-            var displayName = options.displayName || 'Query';
-            if (this.ssrInitiated() &&
-                (options.fetchPolicy === 'network-only' ||
-                    options.fetchPolicy === 'cache-and-network')) {
-                options.fetchPolicy = 'cache-first';
-            }
-            return __assign$1(__assign$1({}, options), { displayName: displayName, context: options.context });
-        };
-        QueryData.prototype.initializeObservableQuery = function () {
-            if (this.ssrInitiated()) {
-                this.currentObservable = this.context.renderPromises.getSSRObservable(this.getOptions());
-            }
-            if (!this.currentObservable) {
-                var observableQueryOptions = this.prepareObservableQueryOptions();
-                this.previous.observableQueryOptions = __assign$1(__assign$1({}, observableQueryOptions), { children: null });
-                this.currentObservable = this.refreshClient().client.watchQuery(__assign$1({}, observableQueryOptions));
-                if (this.ssrInitiated()) {
-                    this.context.renderPromises.registerSSRObservable(this.currentObservable, observableQueryOptions);
-                }
-            }
-        };
-        QueryData.prototype.updateObservableQuery = function () {
-            if (!this.currentObservable) {
-                this.initializeObservableQuery();
-                return;
-            }
-            if (this.getOptions().skip)
-                return;
-            var newObservableQueryOptions = __assign$1(__assign$1({}, this.prepareObservableQueryOptions()), { children: null });
-            if (!equal(newObservableQueryOptions, this.previous.observableQueryOptions)) {
-                this.previous.observableQueryOptions = newObservableQueryOptions;
-                this.currentObservable
-                    .setOptions(newObservableQueryOptions)
-                    .catch(function () { });
-            }
-        };
-        QueryData.prototype.startQuerySubscription = function (onNewData) {
-            var _this = this;
-            if (onNewData === void 0) { onNewData = this.onNewData; }
-            if (this.currentSubscription || this.getOptions().skip)
-                return;
-            this.currentSubscription = this.currentObservable.subscribe({
-                next: function (_a) {
-                    var loading = _a.loading, networkStatus = _a.networkStatus, data = _a.data;
-                    var previousResult = _this.previous.result;
-                    if (previousResult &&
-                        previousResult.loading === loading &&
-                        previousResult.networkStatus === networkStatus &&
-                        equal(previousResult.data, data)) {
-                        return;
-                    }
-                    onNewData();
-                },
-                error: function (error) {
-                    _this.resubscribeToQuery();
-                    if (!error.hasOwnProperty('graphQLErrors'))
-                        throw error;
-                    var previousResult = _this.previous.result;
-                    if ((previousResult && previousResult.loading) ||
-                        !equal(error, _this.previous.error)) {
-                        _this.previous.error = error;
-                        onNewData();
-                    }
-                }
-            });
-        };
-        QueryData.prototype.resubscribeToQuery = function () {
-            this.removeQuerySubscription();
-            var currentObservable = this.currentObservable;
-            if (currentObservable) {
-                var lastError = currentObservable.getLastError();
-                var lastResult = currentObservable.getLastResult();
-                currentObservable.resetLastResults();
-                this.startQuerySubscription();
-                Object.assign(currentObservable, {
-                    lastError: lastError,
-                    lastResult: lastResult
-                });
-            }
-        };
-        QueryData.prototype.handleErrorOrCompleted = function () {
-            if (!this.currentObservable || !this.previous.result)
-                return;
-            var _a = this.previous.result, data = _a.data, loading = _a.loading, error = _a.error;
-            if (!loading) {
-                var _b = this.getOptions(), query = _b.query, variables = _b.variables, onCompleted = _b.onCompleted, onError = _b.onError, skip = _b.skip;
-                if (this.previousOptions &&
-                    !this.previous.loading &&
-                    equal(this.previousOptions.query, query) &&
-                    equal(this.previousOptions.variables, variables)) {
-                    return;
-                }
-                if (onCompleted && !error && !skip) {
-                    onCompleted(data);
-                }
-                else if (onError && error) {
-                    onError(error);
-                }
-            }
-        };
-        QueryData.prototype.removeQuerySubscription = function () {
-            if (this.currentSubscription) {
-                this.currentSubscription.unsubscribe();
-                delete this.currentSubscription;
-            }
-        };
-        QueryData.prototype.removeObservable = function (andDelete) {
-            if (this.currentObservable) {
-                this.currentObservable["tearDownQuery"]();
-                if (andDelete) {
-                    delete this.currentObservable;
-                }
-            }
-        };
-        QueryData.prototype.observableQueryFields = function () {
-            var _a;
-            return {
-                variables: (_a = this.currentObservable) === null || _a === void 0 ? void 0 : _a.variables,
-                refetch: this.obsRefetch,
-                fetchMore: this.obsFetchMore,
-                updateQuery: this.obsUpdateQuery,
-                startPolling: this.obsStartPolling,
-                stopPolling: this.obsStopPolling,
-                subscribeToMore: this.obsSubscribeToMore
-            };
-        };
-        return QueryData;
-    }(OperationData));
-
-    function useDeepMemo(memoFn, key) {
-        var ref = react.exports.useRef();
-        if (!ref.current || !equal(key, ref.current.key)) {
-            ref.current = { key: key, value: memoFn() };
-        }
-        return ref.current.value;
-    }
-
-    function useBaseQuery(query, options, lazy) {
-        if (lazy === void 0) { lazy = false; }
-        var context = react.exports.useContext(getApolloContext());
-        var _a = react.exports.useReducer(function (x) { return x + 1; }, 0), tick = _a[0], forceUpdate = _a[1];
-        var updatedOptions = options ? __assign$1(__assign$1({}, options), { query: query }) : { query: query };
-        var queryDataRef = react.exports.useRef();
-        var queryData = queryDataRef.current || (queryDataRef.current = new QueryData({
-            options: updatedOptions,
-            context: context,
-            onNewData: function () {
-                if (!queryData.ssrInitiated()) {
-                    Promise.resolve().then(function () { return queryDataRef.current && forceUpdate(); });
-                }
-                else {
-                    forceUpdate();
-                }
-            }
-        }));
-        queryData.setOptions(updatedOptions);
-        queryData.context = context;
-        var memo = {
-            options: __assign$1(__assign$1({}, updatedOptions), { onError: undefined, onCompleted: undefined }),
-            context: context,
-            tick: tick
-        };
-        var result = useDeepMemo(function () { return (lazy ? queryData.executeLazy() : queryData.execute()); }, memo);
-        var queryResult = lazy
-            ? result[1]
-            : result;
-        react.exports.useEffect(function () {
-            return function () { return queryData.cleanup(); };
-        }, []);
-        react.exports.useEffect(function () { return queryData.afterExecute({ lazy: lazy }); }, [
-            queryResult.loading,
-            queryResult.networkStatus,
-            queryResult.error,
-            queryResult.data,
-        ]);
-        return result;
-    }
-
-    function useLazyQuery(query, options) {
-        return useBaseQuery(query, options, true);
-    }
-
-    function useMutation(mutation, options) {
-        var context = react.exports.useContext(getApolloContext());
-        var _a = react.exports.useState({ called: false, loading: false }), result = _a[0], setResult = _a[1];
-        var updatedOptions = options ? __assign$1(__assign$1({}, options), { mutation: mutation }) : { mutation: mutation };
-        var mutationDataRef = react.exports.useRef();
-        function getMutationDataRef() {
-            if (!mutationDataRef.current) {
-                mutationDataRef.current = new MutationData({
-                    options: updatedOptions,
-                    context: context,
-                    result: result,
-                    setResult: setResult
-                });
-            }
-            return mutationDataRef.current;
-        }
-        var mutationData = getMutationDataRef();
-        mutationData.setOptions(updatedOptions);
-        mutationData.context = context;
-        react.exports.useEffect(function () { return mutationData.afterExecute(); });
-        return mutationData.execute(result);
-    }
-
-    function useQuery(query, options) {
-        return useBaseQuery(query, options, false);
-    }
-
-    function useSubscription(subscription, options) {
-        var context = react.exports.useContext(getApolloContext());
-        var updatedOptions = options
-            ? __assign$1(__assign$1({}, options), { subscription: subscription }) : { subscription: subscription };
-        var _a = react.exports.useState({
-            loading: !updatedOptions.skip,
-            error: undefined,
-            data: undefined
-        }), result = _a[0], setResult = _a[1];
-        var subscriptionDataRef = react.exports.useRef();
-        function getSubscriptionDataRef() {
-            if (!subscriptionDataRef.current) {
-                subscriptionDataRef.current = new SubscriptionData({
-                    options: updatedOptions,
-                    context: context,
-                    setResult: setResult
-                });
-            }
-            return subscriptionDataRef.current;
-        }
-        var subscriptionData = getSubscriptionDataRef();
-        subscriptionData.setOptions(updatedOptions, true);
-        subscriptionData.context = context;
-        react.exports.useEffect(function () { return subscriptionData.afterExecute(); });
-        react.exports.useEffect(function () { return subscriptionData.cleanup.bind(subscriptionData); }, []);
-        return subscriptionData.execute(result);
-    }
-
-    function useReactiveVar(rv) {
-        var value = rv();
-        var setValue = react.exports.useState(value)[1];
-        react.exports.useEffect(function () {
-            var probablySameValue = rv();
-            if (value !== probablySameValue) {
-                setValue(probablySameValue);
-            }
-            else {
-                return rv.onNextChange(setValue);
-            }
-        }, [value]);
-        return value;
-    }
-
-    var client = /*#__PURE__*/Object.freeze({
+    var core = /*#__PURE__*/Object.freeze({
     	__proto__: null,
+    	setLogVerbosity: setVerbosity,
     	ApolloClient: ApolloClient,
     	mergeOptions: mergeOptions,
     	ObservableQuery: ObservableQuery,
@@ -14480,7 +12024,7 @@ var Ad4mConnectDialog = (function () {
     	Observable: Observable,
     	isReference: isReference,
     	makeReference: makeReference,
-    	gql: gql$1,
+    	get gql () { return gql; },
     	resetCaches: resetCaches,
     	disableFragmentWarnings: disableFragmentWarnings,
     	enableExperimentalFragmentVariables: enableExperimentalFragmentVariables,
@@ -14494,30 +12038,18 @@ var Ad4mConnectDialog = (function () {
     	parseAndCheckHttpResponse: parseAndCheckHttpResponse,
     	serializeFetchParameter: serializeFetchParameter,
     	fallbackHttpConfig: fallbackHttpConfig,
+    	defaultPrinter: defaultPrinter,
     	selectHttpOptionsAndBody: selectHttpOptionsAndBody,
+    	selectHttpOptionsAndBodyInternal: selectHttpOptionsAndBodyInternal,
     	checkFetcher: checkFetcher,
     	createSignalIfSupported: createSignalIfSupported,
     	selectURI: selectURI,
     	createHttpLink: createHttpLink,
     	HttpLink: HttpLink,
-    	rewriteURIForGET: rewriteURIForGET,
-    	setLogVerbosity: setVerbosity,
-    	ApolloProvider: ApolloProvider,
-    	ApolloConsumer: ApolloConsumer,
-    	getApolloContext: getApolloContext,
-    	resetApolloContext: getApolloContext,
-    	get DocumentType () { return DocumentType; },
-    	operationName: operationName,
-    	parser: parser,
-    	useApolloClient: useApolloClient,
-    	useLazyQuery: useLazyQuery,
-    	useMutation: useMutation,
-    	useQuery: useQuery,
-    	useSubscription: useSubscription,
-    	useReactiveVar: useReactiveVar
+    	rewriteURIForGET: rewriteURIForGET
     });
 
-    var require$$0 = /*@__PURE__*/getAugmentedNamespace(client);
+    var require$$0 = /*@__PURE__*/getAugmentedNamespace(core);
 
     var unwrapApolloResult$1 = {};
 
@@ -14577,7 +12109,7 @@ var Ad4mConnectDialog = (function () {
       ```
     */
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.GraphQLTimestamp = exports.GraphQLISODateTime = exports.ID = exports.Float = exports.Int = exports.ClassType = exports.UseMiddleware = exports.createUnionType = exports.Subscription = exports.Root = exports.Resolver = exports.Query = exports.PubSub = exports.ObjectType = exports.Mutation = exports.InterfaceType = exports.InputType = exports.Info = exports.FieldResolver = exports.Field = exports.registerEnumType = exports.Ctx = exports.Authorized = exports.ArgsType = exports.Args = exports.Arg = exports.dummyDecorator = exports.dummyFn = exports.dummyValue = void 0;
+    exports.GraphQLTimestamp = exports.GraphQLISODateTime = exports.ID = exports.Float = exports.Int = exports.ClassType = exports.PubSubEngine = exports.UseMiddleware = exports.createUnionType = exports.Subscription = exports.Root = exports.Resolver = exports.Query = exports.PubSub = exports.ObjectType = exports.Mutation = exports.InterfaceType = exports.InputType = exports.Info = exports.FieldResolver = exports.Field = exports.registerEnumType = exports.Ctx = exports.Authorized = exports.ArgsType = exports.Args = exports.Arg = exports.dummyDecorator = exports.dummyFn = exports.dummyValue = void 0;
     exports.dummyValue = "";
     function dummyFn() {
         return;
@@ -14607,6 +12139,7 @@ var Ad4mConnectDialog = (function () {
     exports.Subscription = dummyDecorator;
     exports.createUnionType = dummyFn;
     exports.UseMiddleware = dummyDecorator;
+    exports.PubSubEngine = dummyDecorator;
     class ClassType {
     }
     exports.ClassType = ClassType;
@@ -14656,7 +12189,7 @@ var Ad4mConnectDialog = (function () {
       ```
     */
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.GraphQLTimestamp = exports.GraphQLISODateTime = exports.ID = exports.Float = exports.Int = exports.ClassType = exports.UseMiddleware = exports.createUnionType = exports.Subscription = exports.Root = exports.Resolver = exports.Query = exports.PubSub = exports.ObjectType = exports.Mutation = exports.InterfaceType = exports.InputType = exports.Info = exports.FieldResolver = exports.Field = exports.registerEnumType = exports.Ctx = exports.Authorized = exports.ArgsType = exports.Args = exports.Arg = exports.dummyDecorator = exports.dummyFn = exports.dummyValue = void 0;
+    exports.GraphQLTimestamp = exports.GraphQLISODateTime = exports.ID = exports.Float = exports.Int = exports.ClassType = exports.PubSubEngine = exports.UseMiddleware = exports.createUnionType = exports.Subscription = exports.Root = exports.Resolver = exports.Query = exports.PubSub = exports.ObjectType = exports.Mutation = exports.InterfaceType = exports.InputType = exports.Info = exports.FieldResolver = exports.Field = exports.registerEnumType = exports.Ctx = exports.Authorized = exports.ArgsType = exports.Args = exports.Arg = exports.dummyDecorator = exports.dummyFn = exports.dummyValue = void 0;
     exports.dummyValue = "";
     function dummyFn() {
         return;
@@ -14686,6 +12219,7 @@ var Ad4mConnectDialog = (function () {
     exports.Subscription = dummyDecorator;
     exports.createUnionType = dummyFn;
     exports.UseMiddleware = dummyDecorator;
+    exports.PubSubEngine = dummyDecorator;
     class ClassType {
     }
     exports.ClassType = ClassType;
@@ -15339,9 +12873,9 @@ var Ad4mConnectDialog = (function () {
     var __importDefault$6 = (commonjsGlobal$1 && commonjsGlobal$1.__importDefault) || function (mod) {
         return (mod && mod.__esModule) ? mod : { "default": mod };
     };
-    var _AgentClient_apolloClient, _AgentClient_updatedCallbacks;
+    var _AgentClient_apolloClient, _AgentClient_updatedCallbacks, _AgentClient_agentStatusChangedCallbacks;
     Object.defineProperty(AgentClient$1, "__esModule", { value: true });
-    const client_1$5 = require$$0;
+    const core_1$5 = require$$0;
     const unwrapApolloResult_1$5 = __importDefault$6(unwrapApolloResult$1);
     const Agent_1 = Agent$1;
     const AgentStatus_1 = AgentStatus$1;
@@ -15381,25 +12915,17 @@ var Ad4mConnectDialog = (function () {
      * as well as updating the publicly shared Agent expression.
      */
     class AgentClient {
-        constructor(client) {
+        constructor(client, subscribe = true) {
             _AgentClient_apolloClient.set(this, void 0);
             _AgentClient_updatedCallbacks.set(this, void 0);
+            _AgentClient_agentStatusChangedCallbacks.set(this, void 0);
             __classPrivateFieldSet$8(this, _AgentClient_apolloClient, client, "f");
             __classPrivateFieldSet$8(this, _AgentClient_updatedCallbacks, [], "f");
-            __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").subscribe({
-                query: (0, client_1$5.gql) ` subscription {
-                agentUpdated { ${AGENT_SUBITEMS} }
-            }   
-        `
-            }).subscribe({
-                next: result => {
-                    const agent = result.data.agentUpdated;
-                    __classPrivateFieldGet$8(this, _AgentClient_updatedCallbacks, "f").forEach(cb => {
-                        cb(agent);
-                    });
-                },
-                error: (e) => console.error(e)
-            });
+            __classPrivateFieldSet$8(this, _AgentClient_agentStatusChangedCallbacks, [], "f");
+            if (subscribe) {
+                this.subscribeAgentUpdated();
+                this.subscribeAgentStatusChanged();
+            }
         }
         /**
          * Returns the Agent expression of the local agent as it is shared
@@ -15409,7 +12935,7 @@ var Ad4mConnectDialog = (function () {
          */
         async me() {
             const { agent } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").query({
-                query: (0, client_1$5.gql) `query agent { agent { ${AGENT_SUBITEMS} } }`
+                query: (0, core_1$5.gql) `query agent { agent { ${AGENT_SUBITEMS} } }`
             }));
             let agentObject = new Agent_1.Agent(agent.did, agent.perspective);
             agentObject.directMessageLanguage = agent.directMessageLanguage;
@@ -15417,7 +12943,7 @@ var Ad4mConnectDialog = (function () {
         }
         async status() {
             const { agentStatus } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").query({
-                query: (0, client_1$5.gql) `query agentStatus {
+                query: (0, core_1$5.gql) `query agentStatus {
                 agentStatus {
                     ${AGENT_STATUS_FIELDS}
                 }
@@ -15427,7 +12953,7 @@ var Ad4mConnectDialog = (function () {
         }
         async generate(passphrase) {
             const { agentGenerate } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentGenerate(
+                mutation: (0, core_1$5.gql) `mutation agentGenerate(
                 $passphrase: String!
             ) {
                 agentGenerate(passphrase: $passphrase) {
@@ -15441,7 +12967,7 @@ var Ad4mConnectDialog = (function () {
         async import(args) {
             let { did, didDocument, keystore, passphrase } = args;
             const { agentImport } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentImport(
+                mutation: (0, core_1$5.gql) `mutation agentImport(
                 $did: String!,
                 $didDocument: String!,
                 $keystore: String!,
@@ -15457,7 +12983,7 @@ var Ad4mConnectDialog = (function () {
         }
         async lock(passphrase) {
             const { agentLock } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentLock($passphrase: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentLock($passphrase: String!) {
                 agentLock(passphrase: $passphrase) {
                     ${AGENT_STATUS_FIELDS}
                 }
@@ -15468,7 +12994,7 @@ var Ad4mConnectDialog = (function () {
         }
         async unlock(passphrase) {
             const { agentUnlock } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentUnlock($passphrase: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentUnlock($passphrase: String!) {
                 agentUnlock(passphrase: $passphrase) {
                     ${AGENT_STATUS_FIELDS}
                 }
@@ -15479,7 +13005,7 @@ var Ad4mConnectDialog = (function () {
         }
         async byDID(did) {
             const { agentByDID } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").query({
-                query: (0, client_1$5.gql) `query agentByDID($did: String!) {
+                query: (0, core_1$5.gql) `query agentByDID($did: String!) {
                 agentByDID(did: $did) {
                     ${AGENT_SUBITEMS}
                 }
@@ -15490,7 +13016,7 @@ var Ad4mConnectDialog = (function () {
         }
         async updatePublicPerspective(perspective) {
             const { agentUpdatePublicPerspective } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentUpdatePublicPerspective($perspective: PerspectiveInput!) {
+                mutation: (0, core_1$5.gql) `mutation agentUpdatePublicPerspective($perspective: PerspectiveInput!) {
                 agentUpdatePublicPerspective(perspective: $perspective) {
                     ${AGENT_SUBITEMS}
                 }
@@ -15504,7 +13030,7 @@ var Ad4mConnectDialog = (function () {
         }
         async updateDirectMessageLanguage(directMessageLanguage) {
             const { agentUpdateDirectMessageLanguage } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentUpdateDirectMessageLanguage($directMessageLanguage: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentUpdateDirectMessageLanguage($directMessageLanguage: String!) {
                 agentUpdateDirectMessageLanguage(directMessageLanguage: $directMessageLanguage) {
                     ${AGENT_SUBITEMS}
                 }
@@ -15518,7 +13044,7 @@ var Ad4mConnectDialog = (function () {
         }
         async addEntanglementProofs(proofs) {
             const { agentAddEntanglementProofs } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentAddEntanglementProofs($proofs: [EntanglementProofInput!]!) {
+                mutation: (0, core_1$5.gql) `mutation agentAddEntanglementProofs($proofs: [EntanglementProofInput!]!) {
                 agentAddEntanglementProofs(proofs: $proofs) {
                     ${ENTANGLEMENT_PROOF_FIELDS}
                 }
@@ -15529,7 +13055,7 @@ var Ad4mConnectDialog = (function () {
         }
         async deleteEntanglementProofs(proofs) {
             const { agentDeleteEntanglementProofs } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentDeleteEntanglementProofs($proofs: [EntanglementProofInput!]!) {
+                mutation: (0, core_1$5.gql) `mutation agentDeleteEntanglementProofs($proofs: [EntanglementProofInput!]!) {
                 agentDeleteEntanglementProofs(proofs: $proofs) {
                     ${ENTANGLEMENT_PROOF_FIELDS}
                 }
@@ -15540,7 +13066,7 @@ var Ad4mConnectDialog = (function () {
         }
         async getEntanglementProofs() {
             const { agentGetEntanglementProofs } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").query({
-                query: (0, client_1$5.gql) `query agentGetEntanglementProofs {
+                query: (0, core_1$5.gql) `query agentGetEntanglementProofs {
                 agentGetEntanglementProofs {
                     ${ENTANGLEMENT_PROOF_FIELDS}
                 }
@@ -15550,7 +13076,7 @@ var Ad4mConnectDialog = (function () {
         }
         async entanglementProofPreFlight(deviceKey, deviceKeyType) {
             const { agentEntanglementProofPreFlight } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentEntanglementProofPreFlight($deviceKey: String!, $deviceKeyType: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentEntanglementProofPreFlight($deviceKey: String!, $deviceKeyType: String!) {
                 agentEntanglementProofPreFlight(deviceKey: $deviceKey, deviceKeyType: $deviceKeyType) {
                     ${ENTANGLEMENT_PROOF_FIELDS}
                 }
@@ -15562,9 +13088,44 @@ var Ad4mConnectDialog = (function () {
         addUpdatedListener(listener) {
             __classPrivateFieldGet$8(this, _AgentClient_updatedCallbacks, "f").push(listener);
         }
+        subscribeAgentUpdated() {
+            __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").subscribe({
+                query: (0, core_1$5.gql) ` subscription {
+                agentUpdated { ${AGENT_SUBITEMS} }
+            }   
+        `
+            }).subscribe({
+                next: result => {
+                    const agent = result.data.agentUpdated;
+                    __classPrivateFieldGet$8(this, _AgentClient_updatedCallbacks, "f").forEach(cb => {
+                        cb(agent);
+                    });
+                },
+                error: (e) => console.error(e)
+            });
+        }
+        addAgentStatusChangedListener(listener) {
+            __classPrivateFieldGet$8(this, _AgentClient_agentStatusChangedCallbacks, "f").push(listener);
+        }
+        subscribeAgentStatusChanged() {
+            __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").subscribe({
+                query: (0, core_1$5.gql) ` subscription {
+                agentStatusChanged { ${AGENT_STATUS_FIELDS} }
+            }   
+        `
+            }).subscribe({
+                next: result => {
+                    const agent = result.data.agentStatusChanged;
+                    __classPrivateFieldGet$8(this, _AgentClient_agentStatusChangedCallbacks, "f").forEach(cb => {
+                        cb(agent);
+                    });
+                },
+                error: (e) => console.error(e)
+            });
+        }
         async requestCapability(appName, appDesc, appUrl, capabilities) {
             const { agentRequestCapability } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentRequestCapability($appName: String!, $appDesc: String!, $appUrl: String!, $capabilities: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentRequestCapability($appName: String!, $appDesc: String!, $appUrl: String!, $capabilities: String!) {
                 agentRequestCapability(appName: $appName, appDesc: $appDesc, appUrl: $appUrl, capabilities: $capabilities)
             }`,
                 variables: { appName, appDesc, appUrl, capabilities }
@@ -15573,7 +13134,7 @@ var Ad4mConnectDialog = (function () {
         }
         async permitCapability(auth) {
             const { agentPermitCapability } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentPermitCapability($auth: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentPermitCapability($auth: String!) {
                 agentPermitCapability(auth: $auth)
             }`,
                 variables: { auth }
@@ -15582,7 +13143,7 @@ var Ad4mConnectDialog = (function () {
         }
         async generateJwt(requestId, rand) {
             const { agentGenerateJwt } = (0, unwrapApolloResult_1$5.default)(await __classPrivateFieldGet$8(this, _AgentClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$5.gql) `mutation agentGenerateJwt($requestId: String!, $rand: String!) {
+                mutation: (0, core_1$5.gql) `mutation agentGenerateJwt($requestId: String!, $rand: String!) {
                 agentGenerateJwt(requestId: $requestId, rand: $rand)
             }`,
                 variables: { requestId, rand }
@@ -15591,7 +13152,7 @@ var Ad4mConnectDialog = (function () {
         }
     }
     AgentClient$1.default = AgentClient;
-    _AgentClient_apolloClient = new WeakMap(), _AgentClient_updatedCallbacks = new WeakMap();
+    _AgentClient_apolloClient = new WeakMap(), _AgentClient_updatedCallbacks = new WeakMap(), _AgentClient_agentStatusChangedCallbacks = new WeakMap();
 
     var LanguageClient$1 = {};
 
@@ -15612,7 +13173,7 @@ var Ad4mConnectDialog = (function () {
     var _LanguageClient_apolloClient;
     Object.defineProperty(LanguageClient$1, "__esModule", { value: true });
     LanguageClient$1.LanguageClient = void 0;
-    const client_1$4 = require$$0;
+    const core_1$4 = require$$0;
     const unwrapApolloResult_1$4 = __importDefault$5(unwrapApolloResult$1);
     const LANGUAGE_COMPLETE = `
     name
@@ -15640,7 +13201,7 @@ var Ad4mConnectDialog = (function () {
         }
         async byAddress(address) {
             const { language } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").query({
-                query: (0, client_1$4.gql) `query byAddress($address: String!) {
+                query: (0, core_1$4.gql) `query byAddress($address: String!) {
                 language(address: $address) {
                     ${LANGUAGE_COMPLETE}
                 }
@@ -15651,7 +13212,7 @@ var Ad4mConnectDialog = (function () {
         }
         async byFilter(filter) {
             const { languages } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").query({
-                query: (0, client_1$4.gql) `query byFilter($filter: String!) {
+                query: (0, core_1$4.gql) `query byFilter($filter: String!) {
                 languages(filter: $filter) {
                     ${LANGUAGE_COMPLETE}
                 }
@@ -15665,7 +13226,7 @@ var Ad4mConnectDialog = (function () {
         }
         async writeSettings(languageAddress, settings) {
             const { languageWriteSettings } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$4.gql) `mutation writeSettings($languageAddress: String!, $settings: String!) {
+                mutation: (0, core_1$4.gql) `mutation writeSettings($languageAddress: String!, $settings: String!) {
                 languageWriteSettings(languageAddress: $languageAddress, settings: $settings)
             }`,
                 variables: { languageAddress, settings }
@@ -15674,7 +13235,7 @@ var Ad4mConnectDialog = (function () {
         }
         async applyTemplateAndPublish(sourceLanguageHash, templateData) {
             const { languageApplyTemplateAndPublish } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$4.gql) `mutation languageApplyTemplateAndPublish(
+                mutation: (0, core_1$4.gql) `mutation languageApplyTemplateAndPublish(
                 $sourceLanguageHash: String!,
                 $templateData: String!,
             ) {
@@ -15688,7 +13249,7 @@ var Ad4mConnectDialog = (function () {
         }
         async publish(languagePath, languageMeta) {
             const { languagePublish } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$4.gql) `mutation languagePublish(
+                mutation: (0, core_1$4.gql) `mutation languagePublish(
                 $languagePath: String!,
                 $languageMeta: LanguageMetaInput!,
             ) {
@@ -15702,7 +13263,7 @@ var Ad4mConnectDialog = (function () {
         }
         async meta(address) {
             const { languageMeta } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").query({
-                query: (0, client_1$4.gql) `query languageMeta(
+                query: (0, core_1$4.gql) `query languageMeta(
                 $address: String!,
             ) {
                 languageMeta(address: $address) {
@@ -15715,7 +13276,7 @@ var Ad4mConnectDialog = (function () {
         }
         async source(address) {
             const { languageSource } = (0, unwrapApolloResult_1$4.default)(await __classPrivateFieldGet$7(this, _LanguageClient_apolloClient, "f").query({
-                query: (0, client_1$4.gql) `query languageSource(
+                query: (0, core_1$4.gql) `query languageSource(
                 $address: String!,
             ) {
                 languageSource(address: $address)
@@ -15746,7 +13307,7 @@ var Ad4mConnectDialog = (function () {
     };
     var _NeighbourhoodClient_apolloClient;
     Object.defineProperty(NeighbourhoodClient$1, "__esModule", { value: true });
-    const client_1$3 = require$$0;
+    const core_1$3 = require$$0;
     const unwrapApolloResult_1$3 = __importDefault$4(unwrapApolloResult$1);
     class NeighbourhoodClient {
         constructor(client) {
@@ -15755,7 +13316,7 @@ var Ad4mConnectDialog = (function () {
         }
         async publishFromPerspective(perspectiveUUID, linkLanguage, meta) {
             const { neighbourhoodPublishFromPerspective } = (0, unwrapApolloResult_1$3.default)(await __classPrivateFieldGet$6(this, _NeighbourhoodClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$3.gql) `mutation neighbourhoodPublishFromPerspective(
+                mutation: (0, core_1$3.gql) `mutation neighbourhoodPublishFromPerspective(
                 $linkLanguage: String!,
                 $meta: PerspectiveInput!,
                 $perspectiveUUID: String!
@@ -15772,7 +13333,7 @@ var Ad4mConnectDialog = (function () {
         }
         async joinFromUrl(url) {
             const { neighbourhoodJoinFromUrl } = (0, unwrapApolloResult_1$3.default)(await __classPrivateFieldGet$6(this, _NeighbourhoodClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$3.gql) `    mutation neighbourhoodJoinFromUrl($url: String!) {
+                mutation: (0, core_1$3.gql) `    mutation neighbourhoodJoinFromUrl($url: String!) {
                 neighbourhoodJoinFromUrl(url: $url) {
                     uuid
                     name
@@ -16074,7 +13635,7 @@ var Ad4mConnectDialog = (function () {
     };
     var _PerspectiveClient_apolloClient, _PerspectiveClient_perspectiveAddedCallbacks, _PerspectiveClient_perspectiveUpdatedCallbacks, _PerspectiveClient_perspectiveRemovedCallbacks;
     Object.defineProperty(PerspectiveClient$1, "__esModule", { value: true });
-    const client_1$2 = require$$0;
+    const core_1$2 = require$$0;
     const unwrapApolloResult_1$2 = __importDefault$3(unwrapApolloResult$1);
     const PerspectiveProxy_1 = PerspectiveProxy$1;
     const LINK_EXPRESSION_FIELDS = `
@@ -16101,7 +13662,7 @@ neighbourhood {
 }
 `;
     class PerspectiveClient {
-        constructor(client) {
+        constructor(client, subscribe = true) {
             _PerspectiveClient_apolloClient.set(this, void 0);
             _PerspectiveClient_perspectiveAddedCallbacks.set(this, void 0);
             _PerspectiveClient_perspectiveUpdatedCallbacks.set(this, void 0);
@@ -16110,49 +13671,15 @@ neighbourhood {
             __classPrivateFieldSet$4(this, _PerspectiveClient_perspectiveAddedCallbacks, [], "f");
             __classPrivateFieldSet$4(this, _PerspectiveClient_perspectiveUpdatedCallbacks, [], "f");
             __classPrivateFieldSet$4(this, _PerspectiveClient_perspectiveRemovedCallbacks, [], "f");
-            __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
-                query: (0, client_1$2.gql) ` subscription {
-                perspectiveAdded { ${PERSPECTIVE_HANDLE_FIELDS} }
-            }   
-        `
-            }).subscribe({
-                next: result => {
-                    __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveAddedCallbacks, "f").forEach(cb => {
-                        cb(result.data.perspectiveAdded);
-                    });
-                },
-                error: (e) => console.error(e)
-            });
-            __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
-                query: (0, client_1$2.gql) ` subscription {
-                perspectiveUpdated { ${PERSPECTIVE_HANDLE_FIELDS} }
-            }   
-        `
-            }).subscribe({
-                next: result => {
-                    __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveUpdatedCallbacks, "f").forEach(cb => {
-                        cb(result.data.perspectiveUpdated);
-                    });
-                },
-                error: (e) => console.error(e)
-            });
-            __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
-                query: (0, client_1$2.gql) ` subscription {
-                perspectiveRemoved
-            }   
-        `
-            }).subscribe({
-                next: result => {
-                    __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveRemovedCallbacks, "f").forEach(cb => {
-                        cb(result.data.perspectiveRemoved);
-                    });
-                },
-                error: (e) => console.error(e)
-            });
+            if (subscribe) {
+                this.subscribePerspectiveAdded();
+                this.subscribePerspectiveUpdated();
+                this.subscribePerspectiveRemoved();
+            }
         }
         async all() {
             const { perspectives } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").query({
-                query: (0, client_1$2.gql) `query perspectives {
+                query: (0, core_1$2.gql) `query perspectives {
                 perspectives {
                     ${PERSPECTIVE_HANDLE_FIELDS}
                 }
@@ -16163,7 +13690,7 @@ neighbourhood {
         }
         async byUUID(uuid) {
             const { perspective } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").query({
-                query: (0, client_1$2.gql) `query perspective($uuid: String!) {
+                query: (0, core_1$2.gql) `query perspective($uuid: String!) {
                 perspective(uuid: $uuid) {
                     ${PERSPECTIVE_HANDLE_FIELDS}
                 }
@@ -16176,7 +13703,7 @@ neighbourhood {
         }
         async snapshotByUUID(uuid) {
             const { perspectiveSnapshot } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").query({
-                query: (0, client_1$2.gql) `query perspectiveSnapshot($uuid: String!) {
+                query: (0, core_1$2.gql) `query perspectiveSnapshot($uuid: String!) {
                 perspectiveSnapshot(uuid: $uuid) {
                     links { ${LINK_EXPRESSION_FIELDS} }
                 }
@@ -16187,7 +13714,7 @@ neighbourhood {
         }
         async publishSnapshotByUUID(uuid) {
             const { perspectivePublishSnapshot } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectivePublishSnapshot($uuid: String!) {
+                mutation: (0, core_1$2.gql) `mutation perspectivePublishSnapshot($uuid: String!) {
                 perspectivePublishSnapshot(uuid: $uuid)
             }`,
                 variables: { uuid }
@@ -16196,7 +13723,7 @@ neighbourhood {
         }
         async queryLinks(uuid, query) {
             const { perspectiveQueryLinks } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").query({
-                query: (0, client_1$2.gql) `query perspectiveQueryLinks($uuid: String!, $query: LinkQuery!) {
+                query: (0, core_1$2.gql) `query perspectiveQueryLinks($uuid: String!, $query: LinkQuery!) {
                 perspectiveQueryLinks(query: $query, uuid: $uuid) {
                     ${LINK_EXPRESSION_FIELDS}
                 }
@@ -16207,7 +13734,7 @@ neighbourhood {
         }
         async queryProlog(uuid, query) {
             const { perspectiveQueryProlog } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").query({
-                query: (0, client_1$2.gql) `query perspectiveQueryProlog($uuid: String!, $query: String!) {
+                query: (0, core_1$2.gql) `query perspectiveQueryProlog($uuid: String!, $query: String!) {
                 perspectiveQueryProlog(uuid: $uuid, query: $query)
             }`,
                 variables: { uuid, query }
@@ -16216,7 +13743,7 @@ neighbourhood {
         }
         async add(name) {
             const { perspectiveAdd } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectiveAdd($name: String!) {
+                mutation: (0, core_1$2.gql) `mutation perspectiveAdd($name: String!) {
                 perspectiveAdd(name: $name) {
                     ${PERSPECTIVE_HANDLE_FIELDS}
                 }
@@ -16227,7 +13754,7 @@ neighbourhood {
         }
         async update(uuid, name) {
             const { perspectiveUpdate } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectiveUpdate($uuid: String!, $name: String!) {
+                mutation: (0, core_1$2.gql) `mutation perspectiveUpdate($uuid: String!, $name: String!) {
                 perspectiveUpdate(uuid: $uuid, name: $name) {
                     ${PERSPECTIVE_HANDLE_FIELDS}
                 }
@@ -16238,7 +13765,7 @@ neighbourhood {
         }
         async remove(uuid) {
             return (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectiveRemove($uuid: String!) {
+                mutation: (0, core_1$2.gql) `mutation perspectiveRemove($uuid: String!) {
                 perspectiveRemove(uuid: $uuid)
             }`,
                 variables: { uuid }
@@ -16246,7 +13773,7 @@ neighbourhood {
         }
         async addLink(uuid, link) {
             const { perspectiveAddLink } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectiveAddLink($uuid: String!, $link: LinkInput!){
+                mutation: (0, core_1$2.gql) `mutation perspectiveAddLink($uuid: String!, $link: LinkInput!){
                 perspectiveAddLink(link: $link, uuid: $uuid) {
                     ${LINK_EXPRESSION_FIELDS}
                 }
@@ -16257,7 +13784,7 @@ neighbourhood {
         }
         async updateLink(uuid, oldLink, newLink) {
             const { perspectiveUpdateLink } = (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectiveUpdateLink(
+                mutation: (0, core_1$2.gql) `mutation perspectiveUpdateLink(
                 $uuid: String!, 
                 $newLink: LinkInput!
                 $oldLink: LinkExpressionInput!
@@ -16276,7 +13803,7 @@ neighbourhood {
         }
         async removeLink(uuid, link) {
             return (0, unwrapApolloResult_1$2.default)(await __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$2.gql) `mutation perspectiveRemoveLink($link: LinkExpressionInput!, $uuid: String!) {
+                mutation: (0, core_1$2.gql) `mutation perspectiveRemoveLink($link: LinkExpressionInput!, $uuid: String!) {
                 perspectiveRemoveLink(link: $link, uuid: $uuid)
             }`,
                 variables: { uuid, link }
@@ -16286,15 +13813,60 @@ neighbourhood {
         addPerspectiveAddedListener(cb) {
             __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveAddedCallbacks, "f").push(cb);
         }
+        subscribePerspectiveAdded() {
+            __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
+                query: (0, core_1$2.gql) ` subscription {
+                perspectiveAdded { ${PERSPECTIVE_HANDLE_FIELDS} }
+            }   
+        `
+            }).subscribe({
+                next: result => {
+                    __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveAddedCallbacks, "f").forEach(cb => {
+                        cb(result.data.perspectiveAdded);
+                    });
+                },
+                error: (e) => console.error(e)
+            });
+        }
         addPerspectiveUpdatedListener(cb) {
             __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveUpdatedCallbacks, "f").push(cb);
+        }
+        subscribePerspectiveUpdated() {
+            __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
+                query: (0, core_1$2.gql) ` subscription {
+                perspectiveUpdated { ${PERSPECTIVE_HANDLE_FIELDS} }
+            }   
+        `
+            }).subscribe({
+                next: result => {
+                    __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveUpdatedCallbacks, "f").forEach(cb => {
+                        cb(result.data.perspectiveUpdated);
+                    });
+                },
+                error: (e) => console.error(e)
+            });
         }
         addPerspectiveRemovedListener(cb) {
             __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveRemovedCallbacks, "f").push(cb);
         }
+        subscribePerspectiveRemoved() {
+            __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
+                query: (0, core_1$2.gql) ` subscription {
+                perspectiveRemoved
+            }   
+        `
+            }).subscribe({
+                next: result => {
+                    __classPrivateFieldGet$4(this, _PerspectiveClient_perspectiveRemovedCallbacks, "f").forEach(cb => {
+                        cb(result.data.perspectiveRemoved);
+                    });
+                },
+                error: (e) => console.error(e)
+            });
+        }
         async addPerspectiveLinkAddedListener(uuid, cb) {
             __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
-                query: (0, client_1$2.gql) ` subscription {
+                query: (0, core_1$2.gql) ` subscription {
                 perspectiveLinkAdded(uuid: "${uuid}") { ${LINK_EXPRESSION_FIELDS} }
             }   
         `
@@ -16310,7 +13882,7 @@ neighbourhood {
         }
         async addPerspectiveLinkRemovedListener(uuid, cb) {
             __classPrivateFieldGet$4(this, _PerspectiveClient_apolloClient, "f").subscribe({
-                query: (0, client_1$2.gql) ` subscription {
+                query: (0, core_1$2.gql) ` subscription {
                 perspectiveLinkRemoved(uuid: "${uuid}") { ${LINK_EXPRESSION_FIELDS} }
             }   
         `
@@ -16346,7 +13918,7 @@ neighbourhood {
     };
     var _RuntimeClient_apolloClient, _RuntimeClient_messageReceivedCallbacks, _RuntimeClient_exceptionOccurredCallbacks;
     Object.defineProperty(RuntimeClient$1, "__esModule", { value: true });
-    const client_1$1 = require$$0;
+    const core_1$1 = require$$0;
     const unwrapApolloResult_1$1 = __importDefault$2(unwrapApolloResult$1);
     const PERSPECTIVE_EXPRESSION_FIELDS = `
 author
@@ -16362,15 +13934,203 @@ data {
 proof { valid, invalid, signature, key }
 `;
     class RuntimeClient {
-        constructor(client) {
+        constructor(client, subscribe = true) {
             _RuntimeClient_apolloClient.set(this, void 0);
             _RuntimeClient_messageReceivedCallbacks.set(this, void 0);
             _RuntimeClient_exceptionOccurredCallbacks.set(this, void 0);
             __classPrivateFieldSet$3(this, _RuntimeClient_apolloClient, client, "f");
             __classPrivateFieldSet$3(this, _RuntimeClient_messageReceivedCallbacks, [], "f");
             __classPrivateFieldSet$3(this, _RuntimeClient_exceptionOccurredCallbacks, [], "f");
+            if (subscribe) {
+                this.subscribeMessageReceived();
+                this.subscribeExceptionOccurred();
+            }
+        }
+        async info() {
+            const { runtimeInfo } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeInfo {
+                runtimeInfo {
+                    ad4mExecutorVersion
+                }
+            }`,
+            }));
+            return runtimeInfo;
+        }
+        async quit() {
+            const result = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeQuit { runtimeQuit }`
+            }));
+            return result.runtimeQuit;
+        }
+        async openLink(url) {
+            const { runtimeOpenLink } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeOpenLink($url: String!) {
+                runtimeOpenLink(url: $url)
+            }`,
+                variables: { url }
+            }));
+            return runtimeOpenLink;
+        }
+        async addTrustedAgents(agents) {
+            const { addTrustedAgents } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation addTrustedAgents($agents: [String!]!) {
+                addTrustedAgents(agents: $agents)
+            }`,
+                variables: { agents }
+            }));
+            return addTrustedAgents;
+        }
+        async deleteTrustedAgents(agents) {
+            const { deleteTrustedAgents } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation deleteTrustedAgents($agents: [String!]!) {
+                deleteTrustedAgents(agents: $agents)
+            }`,
+                variables: { agents }
+            }));
+            return deleteTrustedAgents;
+        }
+        async getTrustedAgents() {
+            const { getTrustedAgents } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query getTrustedAgents {
+                getTrustedAgents
+            }`,
+            }));
+            return getTrustedAgents;
+        }
+        async addKnownLinkLanguageTemplates(addresses) {
+            const { runtimeAddKnownLinkLanguageTemplates } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeAddKnownLinkLanguageTemplates($addresses: [String!]!) {
+                runtimeAddKnownLinkLanguageTemplates(addresses: $addresses)
+            }`,
+                variables: { addresses }
+            }));
+            return runtimeAddKnownLinkLanguageTemplates;
+        }
+        async removeKnownLinkLanguageTemplates(addresses) {
+            const { runtimeRemoveKnownLinkLanguageTemplates } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeRemoveKnownLinkLanguageTemplates($addresses: [String!]!) {
+                runtimeRemoveKnownLinkLanguageTemplates(addresses: $addresses)
+            }`,
+                variables: { addresses }
+            }));
+            return runtimeRemoveKnownLinkLanguageTemplates;
+        }
+        async knownLinkLanguageTemplates() {
+            const { runtimeKnownLinkLanguageTemplates } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeKnownLinkLanguageTemplates {
+                runtimeKnownLinkLanguageTemplates
+            }`,
+            }));
+            return runtimeKnownLinkLanguageTemplates;
+        }
+        async addFriends(dids) {
+            const { runtimeAddFriends } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeAddFriends($dids: [String!]!) {
+                runtimeAddFriends(dids: $dids)
+            }`,
+                variables: { dids }
+            }));
+            return runtimeAddFriends;
+        }
+        async removeFriends(dids) {
+            const { runtimeRemoveFriends } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeRemoveFriends($dids: [String!]!) {
+                runtimeRemoveFriends(dids: $dids)
+            }`,
+                variables: { dids }
+            }));
+            return runtimeRemoveFriends;
+        }
+        async friends() {
+            const { runtimeFriends } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeFriends {
+                runtimeFriends
+            }`,
+            }));
+            return runtimeFriends;
+        }
+        async hcAgentInfos() {
+            const { runtimeHcAgentInfos } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeHcAgentInfos {
+                runtimeHcAgentInfos
+            }`,
+            }));
+            return runtimeHcAgentInfos;
+        }
+        async hcAddAgentInfos(agentInfos) {
+            const { runtimeHcAddAgentInfos } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeHcAddAgentInfos($agentInfos: String!) {
+                runtimeHcAddAgentInfos(agentInfos: $agentInfos)
+            }`,
+                variables: { agentInfos }
+            }));
+            return runtimeHcAddAgentInfos;
+        }
+        async verifyStringSignedByDid(did, didSigningKeyId, data, signedData) {
+            const { runtimeVerifyStringSignedByDid } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `query runtimeVerifyStringSignedByDid($did: String!, $didSigningKeyId: String!, $data: String!, $signedData: String!) {
+                runtimeVerifyStringSignedByDid(did: $did, didSigningKeyId: $didSigningKeyId, data: $data, signedData: $signedData)
+            }`,
+                variables: { did, didSigningKeyId, data, signedData }
+            }));
+            return runtimeVerifyStringSignedByDid;
+        }
+        async setStatus(perspective) {
+            const { runtimeSetStatus } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeSetStatus($status: PerspectiveInput!) {
+                runtimeSetStatus(status: $status)
+            }`,
+                variables: { status: perspective }
+            }));
+            return runtimeSetStatus;
+        }
+        async friendStatus(did) {
+            const { runtimeFriendStatus } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeFriendStatus($did: String!) {
+                runtimeFriendStatus(did: $did) { ${PERSPECTIVE_EXPRESSION_FIELDS} }
+            }`,
+                variables: { did }
+            }));
+            return runtimeFriendStatus;
+        }
+        async friendSendMessage(did, message) {
+            const { runtimeFriendSendMessage } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
+                mutation: (0, core_1$1.gql) `mutation runtimeFriendSendMessage($did: String!, $message: PerspectiveInput!) {
+                runtimeFriendSendMessage(did: $did, message: $message)
+            }`,
+                variables: { did, message }
+            }));
+            return runtimeFriendSendMessage;
+        }
+        async messageInbox(filter) {
+            const { runtimeMessageInbox } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeMessageInbox($filter: String) {
+                runtimeMessageInbox(filter: $filter) { ${PERSPECTIVE_EXPRESSION_FIELDS} }
+            }`,
+                variables: { filter }
+            }));
+            return runtimeMessageInbox;
+        }
+        async messageOutbox(filter) {
+            const { runtimeMessageOutbox } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
+                query: (0, core_1$1.gql) `query runtimeMessageOutbox($filter: String) {
+                runtimeMessageOutbox(filter: $filter) { 
+                    recipient,
+                    message {
+                        ${PERSPECTIVE_EXPRESSION_FIELDS} 
+                    }
+                }
+            }`,
+                variables: { filter }
+            }));
+            return runtimeMessageOutbox;
+        }
+        addMessageCallback(cb) {
+            __classPrivateFieldGet$3(this, _RuntimeClient_messageReceivedCallbacks, "f").push(cb);
+        }
+        subscribeMessageReceived() {
             __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").subscribe({
-                query: (0, client_1$1.gql) ` subscription {
+                query: (0, core_1$1.gql) ` subscription {
                 runtimeMessageReceived { ${PERSPECTIVE_EXPRESSION_FIELDS} }
             }   
         `
@@ -16382,8 +14142,13 @@ proof { valid, invalid, signature, key }
                 },
                 error: (e) => console.error(e)
             });
+        }
+        addExceptionCallback(cb) {
+            __classPrivateFieldGet$3(this, _RuntimeClient_exceptionOccurredCallbacks, "f").push(cb);
+        }
+        subscribeExceptionOccurred() {
             __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").subscribe({
-                query: (0, client_1$1.gql) ` subscription {
+                query: (0, core_1$1.gql) ` subscription {
                 exceptionOccurred {
                     title
                     message
@@ -16399,191 +14164,6 @@ proof { valid, invalid, signature, key }
                 },
                 error: (e) => console.error(e)
             });
-        }
-        async info() {
-            const { runtimeInfo } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeInfo {
-                runtimeInfo {
-                    ad4mExecutorVersion
-                }
-            }`,
-            }));
-            return runtimeInfo;
-        }
-        async quit() {
-            const result = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeQuit { runtimeQuit }`
-            }));
-            return result.runtimeQuit;
-        }
-        async openLink(url) {
-            const { runtimeOpenLink } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeOpenLink($url: String!) {
-                runtimeOpenLink(url: $url)
-            }`,
-                variables: { url }
-            }));
-            return runtimeOpenLink;
-        }
-        async addTrustedAgents(agents) {
-            const { addTrustedAgents } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation addTrustedAgents($agents: [String!]!) {
-                addTrustedAgents(agents: $agents)
-            }`,
-                variables: { agents }
-            }));
-            return addTrustedAgents;
-        }
-        async deleteTrustedAgents(agents) {
-            const { deleteTrustedAgents } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation deleteTrustedAgents($agents: [String!]!) {
-                deleteTrustedAgents(agents: $agents)
-            }`,
-                variables: { agents }
-            }));
-            return deleteTrustedAgents;
-        }
-        async getTrustedAgents() {
-            const { getTrustedAgents } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query getTrustedAgents {
-                getTrustedAgents
-            }`,
-            }));
-            return getTrustedAgents;
-        }
-        async addKnownLinkLanguageTemplates(addresses) {
-            const { runtimeAddKnownLinkLanguageTemplates } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeAddKnownLinkLanguageTemplates($addresses: [String!]!) {
-                runtimeAddKnownLinkLanguageTemplates(addresses: $addresses)
-            }`,
-                variables: { addresses }
-            }));
-            return runtimeAddKnownLinkLanguageTemplates;
-        }
-        async removeKnownLinkLanguageTemplates(addresses) {
-            const { runtimeRemoveKnownLinkLanguageTemplates } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeRemoveKnownLinkLanguageTemplates($addresses: [String!]!) {
-                runtimeRemoveKnownLinkLanguageTemplates(addresses: $addresses)
-            }`,
-                variables: { addresses }
-            }));
-            return runtimeRemoveKnownLinkLanguageTemplates;
-        }
-        async knownLinkLanguageTemplates() {
-            const { runtimeKnownLinkLanguageTemplates } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeKnownLinkLanguageTemplates {
-                runtimeKnownLinkLanguageTemplates
-            }`,
-            }));
-            return runtimeKnownLinkLanguageTemplates;
-        }
-        async addFriends(dids) {
-            const { runtimeAddFriends } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeAddFriends($dids: [String!]!) {
-                runtimeAddFriends(dids: $dids)
-            }`,
-                variables: { dids }
-            }));
-            return runtimeAddFriends;
-        }
-        async removeFriends(dids) {
-            const { runtimeRemoveFriends } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeRemoveFriends($dids: [String!]!) {
-                runtimeRemoveFriends(dids: $dids)
-            }`,
-                variables: { dids }
-            }));
-            return runtimeRemoveFriends;
-        }
-        async friends() {
-            const { runtimeFriends } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeFriends {
-                runtimeFriends
-            }`,
-            }));
-            return runtimeFriends;
-        }
-        async hcAgentInfos() {
-            const { runtimeHcAgentInfos } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeHcAgentInfos {
-                runtimeHcAgentInfos
-            }`,
-            }));
-            return runtimeHcAgentInfos;
-        }
-        async hcAddAgentInfos(agentInfos) {
-            const { runtimeHcAddAgentInfos } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeHcAddAgentInfos($agentInfos: String!) {
-                runtimeHcAddAgentInfos(agentInfos: $agentInfos)
-            }`,
-                variables: { agentInfos }
-            }));
-            return runtimeHcAddAgentInfos;
-        }
-        async verifyStringSignedByDid(did, didSigningKeyId, data, signedData) {
-            const { runtimeVerifyStringSignedByDid } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `query runtimeVerifyStringSignedByDid($did: String!, $didSigningKeyId: String!, $data: String!, $signedData: String!) {
-                runtimeVerifyStringSignedByDid(did: $did, didSigningKeyId: $didSigningKeyId, data: $data, signedData: $signedData)
-            }`,
-                variables: { did, didSigningKeyId, data, signedData }
-            }));
-            return runtimeVerifyStringSignedByDid;
-        }
-        async setStatus(perspective) {
-            const { runtimeSetStatus } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeSetStatus($status: PerspectiveInput!) {
-                runtimeSetStatus(status: $status)
-            }`,
-                variables: { status: perspective }
-            }));
-            return runtimeSetStatus;
-        }
-        async friendStatus(did) {
-            const { runtimeFriendStatus } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeFriendStatus($did: String!) {
-                runtimeFriendStatus(did: $did) { ${PERSPECTIVE_EXPRESSION_FIELDS} }
-            }`,
-                variables: { did }
-            }));
-            return runtimeFriendStatus;
-        }
-        async friendSendMessage(did, message) {
-            const { runtimeFriendSendMessage } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").mutate({
-                mutation: (0, client_1$1.gql) `mutation runtimeFriendSendMessage($did: String!, $message: PerspectiveInput!) {
-                runtimeFriendSendMessage(did: $did, message: $message)
-            }`,
-                variables: { did, message }
-            }));
-            return runtimeFriendSendMessage;
-        }
-        async messageInbox(filter) {
-            const { runtimeMessageInbox } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeMessageInbox($filter: String) {
-                runtimeMessageInbox(filter: $filter) { ${PERSPECTIVE_EXPRESSION_FIELDS} }
-            }`,
-                variables: { filter }
-            }));
-            return runtimeMessageInbox;
-        }
-        async messageOutbox(filter) {
-            const { runtimeMessageOutbox } = (0, unwrapApolloResult_1$1.default)(await __classPrivateFieldGet$3(this, _RuntimeClient_apolloClient, "f").query({
-                query: (0, client_1$1.gql) `query runtimeMessageOutbox($filter: String) {
-                runtimeMessageOutbox(filter: $filter) { 
-                    recipient,
-                    message {
-                        ${PERSPECTIVE_EXPRESSION_FIELDS} 
-                    }
-                }
-            }`,
-                variables: { filter }
-            }));
-            return runtimeMessageOutbox;
-        }
-        addMessageCallback(cb) {
-            __classPrivateFieldGet$3(this, _RuntimeClient_messageReceivedCallbacks, "f").push(cb);
-        }
-        addExceptionCallback(cb) {
-            __classPrivateFieldGet$3(this, _RuntimeClient_exceptionOccurredCallbacks, "f").push(cb);
         }
     }
     RuntimeClient$1.default = RuntimeClient;
@@ -16607,7 +14187,7 @@ proof { valid, invalid, signature, key }
     };
     var _ExpressionClient_apolloClient;
     Object.defineProperty(ExpressionClient$1, "__esModule", { value: true });
-    const client_1 = require$$0;
+    const core_1 = require$$0;
     const unwrapApolloResult_1 = __importDefault$1(unwrapApolloResult$1);
     class ExpressionClient {
         constructor(client) {
@@ -16616,7 +14196,7 @@ proof { valid, invalid, signature, key }
         }
         async get(url) {
             const { expression } = (0, unwrapApolloResult_1.default)(await __classPrivateFieldGet$2(this, _ExpressionClient_apolloClient, "f").query({
-                query: (0, client_1.gql) `query expression($url: String!) {
+                query: (0, core_1.gql) `query expression($url: String!) {
                 expression(url: $url) {
                     author
                     timestamp
@@ -16636,7 +14216,7 @@ proof { valid, invalid, signature, key }
         }
         async getMany(urls) {
             const { expressionMany } = (0, unwrapApolloResult_1.default)(await __classPrivateFieldGet$2(this, _ExpressionClient_apolloClient, "f").query({
-                query: (0, client_1.gql) `query expressionMany($urls: [String!]!) {
+                query: (0, core_1.gql) `query expressionMany($urls: [String!]!) {
                 expressionMany(urls: $urls) {
                     author
                     timestamp
@@ -16656,7 +14236,7 @@ proof { valid, invalid, signature, key }
         }
         async getRaw(url) {
             const { expressionRaw } = (0, unwrapApolloResult_1.default)(await __classPrivateFieldGet$2(this, _ExpressionClient_apolloClient, "f").query({
-                query: (0, client_1.gql) `query expressionRaw($url: String!) {
+                query: (0, core_1.gql) `query expressionRaw($url: String!) {
                 expressionRaw(url: $url)
             }`,
                 variables: { url }
@@ -16666,7 +14246,7 @@ proof { valid, invalid, signature, key }
         async create(content, languageAddress) {
             content = JSON.stringify(content);
             const { expressionCreate } = (0, unwrapApolloResult_1.default)(await __classPrivateFieldGet$2(this, _ExpressionClient_apolloClient, "f").mutate({
-                mutation: (0, client_1.gql) `mutation expressionCreate($content: String!, $languageAddress: String!){
+                mutation: (0, core_1.gql) `mutation expressionCreate($content: String!, $languageAddress: String!){
                 expressionCreate(content: $content, languageAddress: $languageAddress)
             }`,
                 variables: { content, languageAddress }
@@ -16675,7 +14255,7 @@ proof { valid, invalid, signature, key }
         }
         async interactions(url) {
             const { expressionInteractions } = (0, unwrapApolloResult_1.default)(await __classPrivateFieldGet$2(this, _ExpressionClient_apolloClient, "f").query({
-                query: (0, client_1.gql) `query expressionInteractions($url: String!) {
+                query: (0, core_1.gql) `query expressionInteractions($url: String!) {
                 expressionInteractions(url: $url) { 
                     label
                     name
@@ -16688,7 +14268,7 @@ proof { valid, invalid, signature, key }
         }
         async interact(url, interactionCall) {
             const { expressionInteract } = (0, unwrapApolloResult_1.default)(await __classPrivateFieldGet$2(this, _ExpressionClient_apolloClient, "f").mutate({
-                mutation: (0, client_1.gql) `mutation expressionInteract($url: String!, $interactionCall: InteractionCall!){
+                mutation: (0, core_1.gql) `mutation expressionInteract($url: String!, $interactionCall: InteractionCall!){
                 expressionInteract(url: $url, interactionCall: $interactionCall)
             }`,
                 variables: { url, interactionCall }
@@ -16733,7 +14313,7 @@ proof { valid, invalid, signature, key }
      * for the respective functionality.
      */
     class Ad4mClient {
-        constructor(client) {
+        constructor(client, subscribe = true) {
             _Ad4mClient_apolloClient.set(this, void 0);
             _Ad4mClient_agentClient.set(this, void 0);
             _Ad4mClient_expressionClient.set(this, void 0);
@@ -16742,12 +14322,12 @@ proof { valid, invalid, signature, key }
             _Ad4mClient_perspectiveClient.set(this, void 0);
             _Ad4mClient_runtimeClient.set(this, void 0);
             __classPrivateFieldSet$1(this, _Ad4mClient_apolloClient, client, "f");
-            __classPrivateFieldSet$1(this, _Ad4mClient_agentClient, new AgentClient_1.default(client), "f");
+            __classPrivateFieldSet$1(this, _Ad4mClient_agentClient, new AgentClient_1.default(client, subscribe), "f");
             __classPrivateFieldSet$1(this, _Ad4mClient_expressionClient, new ExpressionClient_1.default(client), "f");
             __classPrivateFieldSet$1(this, _Ad4mClient_languageClient, new LanguageClient_1.LanguageClient(client), "f");
             __classPrivateFieldSet$1(this, _Ad4mClient_neighbourhoodClient, new NeighbourhoodClient_1.default(client), "f");
-            __classPrivateFieldSet$1(this, _Ad4mClient_perspectiveClient, new PerspectiveClient_1.default(client), "f");
-            __classPrivateFieldSet$1(this, _Ad4mClient_runtimeClient, new RuntimeClient_1.default(client), "f");
+            __classPrivateFieldSet$1(this, _Ad4mClient_perspectiveClient, new PerspectiveClient_1.default(client, subscribe), "f");
+            __classPrivateFieldSet$1(this, _Ad4mClient_runtimeClient, new RuntimeClient_1.default(client, subscribe), "f");
         }
         get agent() {
             return __classPrivateFieldGet$1(this, _Ad4mClient_agentClient, "f");
@@ -17121,14 +14701,11 @@ proof { valid, invalid, signature, key }
             return l;
         }
         encodeSingleQuote(input) {
-            console.log('encodeSingleQuote');
             //@ts-ignore
             input = input.split("'").join("\\'");
-            console.log(input);
             return input;
         }
         decodeSingleQuote(input) {
-            console.log('decodeSingleQuote');
             //@ts-ignore
             input = input.split("\\'").join("'");
             return input;
@@ -17562,6 +15139,7 @@ type SentMessage {
 }
 
 type Subscription {
+  agentStatusChanged: AgentStatus
   agentUpdated: Agent
   exceptionOccurred: ExceptionInfo
   perspectiveAdded: PerspectiveHandle
@@ -17616,7 +15194,7 @@ type Subscription {
     module.exports = index;
     });
 
-    /*! *****************************************************************************
+    /******************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -17632,15 +15210,17 @@ type Subscription {
     ***************************************************************************** */
     /* global Reflect, Promise */
 
-    var extendStatics$1 = function(d, b) {
-        extendStatics$1 = Object.setPrototypeOf ||
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics$1(d, b);
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
     };
 
-    function __extends$1(d, b) {
-        extendStatics$1(d, b);
+    function __extends(d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
@@ -17706,43 +15286,14 @@ type Subscription {
         }
     }
 
-    function __spreadArrays() {
-        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-        for (var r = Array(s), k = 0, i = 0; i < il; i++)
-            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-                r[k] = a[j];
-        return r;
-    }
-
-    /******************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-    /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-
-    function __extends(d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    function __spreadArray(to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     }
 
     var genericMessage = "Invariant Violation";
@@ -17769,91 +15320,111 @@ type Subscription {
             throw new InvariantError(message);
         }
     }
-    var verbosityLevels = ["log", "warn", "error", "silent"];
+    var verbosityLevels = ["debug", "log", "warn", "error", "silent"];
     var verbosityLevel = verbosityLevels.indexOf("log");
-    function wrapConsoleMethod(method) {
+    function wrapConsoleMethod(name) {
         return function () {
-            if (verbosityLevels.indexOf(method) >= verbosityLevel) {
-                return console[method].apply(console, arguments);
+            if (verbosityLevels.indexOf(name) >= verbosityLevel) {
+                // Default to console.log if this host environment happens not to provide
+                // all the console.* methods we need.
+                var method = console[name] || console.log;
+                return method.apply(console, arguments);
             }
         };
     }
     (function (invariant) {
+        invariant.debug = wrapConsoleMethod("debug");
         invariant.log = wrapConsoleMethod("log");
         invariant.warn = wrapConsoleMethod("warn");
         invariant.error = wrapConsoleMethod("error");
     })(invariant$1 || (invariant$1 = {}));
-    // Code that uses ts-invariant with rollup-plugin-invariant may want to
-    // import this process stub to avoid errors evaluating process.env.NODE_ENV.
-    // However, because most ESM-to-CJS compilers will rewrite the process import
-    // as tsInvariant.process, which prevents proper replacement by minifiers, we
-    // also export processStub, so you can import { invariant, processStub } from
-    // "ts-invariant" and assign processStub to a local variable named process.
-    (typeof process === "object" &&
-        typeof process.env === "object") ? process : { env: {} };
 
-    /**
-     * The set of allowed kind values for AST nodes.
-     */
-    var Kind = Object.freeze({
-      // Name
-      NAME: 'Name',
-      // Document
-      DOCUMENT: 'Document',
-      OPERATION_DEFINITION: 'OperationDefinition',
-      VARIABLE_DEFINITION: 'VariableDefinition',
-      SELECTION_SET: 'SelectionSet',
-      FIELD: 'Field',
-      ARGUMENT: 'Argument',
-      // Fragments
-      FRAGMENT_SPREAD: 'FragmentSpread',
-      INLINE_FRAGMENT: 'InlineFragment',
-      FRAGMENT_DEFINITION: 'FragmentDefinition',
-      // Values
-      VARIABLE: 'Variable',
-      INT: 'IntValue',
-      FLOAT: 'FloatValue',
-      STRING: 'StringValue',
-      BOOLEAN: 'BooleanValue',
-      NULL: 'NullValue',
-      ENUM: 'EnumValue',
-      LIST: 'ListValue',
-      OBJECT: 'ObjectValue',
-      OBJECT_FIELD: 'ObjectField',
-      // Directives
-      DIRECTIVE: 'Directive',
-      // Types
-      NAMED_TYPE: 'NamedType',
-      LIST_TYPE: 'ListType',
-      NON_NULL_TYPE: 'NonNullType',
-      // Type System Definitions
-      SCHEMA_DEFINITION: 'SchemaDefinition',
-      OPERATION_TYPE_DEFINITION: 'OperationTypeDefinition',
-      // Type Definitions
-      SCALAR_TYPE_DEFINITION: 'ScalarTypeDefinition',
-      OBJECT_TYPE_DEFINITION: 'ObjectTypeDefinition',
-      FIELD_DEFINITION: 'FieldDefinition',
-      INPUT_VALUE_DEFINITION: 'InputValueDefinition',
-      INTERFACE_TYPE_DEFINITION: 'InterfaceTypeDefinition',
-      UNION_TYPE_DEFINITION: 'UnionTypeDefinition',
-      ENUM_TYPE_DEFINITION: 'EnumTypeDefinition',
-      ENUM_VALUE_DEFINITION: 'EnumValueDefinition',
-      INPUT_OBJECT_TYPE_DEFINITION: 'InputObjectTypeDefinition',
-      // Directive Definitions
-      DIRECTIVE_DEFINITION: 'DirectiveDefinition',
-      // Type System Extensions
-      SCHEMA_EXTENSION: 'SchemaExtension',
-      // Type Extensions
-      SCALAR_TYPE_EXTENSION: 'ScalarTypeExtension',
-      OBJECT_TYPE_EXTENSION: 'ObjectTypeExtension',
-      INTERFACE_TYPE_EXTENSION: 'InterfaceTypeExtension',
-      UNION_TYPE_EXTENSION: 'UnionTypeExtension',
-      ENUM_TYPE_EXTENSION: 'EnumTypeExtension',
-      INPUT_OBJECT_TYPE_EXTENSION: 'InputObjectTypeExtension'
-    });
-    /**
-     * The enum type representing the possible kind values of AST nodes.
-     */
+    function maybe$1(thunk) {
+        try {
+            return thunk();
+        }
+        catch (_a) { }
+    }
+
+    var global$1 = (maybe$1(function () { return globalThis; }) ||
+        maybe$1(function () { return window; }) ||
+        maybe$1(function () { return self; }) ||
+        maybe$1(function () { return global; }) || maybe$1(function () { return maybe$1.constructor("return this")(); }));
+
+    var __ = "__";
+    var GLOBAL_KEY = [__, __].join("DEV");
+    function getDEV() {
+        try {
+            return Boolean(__DEV__);
+        }
+        catch (_a) {
+            Object.defineProperty(global$1, GLOBAL_KEY, {
+                value: maybe$1(function () { return process.env.NODE_ENV; }) !== "production",
+                enumerable: false,
+                configurable: true,
+                writable: true,
+            });
+            return global$1[GLOBAL_KEY];
+        }
+    }
+    var DEV = getDEV();
+
+    function maybe(thunk) {
+      try { return thunk() } catch (_) {}
+    }
+
+    var safeGlobal = (
+      maybe(function() { return globalThis }) ||
+      maybe(function() { return window }) ||
+      maybe(function() { return self }) ||
+      maybe(function() { return global }) ||
+      // We don't expect the Function constructor ever to be invoked at runtime, as
+      // long as at least one of globalThis, window, self, or global is defined, so
+      // we are under no obligation to make it easy for static analysis tools to
+      // detect syntactic usage of the Function constructor. If you think you can
+      // improve your static analysis to detect this obfuscation, think again. This
+      // is an arms race you cannot win, at least not in JavaScript.
+      maybe(function() { return maybe.constructor("return this")() })
+    );
+
+    var needToRemove = false;
+
+    function install() {
+      if (safeGlobal &&
+          !maybe(function() { return process.env.NODE_ENV }) &&
+          !maybe(function() { return process })) {
+        Object.defineProperty(safeGlobal, "process", {
+          value: {
+            env: {
+              // This default needs to be "production" instead of "development", to
+              // avoid the problem https://github.com/graphql/graphql-js/pull/2894
+              // will eventually solve, once merged and released.
+              NODE_ENV: "production",
+            },
+          },
+          // Let anyone else change global.process as they see fit, but hide it from
+          // Object.keys(global) enumeration.
+          configurable: true,
+          enumerable: false,
+          writable: true,
+        });
+        needToRemove = true;
+      }
+    }
+
+    // Call install() at least once, when this module is imported.
+    install();
+
+    function remove() {
+      if (needToRemove) {
+        delete safeGlobal.process;
+        needToRemove = false;
+      }
+    }
+
+    // In ES2015 (or a polyfilled) environment, this will be Symbol.iterator
+
+    var SYMBOL_TO_STRING_TAG = typeof Symbol === 'function' && Symbol.toStringTag != null ? Symbol.toStringTag : '@@toStringTag';
 
     function invariant(condition, message) {
       var booleanCondition = Boolean(condition); // istanbul ignore else (See transformation done in './resources/inlineInvariant.js')
@@ -18119,6 +15690,51 @@ type Subscription {
 
       return tag;
     }
+
+    function devAssert(condition, message) {
+      var booleanCondition = Boolean(condition); // istanbul ignore else (See transformation done in './resources/inlineInvariant.js')
+
+      if (!booleanCondition) {
+        throw new Error(message);
+      }
+    }
+
+    function _defineProperties$1(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+    function _createClass$1(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties$1(Constructor.prototype, protoProps); if (staticProps) _defineProperties$1(Constructor, staticProps); return Constructor; }
+
+    /**
+     * A representation of source input to GraphQL. The `name` and `locationOffset` parameters are
+     * optional, but they are useful for clients who store GraphQL documents in source files.
+     * For example, if the GraphQL input starts at line 40 in a file named `Foo.graphql`, it might
+     * be useful for `name` to be `"Foo.graphql"` and location to be `{ line: 40, column: 1 }`.
+     * The `line` and `column` properties in `locationOffset` are 1-indexed.
+     */
+    var Source = /*#__PURE__*/function () {
+      function Source(body) {
+        var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GraphQL request';
+        var locationOffset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+          line: 1,
+          column: 1
+        };
+        typeof body === 'string' || devAssert(0, "Body must be a string. Received: ".concat(inspect(body), "."));
+        this.body = body;
+        this.name = name;
+        this.locationOffset = locationOffset;
+        this.locationOffset.line > 0 || devAssert(0, 'line in locationOffset is 1-indexed and must be positive.');
+        this.locationOffset.column > 0 || devAssert(0, 'column in locationOffset is 1-indexed and must be positive.');
+      } // $FlowFixMe[unsupported-syntax] Flow doesn't support computed properties yet
+
+
+      _createClass$1(Source, [{
+        key: SYMBOL_TO_STRING_TAG,
+        get: function get() {
+          return 'Source';
+        }
+      }]);
+
+      return Source;
+    }();
 
     /**
      * Produces the value of a block string from its parsed raw value, similar to
@@ -18799,48 +16415,15 @@ type Subscription {
       return maybeArray != null && maybeArray.some(isMultiline);
     }
 
-    var printer = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        print: print
-    });
-
-    /**
-     * Returns an operation AST given a document AST and optionally an operation
-     * name. If a name is not provided, an operation is only returned if only one is
-     * provided in the document.
-     */
-
-    function getOperationAST(documentAST, operationName) {
-      var operation = null;
-
-      for (var _i2 = 0, _documentAST$definiti2 = documentAST.definitions; _i2 < _documentAST$definiti2.length; _i2++) {
-        var definition = _documentAST$definiti2[_i2];
-
-        if (definition.kind === Kind.OPERATION_DEFINITION) {
-          var _definition$name;
-
-          if (operationName == null) {
-            // If no operation name was provided, only return an Operation if there
-            // is one defined in the document. Upon encountering the second, return
-            // null.
-            if (operation) {
-              return null;
-            }
-
-            operation = definition;
-          } else if (((_definition$name = definition.name) === null || _definition$name === void 0 ? void 0 : _definition$name.value) === operationName) {
-            return definition;
-          }
-        }
-      }
-
-      return operation;
+    function removeTemporaryGlobals() {
+        return typeof Source === "function" ? remove() : remove();
     }
 
-    var getOperationAST$1 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        getOperationAST: getOperationAST
-    });
+    function checkDEV() {
+        __DEV__ ? invariant$1("boolean" === typeof DEV, DEV) : invariant$1("boolean" === typeof DEV, 36);
+    }
+    removeTemporaryGlobals();
+    checkDEV();
 
     function shouldInclude(_a, variables) {
         var directives = _a.directives;
@@ -18852,7 +16435,7 @@ type Subscription {
             var evaledValue = false;
             if (ifArgument.value.kind === 'Variable') {
                 evaledValue = variables && variables[ifArgument.value.name.value];
-                process.env.NODE_ENV === "production" ? invariant$1(evaledValue !== void 0, 38) : invariant$1(evaledValue !== void 0, "Invalid variable referenced in @" + directive.name.value + " directive.");
+                __DEV__ ? invariant$1(evaledValue !== void 0, "Invalid variable referenced in @".concat(directive.name.value, " directive.")) : invariant$1(evaledValue !== void 0, 37);
             }
             else {
                 evaledValue = ifArgument.value.value;
@@ -18889,13 +16472,13 @@ type Subscription {
                     return;
                 var directiveArguments = directive.arguments;
                 var directiveName = directive.name.value;
-                process.env.NODE_ENV === "production" ? invariant$1(directiveArguments && directiveArguments.length === 1, 39) : invariant$1(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @" + directiveName + " directive.");
+                __DEV__ ? invariant$1(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @".concat(directiveName, " directive.")) : invariant$1(directiveArguments && directiveArguments.length === 1, 38);
                 var ifArgument = directiveArguments[0];
-                process.env.NODE_ENV === "production" ? invariant$1(ifArgument.name && ifArgument.name.value === 'if', 40) : invariant$1(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @" + directiveName + " directive.");
+                __DEV__ ? invariant$1(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @".concat(directiveName, " directive.")) : invariant$1(ifArgument.name && ifArgument.name.value === 'if', 39);
                 var ifValue = ifArgument.value;
-                process.env.NODE_ENV === "production" ? invariant$1(ifValue &&
-                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 41) : invariant$1(ifValue &&
-                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @" + directiveName + " directive must be a variable or a boolean value.");
+                __DEV__ ? invariant$1(ifValue &&
+                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @".concat(directiveName, " directive must be a variable or a boolean value.")) : invariant$1(ifValue &&
+                    (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 40);
                 result.push({ directive: directive, ifArgument: ifArgument });
             });
         }
@@ -18907,18 +16490,18 @@ type Subscription {
         var fragments = [];
         document.definitions.forEach(function (definition) {
             if (definition.kind === 'OperationDefinition') {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(42) : new InvariantError("Found a " + definition.operation + " operation" + (definition.name ? " named '" + definition.name.value + "'" : '') + ". " +
-                    'No operations are allowed when using a fragment as a query. Only fragments are allowed.');
+                throw __DEV__ ? new InvariantError("Found a ".concat(definition.operation, " operation").concat(definition.name ? " named '".concat(definition.name.value, "'") : '', ". ") +
+                    'No operations are allowed when using a fragment as a query. Only fragments are allowed.') : new InvariantError(41);
             }
             if (definition.kind === 'FragmentDefinition') {
                 fragments.push(definition);
             }
         });
         if (typeof actualFragmentName === 'undefined') {
-            process.env.NODE_ENV === "production" ? invariant$1(fragments.length === 1, 43) : invariant$1(fragments.length === 1, "Found " + fragments.length + " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.");
+            __DEV__ ? invariant$1(fragments.length === 1, "Found ".concat(fragments.length, " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.")) : invariant$1(fragments.length === 1, 42);
             actualFragmentName = fragments[0].name.value;
         }
-        var query = __assign(__assign({}, document), { definitions: __spreadArrays([
+        var query = __assign(__assign({}, document), { definitions: __spreadArray([
                 {
                     kind: 'OperationDefinition',
                     operation: 'query',
@@ -18935,7 +16518,7 @@ type Subscription {
                         ],
                     },
                 }
-            ], document.definitions) });
+            ], document.definitions, true) });
         return query;
     }
     function createFragmentMap(fragments) {
@@ -18952,7 +16535,7 @@ type Subscription {
                 return selection;
             case 'FragmentSpread': {
                 var fragment = fragmentMap && fragmentMap[selection.name.value];
-                process.env.NODE_ENV === "production" ? invariant$1(fragment, 44) : invariant$1(fragment, "No fragment named " + selection.name.value + ".");
+                __DEV__ ? invariant$1(fragment, "No fragment named ".concat(selection.name.value, ".")) : invariant$1(fragment, 43);
                 return fragment;
             }
             default:
@@ -18960,69 +16543,20 @@ type Subscription {
         }
     }
 
-    var fastJsonStableStringify = function (data, opts) {
-        if (!opts) opts = {};
-        if (typeof opts === 'function') opts = { cmp: opts };
-        var cycles = (typeof opts.cycles === 'boolean') ? opts.cycles : false;
-
-        var cmp = opts.cmp && (function (f) {
-            return function (node) {
-                return function (a, b) {
-                    var aobj = { key: a, value: node[a] };
-                    var bobj = { key: b, value: node[b] };
-                    return f(aobj, bobj);
-                };
-            };
-        })(opts.cmp);
-
-        var seen = [];
-        return (function stringify (node) {
-            if (node && node.toJSON && typeof node.toJSON === 'function') {
-                node = node.toJSON();
-            }
-
-            if (node === undefined) return;
-            if (typeof node == 'number') return isFinite(node) ? '' + node : 'null';
-            if (typeof node !== 'object') return JSON.stringify(node);
-
-            var i, out;
-            if (Array.isArray(node)) {
-                out = '[';
-                for (i = 0; i < node.length; i++) {
-                    if (i) out += ',';
-                    out += stringify(node[i]) || 'null';
-                }
-                return out + ']';
-            }
-
-            if (node === null) return 'null';
-
-            if (seen.indexOf(node) !== -1) {
-                if (cycles) return JSON.stringify('__cycle__');
-                throw new TypeError('Converting circular structure to JSON');
-            }
-
-            var seenIndex = seen.push(node) - 1;
-            var keys = Object.keys(node).sort(cmp && cmp(node));
-            out = '';
-            for (i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                var value = stringify(node[key]);
-
-                if (!value) continue;
-                if (out) out += ',';
-                out += JSON.stringify(key) + ':' + value;
-            }
-            seen.splice(seenIndex, 1);
-            return '{' + out + '}';
-        })(data);
-    };
+    function isNonNullObject(obj) {
+        return obj !== null && typeof obj === 'object';
+    }
 
     function makeReference(id) {
         return { __ref: String(id) };
     }
     function isReference(obj) {
         return Boolean(obj && typeof obj === 'object' && typeof obj.__ref === 'string');
+    }
+    function isDocumentNode(value) {
+        return (isNonNullObject(value) &&
+            value.kind === "Document" &&
+            Array.isArray(value.definitions));
     }
     function isStringValue(value) {
         return value.kind === 'StringValue';
@@ -19083,9 +16617,9 @@ type Subscription {
             argObj[name.value] = null;
         }
         else {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(53) : new InvariantError("The inline argument \"" + name.value + "\" of kind \"" + value.kind + "\"" +
+            throw __DEV__ ? new InvariantError("The inline argument \"".concat(name.value, "\" of kind \"").concat(value.kind, "\"") +
                 'is not supported. Use variables instead of inline arguments to ' +
-                'overcome this limitation.');
+                'overcome this limitation.') : new InvariantError(52);
         }
     }
     function storeKeyNameFromField(field, variables) {
@@ -19120,7 +16654,7 @@ type Subscription {
         'rest',
         'export',
     ];
-    function getStoreKeyName(fieldName, args, directives) {
+    var getStoreKeyName = Object.assign(function (fieldName, args, directives) {
         if (args &&
             directives &&
             directives['connection'] &&
@@ -19135,7 +16669,7 @@ type Subscription {
                 filterKeys.forEach(function (key) {
                     filteredArgs_1[key] = args[key];
                 });
-                return directives['connection']['key'] + "(" + JSON.stringify(filteredArgs_1) + ")";
+                return "".concat(directives['connection']['key'], "(").concat(stringify(filteredArgs_1), ")");
             }
             else {
                 return directives['connection']['key'];
@@ -19143,22 +16677,40 @@ type Subscription {
         }
         var completeFieldName = fieldName;
         if (args) {
-            var stringifiedArgs = fastJsonStableStringify(args);
-            completeFieldName += "(" + stringifiedArgs + ")";
+            var stringifiedArgs = stringify(args);
+            completeFieldName += "(".concat(stringifiedArgs, ")");
         }
         if (directives) {
             Object.keys(directives).forEach(function (key) {
                 if (KNOWN_DIRECTIVES.indexOf(key) !== -1)
                     return;
                 if (directives[key] && Object.keys(directives[key]).length) {
-                    completeFieldName += "@" + key + "(" + JSON.stringify(directives[key]) + ")";
+                    completeFieldName += "@".concat(key, "(").concat(stringify(directives[key]), ")");
                 }
                 else {
-                    completeFieldName += "@" + key;
+                    completeFieldName += "@".concat(key);
                 }
             });
         }
         return completeFieldName;
+    }, {
+        setStringify: function (s) {
+            var previous = stringify;
+            stringify = s;
+            return previous;
+        },
+    });
+    var stringify = function defaultStringify(value) {
+        return JSON.stringify(value, stringifyReplacer);
+    };
+    function stringifyReplacer(_key, value) {
+        if (isNonNullObject(value) && !Array.isArray(value)) {
+            value = Object.keys(value).sort().reduce(function (copy, key) {
+                copy[key] = value[key];
+                return copy;
+            }, {});
+        }
+        return value;
     }
     function argumentsObjectFromField(field, variables) {
         if (field.arguments && field.arguments.length) {
@@ -19201,16 +16753,16 @@ type Subscription {
     }
 
     function checkDocument(doc) {
-        process.env.NODE_ENV === "production" ? invariant$1(doc && doc.kind === 'Document', 45) : invariant$1(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
+        __DEV__ ? invariant$1(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$1(doc && doc.kind === 'Document', 44);
         var operations = doc.definitions
             .filter(function (d) { return d.kind !== 'FragmentDefinition'; })
             .map(function (definition) {
             if (definition.kind !== 'OperationDefinition') {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(46) : new InvariantError("Schema type definitions not allowed in queries. Found: \"" + definition.kind + "\"");
+                throw __DEV__ ? new InvariantError("Schema type definitions not allowed in queries. Found: \"".concat(definition.kind, "\"")) : new InvariantError(45);
             }
             return definition;
         });
-        process.env.NODE_ENV === "production" ? invariant$1(operations.length <= 1, 47) : invariant$1(operations.length <= 1, "Ambiguous GraphQL document: contains " + operations.length + " operations");
+        __DEV__ ? invariant$1(operations.length <= 1, "Ambiguous GraphQL document: contains ".concat(operations.length, " operations")) : invariant$1(operations.length <= 1, 46);
         return doc;
     }
     function getOperationDefinition(doc) {
@@ -19229,14 +16781,14 @@ type Subscription {
     }
     function getQueryDefinition(doc) {
         var queryDef = getOperationDefinition(doc);
-        process.env.NODE_ENV === "production" ? invariant$1(queryDef && queryDef.operation === 'query', 48) : invariant$1(queryDef && queryDef.operation === 'query', 'Must contain a query definition.');
+        __DEV__ ? invariant$1(queryDef && queryDef.operation === 'query', 'Must contain a query definition.') : invariant$1(queryDef && queryDef.operation === 'query', 47);
         return queryDef;
     }
     function getFragmentDefinition(doc) {
-        process.env.NODE_ENV === "production" ? invariant$1(doc.kind === 'Document', 49) : invariant$1(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
-        process.env.NODE_ENV === "production" ? invariant$1(doc.definitions.length <= 1, 50) : invariant$1(doc.definitions.length <= 1, 'Fragment must have exactly one definition.');
+        __DEV__ ? invariant$1(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql") : invariant$1(doc.kind === 'Document', 48);
+        __DEV__ ? invariant$1(doc.definitions.length <= 1, 'Fragment must have exactly one definition.') : invariant$1(doc.definitions.length <= 1, 49);
         var fragmentDef = doc.definitions[0];
-        process.env.NODE_ENV === "production" ? invariant$1(fragmentDef.kind === 'FragmentDefinition', 51) : invariant$1(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.');
+        __DEV__ ? invariant$1(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.') : invariant$1(fragmentDef.kind === 'FragmentDefinition', 50);
         return fragmentDef;
     }
     function getMainDefinition(queryDoc) {
@@ -19259,7 +16811,7 @@ type Subscription {
         if (fragmentDefinition) {
             return fragmentDefinition;
         }
-        throw process.env.NODE_ENV === "production" ? new InvariantError(52) : new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.');
+        throw __DEV__ ? new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.') : new InvariantError(51);
     }
     function getDefaultValues(definition) {
         var defaultValues = Object.create(null);
@@ -19376,8 +16928,8 @@ type Subscription {
         }
         return modifiedDoc;
     }
-    function addTypenameToDocument(doc) {
-        return visit(checkDocument(doc), {
+    var addTypenameToDocument = Object.assign(function (doc) {
+        return visit(doc, {
             SelectionSet: {
                 enter: function (node, _key, parent) {
                     if (parent &&
@@ -19402,21 +16954,22 @@ type Subscription {
                         field.directives.some(function (d) { return d.name.value === 'export'; })) {
                         return;
                     }
-                    return __assign(__assign({}, node), { selections: __spreadArrays(selections, [TYPENAME_FIELD]) });
+                    return __assign(__assign({}, node), { selections: __spreadArray(__spreadArray([], selections, true), [TYPENAME_FIELD], false) });
                 },
             },
         });
-    }
-    addTypenameToDocument.added = function (field) {
-        return field === TYPENAME_FIELD;
-    };
+    }, {
+        added: function (field) {
+            return field === TYPENAME_FIELD;
+        },
+    });
     var connectionRemoveConfig = {
         test: function (directive) {
             var willRemove = directive.name.value === 'connection';
             if (willRemove) {
                 if (!directive.arguments ||
                     !directive.arguments.some(function (arg) { return arg.name.value === 'key'; })) {
-                    process.env.NODE_ENV === "production" || invariant$1.warn('Removing an @connection directive even though it does not have a key. ' +
+                    __DEV__ && invariant$1.warn('Removing an @connection directive even though it does not have a key. ' +
                         'You may want to use the key parameter to specify a store key.');
                 }
             }
@@ -19540,7 +17093,7 @@ type Subscription {
         return modifiedDoc;
     }
 
-    var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
+    var hasOwnProperty$5 = Object.prototype.hasOwnProperty;
     function mergeDeep() {
         var sources = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -19559,9 +17112,6 @@ type Subscription {
         }
         return target;
     }
-    function isObject$1(obj) {
-        return obj !== null && typeof obj === 'object';
-    }
     var defaultReconciler = function (target, source, property) {
         return this.merge(target[property], source[property]);
     };
@@ -19569,7 +17119,7 @@ type Subscription {
         function DeepMerger(reconciler) {
             if (reconciler === void 0) { reconciler = defaultReconciler; }
             this.reconciler = reconciler;
-            this.isObject = isObject$1;
+            this.isObject = isNonNullObject;
             this.pastCopies = new Set();
         }
         DeepMerger.prototype.merge = function (target, source) {
@@ -19578,12 +17128,12 @@ type Subscription {
             for (var _i = 2; _i < arguments.length; _i++) {
                 context[_i - 2] = arguments[_i];
             }
-            if (isObject$1(source) && isObject$1(target)) {
+            if (isNonNullObject(source) && isNonNullObject(target)) {
                 Object.keys(source).forEach(function (sourceKey) {
-                    if (hasOwnProperty$4.call(target, sourceKey)) {
+                    if (hasOwnProperty$5.call(target, sourceKey)) {
                         var targetValue = target[sourceKey];
                         if (source[sourceKey] !== targetValue) {
-                            var result = _this.reconciler.apply(_this, __spreadArrays([target, source, sourceKey], context));
+                            var result = _this.reconciler.apply(_this, __spreadArray([target, source, sourceKey], context, false));
                             if (result !== targetValue) {
                                 target = _this.shallowCopyForMerge(target);
                                 target[sourceKey] = result;
@@ -19600,32 +17150,31 @@ type Subscription {
             return source;
         };
         DeepMerger.prototype.shallowCopyForMerge = function (value) {
-            if (isObject$1(value) && !this.pastCopies.has(value)) {
-                if (Array.isArray(value)) {
-                    value = value.slice(0);
+            if (isNonNullObject(value)) {
+                if (!this.pastCopies.has(value)) {
+                    if (Array.isArray(value)) {
+                        value = value.slice(0);
+                    }
+                    else {
+                        value = __assign({ __proto__: Object.getPrototypeOf(value) }, value);
+                    }
+                    this.pastCopies.add(value);
                 }
-                else {
-                    value = __assign({ __proto__: Object.getPrototypeOf(value) }, value);
-                }
-                this.pastCopies.add(value);
             }
             return value;
         };
         return DeepMerger;
     }());
 
-    var Observable_1 = createCommonjsModule(function (module, exports) {
+    function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.Observable = void 0;
+    function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
     function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-    function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
     // === Symbol Support ===
     var hasSymbols = function () {
@@ -19795,12 +17344,8 @@ type Subscription {
       notifySubscription(subscription, type, value);
     }
 
-    var Subscription =
-    /*#__PURE__*/
-    function () {
+    var Subscription = /*#__PURE__*/function () {
       function Subscription(observer, subscriber) {
-        _classCallCheck(this, Subscription);
-
         // ASSERT: observer is an object
         // ASSERT: subscriber is callable
         this._cleanup = undefined;
@@ -19818,15 +17363,16 @@ type Subscription {
         if (this._state === 'initializing') this._state = 'ready';
       }
 
-      _createClass(Subscription, [{
-        key: "unsubscribe",
-        value: function unsubscribe() {
-          if (this._state !== 'closed') {
-            closeSubscription(this);
-            cleanupSubscription(this);
-          }
+      var _proto = Subscription.prototype;
+
+      _proto.unsubscribe = function unsubscribe() {
+        if (this._state !== 'closed') {
+          closeSubscription(this);
+          cleanupSubscription(this);
         }
-      }, {
+      };
+
+      _createClass(Subscription, [{
         key: "closed",
         get: function () {
           return this._state === 'closed';
@@ -19836,31 +17382,26 @@ type Subscription {
       return Subscription;
     }();
 
-    var SubscriptionObserver =
-    /*#__PURE__*/
-    function () {
+    var SubscriptionObserver = /*#__PURE__*/function () {
       function SubscriptionObserver(subscription) {
-        _classCallCheck(this, SubscriptionObserver);
-
         this._subscription = subscription;
       }
 
+      var _proto2 = SubscriptionObserver.prototype;
+
+      _proto2.next = function next(value) {
+        onNotify(this._subscription, 'next', value);
+      };
+
+      _proto2.error = function error(value) {
+        onNotify(this._subscription, 'error', value);
+      };
+
+      _proto2.complete = function complete() {
+        onNotify(this._subscription, 'complete');
+      };
+
       _createClass(SubscriptionObserver, [{
-        key: "next",
-        value: function next(value) {
-          onNotify(this._subscription, 'next', value);
-        }
-      }, {
-        key: "error",
-        value: function error(value) {
-          onNotify(this._subscription, 'error', value);
-        }
-      }, {
-        key: "complete",
-        value: function complete() {
-          onNotify(this._subscription, 'complete');
-        }
-      }, {
         key: "closed",
         get: function () {
           return this._subscription._state === 'closed';
@@ -19870,315 +17411,269 @@ type Subscription {
       return SubscriptionObserver;
     }();
 
-    var Observable =
-    /*#__PURE__*/
-    function () {
+    var Observable = /*#__PURE__*/function () {
       function Observable(subscriber) {
-        _classCallCheck(this, Observable);
-
         if (!(this instanceof Observable)) throw new TypeError('Observable cannot be called as a function');
         if (typeof subscriber !== 'function') throw new TypeError('Observable initializer must be a function');
         this._subscriber = subscriber;
       }
 
-      _createClass(Observable, [{
-        key: "subscribe",
-        value: function subscribe(observer) {
-          if (typeof observer !== 'object' || observer === null) {
-            observer = {
-              next: observer,
-              error: arguments[1],
-              complete: arguments[2]
-            };
+      var _proto3 = Observable.prototype;
+
+      _proto3.subscribe = function subscribe(observer) {
+        if (typeof observer !== 'object' || observer === null) {
+          observer = {
+            next: observer,
+            error: arguments[1],
+            complete: arguments[2]
+          };
+        }
+
+        return new Subscription(observer, this._subscriber);
+      };
+
+      _proto3.forEach = function forEach(fn) {
+        var _this = this;
+
+        return new Promise(function (resolve, reject) {
+          if (typeof fn !== 'function') {
+            reject(new TypeError(fn + ' is not a function'));
+            return;
           }
 
-          return new Subscription(observer, this._subscriber);
-        }
-      }, {
-        key: "forEach",
-        value: function forEach(fn) {
-          var _this = this;
+          function done() {
+            subscription.unsubscribe();
+            resolve();
+          }
 
-          return new Promise(function (resolve, reject) {
-            if (typeof fn !== 'function') {
-              reject(new TypeError(fn + ' is not a function'));
-              return;
-            }
-
-            function done() {
-              subscription.unsubscribe();
-              resolve();
-            }
-
-            var subscription = _this.subscribe({
-              next: function (value) {
-                try {
-                  fn(value, done);
-                } catch (e) {
-                  reject(e);
-                  subscription.unsubscribe();
-                }
-              },
-              error: reject,
-              complete: resolve
-            });
+          var subscription = _this.subscribe({
+            next: function (value) {
+              try {
+                fn(value, done);
+              } catch (e) {
+                reject(e);
+                subscription.unsubscribe();
+              }
+            },
+            error: reject,
+            complete: resolve
           });
-        }
-      }, {
-        key: "map",
-        value: function map(fn) {
-          var _this2 = this;
+        });
+      };
 
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            return _this2.subscribe({
-              next: function (value) {
+      _proto3.map = function map(fn) {
+        var _this2 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          return _this2.subscribe({
+            next: function (value) {
+              try {
+                value = fn(value);
+              } catch (e) {
+                return observer.error(e);
+              }
+
+              observer.next(value);
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              observer.complete();
+            }
+          });
+        });
+      };
+
+      _proto3.filter = function filter(fn) {
+        var _this3 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          return _this3.subscribe({
+            next: function (value) {
+              try {
+                if (!fn(value)) return;
+              } catch (e) {
+                return observer.error(e);
+              }
+
+              observer.next(value);
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              observer.complete();
+            }
+          });
+        });
+      };
+
+      _proto3.reduce = function reduce(fn) {
+        var _this4 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        var hasSeed = arguments.length > 1;
+        var hasValue = false;
+        var seed = arguments[1];
+        var acc = seed;
+        return new C(function (observer) {
+          return _this4.subscribe({
+            next: function (value) {
+              var first = !hasValue;
+              hasValue = true;
+
+              if (!first || hasSeed) {
+                try {
+                  acc = fn(acc, value);
+                } catch (e) {
+                  return observer.error(e);
+                }
+              } else {
+                acc = value;
+              }
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              if (!hasValue && !hasSeed) return observer.error(new TypeError('Cannot reduce an empty sequence'));
+              observer.next(acc);
+              observer.complete();
+            }
+          });
+        });
+      };
+
+      _proto3.concat = function concat() {
+        var _this5 = this;
+
+        for (var _len = arguments.length, sources = new Array(_len), _key = 0; _key < _len; _key++) {
+          sources[_key] = arguments[_key];
+        }
+
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          var subscription;
+          var index = 0;
+
+          function startNext(next) {
+            subscription = next.subscribe({
+              next: function (v) {
+                observer.next(v);
+              },
+              error: function (e) {
+                observer.error(e);
+              },
+              complete: function () {
+                if (index === sources.length) {
+                  subscription = undefined;
+                  observer.complete();
+                } else {
+                  startNext(C.from(sources[index++]));
+                }
+              }
+            });
+          }
+
+          startNext(_this5);
+          return function () {
+            if (subscription) {
+              subscription.unsubscribe();
+              subscription = undefined;
+            }
+          };
+        });
+      };
+
+      _proto3.flatMap = function flatMap(fn) {
+        var _this6 = this;
+
+        if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+        var C = getSpecies(this);
+        return new C(function (observer) {
+          var subscriptions = [];
+
+          var outer = _this6.subscribe({
+            next: function (value) {
+              if (fn) {
                 try {
                   value = fn(value);
                 } catch (e) {
                   return observer.error(e);
                 }
-
-                observer.next(value);
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                observer.complete();
               }
-            });
-          });
-        }
-      }, {
-        key: "filter",
-        value: function filter(fn) {
-          var _this3 = this;
 
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            return _this3.subscribe({
-              next: function (value) {
-                try {
-                  if (!fn(value)) return;
-                } catch (e) {
-                  return observer.error(e);
-                }
-
-                observer.next(value);
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                observer.complete();
-              }
-            });
-          });
-        }
-      }, {
-        key: "reduce",
-        value: function reduce(fn) {
-          var _this4 = this;
-
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          var hasSeed = arguments.length > 1;
-          var hasValue = false;
-          var seed = arguments[1];
-          var acc = seed;
-          return new C(function (observer) {
-            return _this4.subscribe({
-              next: function (value) {
-                var first = !hasValue;
-                hasValue = true;
-
-                if (!first || hasSeed) {
-                  try {
-                    acc = fn(acc, value);
-                  } catch (e) {
-                    return observer.error(e);
-                  }
-                } else {
-                  acc = value;
-                }
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                if (!hasValue && !hasSeed) return observer.error(new TypeError('Cannot reduce an empty sequence'));
-                observer.next(acc);
-                observer.complete();
-              }
-            });
-          });
-        }
-      }, {
-        key: "concat",
-        value: function concat() {
-          var _this5 = this;
-
-          for (var _len = arguments.length, sources = new Array(_len), _key = 0; _key < _len; _key++) {
-            sources[_key] = arguments[_key];
-          }
-
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            var subscription;
-            var index = 0;
-
-            function startNext(next) {
-              subscription = next.subscribe({
-                next: function (v) {
-                  observer.next(v);
+              var inner = C.from(value).subscribe({
+                next: function (value) {
+                  observer.next(value);
                 },
                 error: function (e) {
                   observer.error(e);
                 },
                 complete: function () {
-                  if (index === sources.length) {
-                    subscription = undefined;
-                    observer.complete();
-                  } else {
-                    startNext(C.from(sources[index++]));
-                  }
+                  var i = subscriptions.indexOf(inner);
+                  if (i >= 0) subscriptions.splice(i, 1);
+                  completeIfDone();
                 }
               });
+              subscriptions.push(inner);
+            },
+            error: function (e) {
+              observer.error(e);
+            },
+            complete: function () {
+              completeIfDone();
             }
-
-            startNext(_this5);
-            return function () {
-              if (subscription) {
-                subscription.unsubscribe();
-                subscription = undefined;
-              }
-            };
           });
-        }
-      }, {
-        key: "flatMap",
-        value: function flatMap(fn) {
-          var _this6 = this;
 
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
-          var C = getSpecies(this);
-          return new C(function (observer) {
-            var subscriptions = [];
+          function completeIfDone() {
+            if (outer.closed && subscriptions.length === 0) observer.complete();
+          }
 
-            var outer = _this6.subscribe({
-              next: function (value) {
-                if (fn) {
-                  try {
-                    value = fn(value);
-                  } catch (e) {
-                    return observer.error(e);
-                  }
-                }
-
-                var inner = C.from(value).subscribe({
-                  next: function (value) {
-                    observer.next(value);
-                  },
-                  error: function (e) {
-                    observer.error(e);
-                  },
-                  complete: function () {
-                    var i = subscriptions.indexOf(inner);
-                    if (i >= 0) subscriptions.splice(i, 1);
-                    completeIfDone();
-                  }
-                });
-                subscriptions.push(inner);
-              },
-              error: function (e) {
-                observer.error(e);
-              },
-              complete: function () {
-                completeIfDone();
-              }
+          return function () {
+            subscriptions.forEach(function (s) {
+              return s.unsubscribe();
             });
+            outer.unsubscribe();
+          };
+        });
+      };
 
-            function completeIfDone() {
-              if (outer.closed && subscriptions.length === 0) observer.complete();
-            }
+      _proto3[SymbolObservable] = function () {
+        return this;
+      };
 
-            return function () {
-              subscriptions.forEach(function (s) {
-                return s.unsubscribe();
-              });
-              outer.unsubscribe();
-            };
+      Observable.from = function from(x) {
+        var C = typeof this === 'function' ? this : Observable;
+        if (x == null) throw new TypeError(x + ' is not an object');
+        var method = getMethod(x, SymbolObservable);
+
+        if (method) {
+          var observable = method.call(x);
+          if (Object(observable) !== observable) throw new TypeError(observable + ' is not an object');
+          if (isObservable(observable) && observable.constructor === C) return observable;
+          return new C(function (observer) {
+            return observable.subscribe(observer);
           });
         }
-      }, {
-        key: SymbolObservable,
-        value: function () {
-          return this;
-        }
-      }], [{
-        key: "from",
-        value: function from(x) {
-          var C = typeof this === 'function' ? this : Observable;
-          if (x == null) throw new TypeError(x + ' is not an object');
-          var method = getMethod(x, SymbolObservable);
+
+        if (hasSymbol('iterator')) {
+          method = getMethod(x, SymbolIterator);
 
           if (method) {
-            var observable = method.call(x);
-            if (Object(observable) !== observable) throw new TypeError(observable + ' is not an object');
-            if (isObservable(observable) && observable.constructor === C) return observable;
-            return new C(function (observer) {
-              return observable.subscribe(observer);
-            });
-          }
-
-          if (hasSymbol('iterator')) {
-            method = getMethod(x, SymbolIterator);
-
-            if (method) {
-              return new C(function (observer) {
-                enqueue(function () {
-                  if (observer.closed) return;
-                  var _iteratorNormalCompletion = true;
-                  var _didIteratorError = false;
-                  var _iteratorError = undefined;
-
-                  try {
-                    for (var _iterator = method.call(x)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                      var _item = _step.value;
-                      observer.next(_item);
-                      if (observer.closed) return;
-                    }
-                  } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion && _iterator.return != null) {
-                        _iterator.return();
-                      }
-                    } finally {
-                      if (_didIteratorError) {
-                        throw _iteratorError;
-                      }
-                    }
-                  }
-
-                  observer.complete();
-                });
-              });
-            }
-          }
-
-          if (Array.isArray(x)) {
             return new C(function (observer) {
               enqueue(function () {
                 if (observer.closed) return;
 
-                for (var i = 0; i < x.length; ++i) {
-                  observer.next(x[i]);
+                for (var _iterator = _createForOfIteratorHelperLoose(method.call(x)), _step; !(_step = _iterator()).done;) {
+                  var item = _step.value;
+                  observer.next(item);
                   if (observer.closed) return;
                 }
 
@@ -20186,23 +17681,15 @@ type Subscription {
               });
             });
           }
-
-          throw new TypeError(x + ' is not observable');
         }
-      }, {
-        key: "of",
-        value: function of() {
-          for (var _len2 = arguments.length, items = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            items[_key2] = arguments[_key2];
-          }
 
-          var C = typeof this === 'function' ? this : Observable;
+        if (Array.isArray(x)) {
           return new C(function (observer) {
             enqueue(function () {
               if (observer.closed) return;
 
-              for (var i = 0; i < items.length; ++i) {
-                observer.next(items[i]);
+              for (var i = 0; i < x.length; ++i) {
+                observer.next(x[i]);
                 if (observer.closed) return;
               }
 
@@ -20210,7 +17697,31 @@ type Subscription {
             });
           });
         }
-      }, {
+
+        throw new TypeError(x + ' is not observable');
+      };
+
+      Observable.of = function of() {
+        for (var _len2 = arguments.length, items = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          items[_key2] = arguments[_key2];
+        }
+
+        var C = typeof this === 'function' ? this : Observable;
+        return new C(function (observer) {
+          enqueue(function () {
+            if (observer.closed) return;
+
+            for (var i = 0; i < items.length; ++i) {
+              observer.next(items[i]);
+              if (observer.closed) return;
+            }
+
+            observer.complete();
+          });
+        });
+      };
+
+      _createClass(Observable, null, [{
         key: SymbolSpecies,
         get: function () {
           return this;
@@ -20219,8 +17730,6 @@ type Subscription {
 
       return Observable;
     }();
-
-    exports.Observable = Observable;
 
     if (hasSymbols()) {
       Object.defineProperty(Observable, Symbol('extensions'), {
@@ -20231,13 +17740,8 @@ type Subscription {
         configurable: true
       });
     }
-    });
 
-    var zenObservable = Observable_1.Observable;
-
-    var Observable = zenObservable;
-
-    function symbolObservablePonyfill$1(root) {
+    function symbolObservablePonyfill(root) {
     	var result;
     	var Symbol = root.Symbol;
 
@@ -20274,21 +17778,21 @@ type Subscription {
 
     /* global window */
 
-    var root$1;
+    var root;
 
     if (typeof self !== 'undefined') {
-      root$1 = self;
+      root = self;
     } else if (typeof window !== 'undefined') {
-      root$1 = window;
+      root = window;
     } else if (typeof global !== 'undefined') {
-      root$1 = global;
+      root = global;
     } else if (typeof module !== 'undefined') {
-      root$1 = module;
+      root = module;
     } else {
-      root$1 = Function('return this')();
+      root = Function('return this')();
     }
 
-    symbolObservablePonyfill$1(root$1);
+    symbolObservablePonyfill(root);
 
     var prototype = Observable.prototype;
     var fakeObsSymbol = '@@observable';
@@ -20329,41 +17833,33 @@ type Subscription {
         }
     }
 
-    function getEnv() {
-        if (typeof process !== 'undefined' && process.env.NODE_ENV) {
-            return process.env.NODE_ENV;
-        }
-        return 'development';
-    }
-    function isEnv(env) {
-        return getEnv() === env;
-    }
-    function isDevelopment() {
-        return isEnv('development') === true;
-    }
-    function isTest() {
-        return isEnv('test') === true;
-    }
-
-    function isObject(value) {
-        return value !== null && typeof value === "object";
-    }
     function deepFreeze(value) {
         var workSet = new Set([value]);
         workSet.forEach(function (obj) {
-            if (isObject(obj)) {
-                if (!Object.isFrozen(obj))
-                    Object.freeze(obj);
+            if (isNonNullObject(obj) && shallowFreeze(obj) === obj) {
                 Object.getOwnPropertyNames(obj).forEach(function (name) {
-                    if (isObject(obj[name]))
+                    if (isNonNullObject(obj[name]))
                         workSet.add(obj[name]);
                 });
             }
         });
         return value;
     }
+    function shallowFreeze(obj) {
+        if (__DEV__ && !Object.isFrozen(obj)) {
+            try {
+                Object.freeze(obj);
+            }
+            catch (e) {
+                if (e instanceof TypeError)
+                    return null;
+                throw e;
+            }
+        }
+        return obj;
+    }
     function maybeDeepFreeze(obj) {
-        if (process.env.NODE_ENV !== "production" && (isDevelopment() || isTest())) {
+        if (__DEV__) {
             deepFreeze(obj);
         }
         return obj;
@@ -20423,11 +17919,19 @@ type Subscription {
         });
     }
 
+    var canUseWeakMap = typeof WeakMap === 'function' &&
+        maybe$1(function () { return navigator.product; }) !== 'ReactNative';
+    var canUseWeakSet = typeof WeakSet === 'function';
+    var canUseSymbol = typeof Symbol === 'function' &&
+        typeof Symbol.for === 'function';
+    typeof maybe$1(function () { return window.document.createElement; }) === "function";
+    maybe$1(function () { return navigator.userAgent.indexOf("jsdom") >= 0; }) || false;
+
     function fixObservableSubclass(subclass) {
         function set(key) {
             Object.defineProperty(subclass, key, { value: Observable });
         }
-        if (typeof Symbol === "function" && Symbol.species) {
+        if (canUseSymbol && Symbol.species) {
             set(Symbol.species);
         }
         set("@@species");
@@ -20438,7 +17942,7 @@ type Subscription {
         return value && typeof value.then === "function";
     }
     var Concast = (function (_super) {
-        __extends$1(Concast, _super);
+        __extends(Concast, _super);
         function Concast(sources) {
             var _this = _super.call(this, function (observer) {
                 _this.addObserver(observer);
@@ -20461,7 +17965,7 @@ type Subscription {
                     var sub = _this.sub;
                     if (sub !== null) {
                         if (sub)
-                            Promise.resolve().then(function () { return sub.unsubscribe(); });
+                            setTimeout(function () { return sub.unsubscribe(); });
                         _this.sub = null;
                         _this.latest = ["error", error];
                         _this.reject(error);
@@ -20469,9 +17973,12 @@ type Subscription {
                     }
                 },
                 complete: function () {
-                    if (_this.sub !== null) {
+                    var sub = _this.sub;
+                    if (sub !== null) {
                         var value = _this.sources.shift();
                         if (!value) {
+                            if (sub)
+                                setTimeout(function () { return sub.unsubscribe(); });
                             _this.sub = null;
                             if (_this.latest &&
                                 _this.latest[0] === "next") {
@@ -20539,7 +18046,7 @@ type Subscription {
             if (this.observers.delete(observer) &&
                 --this.addCount < 1 &&
                 !quietly) {
-                this.handlers.error(new Error("Observable cancelled prematurely"));
+                this.handlers.complete();
             }
         };
         Concast.prototype.cleanup = function (callback) {
@@ -20573,9 +18080,6 @@ type Subscription {
         return (result.errors && result.errors.length > 0) || false;
     }
 
-    var canUseWeakMap = typeof WeakMap === 'function' && !(typeof navigator === 'object' &&
-        navigator.product === 'ReactNative');
-
     function compact() {
         var objects = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -20593,6 +18097,26 @@ type Subscription {
             });
         });
         return result;
+    }
+
+    var prefixCounts = new Map();
+    function makeUniqueId(prefix) {
+        var count = prefixCounts.get(prefix) || 1;
+        prefixCounts.set(prefix, count + 1);
+        return "".concat(prefix, ":").concat(count, ":").concat(Math.random().toString(36).slice(2));
+    }
+
+    function stringifyForDisplay(value) {
+        var undefId = makeUniqueId("stringifyForDisplay");
+        return JSON.stringify(value, function (key, value) {
+            return value === void 0 ? undefId : value;
+        }).split(JSON.stringify(undefId)).join("<undefined>");
+    }
+
+    function mergeOptions(defaults, options) {
+        return compact(defaults, options, options.variables && {
+            variables: __assign(__assign({}, (defaults && defaults.variables)), options.variables),
+        });
     }
 
     function fromError(errorValue) {
@@ -20621,7 +18145,7 @@ type Subscription {
         for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
             var key = _a[_i];
             if (OPERATION_FIELDS.indexOf(key) < 0) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(26) : new InvariantError("illegal argument: " + key);
+                throw __DEV__ ? new InvariantError("illegal argument: ".concat(key)) : new InvariantError(24);
             }
         }
         return operation;
@@ -20675,7 +18199,7 @@ type Subscription {
         return link.request.length <= 1;
     }
     var LinkError = (function (_super) {
-        __extends$1(LinkError, _super);
+        __extends(LinkError, _super);
         function LinkError(message, link) {
             var _this = _super.call(this, message) || this;
             _this.link = link;
@@ -20720,7 +18244,7 @@ type Subscription {
         ApolloLink.concat = function (first, second) {
             var firstLink = toLink(first);
             if (isTerminating(firstLink)) {
-                process.env.NODE_ENV === "production" || invariant$1.warn(new LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
+                __DEV__ && invariant$1.warn(new LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
                 return firstLink;
             }
             var nextLink = toLink(second);
@@ -20744,7 +18268,7 @@ type Subscription {
             return ApolloLink.concat(this, next);
         };
         ApolloLink.prototype.request = function (operation, forward) {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(21) : new InvariantError('request is not implemented');
+            throw __DEV__ ? new InvariantError('request is not implemented') : new InvariantError(19);
         };
         ApolloLink.prototype.onError = function (error, observer) {
             if (observer && observer.error) {
@@ -20762,9 +18286,9 @@ type Subscription {
 
     var execute = ApolloLink.execute;
 
-    var version = '3.3.20';
+    var version = '3.6.9';
 
-    var hasOwnProperty$3 = Object.prototype.hasOwnProperty;
+    var hasOwnProperty$4 = Object.prototype.hasOwnProperty;
     function parseAndCheckHttpResponse(operations) {
         return function (response) { return response
             .text()
@@ -20783,14 +18307,14 @@ type Subscription {
         })
             .then(function (result) {
             if (response.status >= 300) {
-                throwServerError(response, result, "Response not successful: Received status code " + response.status);
+                throwServerError(response, result, "Response not successful: Received status code ".concat(response.status));
             }
             if (!Array.isArray(result) &&
-                !hasOwnProperty$3.call(result, 'data') &&
-                !hasOwnProperty$3.call(result, 'errors')) {
-                throwServerError(response, result, "Server response was missing for query '" + (Array.isArray(operations)
+                !hasOwnProperty$4.call(result, 'data') &&
+                !hasOwnProperty$4.call(result, 'errors')) {
+                throwServerError(response, result, "Server response was missing for query '".concat(Array.isArray(operations)
                     ? operations.map(function (op) { return op.operationName; })
-                    : operations.operationName) + "'.");
+                    : operations.operationName, "'."));
             }
             return result;
         }); };
@@ -20802,7 +18326,7 @@ type Subscription {
             serialized = JSON.stringify(p);
         }
         catch (e) {
-            var parseError = process.env.NODE_ENV === "production" ? new InvariantError(23) : new InvariantError("Network request failed. " + label + " is not serializable: " + e.message);
+            var parseError = __DEV__ ? new InvariantError("Network request failed. ".concat(label, " is not serializable: ").concat(e.message)) : new InvariantError(21);
             parseError.parseError = e;
             throw parseError;
         }
@@ -20825,17 +18349,19 @@ type Subscription {
         headers: defaultHeaders,
         options: defaultOptions,
     };
-    var selectHttpOptionsAndBody = function (operation, fallbackConfig) {
+    var defaultPrinter = function (ast, printer) { return printer(ast); };
+    function selectHttpOptionsAndBodyInternal(operation, printer) {
         var configs = [];
         for (var _i = 2; _i < arguments.length; _i++) {
             configs[_i - 2] = arguments[_i];
         }
-        var options = __assign(__assign({}, fallbackConfig.options), { headers: fallbackConfig.headers, credentials: fallbackConfig.credentials });
-        var http = fallbackConfig.http || {};
+        var options = {};
+        var http = {};
         configs.forEach(function (config) {
-            options = __assign(__assign(__assign({}, options), config.options), { headers: __assign(__assign({}, options.headers), config.headers) });
-            if (config.credentials)
+            options = __assign(__assign(__assign({}, options), config.options), { headers: __assign(__assign({}, options.headers), headersToLowerCase(config.headers)) });
+            if (config.credentials) {
                 options.credentials = config.credentials;
+            }
             http = __assign(__assign({}, http), config.http);
         });
         var operationName = operation.operationName, extensions = operation.extensions, variables = operation.variables, query = operation.query;
@@ -20843,16 +18369,26 @@ type Subscription {
         if (http.includeExtensions)
             body.extensions = extensions;
         if (http.includeQuery)
-            body.query = print(query);
+            body.query = printer(query, print);
         return {
             options: options,
             body: body,
         };
-    };
+    }
+    function headersToLowerCase(headers) {
+        if (headers) {
+            var normalized_1 = Object.create(null);
+            Object.keys(Object(headers)).forEach(function (name) {
+                normalized_1[name.toLowerCase()] = headers[name];
+            });
+            return normalized_1;
+        }
+        return headers;
+    }
 
     var checkFetcher = function (fetcher) {
         if (!fetcher && typeof fetch === 'undefined') {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(22) : new InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ");
+            throw __DEV__ ? new InvariantError("\n\"fetch\" has not been found globally and no fetcher has been configured. To fix this, install a fetch package (like https://www.npmjs.com/package/cross-fetch), instantiate the fetcher, and pass it into your HttpLink constructor. For example:\n\nimport fetch from 'cross-fetch';\nimport { ApolloClient, HttpLink } from '@apollo/client';\nconst client = new ApolloClient({\n  link: new HttpLink({ uri: '/graphql', fetch })\n});\n    ") : new InvariantError(20);
         }
     };
 
@@ -20881,7 +18417,7 @@ type Subscription {
     function rewriteURIForGET(chosenURI, body) {
         var queryParams = [];
         var addQueryParam = function (key, value) {
-            queryParams.push(key + "=" + encodeURIComponent(value));
+            queryParams.push("".concat(key, "=").concat(encodeURIComponent(value)));
         };
         if ('query' in body) {
             addQueryParam('query', body.query);
@@ -20920,12 +18456,12 @@ type Subscription {
         return { newURI: newURI };
     }
 
+    var backupFetch = maybe$1(function () { return fetch; });
     var createHttpLink = function (linkOptions) {
         if (linkOptions === void 0) { linkOptions = {}; }
-        var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, fetcher = linkOptions.fetch, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, _b = linkOptions.includeUnusedVariables, includeUnusedVariables = _b === void 0 ? false : _b, requestOptions = __rest(linkOptions, ["uri", "fetch", "includeExtensions", "useGETForQueries", "includeUnusedVariables"]);
-        checkFetcher(fetcher);
-        if (!fetcher) {
-            fetcher = fetch;
+        var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, preferredFetch = linkOptions.fetch, _b = linkOptions.print, print = _b === void 0 ? defaultPrinter : _b, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, _c = linkOptions.includeUnusedVariables, includeUnusedVariables = _c === void 0 ? false : _c, requestOptions = __rest(linkOptions, ["uri", "fetch", "print", "includeExtensions", "useGETForQueries", "includeUnusedVariables"]);
+        if (__DEV__) {
+            checkFetcher(preferredFetch || backupFetch);
         }
         var linkConfig = {
             http: { includeExtensions: includeExtensions },
@@ -20953,7 +18489,7 @@ type Subscription {
                 credentials: context.credentials,
                 headers: contextHeaders,
             };
-            var _b = selectHttpOptionsAndBody(operation, fallbackHttpConfig, linkConfig, contextConfig), options = _b.options, body = _b.body;
+            var _b = selectHttpOptionsAndBodyInternal(operation, print, fallbackHttpConfig, linkConfig, contextConfig), options = _b.options, body = _b.body;
             if (body.variables && !includeUnusedVariables) {
                 var unusedNames_1 = new Set(Object.keys(body.variables));
                 visit(operation.query, {
@@ -21000,7 +18536,8 @@ type Subscription {
                 }
             }
             return new Observable(function (observer) {
-                fetcher(chosenURI, options)
+                var currentFetch = preferredFetch || maybe$1(function () { return fetch; }) || backupFetch;
+                currentFetch(chosenURI, options)
                     .then(function (response) {
                     operation.setContext({ response: response });
                     return response;
@@ -21028,7 +18565,7 @@ type Subscription {
     };
 
     var HttpLink = (function (_super) {
-        __extends$1(HttpLink, _super);
+        __extends(HttpLink, _super);
         function HttpLink(options) {
             if (options === void 0) { options = {}; }
             var _this = _super.call(this, createHttpLink(options).request) || this;
@@ -21038,7 +18575,7 @@ type Subscription {
         return HttpLink;
     }(ApolloLink));
 
-    var _a$2 = Object.prototype, toString = _a$2.toString, hasOwnProperty$2 = _a$2.hasOwnProperty;
+    var _a$2 = Object.prototype, toString = _a$2.toString, hasOwnProperty$3 = _a$2.hasOwnProperty;
     var fnToStr = Function.prototype.toString;
     var previousComparisons = new Map();
     /**
@@ -21086,7 +18623,7 @@ type Subscription {
                     return false;
                 // Now make sure they have the same keys.
                 for (var k = 0; k < keyCount; ++k) {
-                    if (!hasOwnProperty$2.call(b, aKeys[k])) {
+                    if (!hasOwnProperty$3.call(b, aKeys[k])) {
                         return false;
                     }
                 }
@@ -21231,474 +18768,6 @@ type Subscription {
         }
         bSet.add(b);
         return false;
-    }
-
-    function isApolloError(err) {
-        return err.hasOwnProperty('graphQLErrors');
-    }
-    var generateErrorMessage = function (err) {
-        var message = '';
-        if (isNonEmptyArray(err.graphQLErrors)) {
-            err.graphQLErrors.forEach(function (graphQLError) {
-                var errorMessage = graphQLError
-                    ? graphQLError.message
-                    : 'Error message not found.';
-                message += errorMessage + "\n";
-            });
-        }
-        if (err.networkError) {
-            message += err.networkError.message + "\n";
-        }
-        message = message.replace(/\n$/, '');
-        return message;
-    };
-    var ApolloError = (function (_super) {
-        __extends$1(ApolloError, _super);
-        function ApolloError(_a) {
-            var graphQLErrors = _a.graphQLErrors, networkError = _a.networkError, errorMessage = _a.errorMessage, extraInfo = _a.extraInfo;
-            var _this = _super.call(this, errorMessage) || this;
-            _this.graphQLErrors = graphQLErrors || [];
-            _this.networkError = networkError || null;
-            _this.message = errorMessage || generateErrorMessage(_this);
-            _this.extraInfo = extraInfo;
-            _this.__proto__ = ApolloError.prototype;
-            return _this;
-        }
-        return ApolloError;
-    }(Error));
-
-    var NetworkStatus;
-    (function (NetworkStatus) {
-        NetworkStatus[NetworkStatus["loading"] = 1] = "loading";
-        NetworkStatus[NetworkStatus["setVariables"] = 2] = "setVariables";
-        NetworkStatus[NetworkStatus["fetchMore"] = 3] = "fetchMore";
-        NetworkStatus[NetworkStatus["refetch"] = 4] = "refetch";
-        NetworkStatus[NetworkStatus["poll"] = 6] = "poll";
-        NetworkStatus[NetworkStatus["ready"] = 7] = "ready";
-        NetworkStatus[NetworkStatus["error"] = 8] = "error";
-    })(NetworkStatus || (NetworkStatus = {}));
-    function isNetworkRequestInFlight(networkStatus) {
-        return networkStatus ? networkStatus < 7 : false;
-    }
-
-    var Reobserver = (function () {
-        function Reobserver(observer, options, fetch, shouldFetch) {
-            this.observer = observer;
-            this.options = options;
-            this.fetch = fetch;
-            this.shouldFetch = shouldFetch;
-        }
-        Reobserver.prototype.reobserve = function (newOptions, newNetworkStatus) {
-            if (newOptions) {
-                this.updateOptions(newOptions);
-            }
-            else {
-                this.updatePolling();
-            }
-            var concast = this.fetch(this.options, newNetworkStatus);
-            if (this.concast) {
-                this.concast.removeObserver(this.observer, true);
-            }
-            concast.addObserver(this.observer);
-            return (this.concast = concast).promise;
-        };
-        Reobserver.prototype.updateOptions = function (newOptions) {
-            Object.assign(this.options, compact(newOptions));
-            this.updatePolling();
-            return this;
-        };
-        Reobserver.prototype.stop = function () {
-            if (this.concast) {
-                this.concast.removeObserver(this.observer);
-                delete this.concast;
-            }
-            if (this.pollingInfo) {
-                clearTimeout(this.pollingInfo.timeout);
-                this.options.pollInterval = 0;
-                this.updatePolling();
-            }
-        };
-        Reobserver.prototype.updatePolling = function () {
-            var _this = this;
-            var _a = this, pollingInfo = _a.pollingInfo, pollInterval = _a.options.pollInterval;
-            if (!pollInterval) {
-                if (pollingInfo) {
-                    clearTimeout(pollingInfo.timeout);
-                    delete this.pollingInfo;
-                }
-                return;
-            }
-            if (pollingInfo &&
-                pollingInfo.interval === pollInterval) {
-                return;
-            }
-            process.env.NODE_ENV === "production" ? invariant$1(pollInterval, 20) : invariant$1(pollInterval, 'Attempted to start a polling query without a polling interval.');
-            if (this.shouldFetch === false) {
-                return;
-            }
-            var info = pollingInfo || (this.pollingInfo = {});
-            info.interval = pollInterval;
-            var maybeFetch = function () {
-                if (_this.pollingInfo) {
-                    if (_this.shouldFetch && _this.shouldFetch()) {
-                        _this.reobserve({
-                            fetchPolicy: "network-only",
-                            nextFetchPolicy: _this.options.fetchPolicy || "cache-first",
-                        }, NetworkStatus.poll).then(poll, poll);
-                    }
-                    else {
-                        poll();
-                    }
-                }
-            };
-            var poll = function () {
-                var info = _this.pollingInfo;
-                if (info) {
-                    clearTimeout(info.timeout);
-                    info.timeout = setTimeout(maybeFetch, info.interval);
-                }
-            };
-            poll();
-        };
-        return Reobserver;
-    }());
-
-    var warnedAboutUpdateQuery = false;
-    var ObservableQuery = (function (_super) {
-        __extends$1(ObservableQuery, _super);
-        function ObservableQuery(_a) {
-            var queryManager = _a.queryManager, queryInfo = _a.queryInfo, options = _a.options;
-            var _this = _super.call(this, function (observer) {
-                return _this.onSubscribe(observer);
-            }) || this;
-            _this.observers = new Set();
-            _this.subscriptions = new Set();
-            _this.observer = {
-                next: function (result) {
-                    if (_this.lastError || _this.isDifferentFromLastResult(result)) {
-                        _this.updateLastResult(result);
-                        iterateObserversSafely(_this.observers, 'next', result);
-                    }
-                },
-                error: function (error) {
-                    _this.updateLastResult(__assign(__assign({}, _this.lastResult), { error: error, errors: error.graphQLErrors, networkStatus: NetworkStatus.error, loading: false }));
-                    iterateObserversSafely(_this.observers, 'error', _this.lastError = error);
-                },
-            };
-            _this.isTornDown = false;
-            _this.options = options;
-            _this.queryId = queryManager.generateQueryId();
-            var opDef = getOperationDefinition(options.query);
-            _this.queryName = opDef && opDef.name && opDef.name.value;
-            _this.queryManager = queryManager;
-            _this.queryInfo = queryInfo;
-            return _this;
-        }
-        Object.defineProperty(ObservableQuery.prototype, "variables", {
-            get: function () {
-                return this.options.variables;
-            },
-            enumerable: false,
-            configurable: true
-        });
-        ObservableQuery.prototype.result = function () {
-            var _this = this;
-            return new Promise(function (resolve, reject) {
-                var observer = {
-                    next: function (result) {
-                        resolve(result);
-                        _this.observers.delete(observer);
-                        if (!_this.observers.size) {
-                            _this.queryManager.removeQuery(_this.queryId);
-                        }
-                        setTimeout(function () {
-                            subscription.unsubscribe();
-                        }, 0);
-                    },
-                    error: reject,
-                };
-                var subscription = _this.subscribe(observer);
-            });
-        };
-        ObservableQuery.prototype.getCurrentResult = function (saveAsLastResult) {
-            if (saveAsLastResult === void 0) { saveAsLastResult = true; }
-            var lastResult = this.lastResult;
-            var networkStatus = this.queryInfo.networkStatus ||
-                (lastResult && lastResult.networkStatus) ||
-                NetworkStatus.ready;
-            var result = __assign(__assign({}, lastResult), { loading: isNetworkRequestInFlight(networkStatus), networkStatus: networkStatus });
-            if (this.isTornDown) {
-                return result;
-            }
-            var _a = this.options.fetchPolicy, fetchPolicy = _a === void 0 ? 'cache-first' : _a;
-            if (fetchPolicy === 'no-cache' ||
-                fetchPolicy === 'network-only') {
-                delete result.partial;
-            }
-            else if (!result.data ||
-                !this.queryManager.transform(this.options.query).hasForcedResolvers) {
-                var diff = this.queryInfo.getDiff();
-                result.data = (diff.complete ||
-                    this.options.returnPartialData) ? diff.result : void 0;
-                if (diff.complete) {
-                    if (result.networkStatus === NetworkStatus.loading &&
-                        (fetchPolicy === 'cache-first' ||
-                            fetchPolicy === 'cache-only')) {
-                        result.networkStatus = NetworkStatus.ready;
-                        result.loading = false;
-                    }
-                    delete result.partial;
-                }
-                else {
-                    result.partial = true;
-                }
-            }
-            if (saveAsLastResult) {
-                this.updateLastResult(result);
-            }
-            return result;
-        };
-        ObservableQuery.prototype.isDifferentFromLastResult = function (newResult) {
-            return !equal(this.lastResultSnapshot, newResult);
-        };
-        ObservableQuery.prototype.getLastResult = function () {
-            return this.lastResult;
-        };
-        ObservableQuery.prototype.getLastError = function () {
-            return this.lastError;
-        };
-        ObservableQuery.prototype.resetLastResults = function () {
-            delete this.lastResult;
-            delete this.lastResultSnapshot;
-            delete this.lastError;
-            this.isTornDown = false;
-        };
-        ObservableQuery.prototype.resetQueryStoreErrors = function () {
-            this.queryManager.resetErrors(this.queryId);
-        };
-        ObservableQuery.prototype.refetch = function (variables) {
-            var reobserveOptions = {
-                pollInterval: 0,
-            };
-            var fetchPolicy = this.options.fetchPolicy;
-            if (fetchPolicy !== 'no-cache' &&
-                fetchPolicy !== 'cache-and-network') {
-                reobserveOptions.fetchPolicy = 'network-only';
-                reobserveOptions.nextFetchPolicy = fetchPolicy || "cache-first";
-            }
-            if (variables && !equal(this.options.variables, variables)) {
-                reobserveOptions.variables = this.options.variables = __assign(__assign({}, this.options.variables), variables);
-            }
-            return this.newReobserver(false).reobserve(reobserveOptions, NetworkStatus.refetch);
-        };
-        ObservableQuery.prototype.fetchMore = function (fetchMoreOptions) {
-            var _this = this;
-            var combinedOptions = __assign(__assign({}, (fetchMoreOptions.query ? fetchMoreOptions : __assign(__assign(__assign({}, this.options), fetchMoreOptions), { variables: __assign(__assign({}, this.options.variables), fetchMoreOptions.variables) }))), { fetchPolicy: "no-cache" });
-            var qid = this.queryManager.generateQueryId();
-            if (combinedOptions.notifyOnNetworkStatusChange) {
-                this.queryInfo.networkStatus = NetworkStatus.fetchMore;
-                this.observe();
-            }
-            return this.queryManager.fetchQuery(qid, combinedOptions, NetworkStatus.fetchMore).then(function (fetchMoreResult) {
-                var data = fetchMoreResult.data;
-                var updateQuery = fetchMoreOptions.updateQuery;
-                if (updateQuery) {
-                    if (process.env.NODE_ENV !== "production" &&
-                        !warnedAboutUpdateQuery) {
-                        process.env.NODE_ENV === "production" || invariant$1.warn("The updateQuery callback for fetchMore is deprecated, and will be removed\nin the next major version of Apollo Client.\n\nPlease convert updateQuery functions to field policies with appropriate\nread and merge functions, or use/adapt a helper function (such as\nconcatPagination, offsetLimitPagination, or relayStylePagination) from\n@apollo/client/utilities.\n\nThe field policy system handles pagination more effectively than a\nhand-written updateQuery function, and you only need to define the policy\nonce, rather than every time you call fetchMore.");
-                        warnedAboutUpdateQuery = true;
-                    }
-                    _this.updateQuery(function (previous) { return updateQuery(previous, {
-                        fetchMoreResult: data,
-                        variables: combinedOptions.variables,
-                    }); });
-                }
-                else {
-                    _this.queryManager.cache.writeQuery({
-                        query: combinedOptions.query,
-                        variables: combinedOptions.variables,
-                        data: data,
-                    });
-                }
-                return fetchMoreResult;
-            }).finally(function () {
-                _this.queryManager.stopQuery(qid);
-                _this.reobserve();
-            });
-        };
-        ObservableQuery.prototype.subscribeToMore = function (options) {
-            var _this = this;
-            var subscription = this.queryManager
-                .startGraphQLSubscription({
-                query: options.document,
-                variables: options.variables,
-                context: options.context,
-            })
-                .subscribe({
-                next: function (subscriptionData) {
-                    var updateQuery = options.updateQuery;
-                    if (updateQuery) {
-                        _this.updateQuery(function (previous, _a) {
-                            var variables = _a.variables;
-                            return updateQuery(previous, {
-                                subscriptionData: subscriptionData,
-                                variables: variables,
-                            });
-                        });
-                    }
-                },
-                error: function (err) {
-                    if (options.onError) {
-                        options.onError(err);
-                        return;
-                    }
-                    process.env.NODE_ENV === "production" || invariant$1.error('Unhandled GraphQL subscription error', err);
-                },
-            });
-            this.subscriptions.add(subscription);
-            return function () {
-                if (_this.subscriptions.delete(subscription)) {
-                    subscription.unsubscribe();
-                }
-            };
-        };
-        ObservableQuery.prototype.setOptions = function (newOptions) {
-            return this.reobserve(newOptions);
-        };
-        ObservableQuery.prototype.setVariables = function (variables) {
-            if (equal(this.variables, variables)) {
-                return this.observers.size
-                    ? this.result()
-                    : Promise.resolve();
-            }
-            this.options.variables = variables;
-            if (!this.observers.size) {
-                return Promise.resolve();
-            }
-            var _a = this.options.fetchPolicy, fetchPolicy = _a === void 0 ? 'cache-first' : _a;
-            var reobserveOptions = {
-                fetchPolicy: fetchPolicy,
-                variables: variables,
-            };
-            if (fetchPolicy !== 'cache-first' &&
-                fetchPolicy !== 'no-cache' &&
-                fetchPolicy !== 'network-only') {
-                reobserveOptions.fetchPolicy = 'cache-and-network';
-                reobserveOptions.nextFetchPolicy = fetchPolicy;
-            }
-            return this.reobserve(reobserveOptions, NetworkStatus.setVariables);
-        };
-        ObservableQuery.prototype.updateQuery = function (mapFn) {
-            var _a;
-            var queryManager = this.queryManager;
-            var result = queryManager.cache.diff({
-                query: this.options.query,
-                variables: this.variables,
-                previousResult: (_a = this.lastResult) === null || _a === void 0 ? void 0 : _a.data,
-                returnPartialData: true,
-                optimistic: false,
-            }).result;
-            var newResult = mapFn(result, {
-                variables: this.variables,
-            });
-            if (newResult) {
-                queryManager.cache.writeQuery({
-                    query: this.options.query,
-                    data: newResult,
-                    variables: this.variables,
-                });
-                queryManager.broadcastQueries();
-            }
-        };
-        ObservableQuery.prototype.startPolling = function (pollInterval) {
-            this.getReobserver().updateOptions({ pollInterval: pollInterval });
-        };
-        ObservableQuery.prototype.stopPolling = function () {
-            if (this.reobserver) {
-                this.reobserver.updateOptions({ pollInterval: 0 });
-            }
-        };
-        ObservableQuery.prototype.updateLastResult = function (newResult) {
-            var previousResult = this.lastResult;
-            this.lastResult = newResult;
-            this.lastResultSnapshot = this.queryManager.assumeImmutableResults
-                ? newResult
-                : cloneDeep(newResult);
-            if (!isNonEmptyArray(newResult.errors)) {
-                delete this.lastError;
-            }
-            return previousResult;
-        };
-        ObservableQuery.prototype.onSubscribe = function (observer) {
-            var _this = this;
-            if (observer === this.observer) {
-                return function () { };
-            }
-            try {
-                var subObserver = observer._subscription._observer;
-                if (subObserver && !subObserver.error) {
-                    subObserver.error = defaultSubscriptionObserverErrorCallback;
-                }
-            }
-            catch (_a) { }
-            var first = !this.observers.size;
-            this.observers.add(observer);
-            if (this.lastError) {
-                observer.error && observer.error(this.lastError);
-            }
-            else if (this.lastResult) {
-                observer.next && observer.next(this.lastResult);
-            }
-            if (first) {
-                this.reobserve().catch(function (_) {
-                });
-            }
-            return function () {
-                if (_this.observers.delete(observer) && !_this.observers.size) {
-                    _this.tearDownQuery();
-                }
-            };
-        };
-        ObservableQuery.prototype.getReobserver = function () {
-            return this.reobserver || (this.reobserver = this.newReobserver(true));
-        };
-        ObservableQuery.prototype.newReobserver = function (shareOptions) {
-            var _this = this;
-            var _a = this, queryManager = _a.queryManager, queryId = _a.queryId;
-            queryManager.setObservableQuery(this);
-            return new Reobserver(this.observer, shareOptions ? this.options : __assign({}, this.options), function (currentOptions, newNetworkStatus) {
-                queryManager.setObservableQuery(_this);
-                return queryManager.fetchQueryObservable(queryId, currentOptions, newNetworkStatus);
-            }, !queryManager.ssrMode && (function () { return !isNetworkRequestInFlight(_this.queryInfo.networkStatus); }));
-        };
-        ObservableQuery.prototype.reobserve = function (newOptions, newNetworkStatus) {
-            this.isTornDown = false;
-            return this.getReobserver().reobserve(newOptions, newNetworkStatus);
-        };
-        ObservableQuery.prototype.observe = function () {
-            this.observer.next(this.getCurrentResult(false));
-        };
-        ObservableQuery.prototype.hasObservers = function () {
-            return this.observers.size > 0;
-        };
-        ObservableQuery.prototype.tearDownQuery = function () {
-            if (this.isTornDown)
-                return;
-            if (this.reobserver) {
-                this.reobserver.stop();
-                delete this.reobserver;
-            }
-            this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
-            this.subscriptions.clear();
-            this.queryManager.stopQuery(this.queryId);
-            this.observers.clear();
-            this.isTornDown = true;
-        };
-        return ObservableQuery;
-    }(Observable));
-    fixObservableSubclass(ObservableQuery);
-    function defaultSubscriptionObserverErrorCallback(error) {
-        process.env.NODE_ENV === "production" || invariant$1.error('Unhandled error', error.message, error.stack);
     }
 
     // A [trie](https://en.wikipedia.org/wiki/Trie) data structure that holds
@@ -21979,7 +19048,7 @@ type Subscription {
     var parentEntrySlot = new Slot();
 
     var _a;
-    var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+    var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
     var 
     // This Array.from polyfill is restricted to working with Set<any> for now,
     // but we can improve the polyfill and add other input types, as needed. Note
@@ -22310,7 +19379,7 @@ type Subscription {
             var dep = depsByKey.get(key);
             if (dep) {
                 var m_1 = (entryMethodName &&
-                    hasOwnProperty$1.call(EntryMethods, entryMethodName)) ? entryMethodName : "setDirty";
+                    hasOwnProperty$2.call(EntryMethods, entryMethodName)) ? entryMethodName : "setDirty";
                 // We have to use toArray(dep).forEach instead of dep.forEach, because
                 // modifying a Set while iterating over it can cause elements in the Set
                 // to be removed from the Set before they've been iterated over.
@@ -22415,6 +19484,14 @@ type Subscription {
         function ApolloCache() {
             this.getFragmentDoc = wrap(getFragmentQueryDocument);
         }
+        ApolloCache.prototype.batch = function (options) {
+            var _this = this;
+            var optimisticId = typeof options.optimistic === "string" ? options.optimistic :
+                options.optimistic === false ? null : void 0;
+            var updateResult;
+            this.performTransaction(function () { return updateResult = options.update(_this); }, optimisticId);
+            return updateResult;
+        };
         ApolloCache.prototype.recordOptimisticTransaction = function (transaction, optimisticId) {
             this.performTransaction(transaction, optimisticId);
         };
@@ -22435,57 +19512,95 @@ type Subscription {
         };
         ApolloCache.prototype.readQuery = function (options, optimistic) {
             if (optimistic === void 0) { optimistic = !!options.optimistic; }
-            return this.read({
-                rootId: options.id || 'ROOT_QUERY',
-                query: options.query,
-                variables: options.variables,
-                returnPartialData: options.returnPartialData,
-                optimistic: optimistic,
-            });
+            return this.read(__assign(__assign({}, options), { rootId: options.id || 'ROOT_QUERY', optimistic: optimistic }));
         };
         ApolloCache.prototype.readFragment = function (options, optimistic) {
             if (optimistic === void 0) { optimistic = !!options.optimistic; }
-            return this.read({
-                query: this.getFragmentDoc(options.fragment, options.fragmentName),
-                variables: options.variables,
-                rootId: options.id,
-                returnPartialData: options.returnPartialData,
-                optimistic: optimistic,
+            return this.read(__assign(__assign({}, options), { query: this.getFragmentDoc(options.fragment, options.fragmentName), rootId: options.id, optimistic: optimistic }));
+        };
+        ApolloCache.prototype.writeQuery = function (_a) {
+            var id = _a.id, data = _a.data, options = __rest(_a, ["id", "data"]);
+            return this.write(Object.assign(options, {
+                dataId: id || 'ROOT_QUERY',
+                result: data,
+            }));
+        };
+        ApolloCache.prototype.writeFragment = function (_a) {
+            var id = _a.id, data = _a.data, fragment = _a.fragment, fragmentName = _a.fragmentName, options = __rest(_a, ["id", "data", "fragment", "fragmentName"]);
+            return this.write(Object.assign(options, {
+                query: this.getFragmentDoc(fragment, fragmentName),
+                dataId: id,
+                result: data,
+            }));
+        };
+        ApolloCache.prototype.updateQuery = function (options, update) {
+            return this.batch({
+                update: function (cache) {
+                    var value = cache.readQuery(options);
+                    var data = update(value);
+                    if (data === void 0 || data === null)
+                        return value;
+                    cache.writeQuery(__assign(__assign({}, options), { data: data }));
+                    return data;
+                },
             });
         };
-        ApolloCache.prototype.writeQuery = function (options) {
-            return this.write({
-                dataId: options.id || 'ROOT_QUERY',
-                result: options.data,
-                query: options.query,
-                variables: options.variables,
-                broadcast: options.broadcast,
-            });
-        };
-        ApolloCache.prototype.writeFragment = function (options) {
-            return this.write({
-                dataId: options.id,
-                result: options.data,
-                variables: options.variables,
-                query: this.getFragmentDoc(options.fragment, options.fragmentName),
-                broadcast: options.broadcast,
+        ApolloCache.prototype.updateFragment = function (options, update) {
+            return this.batch({
+                update: function (cache) {
+                    var value = cache.readFragment(options);
+                    var data = update(value);
+                    if (data === void 0 || data === null)
+                        return value;
+                    cache.writeFragment(__assign(__assign({}, options), { data: data }));
+                    return data;
+                },
             });
         };
         return ApolloCache;
     }());
 
     var MissingFieldError = (function () {
-        function MissingFieldError(message, path, query, clientOnly, variables) {
+        function MissingFieldError(message, path, query, variables) {
             this.message = message;
             this.path = path;
             this.query = query;
-            this.clientOnly = clientOnly;
             this.variables = variables;
         }
         return MissingFieldError;
     }());
 
     var hasOwn = Object.prototype.hasOwnProperty;
+    function defaultDataIdFromObject(_a, context) {
+        var __typename = _a.__typename, id = _a.id, _id = _a._id;
+        if (typeof __typename === "string") {
+            if (context) {
+                context.keyObject =
+                    id !== void 0 ? { id: id } :
+                        _id !== void 0 ? { _id: _id } :
+                            void 0;
+            }
+            if (id === void 0)
+                id = _id;
+            if (id !== void 0) {
+                return "".concat(__typename, ":").concat((typeof id === "number" ||
+                    typeof id === "string") ? id : JSON.stringify(id));
+            }
+        }
+    }
+    var defaultConfig = {
+        dataIdFromObject: defaultDataIdFromObject,
+        addTypename: true,
+        resultCaching: true,
+        canonizeResults: false,
+    };
+    function normalizeConfig(config) {
+        return compact(defaultConfig, config);
+    }
+    function shouldCanonizeResults(config) {
+        var value = config.canonizeResults;
+        return value === void 0 ? defaultConfig.canonizeResults : value;
+    }
     function getTypenameFromStoreObject(store, objectOrReference) {
         return isReference(objectOrReference)
             ? store.get(objectOrReference.__ref, "__typename")
@@ -22497,8 +19612,8 @@ type Subscription {
         return match ? match[0] : storeFieldName;
     }
     function selectionSetMatchesResult(selectionSet, result, variables) {
-        if (result && typeof result === "object") {
-            return Array.isArray(result)
+        if (isNonNullObject(result)) {
+            return isArray(result)
                 ? result.every(function (item) { return selectionSetMatchesResult(selectionSet, item, variables); })
                 : selectionSet.selections.every(function (field) {
                     if (isField(field) && shouldInclude(field, variables)) {
@@ -22513,14 +19628,14 @@ type Subscription {
         return false;
     }
     function storeValueIsStoreObject(value) {
-        return value !== null &&
-            typeof value === "object" &&
+        return isNonNullObject(value) &&
             !isReference(value) &&
-            !Array.isArray(value);
+            !isArray(value);
     }
     function makeProcessedFieldsMerger() {
         return new DeepMerger;
     }
+    var isArray = function (a) { return Array.isArray(a); };
 
     var DELETE = Object.create(null);
     var delModifier = function () { return DELETE; };
@@ -22593,9 +19708,22 @@ type Subscription {
                 return Object.create(null);
             }
         };
-        EntityStore.prototype.merge = function (dataId, incoming) {
+        EntityStore.prototype.merge = function (older, newer) {
             var _this = this;
-            var existing = this.lookup(dataId);
+            var dataId;
+            if (isReference(older))
+                older = older.__ref;
+            if (isReference(newer))
+                newer = newer.__ref;
+            var existing = typeof older === "string"
+                ? this.lookup(dataId = older)
+                : older;
+            var incoming = typeof newer === "string"
+                ? this.lookup(dataId = newer)
+                : newer;
+            if (!incoming)
+                return;
+            __DEV__ ? invariant$1(typeof dataId === "string", "store.merge expects a string ID") : invariant$1(typeof dataId === "string", 1);
             var merged = new DeepMerger(storeObjectReconciler).merge(existing, incoming);
             this.data[dataId] = merged;
             if (merged !== existing) {
@@ -22617,6 +19745,11 @@ type Subscription {
                             }
                         }
                     });
+                    if (fieldsToDirty_1.__typename &&
+                        !(existing && existing.__typename) &&
+                        this.policies.rootTypenamesById[dataId] === merged.__typename) {
+                        delete fieldsToDirty_1.__typename;
+                    }
                     Object.keys(fieldsToDirty_1).forEach(function (fieldName) { return _this.group.dirty(dataId, fieldName); });
                 }
             }
@@ -22649,8 +19782,7 @@ type Subscription {
                         : fields[storeFieldName] || fields[fieldName];
                     if (modify) {
                         var newValue = modify === delModifier ? DELETE :
-                            modify(maybeDeepFreeze(fieldValue), __assign(__assign({}, sharedDetails_1), { fieldName: fieldName,
-                                storeFieldName: storeFieldName, storage: _this.getStorage(dataId, storeFieldName) }));
+                            modify(maybeDeepFreeze(fieldValue), __assign(__assign({}, sharedDetails_1), { fieldName: fieldName, storeFieldName: storeFieldName, storage: _this.getStorage(dataId, storeFieldName) }));
                         if (newValue === INVALIDATE) {
                             _this.group.dirty(dataId, storeFieldName);
                         }
@@ -22698,14 +19830,14 @@ type Subscription {
             }
             return false;
         };
-        EntityStore.prototype.evict = function (options) {
+        EntityStore.prototype.evict = function (options, limit) {
             var evicted = false;
             if (options.id) {
                 if (hasOwn.call(this.data, options.id)) {
                     evicted = this.delete(options.id, options.fieldName, options.args);
                 }
-                if (this instanceof Layer) {
-                    evicted = this.parent.evict(options) || evicted;
+                if (this instanceof Layer && this !== limit) {
+                    evicted = this.parent.evict(options, limit) || evicted;
                 }
                 if (options.fieldName || evicted) {
                     this.group.dirty(options.id, options.fieldName || "__exists");
@@ -22792,37 +19924,43 @@ type Subscription {
         EntityStore.prototype.findChildRefIds = function (dataId) {
             if (!hasOwn.call(this.refs, dataId)) {
                 var found_1 = this.refs[dataId] = Object.create(null);
-                var workSet_1 = new Set([this.data[dataId]]);
-                var canTraverse_1 = function (obj) { return obj !== null && typeof obj === 'object'; };
+                var root = this.data[dataId];
+                if (!root)
+                    return found_1;
+                var workSet_1 = new Set([root]);
                 workSet_1.forEach(function (obj) {
                     if (isReference(obj)) {
                         found_1[obj.__ref] = true;
                     }
-                    else if (canTraverse_1(obj)) {
-                        Object.values(obj)
-                            .filter(canTraverse_1)
-                            .forEach(workSet_1.add, workSet_1);
+                    if (isNonNullObject(obj)) {
+                        Object.keys(obj).forEach(function (key) {
+                            var child = obj[key];
+                            if (isNonNullObject(child)) {
+                                workSet_1.add(child);
+                            }
+                        });
                     }
                 });
             }
             return this.refs[dataId];
         };
         EntityStore.prototype.makeCacheKey = function () {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-            }
-            return this.group.keyMaker.lookupArray(args);
+            return this.group.keyMaker.lookupArray(arguments);
         };
         return EntityStore;
     }());
     var CacheGroup = (function () {
-        function CacheGroup(caching) {
+        function CacheGroup(caching, parent) {
+            if (parent === void 0) { parent = null; }
             this.caching = caching;
+            this.parent = parent;
             this.d = null;
-            this.keyMaker = new Trie(canUseWeakMap);
-            this.d = caching ? dep() : null;
+            this.resetCaching();
         }
+        CacheGroup.prototype.resetCaching = function () {
+            this.d = this.caching ? dep() : null;
+            this.keyMaker = new Trie(canUseWeakMap);
+        };
         CacheGroup.prototype.depend = function (dataId, storeFieldName) {
             if (this.d) {
                 this.d(makeDepKey(dataId, storeFieldName));
@@ -22830,11 +19968,14 @@ type Subscription {
                 if (fieldName !== storeFieldName) {
                     this.d(makeDepKey(dataId, fieldName));
                 }
+                if (this.parent) {
+                    this.parent.depend(dataId, storeFieldName);
+                }
             }
         };
         CacheGroup.prototype.dirty = function (dataId, storeFieldName) {
             if (this.d) {
-                this.d.dirty(makeDepKey(dataId, storeFieldName));
+                this.d.dirty(makeDepKey(dataId, storeFieldName), storeFieldName === "__exists" ? "forget" : "setDirty");
             }
         };
         return CacheGroup;
@@ -22842,20 +19983,25 @@ type Subscription {
     function makeDepKey(dataId, storeFieldName) {
         return storeFieldName + '#' + dataId;
     }
+    function maybeDependOnExistenceOfEntity(store, entityId) {
+        if (supportsResultCaching(store)) {
+            store.group.depend(entityId, "__exists");
+        }
+    }
     (function (EntityStore) {
         var Root = (function (_super) {
-            __extends$1(Root, _super);
+            __extends(Root, _super);
             function Root(_a) {
                 var policies = _a.policies, _b = _a.resultCaching, resultCaching = _b === void 0 ? true : _b, seed = _a.seed;
                 var _this = _super.call(this, policies, new CacheGroup(resultCaching)) || this;
+                _this.stump = new Stump(_this);
                 _this.storageTrie = new Trie(canUseWeakMap);
-                _this.sharedLayerGroup = new CacheGroup(resultCaching);
                 if (seed)
                     _this.replace(seed);
                 return _this;
             }
             Root.prototype.addLayer = function (layerId, replay) {
-                return new Layer(layerId, this, replay, this.sharedLayerGroup);
+                return this.stump.addLayer(layerId, replay);
             };
             Root.prototype.removeLayer = function () {
                 return this;
@@ -22868,7 +20014,7 @@ type Subscription {
         EntityStore.Root = Root;
     })(EntityStore || (EntityStore = {}));
     var Layer = (function (_super) {
-        __extends$1(Layer, _super);
+        __extends(Layer, _super);
         function Layer(id, parent, replay, group) {
             var _this = _super.call(this, parent.policies, group) || this;
             _this.id = id;
@@ -22887,8 +20033,23 @@ type Subscription {
             if (layerId === this.id) {
                 if (this.group.caching) {
                     Object.keys(this.data).forEach(function (dataId) {
-                        if (_this.data[dataId] !== parent.lookup(dataId)) {
+                        var ownStoreObject = _this.data[dataId];
+                        var parentStoreObject = parent["lookup"](dataId);
+                        if (!parentStoreObject) {
                             _this.delete(dataId);
+                        }
+                        else if (!ownStoreObject) {
+                            _this.group.dirty(dataId, "__exists");
+                            Object.keys(parentStoreObject).forEach(function (storeFieldName) {
+                                _this.group.dirty(dataId, storeFieldName);
+                            });
+                        }
+                        else if (ownStoreObject !== parentStoreObject) {
+                            Object.keys(ownStoreObject).forEach(function (storeFieldName) {
+                                if (!equal(ownStoreObject[storeFieldName], parentStoreObject[storeFieldName])) {
+                                    _this.group.dirty(dataId, storeFieldName);
+                                }
+                            });
                         }
                     });
                 }
@@ -22913,6 +20074,19 @@ type Subscription {
         };
         return Layer;
     }(EntityStore));
+    var Stump = (function (_super) {
+        __extends(Stump, _super);
+        function Stump(root) {
+            return _super.call(this, "EntityStore.Stump", root, function () { }, new CacheGroup(root.group.caching, root.group)) || this;
+        }
+        Stump.prototype.removeLayer = function () {
+            return this;
+        };
+        Stump.prototype.merge = function () {
+            return this.parent.merge.apply(this.parent, arguments);
+        };
+        return Stump;
+    }(Layer));
     function storeObjectReconciler(existingObject, incomingObject, property) {
         var existingValue = existingObject[property];
         var incomingValue = incomingObject[property];
@@ -22922,31 +20096,165 @@ type Subscription {
         return !!(store instanceof EntityStore && store.group.caching);
     }
 
-    function missingFromInvariant(err, context) {
-        return new MissingFieldError(err.message, context.path.slice(), context.query, context.clientOnly, context.variables);
+    function shallowCopy(value) {
+        if (isNonNullObject(value)) {
+            return isArray(value)
+                ? value.slice(0)
+                : __assign({ __proto__: Object.getPrototypeOf(value) }, value);
+        }
+        return value;
+    }
+    var ObjectCanon = (function () {
+        function ObjectCanon() {
+            this.known = new (canUseWeakSet ? WeakSet : Set)();
+            this.pool = new Trie(canUseWeakMap);
+            this.passes = new WeakMap();
+            this.keysByJSON = new Map();
+            this.empty = this.admit({});
+        }
+        ObjectCanon.prototype.isKnown = function (value) {
+            return isNonNullObject(value) && this.known.has(value);
+        };
+        ObjectCanon.prototype.pass = function (value) {
+            if (isNonNullObject(value)) {
+                var copy = shallowCopy(value);
+                this.passes.set(copy, value);
+                return copy;
+            }
+            return value;
+        };
+        ObjectCanon.prototype.admit = function (value) {
+            var _this = this;
+            if (isNonNullObject(value)) {
+                var original = this.passes.get(value);
+                if (original)
+                    return original;
+                var proto = Object.getPrototypeOf(value);
+                switch (proto) {
+                    case Array.prototype: {
+                        if (this.known.has(value))
+                            return value;
+                        var array = value.map(this.admit, this);
+                        var node = this.pool.lookupArray(array);
+                        if (!node.array) {
+                            this.known.add(node.array = array);
+                            if (__DEV__) {
+                                Object.freeze(array);
+                            }
+                        }
+                        return node.array;
+                    }
+                    case null:
+                    case Object.prototype: {
+                        if (this.known.has(value))
+                            return value;
+                        var proto_1 = Object.getPrototypeOf(value);
+                        var array_1 = [proto_1];
+                        var keys = this.sortedKeys(value);
+                        array_1.push(keys.json);
+                        var firstValueIndex_1 = array_1.length;
+                        keys.sorted.forEach(function (key) {
+                            array_1.push(_this.admit(value[key]));
+                        });
+                        var node = this.pool.lookupArray(array_1);
+                        if (!node.object) {
+                            var obj_1 = node.object = Object.create(proto_1);
+                            this.known.add(obj_1);
+                            keys.sorted.forEach(function (key, i) {
+                                obj_1[key] = array_1[firstValueIndex_1 + i];
+                            });
+                            if (__DEV__) {
+                                Object.freeze(obj_1);
+                            }
+                        }
+                        return node.object;
+                    }
+                }
+            }
+            return value;
+        };
+        ObjectCanon.prototype.sortedKeys = function (obj) {
+            var keys = Object.keys(obj);
+            var node = this.pool.lookupArray(keys);
+            if (!node.keys) {
+                keys.sort();
+                var json = JSON.stringify(keys);
+                if (!(node.keys = this.keysByJSON.get(json))) {
+                    this.keysByJSON.set(json, node.keys = { sorted: keys, json: json });
+                }
+            }
+            return node.keys;
+        };
+        return ObjectCanon;
+    }());
+    var canonicalStringify = Object.assign(function (value) {
+        if (isNonNullObject(value)) {
+            if (stringifyCanon === void 0) {
+                resetCanonicalStringify();
+            }
+            var canonical = stringifyCanon.admit(value);
+            var json = stringifyCache.get(canonical);
+            if (json === void 0) {
+                stringifyCache.set(canonical, json = JSON.stringify(canonical));
+            }
+            return json;
+        }
+        return JSON.stringify(value);
+    }, {
+        reset: resetCanonicalStringify,
+    });
+    var stringifyCanon;
+    var stringifyCache;
+    function resetCanonicalStringify() {
+        stringifyCanon = new ObjectCanon;
+        stringifyCache = new (canUseWeakMap ? WeakMap : Map)();
+    }
+
+    function execSelectionSetKeyArgs(options) {
+        return [
+            options.selectionSet,
+            options.objectOrReference,
+            options.context,
+            options.context.canonizeResults,
+        ];
     }
     var StoreReader = (function () {
         function StoreReader(config) {
             var _this = this;
-            this.config = config;
-            this.executeSelectionSet = wrap(function (options) { return _this.execSelectionSetImpl(options); }, {
-                keyArgs: function (options) {
-                    return [
-                        options.selectionSet,
-                        options.objectOrReference,
-                        options.context,
-                    ];
-                },
-                makeCacheKey: function (selectionSet, parent, context) {
+            this.knownResults = new (canUseWeakMap ? WeakMap : Map)();
+            this.config = compact(config, {
+                addTypename: config.addTypename !== false,
+                canonizeResults: shouldCanonizeResults(config),
+            });
+            this.canon = config.canon || new ObjectCanon;
+            this.executeSelectionSet = wrap(function (options) {
+                var _a;
+                var canonizeResults = options.context.canonizeResults;
+                var peekArgs = execSelectionSetKeyArgs(options);
+                peekArgs[3] = !canonizeResults;
+                var other = (_a = _this.executeSelectionSet).peek.apply(_a, peekArgs);
+                if (other) {
+                    if (canonizeResults) {
+                        return __assign(__assign({}, other), { result: _this.canon.admit(other.result) });
+                    }
+                    return other;
+                }
+                maybeDependOnExistenceOfEntity(options.context.store, options.enclosingRef.__ref);
+                return _this.execSelectionSetImpl(options);
+            }, {
+                max: this.config.resultCacheMaxSize,
+                keyArgs: execSelectionSetKeyArgs,
+                makeCacheKey: function (selectionSet, parent, context, canonizeResults) {
                     if (supportsResultCaching(context.store)) {
-                        return context.store.makeCacheKey(selectionSet, isReference(parent) ? parent.__ref : parent, context.varString);
+                        return context.store.makeCacheKey(selectionSet, isReference(parent) ? parent.__ref : parent, context.varString, canonizeResults);
                     }
                 }
             });
-            this.knownResults = new WeakMap();
             this.executeSubSelectedArray = wrap(function (options) {
+                maybeDependOnExistenceOfEntity(options.context.store, options.enclosingRef.__ref);
                 return _this.execSubSelectedArrayImpl(options);
             }, {
+                max: this.config.resultCacheMaxSize,
                 makeCacheKey: function (_a) {
                     var field = _a.field, array = _a.array, context = _a.context;
                     if (supportsResultCaching(context.store)) {
@@ -22954,40 +20262,46 @@ type Subscription {
                     }
                 }
             });
-            this.config = __assign({ addTypename: true }, config);
         }
+        StoreReader.prototype.resetCanon = function () {
+            this.canon = new ObjectCanon;
+        };
         StoreReader.prototype.diffQueryAgainstStore = function (_a) {
-            var store = _a.store, query = _a.query, _b = _a.rootId, rootId = _b === void 0 ? 'ROOT_QUERY' : _b, variables = _a.variables, _c = _a.returnPartialData, returnPartialData = _c === void 0 ? true : _c;
+            var store = _a.store, query = _a.query, _b = _a.rootId, rootId = _b === void 0 ? 'ROOT_QUERY' : _b, variables = _a.variables, _c = _a.returnPartialData, returnPartialData = _c === void 0 ? true : _c, _d = _a.canonizeResults, canonizeResults = _d === void 0 ? this.config.canonizeResults : _d;
             var policies = this.config.cache.policies;
             variables = __assign(__assign({}, getDefaultValues(getQueryDefinition(query))), variables);
+            var rootRef = makeReference(rootId);
             var execResult = this.executeSelectionSet({
                 selectionSet: getMainDefinition(query).selectionSet,
-                objectOrReference: makeReference(rootId),
+                objectOrReference: rootRef,
+                enclosingRef: rootRef,
                 context: {
                     store: store,
                     query: query,
                     policies: policies,
                     variables: variables,
-                    varString: JSON.stringify(variables),
+                    varString: canonicalStringify(variables),
+                    canonizeResults: canonizeResults,
                     fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
-                    path: [],
-                    clientOnly: false,
                 },
             });
-            var hasMissingFields = execResult.missing && execResult.missing.length > 0;
-            if (hasMissingFields && !returnPartialData) {
-                throw execResult.missing[0];
+            var missing;
+            if (execResult.missing) {
+                missing = [new MissingFieldError(firstMissing(execResult.missing), execResult.missing, query, variables)];
+                if (!returnPartialData) {
+                    throw missing[0];
+                }
             }
             return {
                 result: execResult.result,
-                missing: execResult.missing,
-                complete: !hasMissingFields,
+                complete: !missing,
+                missing: missing,
             };
         };
         StoreReader.prototype.isFresh = function (result, parent, selectionSet, context) {
             if (supportsResultCaching(context.store) &&
                 this.knownResults.get(result) === selectionSet) {
-                var latest = this.executeSelectionSet.peek(selectionSet, parent, context);
+                var latest = this.executeSelectionSet.peek(selectionSet, parent, context, this.canon.isKnown(result));
                 if (latest && result === latest.result) {
                     return true;
                 }
@@ -22996,36 +20310,35 @@ type Subscription {
         };
         StoreReader.prototype.execSelectionSetImpl = function (_a) {
             var _this = this;
-            var selectionSet = _a.selectionSet, objectOrReference = _a.objectOrReference, context = _a.context;
+            var selectionSet = _a.selectionSet, objectOrReference = _a.objectOrReference, enclosingRef = _a.enclosingRef, context = _a.context;
             if (isReference(objectOrReference) &&
                 !context.policies.rootTypenamesById[objectOrReference.__ref] &&
                 !context.store.has(objectOrReference.__ref)) {
                 return {
-                    result: {},
-                    missing: [missingFromInvariant(process.env.NODE_ENV === "production" ? new InvariantError(4) : new InvariantError("Dangling reference to missing " + objectOrReference.__ref + " object"), context)],
+                    result: this.canon.empty,
+                    missing: "Dangling reference to missing ".concat(objectOrReference.__ref, " object"),
                 };
             }
             var variables = context.variables, policies = context.policies, store = context.store;
-            var objectsToMerge = [];
-            var finalResult = { result: null };
             var typename = store.getFieldValue(objectOrReference, "__typename");
+            var objectsToMerge = [];
+            var missing;
+            var missingMerger = new DeepMerger();
             if (this.config.addTypename &&
                 typeof typename === "string" &&
                 !policies.rootIdsByTypename[typename]) {
                 objectsToMerge.push({ __typename: typename });
             }
-            function getMissing() {
-                return finalResult.missing || (finalResult.missing = []);
-            }
-            function handleMissing(result) {
+            function handleMissing(result, resultName) {
                 var _a;
-                if (result.missing)
-                    (_a = getMissing()).push.apply(_a, result.missing);
+                if (result.missing) {
+                    missing = missingMerger.merge(missing, (_a = {}, _a[resultName] = result.missing, _a));
+                }
                 return result.result;
             }
             var workSet = new Set(selectionSet.selections);
             workSet.forEach(function (selection) {
-                var _a;
+                var _a, _b;
                 if (!shouldInclude(selection, variables))
                     return;
                 if (isField(selection)) {
@@ -23036,42 +20349,39 @@ type Subscription {
                         from: objectOrReference,
                     }, context);
                     var resultName = resultKeyNameFromField(selection);
-                    context.path.push(resultName);
-                    var wasClientOnly = context.clientOnly;
-                    context.clientOnly = wasClientOnly || !!(selection.directives &&
-                        selection.directives.some(function (d) { return d.name.value === "client"; }));
                     if (fieldValue === void 0) {
                         if (!addTypenameToDocument.added(selection)) {
-                            getMissing().push(missingFromInvariant(process.env.NODE_ENV === "production" ? new InvariantError(5) : new InvariantError("Can't find field '" + selection.name.value + "' on " + (isReference(objectOrReference)
-                                ? objectOrReference.__ref + " object"
-                                : "object " + JSON.stringify(objectOrReference, null, 2))), context));
+                            missing = missingMerger.merge(missing, (_a = {},
+                                _a[resultName] = "Can't find field '".concat(selection.name.value, "' on ").concat(isReference(objectOrReference)
+                                    ? objectOrReference.__ref + " object"
+                                    : "object " + JSON.stringify(objectOrReference, null, 2)),
+                                _a));
                         }
                     }
-                    else if (Array.isArray(fieldValue)) {
+                    else if (isArray(fieldValue)) {
                         fieldValue = handleMissing(_this.executeSubSelectedArray({
                             field: selection,
                             array: fieldValue,
+                            enclosingRef: enclosingRef,
                             context: context,
-                        }));
+                        }), resultName);
                     }
                     else if (!selection.selectionSet) {
-                        if (process.env.NODE_ENV !== 'production') {
-                            assertSelectionSetForIdValue(context.store, selection, fieldValue);
-                            maybeDeepFreeze(fieldValue);
+                        if (context.canonizeResults) {
+                            fieldValue = _this.canon.pass(fieldValue);
                         }
                     }
                     else if (fieldValue != null) {
                         fieldValue = handleMissing(_this.executeSelectionSet({
                             selectionSet: selection.selectionSet,
                             objectOrReference: fieldValue,
+                            enclosingRef: isReference(fieldValue) ? fieldValue : enclosingRef,
                             context: context,
-                        }));
+                        }), resultName);
                     }
                     if (fieldValue !== void 0) {
-                        objectsToMerge.push((_a = {}, _a[resultName] = fieldValue, _a));
+                        objectsToMerge.push((_b = {}, _b[resultName] = fieldValue, _b));
                     }
-                    context.clientOnly = wasClientOnly;
-                    invariant$1(context.path.pop() === resultName);
                 }
                 else {
                     var fragment = getFragmentFromSelection(selection, context.fragmentMap);
@@ -23080,23 +20390,26 @@ type Subscription {
                     }
                 }
             });
-            finalResult.result = mergeDeepArray(objectsToMerge);
-            if (process.env.NODE_ENV !== 'production') {
-                Object.freeze(finalResult.result);
+            var result = mergeDeepArray(objectsToMerge);
+            var finalResult = { result: result, missing: missing };
+            var frozen = context.canonizeResults
+                ? this.canon.admit(finalResult)
+                : maybeDeepFreeze(finalResult);
+            if (frozen.result) {
+                this.knownResults.set(frozen.result, selectionSet);
             }
-            this.knownResults.set(finalResult.result, selectionSet);
-            return finalResult;
+            return frozen;
         };
         StoreReader.prototype.execSubSelectedArrayImpl = function (_a) {
             var _this = this;
-            var field = _a.field, array = _a.array, context = _a.context;
+            var field = _a.field, array = _a.array, enclosingRef = _a.enclosingRef, context = _a.context;
             var missing;
+            var missingMerger = new DeepMerger();
             function handleMissing(childResult, i) {
+                var _a;
                 if (childResult.missing) {
-                    missing = missing || [];
-                    missing.push.apply(missing, childResult.missing);
+                    missing = missingMerger.merge(missing, (_a = {}, _a[i] = childResult.missing, _a));
                 }
-                invariant$1(context.path.pop() === i);
                 return childResult.result;
             }
             if (field.selectionSet) {
@@ -23106,11 +20419,11 @@ type Subscription {
                 if (item === null) {
                     return null;
                 }
-                context.path.push(i);
-                if (Array.isArray(item)) {
+                if (isArray(item)) {
                     return handleMissing(_this.executeSubSelectedArray({
                         field: field,
                         array: item,
+                        enclosingRef: enclosingRef,
                         context: context,
                     }), i);
                 }
@@ -23118,294 +20431,44 @@ type Subscription {
                     return handleMissing(_this.executeSelectionSet({
                         selectionSet: field.selectionSet,
                         objectOrReference: item,
+                        enclosingRef: isReference(item) ? item : enclosingRef,
                         context: context,
                     }), i);
                 }
-                if (process.env.NODE_ENV !== 'production') {
+                if (__DEV__) {
                     assertSelectionSetForIdValue(context.store, field, item);
                 }
-                invariant$1(context.path.pop() === i);
                 return item;
             });
-            if (process.env.NODE_ENV !== 'production') {
-                Object.freeze(array);
-            }
-            return { result: array, missing: missing };
+            return {
+                result: context.canonizeResults ? this.canon.admit(array) : array,
+                missing: missing,
+            };
         };
         return StoreReader;
     }());
+    function firstMissing(tree) {
+        try {
+            JSON.stringify(tree, function (_, value) {
+                if (typeof value === "string")
+                    throw value;
+                return value;
+            });
+        }
+        catch (result) {
+            return result;
+        }
+    }
     function assertSelectionSetForIdValue(store, field, fieldValue) {
         if (!field.selectionSet) {
             var workSet_1 = new Set([fieldValue]);
             workSet_1.forEach(function (value) {
-                if (value && typeof value === "object") {
-                    process.env.NODE_ENV === "production" ? invariant$1(!isReference(value), 6) : invariant$1(!isReference(value), "Missing selection set for object of type " + getTypenameFromStoreObject(store, value) + " returned for query field " + field.name.value);
+                if (isNonNullObject(value)) {
+                    __DEV__ ? invariant$1(!isReference(value), "Missing selection set for object of type ".concat(getTypenameFromStoreObject(store, value), " returned for query field ").concat(field.name.value)) : invariant$1(!isReference(value), 5);
                     Object.values(value).forEach(workSet_1.add, workSet_1);
                 }
             });
         }
-    }
-
-    var StoreWriter = (function () {
-        function StoreWriter(cache, reader) {
-            this.cache = cache;
-            this.reader = reader;
-        }
-        StoreWriter.prototype.writeToStore = function (_a) {
-            var query = _a.query, result = _a.result, dataId = _a.dataId, store = _a.store, variables = _a.variables;
-            var operationDefinition = getOperationDefinition(query);
-            var merger = makeProcessedFieldsMerger();
-            variables = __assign(__assign({}, getDefaultValues(operationDefinition)), variables);
-            var ref = this.processSelectionSet({
-                result: result || Object.create(null),
-                dataId: dataId,
-                selectionSet: operationDefinition.selectionSet,
-                mergeTree: { map: new Map },
-                context: {
-                    store: store,
-                    written: Object.create(null),
-                    merge: function (existing, incoming) {
-                        return merger.merge(existing, incoming);
-                    },
-                    variables: variables,
-                    varString: JSON.stringify(variables),
-                    fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
-                },
-            });
-            if (!isReference(ref)) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(7) : new InvariantError("Could not identify object " + JSON.stringify(result));
-            }
-            store.retain(ref.__ref);
-            return ref;
-        };
-        StoreWriter.prototype.processSelectionSet = function (_a) {
-            var _this = this;
-            var dataId = _a.dataId, result = _a.result, selectionSet = _a.selectionSet, context = _a.context, mergeTree = _a.mergeTree;
-            var policies = this.cache.policies;
-            var _b = policies.identify(result, selectionSet, context.fragmentMap), id = _b[0], keyObject = _b[1];
-            dataId = dataId || id;
-            if ("string" === typeof dataId) {
-                var sets = context.written[dataId] || (context.written[dataId] = []);
-                var ref = makeReference(dataId);
-                if (sets.indexOf(selectionSet) >= 0)
-                    return ref;
-                sets.push(selectionSet);
-                if (this.reader && this.reader.isFresh(result, ref, selectionSet, context)) {
-                    return ref;
-                }
-            }
-            var incomingFields = Object.create(null);
-            if (keyObject) {
-                incomingFields = context.merge(incomingFields, keyObject);
-            }
-            var typename = (dataId && policies.rootTypenamesById[dataId]) ||
-                getTypenameFromResult(result, selectionSet, context.fragmentMap) ||
-                (dataId && context.store.get(dataId, "__typename"));
-            if ("string" === typeof typename) {
-                incomingFields.__typename = typename;
-            }
-            var workSet = new Set(selectionSet.selections);
-            workSet.forEach(function (selection) {
-                var _a;
-                if (!shouldInclude(selection, context.variables))
-                    return;
-                if (isField(selection)) {
-                    var resultFieldKey = resultKeyNameFromField(selection);
-                    var value = result[resultFieldKey];
-                    if (typeof value !== 'undefined') {
-                        var storeFieldName = policies.getStoreFieldName({
-                            typename: typename,
-                            fieldName: selection.name.value,
-                            field: selection,
-                            variables: context.variables,
-                        });
-                        var childTree = getChildMergeTree(mergeTree, storeFieldName);
-                        var incomingValue = _this.processFieldValue(value, selection, context, childTree);
-                        var childTypename = selection.selectionSet
-                            && context.store.getFieldValue(incomingValue, "__typename")
-                            || void 0;
-                        var merge = policies.getMergeFunction(typename, selection.name.value, childTypename);
-                        if (merge) {
-                            childTree.info = {
-                                field: selection,
-                                typename: typename,
-                                merge: merge,
-                            };
-                        }
-                        else {
-                            maybeRecycleChildMergeTree(mergeTree, storeFieldName);
-                        }
-                        incomingFields = context.merge(incomingFields, (_a = {},
-                            _a[storeFieldName] = incomingValue,
-                            _a));
-                    }
-                    else if (policies.usingPossibleTypes &&
-                        !hasDirectives(["defer", "client"], selection)) {
-                        throw process.env.NODE_ENV === "production" ? new InvariantError(8) : new InvariantError("Missing field '" + resultFieldKey + "' in " + JSON.stringify(result, null, 2).substring(0, 100));
-                    }
-                }
-                else {
-                    var fragment = getFragmentFromSelection(selection, context.fragmentMap);
-                    if (fragment &&
-                        policies.fragmentMatches(fragment, typename, result, context.variables)) {
-                        fragment.selectionSet.selections.forEach(workSet.add, workSet);
-                    }
-                }
-            });
-            if ("string" === typeof dataId) {
-                var entityRef_1 = makeReference(dataId);
-                if (mergeTree.map.size) {
-                    incomingFields = this.applyMerges(mergeTree, entityRef_1, incomingFields, context);
-                }
-                if (process.env.NODE_ENV !== "production") {
-                    var hasSelectionSet_1 = function (storeFieldName) {
-                        return fieldsWithSelectionSets_1.has(fieldNameFromStoreName(storeFieldName));
-                    };
-                    var fieldsWithSelectionSets_1 = new Set();
-                    workSet.forEach(function (selection) {
-                        if (isField(selection) && selection.selectionSet) {
-                            fieldsWithSelectionSets_1.add(selection.name.value);
-                        }
-                    });
-                    var hasMergeFunction_1 = function (storeFieldName) {
-                        var childTree = mergeTree.map.get(storeFieldName);
-                        return Boolean(childTree && childTree.info && childTree.info.merge);
-                    };
-                    Object.keys(incomingFields).forEach(function (storeFieldName) {
-                        if (hasSelectionSet_1(storeFieldName) &&
-                            !hasMergeFunction_1(storeFieldName)) {
-                            warnAboutDataLoss(entityRef_1, incomingFields, storeFieldName, context.store);
-                        }
-                    });
-                }
-                context.store.merge(dataId, incomingFields);
-                return entityRef_1;
-            }
-            return incomingFields;
-        };
-        StoreWriter.prototype.processFieldValue = function (value, field, context, mergeTree) {
-            var _this = this;
-            if (!field.selectionSet || value === null) {
-                return process.env.NODE_ENV === 'production' ? value : cloneDeep(value);
-            }
-            if (Array.isArray(value)) {
-                return value.map(function (item, i) {
-                    var value = _this.processFieldValue(item, field, context, getChildMergeTree(mergeTree, i));
-                    maybeRecycleChildMergeTree(mergeTree, i);
-                    return value;
-                });
-            }
-            return this.processSelectionSet({
-                result: value,
-                selectionSet: field.selectionSet,
-                context: context,
-                mergeTree: mergeTree,
-            });
-        };
-        StoreWriter.prototype.applyMerges = function (mergeTree, existing, incoming, context, getStorageArgs) {
-            var _a;
-            var _this = this;
-            if (mergeTree.map.size && !isReference(incoming)) {
-                var e_1 = (!Array.isArray(incoming) &&
-                    (isReference(existing) || storeValueIsStoreObject(existing))) ? existing : void 0;
-                var i_1 = incoming;
-                if (e_1 && !getStorageArgs) {
-                    getStorageArgs = [isReference(e_1) ? e_1.__ref : e_1];
-                }
-                var changedFields_1;
-                var getValue_1 = function (from, name) {
-                    return Array.isArray(from)
-                        ? (typeof name === "number" ? from[name] : void 0)
-                        : context.store.getFieldValue(from, String(name));
-                };
-                mergeTree.map.forEach(function (childTree, storeFieldName) {
-                    if (getStorageArgs) {
-                        getStorageArgs.push(storeFieldName);
-                    }
-                    var eVal = getValue_1(e_1, storeFieldName);
-                    var iVal = getValue_1(i_1, storeFieldName);
-                    var aVal = _this.applyMerges(childTree, eVal, iVal, context, getStorageArgs);
-                    if (aVal !== iVal) {
-                        changedFields_1 = changedFields_1 || new Map;
-                        changedFields_1.set(storeFieldName, aVal);
-                    }
-                    if (getStorageArgs) {
-                        invariant$1(getStorageArgs.pop() === storeFieldName);
-                    }
-                });
-                if (changedFields_1) {
-                    incoming = (Array.isArray(i_1) ? i_1.slice(0) : __assign({}, i_1));
-                    changedFields_1.forEach(function (value, name) {
-                        incoming[name] = value;
-                    });
-                }
-            }
-            if (mergeTree.info) {
-                return this.cache.policies.runMergeFunction(existing, incoming, mergeTree.info, context, getStorageArgs && (_a = context.store).getStorage.apply(_a, getStorageArgs));
-            }
-            return incoming;
-        };
-        return StoreWriter;
-    }());
-    var emptyMergeTreePool = [];
-    function getChildMergeTree(_a, name) {
-        var map = _a.map;
-        if (!map.has(name)) {
-            map.set(name, emptyMergeTreePool.pop() || { map: new Map });
-        }
-        return map.get(name);
-    }
-    function maybeRecycleChildMergeTree(_a, name) {
-        var map = _a.map;
-        var childTree = map.get(name);
-        if (childTree &&
-            !childTree.info &&
-            !childTree.map.size) {
-            emptyMergeTreePool.push(childTree);
-            map.delete(name);
-        }
-    }
-    var warnings = new Set();
-    function warnAboutDataLoss(existingRef, incomingObj, storeFieldName, store) {
-        var getChild = function (objOrRef) {
-            var child = store.getFieldValue(objOrRef, storeFieldName);
-            return typeof child === "object" && child;
-        };
-        var existing = getChild(existingRef);
-        if (!existing)
-            return;
-        var incoming = getChild(incomingObj);
-        if (!incoming)
-            return;
-        if (isReference(existing))
-            return;
-        if (equal(existing, incoming))
-            return;
-        if (Object.keys(existing).every(function (key) { return store.getFieldValue(incoming, key) !== void 0; })) {
-            return;
-        }
-        var parentType = store.getFieldValue(existingRef, "__typename") ||
-            store.getFieldValue(incomingObj, "__typename");
-        var fieldName = fieldNameFromStoreName(storeFieldName);
-        var typeDotName = parentType + "." + fieldName;
-        if (warnings.has(typeDotName))
-            return;
-        warnings.add(typeDotName);
-        var childTypenames = [];
-        if (!Array.isArray(existing) &&
-            !Array.isArray(incoming)) {
-            [existing, incoming].forEach(function (child) {
-                var typename = store.getFieldValue(child, "__typename");
-                if (typeof typename === "string" &&
-                    !childTypenames.includes(typename)) {
-                    childTypenames.push(typename);
-                }
-            });
-        }
-        process.env.NODE_ENV === "production" || invariant$1.warn("Cache data may be lost when replacing the " + fieldName + " field of a " + parentType + " object.\n\nTo address this problem (which is not a bug in Apollo Client), " + (childTypenames.length
-            ? "either ensure all objects of type " +
-                childTypenames.join(" and ") + " have an ID or a custom merge function, or "
-            : "") + "define a custom merge function for the " + typeDotName + " field, so InMemoryCache can safely merge these objects:\n\n  existing: " + JSON.stringify(existing).slice(0, 1000) + "\n  incoming: " + JSON.stringify(incoming).slice(0, 1000) + "\n\nFor more information about these options, please refer to the documentation:\n\n  * Ensuring entity objects have IDs: https://go.apollo.dev/c/generating-unique-identifiers\n  * Defining custom merge functions: https://go.apollo.dev/c/merging-non-normalized-objects\n");
     }
 
     var cacheSlot = new Slot();
@@ -23471,27 +20534,126 @@ type Subscription {
         }
     }
 
+    var specifierInfoCache = Object.create(null);
+    function lookupSpecifierInfo(spec) {
+        var cacheKey = JSON.stringify(spec);
+        return specifierInfoCache[cacheKey] ||
+            (specifierInfoCache[cacheKey] = Object.create(null));
+    }
+    function keyFieldsFnFromSpecifier(specifier) {
+        var info = lookupSpecifierInfo(specifier);
+        return info.keyFieldsFn || (info.keyFieldsFn = function (object, context) {
+            var extract = function (from, key) { return context.readField(key, from); };
+            var keyObject = context.keyObject = collectSpecifierPaths(specifier, function (schemaKeyPath) {
+                var extracted = extractKeyPath(context.storeObject, schemaKeyPath, extract);
+                if (extracted === void 0 &&
+                    object !== context.storeObject &&
+                    hasOwn.call(object, schemaKeyPath[0])) {
+                    extracted = extractKeyPath(object, schemaKeyPath, extractKey);
+                }
+                __DEV__ ? invariant$1(extracted !== void 0, "Missing field '".concat(schemaKeyPath.join('.'), "' while extracting keyFields from ").concat(JSON.stringify(object))) : invariant$1(extracted !== void 0, 2);
+                return extracted;
+            });
+            return "".concat(context.typename, ":").concat(JSON.stringify(keyObject));
+        });
+    }
+    function keyArgsFnFromSpecifier(specifier) {
+        var info = lookupSpecifierInfo(specifier);
+        return info.keyArgsFn || (info.keyArgsFn = function (args, _a) {
+            var field = _a.field, variables = _a.variables, fieldName = _a.fieldName;
+            var collected = collectSpecifierPaths(specifier, function (keyPath) {
+                var firstKey = keyPath[0];
+                var firstChar = firstKey.charAt(0);
+                if (firstChar === "@") {
+                    if (field && isNonEmptyArray(field.directives)) {
+                        var directiveName_1 = firstKey.slice(1);
+                        var d = field.directives.find(function (d) { return d.name.value === directiveName_1; });
+                        var directiveArgs = d && argumentsObjectFromField(d, variables);
+                        return directiveArgs && extractKeyPath(directiveArgs, keyPath.slice(1));
+                    }
+                    return;
+                }
+                if (firstChar === "$") {
+                    var variableName = firstKey.slice(1);
+                    if (variables && hasOwn.call(variables, variableName)) {
+                        var varKeyPath = keyPath.slice(0);
+                        varKeyPath[0] = variableName;
+                        return extractKeyPath(variables, varKeyPath);
+                    }
+                    return;
+                }
+                if (args) {
+                    return extractKeyPath(args, keyPath);
+                }
+            });
+            var suffix = JSON.stringify(collected);
+            if (args || suffix !== "{}") {
+                fieldName += ":" + suffix;
+            }
+            return fieldName;
+        });
+    }
+    function collectSpecifierPaths(specifier, extractor) {
+        var merger = new DeepMerger;
+        return getSpecifierPaths(specifier).reduce(function (collected, path) {
+            var _a;
+            var toMerge = extractor(path);
+            if (toMerge !== void 0) {
+                for (var i = path.length - 1; i >= 0; --i) {
+                    toMerge = (_a = {}, _a[path[i]] = toMerge, _a);
+                }
+                collected = merger.merge(collected, toMerge);
+            }
+            return collected;
+        }, Object.create(null));
+    }
+    function getSpecifierPaths(spec) {
+        var info = lookupSpecifierInfo(spec);
+        if (!info.paths) {
+            var paths_1 = info.paths = [];
+            var currentPath_1 = [];
+            spec.forEach(function (s, i) {
+                if (isArray(s)) {
+                    getSpecifierPaths(s).forEach(function (p) { return paths_1.push(currentPath_1.concat(p)); });
+                    currentPath_1.length = 0;
+                }
+                else {
+                    currentPath_1.push(s);
+                    if (!isArray(spec[i + 1])) {
+                        paths_1.push(currentPath_1.slice(0));
+                        currentPath_1.length = 0;
+                    }
+                }
+            });
+        }
+        return info.paths;
+    }
+    function extractKey(object, key) {
+        return object[key];
+    }
+    function extractKeyPath(object, path, extract) {
+        extract = extract || extractKey;
+        return normalize(path.reduce(function reducer(obj, key) {
+            return isArray(obj)
+                ? obj.map(function (child) { return reducer(child, key); })
+                : obj && extract(obj, key);
+        }, object));
+    }
+    function normalize(value) {
+        if (isNonNullObject(value)) {
+            if (isArray(value)) {
+                return value.map(normalize);
+            }
+            return collectSpecifierPaths(Object.keys(value).sort(), function (path) { return extractKeyPath(value, path); });
+        }
+        return value;
+    }
+
+    getStoreKeyName.setStringify(canonicalStringify);
     function argsFromFieldSpecifier(spec) {
         return spec.args !== void 0 ? spec.args :
             spec.field ? argumentsObjectFromField(spec.field, spec.variables) : null;
     }
-    var defaultDataIdFromObject = function (_a, context) {
-        var __typename = _a.__typename, id = _a.id, _id = _a._id;
-        if (typeof __typename === "string") {
-            if (context) {
-                context.keyObject =
-                    id !== void 0 ? { id: id } :
-                        _id !== void 0 ? { _id: _id } :
-                            void 0;
-            }
-            if (id === void 0)
-                id = _id;
-            if (id !== void 0) {
-                return __typename + ":" + ((typeof id === "number" ||
-                    typeof id === "string") ? id : JSON.stringify(id));
-            }
-        }
-    };
     var nullKeyFieldsFn = function () { return void 0; };
     var simpleKeyArgsFn = function (_args, context) { return context.fieldName; };
     var mergeTrueFn = function (existing, incoming, _a) {
@@ -23521,24 +20683,28 @@ type Subscription {
                 this.addTypePolicies(config.typePolicies);
             }
         }
-        Policies.prototype.identify = function (object, selectionSet, fragmentMap) {
-            var typename = selectionSet && fragmentMap
-                ? getTypenameFromResult(object, selectionSet, fragmentMap)
-                : object.__typename;
+        Policies.prototype.identify = function (object, partialContext) {
+            var _a;
+            var policies = this;
+            var typename = partialContext && (partialContext.typename ||
+                ((_a = partialContext.storeObject) === null || _a === void 0 ? void 0 : _a.__typename)) || object.__typename;
             if (typename === this.rootTypenamesById.ROOT_QUERY) {
                 return ["ROOT_QUERY"];
             }
-            var context = {
-                typename: typename,
-                selectionSet: selectionSet,
-                fragmentMap: fragmentMap,
-            };
+            var storeObject = partialContext && partialContext.storeObject || object;
+            var context = __assign(__assign({}, partialContext), { typename: typename, storeObject: storeObject, readField: partialContext && partialContext.readField || function () {
+                    var options = normalizeReadFieldOptions(arguments, storeObject);
+                    return policies.readField(options, {
+                        store: policies.cache["data"],
+                        variables: options.variables,
+                    });
+                } });
             var id;
             var policy = typename && this.getTypePolicy(typename);
             var keyFn = policy && policy.keyFn || this.config.dataIdFromObject;
             while (keyFn) {
                 var specifierOrId = keyFn(object, context);
-                if (Array.isArray(specifierOrId)) {
+                if (isArray(specifierOrId)) {
                     keyFn = keyFieldsFnFromSpecifier(specifierOrId);
                 }
                 else {
@@ -23581,7 +20747,7 @@ type Subscription {
             setMerge(existing, incoming.merge);
             existing.keyFn =
                 keyFields === false ? nullKeyFieldsFn :
-                    Array.isArray(keyFields) ? keyFieldsFnFromSpecifier(keyFields) :
+                    isArray(keyFields) ? keyFieldsFnFromSpecifier(keyFields) :
                         typeof keyFields === "function" ? keyFields :
                             existing.keyFn;
             if (fields) {
@@ -23595,7 +20761,7 @@ type Subscription {
                         var keyArgs = incoming.keyArgs, read = incoming.read, merge = incoming.merge;
                         existing.keyFn =
                             keyArgs === false ? simpleKeyArgsFn :
-                                Array.isArray(keyArgs) ? keyArgsFnFromSpecifier(keyArgs) :
+                                isArray(keyArgs) ? keyArgsFnFromSpecifier(keyArgs) :
                                     typeof keyArgs === "function" ? keyArgs :
                                         existing.keyFn;
                         if (typeof read === "function") {
@@ -23614,7 +20780,7 @@ type Subscription {
             var rootId = "ROOT_" + which.toUpperCase();
             var old = this.rootTypenamesById[rootId];
             if (typename !== old) {
-                process.env.NODE_ENV === "production" ? invariant$1(!old || old === which, 1) : invariant$1(!old || old === which, "Cannot change root " + which + " __typename more than once");
+                __DEV__ ? invariant$1(!old || old === which, "Cannot change root ".concat(which, " __typename more than once")) : invariant$1(!old || old === which, 3);
                 if (old)
                     delete this.rootIdsByTypename[old];
                 this.rootIdsByTypename[typename] = rootId;
@@ -23698,7 +20864,7 @@ type Subscription {
                     if (supertypeSet.has(supertype)) {
                         if (!typenameSupertypeSet.has(supertype)) {
                             if (checkingFuzzySubtypes) {
-                                process.env.NODE_ENV === "production" || invariant$1.warn("Inferring subtype " + typename + " of supertype " + supertype);
+                                __DEV__ && invariant$1.warn("Inferring subtype ".concat(typename, " of supertype ").concat(supertype));
                             }
                             typenameSupertypeSet.add(supertype);
                         }
@@ -23740,7 +20906,7 @@ type Subscription {
                 var args = argsFromFieldSpecifier(fieldSpec);
                 while (keyFn) {
                     var specifierOrString = keyFn(args, context);
-                    if (Array.isArray(specifierOrString)) {
+                    if (isArray(specifierOrString)) {
                         keyFn = keyArgsFnFromSpecifier(specifierOrString);
                     }
                     else {
@@ -23786,6 +20952,10 @@ type Subscription {
             }
             return existing;
         };
+        Policies.prototype.getReadFunction = function (typename, fieldName) {
+            var policy = this.getFieldPolicy(typename, fieldName, false);
+            return policy && policy.read;
+        };
         Policies.prototype.getMergeFunction = function (parentTypename, fieldName, childTypename) {
             var policy = this.getFieldPolicy(parentTypename, fieldName, false);
             var merge = policy && policy.merge;
@@ -23798,10 +20968,13 @@ type Subscription {
         Policies.prototype.runMergeFunction = function (existing, incoming, _a, context, storage) {
             var field = _a.field, typename = _a.typename, merge = _a.merge;
             if (merge === mergeTrueFn) {
-                return makeMergeObjectsFunction(context.store.getFieldValue)(existing, incoming);
+                return makeMergeObjectsFunction(context.store)(existing, incoming);
             }
             if (merge === mergeFalseFn) {
                 return incoming;
+            }
+            if (context.overwrite) {
+                existing = void 0;
             }
             return merge(existing, incoming, makeFieldFunctionOptions(this, void 0, { typename: typename, fieldName: field.name.value, field: field, variables: context.variables }, context, storage || Object.create(null)));
         };
@@ -23811,7 +20984,7 @@ type Subscription {
         var storeFieldName = policies.getStoreFieldName(fieldSpec);
         var fieldName = fieldNameFromStoreName(storeFieldName);
         var variables = fieldSpec.variables || context.variables;
-        var _a = context.store, getFieldValue = _a.getFieldValue, toReference = _a.toReference, canRead = _a.canRead;
+        var _a = context.store, toReference = _a.toReference, canRead = _a.canRead;
         return {
             args: argsFromFieldSpecifier(fieldSpec),
             field: fieldSpec.field || null,
@@ -23823,127 +20996,460 @@ type Subscription {
             storage: storage,
             cache: policies.cache,
             canRead: canRead,
-            readField: function (fieldNameOrOptions, from) {
-                var options = typeof fieldNameOrOptions === "string" ? {
-                    fieldName: fieldNameOrOptions,
-                    from: from,
-                } : __assign({}, fieldNameOrOptions);
-                if (void 0 === options.from) {
-                    options.from = objectOrReference;
-                }
-                if (void 0 === options.variables) {
-                    options.variables = variables;
-                }
-                return policies.readField(options, context);
+            readField: function () {
+                return policies.readField(normalizeReadFieldOptions(arguments, objectOrReference, variables), context);
             },
-            mergeObjects: makeMergeObjectsFunction(getFieldValue),
+            mergeObjects: makeMergeObjectsFunction(context.store),
         };
     }
-    function makeMergeObjectsFunction(getFieldValue) {
-        return function mergeObjects(existing, incoming) {
-            if (Array.isArray(existing) || Array.isArray(incoming)) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(2) : new InvariantError("Cannot automatically merge arrays");
+    function normalizeReadFieldOptions(readFieldArgs, objectOrReference, variables) {
+        var fieldNameOrOptions = readFieldArgs[0], from = readFieldArgs[1], argc = readFieldArgs.length;
+        var options;
+        if (typeof fieldNameOrOptions === "string") {
+            options = {
+                fieldName: fieldNameOrOptions,
+                from: argc > 1 ? from : objectOrReference,
+            };
+        }
+        else {
+            options = __assign({}, fieldNameOrOptions);
+            if (!hasOwn.call(options, "from")) {
+                options.from = objectOrReference;
             }
-            if (existing && typeof existing === "object" &&
-                incoming && typeof incoming === "object") {
-                var eType = getFieldValue(existing, "__typename");
-                var iType = getFieldValue(incoming, "__typename");
+        }
+        if (__DEV__ && options.from === void 0) {
+            __DEV__ && invariant$1.warn("Undefined 'from' passed to readField with arguments ".concat(stringifyForDisplay(Array.from(readFieldArgs))));
+        }
+        if (void 0 === options.variables) {
+            options.variables = variables;
+        }
+        return options;
+    }
+    function makeMergeObjectsFunction(store) {
+        return function mergeObjects(existing, incoming) {
+            if (isArray(existing) || isArray(incoming)) {
+                throw __DEV__ ? new InvariantError("Cannot automatically merge arrays") : new InvariantError(4);
+            }
+            if (isNonNullObject(existing) &&
+                isNonNullObject(incoming)) {
+                var eType = store.getFieldValue(existing, "__typename");
+                var iType = store.getFieldValue(incoming, "__typename");
                 var typesDiffer = eType && iType && eType !== iType;
-                if (typesDiffer ||
-                    !storeValueIsStoreObject(existing) ||
-                    !storeValueIsStoreObject(incoming)) {
+                if (typesDiffer) {
                     return incoming;
                 }
-                return __assign(__assign({}, existing), incoming);
+                if (isReference(existing) &&
+                    storeValueIsStoreObject(incoming)) {
+                    store.merge(existing.__ref, incoming);
+                    return existing;
+                }
+                if (storeValueIsStoreObject(existing) &&
+                    isReference(incoming)) {
+                    store.merge(existing, incoming.__ref);
+                    return incoming;
+                }
+                if (storeValueIsStoreObject(existing) &&
+                    storeValueIsStoreObject(incoming)) {
+                    return __assign(__assign({}, existing), incoming);
+                }
             }
             return incoming;
         };
     }
-    function keyArgsFnFromSpecifier(specifier) {
-        return function (args, context) {
-            return args ? context.fieldName + ":" + JSON.stringify(computeKeyObject(args, specifier, false)) : context.fieldName;
-        };
+
+    function getContextFlavor(context, clientOnly, deferred) {
+        var key = "".concat(clientOnly).concat(deferred);
+        var flavored = context.flavors.get(key);
+        if (!flavored) {
+            context.flavors.set(key, flavored = (context.clientOnly === clientOnly &&
+                context.deferred === deferred) ? context : __assign(__assign({}, context), { clientOnly: clientOnly, deferred: deferred }));
+        }
+        return flavored;
     }
-    function keyFieldsFnFromSpecifier(specifier) {
-        var trie = new Trie(canUseWeakMap);
-        return function (object, context) {
-            var aliasMap;
-            if (context.selectionSet && context.fragmentMap) {
-                var info = trie.lookupArray([
-                    context.selectionSet,
-                    context.fragmentMap,
-                ]);
-                aliasMap = info.aliasMap || (info.aliasMap = makeAliasMap(context.selectionSet, context.fragmentMap));
+    var StoreWriter = (function () {
+        function StoreWriter(cache, reader) {
+            this.cache = cache;
+            this.reader = reader;
+        }
+        StoreWriter.prototype.writeToStore = function (store, _a) {
+            var _this = this;
+            var query = _a.query, result = _a.result, dataId = _a.dataId, variables = _a.variables, overwrite = _a.overwrite;
+            var operationDefinition = getOperationDefinition(query);
+            var merger = makeProcessedFieldsMerger();
+            variables = __assign(__assign({}, getDefaultValues(operationDefinition)), variables);
+            var context = {
+                store: store,
+                written: Object.create(null),
+                merge: function (existing, incoming) {
+                    return merger.merge(existing, incoming);
+                },
+                variables: variables,
+                varString: canonicalStringify(variables),
+                fragmentMap: createFragmentMap(getFragmentDefinitions(query)),
+                overwrite: !!overwrite,
+                incomingById: new Map,
+                clientOnly: false,
+                deferred: false,
+                flavors: new Map,
+            };
+            var ref = this.processSelectionSet({
+                result: result || Object.create(null),
+                dataId: dataId,
+                selectionSet: operationDefinition.selectionSet,
+                mergeTree: { map: new Map },
+                context: context,
+            });
+            if (!isReference(ref)) {
+                throw __DEV__ ? new InvariantError("Could not identify object ".concat(JSON.stringify(result))) : new InvariantError(6);
             }
-            var keyObject = context.keyObject =
-                computeKeyObject(object, specifier, true, aliasMap);
-            return context.typename + ":" + JSON.stringify(keyObject);
+            context.incomingById.forEach(function (_a, dataId) {
+                var storeObject = _a.storeObject, mergeTree = _a.mergeTree, fieldNodeSet = _a.fieldNodeSet;
+                var entityRef = makeReference(dataId);
+                if (mergeTree && mergeTree.map.size) {
+                    var applied = _this.applyMerges(mergeTree, entityRef, storeObject, context);
+                    if (isReference(applied)) {
+                        return;
+                    }
+                    storeObject = applied;
+                }
+                if (__DEV__ && !context.overwrite) {
+                    var fieldsWithSelectionSets_1 = Object.create(null);
+                    fieldNodeSet.forEach(function (field) {
+                        if (field.selectionSet) {
+                            fieldsWithSelectionSets_1[field.name.value] = true;
+                        }
+                    });
+                    var hasSelectionSet_1 = function (storeFieldName) {
+                        return fieldsWithSelectionSets_1[fieldNameFromStoreName(storeFieldName)] === true;
+                    };
+                    var hasMergeFunction_1 = function (storeFieldName) {
+                        var childTree = mergeTree && mergeTree.map.get(storeFieldName);
+                        return Boolean(childTree && childTree.info && childTree.info.merge);
+                    };
+                    Object.keys(storeObject).forEach(function (storeFieldName) {
+                        if (hasSelectionSet_1(storeFieldName) &&
+                            !hasMergeFunction_1(storeFieldName)) {
+                            warnAboutDataLoss(entityRef, storeObject, storeFieldName, context.store);
+                        }
+                    });
+                }
+                store.merge(dataId, storeObject);
+            });
+            store.retain(ref.__ref);
+            return ref;
         };
-    }
-    function makeAliasMap(selectionSet, fragmentMap) {
-        var map = Object.create(null);
-        var workQueue = new Set([selectionSet]);
-        workQueue.forEach(function (selectionSet) {
-            selectionSet.selections.forEach(function (selection) {
-                if (isField(selection)) {
-                    if (selection.alias) {
-                        var responseKey = selection.alias.value;
-                        var storeKey = selection.name.value;
-                        if (storeKey !== responseKey) {
-                            var aliases = map.aliases || (map.aliases = Object.create(null));
-                            aliases[storeKey] = responseKey;
+        StoreWriter.prototype.processSelectionSet = function (_a) {
+            var _this = this;
+            var dataId = _a.dataId, result = _a.result, selectionSet = _a.selectionSet, context = _a.context, mergeTree = _a.mergeTree;
+            var policies = this.cache.policies;
+            var incoming = Object.create(null);
+            var typename = (dataId && policies.rootTypenamesById[dataId]) ||
+                getTypenameFromResult(result, selectionSet, context.fragmentMap) ||
+                (dataId && context.store.get(dataId, "__typename"));
+            if ("string" === typeof typename) {
+                incoming.__typename = typename;
+            }
+            var readField = function () {
+                var options = normalizeReadFieldOptions(arguments, incoming, context.variables);
+                if (isReference(options.from)) {
+                    var info = context.incomingById.get(options.from.__ref);
+                    if (info) {
+                        var result_1 = policies.readField(__assign(__assign({}, options), { from: info.storeObject }), context);
+                        if (result_1 !== void 0) {
+                            return result_1;
                         }
                     }
-                    if (selection.selectionSet) {
-                        var subsets = map.subsets || (map.subsets = Object.create(null));
-                        subsets[selection.name.value] =
-                            makeAliasMap(selection.selectionSet, fragmentMap);
-                    }
                 }
-                else {
-                    var fragment = getFragmentFromSelection(selection, fragmentMap);
-                    if (fragment) {
-                        workQueue.add(fragment.selectionSet);
+                return policies.readField(options, context);
+            };
+            var fieldNodeSet = new Set();
+            this.flattenFields(selectionSet, result, context, typename).forEach(function (context, field) {
+                var _a;
+                var resultFieldKey = resultKeyNameFromField(field);
+                var value = result[resultFieldKey];
+                fieldNodeSet.add(field);
+                if (value !== void 0) {
+                    var storeFieldName = policies.getStoreFieldName({
+                        typename: typename,
+                        fieldName: field.name.value,
+                        field: field,
+                        variables: context.variables,
+                    });
+                    var childTree = getChildMergeTree(mergeTree, storeFieldName);
+                    var incomingValue = _this.processFieldValue(value, field, field.selectionSet
+                        ? getContextFlavor(context, false, false)
+                        : context, childTree);
+                    var childTypename = void 0;
+                    if (field.selectionSet &&
+                        (isReference(incomingValue) ||
+                            storeValueIsStoreObject(incomingValue))) {
+                        childTypename = readField("__typename", incomingValue);
                     }
+                    var merge = policies.getMergeFunction(typename, field.name.value, childTypename);
+                    if (merge) {
+                        childTree.info = {
+                            field: field,
+                            typename: typename,
+                            merge: merge,
+                        };
+                    }
+                    else {
+                        maybeRecycleChildMergeTree(mergeTree, storeFieldName);
+                    }
+                    incoming = context.merge(incoming, (_a = {},
+                        _a[storeFieldName] = incomingValue,
+                        _a));
+                }
+                else if (__DEV__ &&
+                    !context.clientOnly &&
+                    !context.deferred &&
+                    !addTypenameToDocument.added(field) &&
+                    !policies.getReadFunction(typename, field.name.value)) {
+                    __DEV__ && invariant$1.error("Missing field '".concat(resultKeyNameFromField(field), "' while writing result ").concat(JSON.stringify(result, null, 2)).substring(0, 1000));
                 }
             });
-        });
-        return map;
-    }
-    function computeKeyObject(response, specifier, strict, aliasMap) {
-        var keyObj = Object.create(null);
-        var prevKey;
-        specifier.forEach(function (s) {
-            if (Array.isArray(s)) {
-                if (typeof prevKey === "string") {
-                    var subsets = aliasMap && aliasMap.subsets;
-                    var subset = subsets && subsets[prevKey];
-                    keyObj[prevKey] = computeKeyObject(response[prevKey], s, strict, subset);
+            try {
+                var _b = policies.identify(result, {
+                    typename: typename,
+                    selectionSet: selectionSet,
+                    fragmentMap: context.fragmentMap,
+                    storeObject: incoming,
+                    readField: readField,
+                }), id = _b[0], keyObject = _b[1];
+                dataId = dataId || id;
+                if (keyObject) {
+                    incoming = context.merge(incoming, keyObject);
                 }
             }
-            else {
-                var aliases = aliasMap && aliasMap.aliases;
-                var responseName = aliases && aliases[s] || s;
-                if (hasOwn.call(response, responseName)) {
-                    keyObj[prevKey = s] = response[responseName];
+            catch (e) {
+                if (!dataId)
+                    throw e;
+            }
+            if ("string" === typeof dataId) {
+                var dataRef = makeReference(dataId);
+                var sets = context.written[dataId] || (context.written[dataId] = []);
+                if (sets.indexOf(selectionSet) >= 0)
+                    return dataRef;
+                sets.push(selectionSet);
+                if (this.reader && this.reader.isFresh(result, dataRef, selectionSet, context)) {
+                    return dataRef;
+                }
+                var previous_1 = context.incomingById.get(dataId);
+                if (previous_1) {
+                    previous_1.storeObject = context.merge(previous_1.storeObject, incoming);
+                    previous_1.mergeTree = mergeMergeTrees(previous_1.mergeTree, mergeTree);
+                    fieldNodeSet.forEach(function (field) { return previous_1.fieldNodeSet.add(field); });
                 }
                 else {
-                    process.env.NODE_ENV === "production" ? invariant$1(!strict, 3) : invariant$1(!strict, "Missing field '" + responseName + "' while computing key fields");
-                    prevKey = void 0;
+                    context.incomingById.set(dataId, {
+                        storeObject: incoming,
+                        mergeTree: mergeTreeIsEmpty(mergeTree) ? void 0 : mergeTree,
+                        fieldNodeSet: fieldNodeSet,
+                    });
+                }
+                return dataRef;
+            }
+            return incoming;
+        };
+        StoreWriter.prototype.processFieldValue = function (value, field, context, mergeTree) {
+            var _this = this;
+            if (!field.selectionSet || value === null) {
+                return __DEV__ ? cloneDeep(value) : value;
+            }
+            if (isArray(value)) {
+                return value.map(function (item, i) {
+                    var value = _this.processFieldValue(item, field, context, getChildMergeTree(mergeTree, i));
+                    maybeRecycleChildMergeTree(mergeTree, i);
+                    return value;
+                });
+            }
+            return this.processSelectionSet({
+                result: value,
+                selectionSet: field.selectionSet,
+                context: context,
+                mergeTree: mergeTree,
+            });
+        };
+        StoreWriter.prototype.flattenFields = function (selectionSet, result, context, typename) {
+            if (typename === void 0) { typename = getTypenameFromResult(result, selectionSet, context.fragmentMap); }
+            var fieldMap = new Map();
+            var policies = this.cache.policies;
+            var limitingTrie = new Trie(false);
+            (function flatten(selectionSet, inheritedContext) {
+                var visitedNode = limitingTrie.lookup(selectionSet, inheritedContext.clientOnly, inheritedContext.deferred);
+                if (visitedNode.visited)
+                    return;
+                visitedNode.visited = true;
+                selectionSet.selections.forEach(function (selection) {
+                    if (!shouldInclude(selection, context.variables))
+                        return;
+                    var clientOnly = inheritedContext.clientOnly, deferred = inheritedContext.deferred;
+                    if (!(clientOnly && deferred) &&
+                        isNonEmptyArray(selection.directives)) {
+                        selection.directives.forEach(function (dir) {
+                            var name = dir.name.value;
+                            if (name === "client")
+                                clientOnly = true;
+                            if (name === "defer") {
+                                var args = argumentsObjectFromField(dir, context.variables);
+                                if (!args || args.if !== false) {
+                                    deferred = true;
+                                }
+                            }
+                        });
+                    }
+                    if (isField(selection)) {
+                        var existing = fieldMap.get(selection);
+                        if (existing) {
+                            clientOnly = clientOnly && existing.clientOnly;
+                            deferred = deferred && existing.deferred;
+                        }
+                        fieldMap.set(selection, getContextFlavor(context, clientOnly, deferred));
+                    }
+                    else {
+                        var fragment = getFragmentFromSelection(selection, context.fragmentMap);
+                        if (fragment &&
+                            policies.fragmentMatches(fragment, typename, result, context.variables)) {
+                            flatten(fragment.selectionSet, getContextFlavor(context, clientOnly, deferred));
+                        }
+                    }
+                });
+            })(selectionSet, context);
+            return fieldMap;
+        };
+        StoreWriter.prototype.applyMerges = function (mergeTree, existing, incoming, context, getStorageArgs) {
+            var _a;
+            var _this = this;
+            if (mergeTree.map.size && !isReference(incoming)) {
+                var e_1 = (!isArray(incoming) &&
+                    (isReference(existing) || storeValueIsStoreObject(existing))) ? existing : void 0;
+                var i_1 = incoming;
+                if (e_1 && !getStorageArgs) {
+                    getStorageArgs = [isReference(e_1) ? e_1.__ref : e_1];
+                }
+                var changedFields_1;
+                var getValue_1 = function (from, name) {
+                    return isArray(from)
+                        ? (typeof name === "number" ? from[name] : void 0)
+                        : context.store.getFieldValue(from, String(name));
+                };
+                mergeTree.map.forEach(function (childTree, storeFieldName) {
+                    var eVal = getValue_1(e_1, storeFieldName);
+                    var iVal = getValue_1(i_1, storeFieldName);
+                    if (void 0 === iVal)
+                        return;
+                    if (getStorageArgs) {
+                        getStorageArgs.push(storeFieldName);
+                    }
+                    var aVal = _this.applyMerges(childTree, eVal, iVal, context, getStorageArgs);
+                    if (aVal !== iVal) {
+                        changedFields_1 = changedFields_1 || new Map;
+                        changedFields_1.set(storeFieldName, aVal);
+                    }
+                    if (getStorageArgs) {
+                        invariant$1(getStorageArgs.pop() === storeFieldName);
+                    }
+                });
+                if (changedFields_1) {
+                    incoming = (isArray(i_1) ? i_1.slice(0) : __assign({}, i_1));
+                    changedFields_1.forEach(function (value, name) {
+                        incoming[name] = value;
+                    });
                 }
             }
-        });
-        return keyObj;
+            if (mergeTree.info) {
+                return this.cache.policies.runMergeFunction(existing, incoming, mergeTree.info, context, getStorageArgs && (_a = context.store).getStorage.apply(_a, getStorageArgs));
+            }
+            return incoming;
+        };
+        return StoreWriter;
+    }());
+    var emptyMergeTreePool = [];
+    function getChildMergeTree(_a, name) {
+        var map = _a.map;
+        if (!map.has(name)) {
+            map.set(name, emptyMergeTreePool.pop() || { map: new Map });
+        }
+        return map.get(name);
+    }
+    function mergeMergeTrees(left, right) {
+        if (left === right || !right || mergeTreeIsEmpty(right))
+            return left;
+        if (!left || mergeTreeIsEmpty(left))
+            return right;
+        var info = left.info && right.info ? __assign(__assign({}, left.info), right.info) : left.info || right.info;
+        var needToMergeMaps = left.map.size && right.map.size;
+        var map = needToMergeMaps ? new Map :
+            left.map.size ? left.map : right.map;
+        var merged = { info: info, map: map };
+        if (needToMergeMaps) {
+            var remainingRightKeys_1 = new Set(right.map.keys());
+            left.map.forEach(function (leftTree, key) {
+                merged.map.set(key, mergeMergeTrees(leftTree, right.map.get(key)));
+                remainingRightKeys_1.delete(key);
+            });
+            remainingRightKeys_1.forEach(function (key) {
+                merged.map.set(key, mergeMergeTrees(right.map.get(key), left.map.get(key)));
+            });
+        }
+        return merged;
+    }
+    function mergeTreeIsEmpty(tree) {
+        return !tree || !(tree.info || tree.map.size);
+    }
+    function maybeRecycleChildMergeTree(_a, name) {
+        var map = _a.map;
+        var childTree = map.get(name);
+        if (childTree && mergeTreeIsEmpty(childTree)) {
+            emptyMergeTreePool.push(childTree);
+            map.delete(name);
+        }
+    }
+    var warnings = new Set();
+    function warnAboutDataLoss(existingRef, incomingObj, storeFieldName, store) {
+        var getChild = function (objOrRef) {
+            var child = store.getFieldValue(objOrRef, storeFieldName);
+            return typeof child === "object" && child;
+        };
+        var existing = getChild(existingRef);
+        if (!existing)
+            return;
+        var incoming = getChild(incomingObj);
+        if (!incoming)
+            return;
+        if (isReference(existing))
+            return;
+        if (equal(existing, incoming))
+            return;
+        if (Object.keys(existing).every(function (key) { return store.getFieldValue(incoming, key) !== void 0; })) {
+            return;
+        }
+        var parentType = store.getFieldValue(existingRef, "__typename") ||
+            store.getFieldValue(incomingObj, "__typename");
+        var fieldName = fieldNameFromStoreName(storeFieldName);
+        var typeDotName = "".concat(parentType, ".").concat(fieldName);
+        if (warnings.has(typeDotName))
+            return;
+        warnings.add(typeDotName);
+        var childTypenames = [];
+        if (!isArray(existing) &&
+            !isArray(incoming)) {
+            [existing, incoming].forEach(function (child) {
+                var typename = store.getFieldValue(child, "__typename");
+                if (typeof typename === "string" &&
+                    !childTypenames.includes(typename)) {
+                    childTypenames.push(typename);
+                }
+            });
+        }
+        __DEV__ && invariant$1.warn("Cache data may be lost when replacing the ".concat(fieldName, " field of a ").concat(parentType, " object.\n\nTo address this problem (which is not a bug in Apollo Client), ").concat(childTypenames.length
+            ? "either ensure all objects of type " +
+                childTypenames.join(" and ") + " have an ID or a custom merge function, or "
+            : "", "define a custom merge function for the ").concat(typeDotName, " field, so InMemoryCache can safely merge these objects:\n\n  existing: ").concat(JSON.stringify(existing).slice(0, 1000), "\n  incoming: ").concat(JSON.stringify(incoming).slice(0, 1000), "\n\nFor more information about these options, please refer to the documentation:\n\n  * Ensuring entity objects have IDs: https://go.apollo.dev/c/generating-unique-identifiers\n  * Defining custom merge functions: https://go.apollo.dev/c/merging-non-normalized-objects\n"));
     }
 
-    var defaultConfig = {
-        dataIdFromObject: defaultDataIdFromObject,
-        addTypename: true,
-        resultCaching: true,
-        typePolicies: {},
-    };
     var InMemoryCache = (function (_super) {
-        __extends$1(InMemoryCache, _super);
+        __extends(InMemoryCache, _super);
         function InMemoryCache(config) {
             if (config === void 0) { config = {}; }
             var _this = _super.call(this) || this;
@@ -23951,19 +21457,7 @@ type Subscription {
             _this.typenameDocumentCache = new Map();
             _this.makeVar = makeVar;
             _this.txCount = 0;
-            _this.maybeBroadcastWatch = wrap(function (c, fromOptimisticTransaction) {
-                return _this.broadcastWatch.call(_this, c, !!fromOptimisticTransaction);
-            }, {
-                makeCacheKey: function (c) {
-                    var store = c.optimistic ? _this.optimisticData : _this.data;
-                    if (supportsResultCaching(store)) {
-                        var optimistic = c.optimistic, rootId = c.rootId, variables = c.variables;
-                        return store.makeCacheKey(c.query, c.callback, JSON.stringify({ optimistic: optimistic, rootId: rootId, variables: variables }));
-                    }
-                }
-            });
-            _this.watchDep = dep();
-            _this.config = __assign(__assign({}, defaultConfig), config);
+            _this.config = normalizeConfig(config);
             _this.addTypename = !!_this.config.addTypename;
             _this.policies = new Policies({
                 cache: _this,
@@ -23971,18 +21465,48 @@ type Subscription {
                 possibleTypes: _this.config.possibleTypes,
                 typePolicies: _this.config.typePolicies,
             });
-            _this.data = new EntityStore.Root({
-                policies: _this.policies,
-                resultCaching: _this.config.resultCaching,
-            });
-            _this.optimisticData = _this.data;
-            _this.storeWriter = new StoreWriter(_this, _this.storeReader = new StoreReader({
-                cache: _this,
-                addTypename: _this.addTypename,
-            }));
+            _this.init();
             return _this;
         }
+        InMemoryCache.prototype.init = function () {
+            var rootStore = this.data = new EntityStore.Root({
+                policies: this.policies,
+                resultCaching: this.config.resultCaching,
+            });
+            this.optimisticData = rootStore.stump;
+            this.resetResultCache();
+        };
+        InMemoryCache.prototype.resetResultCache = function (resetResultIdentities) {
+            var _this = this;
+            var previousReader = this.storeReader;
+            this.storeWriter = new StoreWriter(this, this.storeReader = new StoreReader({
+                cache: this,
+                addTypename: this.addTypename,
+                resultCacheMaxSize: this.config.resultCacheMaxSize,
+                canonizeResults: shouldCanonizeResults(this.config),
+                canon: resetResultIdentities
+                    ? void 0
+                    : previousReader && previousReader.canon,
+            }));
+            this.maybeBroadcastWatch = wrap(function (c, options) {
+                return _this.broadcastWatch(c, options);
+            }, {
+                max: this.config.resultCacheMaxSize,
+                makeCacheKey: function (c) {
+                    var store = c.optimistic ? _this.optimisticData : _this.data;
+                    if (supportsResultCaching(store)) {
+                        var optimistic = c.optimistic, rootId = c.rootId, variables = c.variables;
+                        return store.makeCacheKey(c.query, c.callback, canonicalStringify({ optimistic: optimistic, rootId: rootId, variables: variables }));
+                    }
+                }
+            });
+            new Set([
+                this.data.group,
+                this.optimisticData.group,
+            ]).forEach(function (group) { return group.resetCaching(); });
+        };
         InMemoryCache.prototype.restore = function (data) {
+            this.init();
             if (data)
                 this.data.replace(data);
             return this;
@@ -23994,14 +21518,7 @@ type Subscription {
         InMemoryCache.prototype.read = function (options) {
             var _a = options.returnPartialData, returnPartialData = _a === void 0 ? false : _a;
             try {
-                return this.storeReader.diffQueryAgainstStore({
-                    store: options.optimistic ? this.optimisticData : this.data,
-                    query: options.query,
-                    variables: options.variables,
-                    rootId: options.rootId,
-                    config: this.config,
-                    returnPartialData: returnPartialData,
-                }).result || null;
+                return this.storeReader.diffQueryAgainstStore(__assign(__assign({}, options), { store: options.optimistic ? this.optimisticData : this.data, config: this.config, returnPartialData: returnPartialData })).result || null;
             }
             catch (e) {
                 if (e instanceof MissingFieldError) {
@@ -24013,13 +21530,7 @@ type Subscription {
         InMemoryCache.prototype.write = function (options) {
             try {
                 ++this.txCount;
-                return this.storeWriter.writeToStore({
-                    store: this.data,
-                    query: options.query,
-                    result: options.result,
-                    dataId: options.dataId,
-                    variables: options.variables,
-                });
+                return this.storeWriter.writeToStore(this.data, options);
             }
             finally {
                 if (!--this.txCount && options.broadcast !== false) {
@@ -24045,14 +21556,7 @@ type Subscription {
             }
         };
         InMemoryCache.prototype.diff = function (options) {
-            return this.storeReader.diffQueryAgainstStore({
-                store: options.optimistic ? this.optimisticData : this.data,
-                rootId: options.id || "ROOT_QUERY",
-                query: options.query,
-                variables: options.variables,
-                returnPartialData: options.returnPartialData,
-                config: this.config,
-            });
+            return this.storeReader.diffQueryAgainstStore(__assign(__assign({}, options), { store: options.optimistic ? this.optimisticData : this.data, rootId: options.id || "ROOT_QUERY", config: this.config }));
         };
         InMemoryCache.prototype.watch = function (watch) {
             var _this = this;
@@ -24067,12 +21571,21 @@ type Subscription {
                 if (_this.watches.delete(watch) && !_this.watches.size) {
                     forgetCache(_this);
                 }
-                _this.watchDep.dirty(watch);
                 _this.maybeBroadcastWatch.forget(watch);
             };
         };
-        InMemoryCache.prototype.gc = function () {
-            return this.optimisticData.gc();
+        InMemoryCache.prototype.gc = function (options) {
+            canonicalStringify.reset();
+            var ids = this.optimisticData.gc();
+            if (options && !this.txCount) {
+                if (options.resetResultCache) {
+                    this.resetResultCache(options.resetResultIdentities);
+                }
+                else if (options.resetResultIdentities) {
+                    this.storeReader.resetCanon();
+                }
+            }
+            return ids;
         };
         InMemoryCache.prototype.retain = function (rootId, optimistic) {
             return (optimistic ? this.optimisticData : this.data).retain(rootId);
@@ -24081,8 +21594,14 @@ type Subscription {
             return (optimistic ? this.optimisticData : this.data).release(rootId);
         };
         InMemoryCache.prototype.identify = function (object) {
-            return isReference(object) ? object.__ref :
-                this.policies.identify(object)[0];
+            if (isReference(object))
+                return object.__ref;
+            try {
+                return this.policies.identify(object)[0];
+            }
+            catch (e) {
+                __DEV__ && invariant$1.warn(e);
+            }
         };
         InMemoryCache.prototype.evict = function (options) {
             if (!options.id) {
@@ -24093,7 +21612,7 @@ type Subscription {
             }
             try {
                 ++this.txCount;
-                return this.optimisticData.evict(options);
+                return this.optimisticData.evict(options, this.data);
             }
             finally {
                 if (!--this.txCount && options.broadcast !== false) {
@@ -24101,10 +21620,18 @@ type Subscription {
                 }
             }
         };
-        InMemoryCache.prototype.reset = function () {
-            this.data.clear();
-            this.optimisticData = this.data;
-            this.broadcastWatches();
+        InMemoryCache.prototype.reset = function (options) {
+            var _this = this;
+            this.init();
+            canonicalStringify.reset();
+            if (options && options.discardWatches) {
+                this.watches.forEach(function (watch) { return _this.maybeBroadcastWatch.forget(watch); });
+                this.watches.clear();
+                forgetCache(this);
+            }
+            else {
+                this.broadcastWatches();
+            }
             return Promise.resolve();
         };
         InMemoryCache.prototype.removeOptimistic = function (idToRemove) {
@@ -24114,8 +21641,10 @@ type Subscription {
                 this.broadcastWatches();
             }
         };
-        InMemoryCache.prototype.performTransaction = function (transaction, optimisticId) {
+        InMemoryCache.prototype.batch = function (options) {
             var _this = this;
+            var update = options.update, _a = options.optimistic, optimistic = _a === void 0 ? true : _a, removeOptimistic = options.removeOptimistic, onWatchUpdated = options.onWatchUpdated;
+            var updateResult;
             var perform = function (layer) {
                 var _a = _this, data = _a.data, optimisticData = _a.optimisticData;
                 ++_this.txCount;
@@ -24123,7 +21652,7 @@ type Subscription {
                     _this.data = _this.optimisticData = layer;
                 }
                 try {
-                    transaction(_this);
+                    return updateResult = update(_this);
                 }
                 finally {
                     --_this.txCount;
@@ -24131,18 +21660,47 @@ type Subscription {
                     _this.optimisticData = optimisticData;
                 }
             };
-            var fromOptimisticTransaction = false;
-            if (typeof optimisticId === 'string') {
-                this.optimisticData = this.optimisticData.addLayer(optimisticId, perform);
-                fromOptimisticTransaction = true;
+            var alreadyDirty = new Set();
+            if (onWatchUpdated && !this.txCount) {
+                this.broadcastWatches(__assign(__assign({}, options), { onWatchUpdated: function (watch) {
+                        alreadyDirty.add(watch);
+                        return false;
+                    } }));
             }
-            else if (optimisticId === null) {
+            if (typeof optimistic === 'string') {
+                this.optimisticData = this.optimisticData.addLayer(optimistic, perform);
+            }
+            else if (optimistic === false) {
                 perform(this.data);
             }
             else {
                 perform();
             }
-            this.broadcastWatches(fromOptimisticTransaction);
+            if (typeof removeOptimistic === "string") {
+                this.optimisticData = this.optimisticData.removeLayer(removeOptimistic);
+            }
+            if (onWatchUpdated && alreadyDirty.size) {
+                this.broadcastWatches(__assign(__assign({}, options), { onWatchUpdated: function (watch, diff) {
+                        var result = onWatchUpdated.call(this, watch, diff);
+                        if (result !== false) {
+                            alreadyDirty.delete(watch);
+                        }
+                        return result;
+                    } }));
+                if (alreadyDirty.size) {
+                    alreadyDirty.forEach(function (watch) { return _this.maybeBroadcastWatch.dirty(watch); });
+                }
+            }
+            else {
+                this.broadcastWatches(options);
+            }
+            return updateResult;
+        };
+        InMemoryCache.prototype.performTransaction = function (update, optimisticId) {
+            return this.batch({
+                update: update,
+                optimistic: optimisticId || (optimisticId !== null),
+            });
         };
         InMemoryCache.prototype.transformDocument = function (document) {
             if (this.addTypename) {
@@ -24156,27 +21714,574 @@ type Subscription {
             }
             return document;
         };
-        InMemoryCache.prototype.broadcastWatches = function (fromOptimisticTransaction) {
+        InMemoryCache.prototype.broadcastWatches = function (options) {
             var _this = this;
             if (!this.txCount) {
-                this.watches.forEach(function (c) { return _this.maybeBroadcastWatch(c, fromOptimisticTransaction); });
+                this.watches.forEach(function (c) { return _this.maybeBroadcastWatch(c, options); });
             }
         };
-        InMemoryCache.prototype.broadcastWatch = function (c, fromOptimisticTransaction) {
-            this.watchDep.dirty(c);
-            this.watchDep(c);
-            var diff = this.diff({
-                query: c.query,
-                variables: c.variables,
-                optimistic: c.optimistic,
-            });
-            if (c.optimistic && fromOptimisticTransaction) {
-                diff.fromOptimisticTransaction = true;
+        InMemoryCache.prototype.broadcastWatch = function (c, options) {
+            var lastDiff = c.lastDiff;
+            var diff = this.diff(c);
+            if (options) {
+                if (c.optimistic &&
+                    typeof options.optimistic === "string") {
+                    diff.fromOptimisticTransaction = true;
+                }
+                if (options.onWatchUpdated &&
+                    options.onWatchUpdated.call(this, c, diff, lastDiff) === false) {
+                    return;
+                }
             }
-            c.callback(diff);
+            if (!lastDiff || !equal(lastDiff.result, diff.result)) {
+                c.callback(c.lastDiff = diff, lastDiff);
+            }
         };
         return InMemoryCache;
     }(ApolloCache));
+
+    function isApolloError(err) {
+        return err.hasOwnProperty('graphQLErrors');
+    }
+    var generateErrorMessage = function (err) {
+        var message = '';
+        if (isNonEmptyArray(err.graphQLErrors) || isNonEmptyArray(err.clientErrors)) {
+            var errors = (err.graphQLErrors || [])
+                .concat(err.clientErrors || []);
+            errors.forEach(function (error) {
+                var errorMessage = error
+                    ? error.message
+                    : 'Error message not found.';
+                message += "".concat(errorMessage, "\n");
+            });
+        }
+        if (err.networkError) {
+            message += "".concat(err.networkError.message, "\n");
+        }
+        message = message.replace(/\n$/, '');
+        return message;
+    };
+    var ApolloError = (function (_super) {
+        __extends(ApolloError, _super);
+        function ApolloError(_a) {
+            var graphQLErrors = _a.graphQLErrors, clientErrors = _a.clientErrors, networkError = _a.networkError, errorMessage = _a.errorMessage, extraInfo = _a.extraInfo;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.graphQLErrors = graphQLErrors || [];
+            _this.clientErrors = clientErrors || [];
+            _this.networkError = networkError || null;
+            _this.message = errorMessage || generateErrorMessage(_this);
+            _this.extraInfo = extraInfo;
+            _this.__proto__ = ApolloError.prototype;
+            return _this;
+        }
+        return ApolloError;
+    }(Error));
+
+    var NetworkStatus;
+    (function (NetworkStatus) {
+        NetworkStatus[NetworkStatus["loading"] = 1] = "loading";
+        NetworkStatus[NetworkStatus["setVariables"] = 2] = "setVariables";
+        NetworkStatus[NetworkStatus["fetchMore"] = 3] = "fetchMore";
+        NetworkStatus[NetworkStatus["refetch"] = 4] = "refetch";
+        NetworkStatus[NetworkStatus["poll"] = 6] = "poll";
+        NetworkStatus[NetworkStatus["ready"] = 7] = "ready";
+        NetworkStatus[NetworkStatus["error"] = 8] = "error";
+    })(NetworkStatus || (NetworkStatus = {}));
+    function isNetworkRequestInFlight(networkStatus) {
+        return networkStatus ? networkStatus < 7 : false;
+    }
+
+    var assign = Object.assign, hasOwnProperty$1 = Object.hasOwnProperty;
+    var ObservableQuery = (function (_super) {
+        __extends(ObservableQuery, _super);
+        function ObservableQuery(_a) {
+            var queryManager = _a.queryManager, queryInfo = _a.queryInfo, options = _a.options;
+            var _this = _super.call(this, function (observer) {
+                try {
+                    var subObserver = observer._subscription._observer;
+                    if (subObserver && !subObserver.error) {
+                        subObserver.error = defaultSubscriptionObserverErrorCallback;
+                    }
+                }
+                catch (_a) { }
+                var first = !_this.observers.size;
+                _this.observers.add(observer);
+                var last = _this.last;
+                if (last && last.error) {
+                    observer.error && observer.error(last.error);
+                }
+                else if (last && last.result) {
+                    observer.next && observer.next(last.result);
+                }
+                if (first) {
+                    _this.reobserve().catch(function () { });
+                }
+                return function () {
+                    if (_this.observers.delete(observer) && !_this.observers.size) {
+                        _this.tearDownQuery();
+                    }
+                };
+            }) || this;
+            _this.observers = new Set();
+            _this.subscriptions = new Set();
+            _this.queryInfo = queryInfo;
+            _this.queryManager = queryManager;
+            _this.isTornDown = false;
+            var _b = queryManager.defaultOptions.watchQuery, _c = _b === void 0 ? {} : _b, _d = _c.fetchPolicy, defaultFetchPolicy = _d === void 0 ? "cache-first" : _d;
+            var _e = options.fetchPolicy, fetchPolicy = _e === void 0 ? defaultFetchPolicy : _e, _f = options.initialFetchPolicy, initialFetchPolicy = _f === void 0 ? (fetchPolicy === "standby" ? defaultFetchPolicy : fetchPolicy) : _f;
+            _this.options = __assign(__assign({}, options), { initialFetchPolicy: initialFetchPolicy, fetchPolicy: fetchPolicy });
+            _this.queryId = queryInfo.queryId || queryManager.generateQueryId();
+            var opDef = getOperationDefinition(_this.query);
+            _this.queryName = opDef && opDef.name && opDef.name.value;
+            return _this;
+        }
+        Object.defineProperty(ObservableQuery.prototype, "query", {
+            get: function () {
+                return this.queryManager.transform(this.options.query).document;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(ObservableQuery.prototype, "variables", {
+            get: function () {
+                return this.options.variables;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        ObservableQuery.prototype.result = function () {
+            var _this = this;
+            return new Promise(function (resolve, reject) {
+                var observer = {
+                    next: function (result) {
+                        resolve(result);
+                        _this.observers.delete(observer);
+                        if (!_this.observers.size) {
+                            _this.queryManager.removeQuery(_this.queryId);
+                        }
+                        setTimeout(function () {
+                            subscription.unsubscribe();
+                        }, 0);
+                    },
+                    error: reject,
+                };
+                var subscription = _this.subscribe(observer);
+            });
+        };
+        ObservableQuery.prototype.getCurrentResult = function (saveAsLastResult) {
+            if (saveAsLastResult === void 0) { saveAsLastResult = true; }
+            var lastResult = this.getLastResult(true);
+            var networkStatus = this.queryInfo.networkStatus ||
+                (lastResult && lastResult.networkStatus) ||
+                NetworkStatus.ready;
+            var result = __assign(__assign({}, lastResult), { loading: isNetworkRequestInFlight(networkStatus), networkStatus: networkStatus });
+            var _a = this.options.fetchPolicy, fetchPolicy = _a === void 0 ? "cache-first" : _a;
+            if (fetchPolicy === 'network-only' ||
+                fetchPolicy === 'no-cache' ||
+                fetchPolicy === 'standby' ||
+                this.queryManager.transform(this.options.query).hasForcedResolvers) ;
+            else {
+                var diff = this.queryInfo.getDiff();
+                if (diff.complete || this.options.returnPartialData) {
+                    result.data = diff.result;
+                }
+                if (equal(result.data, {})) {
+                    result.data = void 0;
+                }
+                if (diff.complete) {
+                    delete result.partial;
+                    if (diff.complete &&
+                        result.networkStatus === NetworkStatus.loading &&
+                        (fetchPolicy === 'cache-first' ||
+                            fetchPolicy === 'cache-only')) {
+                        result.networkStatus = NetworkStatus.ready;
+                        result.loading = false;
+                    }
+                }
+                else {
+                    result.partial = true;
+                }
+                if (__DEV__ &&
+                    !diff.complete &&
+                    !this.options.partialRefetch &&
+                    !result.loading &&
+                    !result.data &&
+                    !result.error) {
+                    logMissingFieldErrors(diff.missing);
+                }
+            }
+            if (saveAsLastResult) {
+                this.updateLastResult(result);
+            }
+            return result;
+        };
+        ObservableQuery.prototype.isDifferentFromLastResult = function (newResult) {
+            return !this.last || !equal(this.last.result, newResult);
+        };
+        ObservableQuery.prototype.getLast = function (key, variablesMustMatch) {
+            var last = this.last;
+            if (last &&
+                last[key] &&
+                (!variablesMustMatch || equal(last.variables, this.variables))) {
+                return last[key];
+            }
+        };
+        ObservableQuery.prototype.getLastResult = function (variablesMustMatch) {
+            return this.getLast("result", variablesMustMatch);
+        };
+        ObservableQuery.prototype.getLastError = function (variablesMustMatch) {
+            return this.getLast("error", variablesMustMatch);
+        };
+        ObservableQuery.prototype.resetLastResults = function () {
+            delete this.last;
+            this.isTornDown = false;
+        };
+        ObservableQuery.prototype.resetQueryStoreErrors = function () {
+            this.queryManager.resetErrors(this.queryId);
+        };
+        ObservableQuery.prototype.refetch = function (variables) {
+            var _a;
+            var reobserveOptions = {
+                pollInterval: 0,
+            };
+            var fetchPolicy = this.options.fetchPolicy;
+            if (fetchPolicy === 'cache-and-network') {
+                reobserveOptions.fetchPolicy = fetchPolicy;
+            }
+            else if (fetchPolicy === 'no-cache') {
+                reobserveOptions.fetchPolicy = 'no-cache';
+            }
+            else {
+                reobserveOptions.fetchPolicy = 'network-only';
+            }
+            if (__DEV__ && variables && hasOwnProperty$1.call(variables, "variables")) {
+                var queryDef = getQueryDefinition(this.query);
+                var vars = queryDef.variableDefinitions;
+                if (!vars || !vars.some(function (v) { return v.variable.name.value === "variables"; })) {
+                    __DEV__ && invariant$1.warn("Called refetch(".concat(JSON.stringify(variables), ") for query ").concat(((_a = queryDef.name) === null || _a === void 0 ? void 0 : _a.value) || JSON.stringify(queryDef), ", which does not declare a $variables variable.\nDid you mean to call refetch(variables) instead of refetch({ variables })?"));
+                }
+            }
+            if (variables && !equal(this.options.variables, variables)) {
+                reobserveOptions.variables = this.options.variables = __assign(__assign({}, this.options.variables), variables);
+            }
+            this.queryInfo.resetLastWrite();
+            return this.reobserve(reobserveOptions, NetworkStatus.refetch);
+        };
+        ObservableQuery.prototype.fetchMore = function (fetchMoreOptions) {
+            var _this = this;
+            var combinedOptions = __assign(__assign({}, (fetchMoreOptions.query ? fetchMoreOptions : __assign(__assign(__assign(__assign({}, this.options), { query: this.query }), fetchMoreOptions), { variables: __assign(__assign({}, this.options.variables), fetchMoreOptions.variables) }))), { fetchPolicy: "no-cache" });
+            var qid = this.queryManager.generateQueryId();
+            var queryInfo = this.queryInfo;
+            var originalNetworkStatus = queryInfo.networkStatus;
+            queryInfo.networkStatus = NetworkStatus.fetchMore;
+            if (combinedOptions.notifyOnNetworkStatusChange) {
+                this.observe();
+            }
+            var updatedQuerySet = new Set();
+            return this.queryManager.fetchQuery(qid, combinedOptions, NetworkStatus.fetchMore).then(function (fetchMoreResult) {
+                _this.queryManager.removeQuery(qid);
+                if (queryInfo.networkStatus === NetworkStatus.fetchMore) {
+                    queryInfo.networkStatus = originalNetworkStatus;
+                }
+                _this.queryManager.cache.batch({
+                    update: function (cache) {
+                        var updateQuery = fetchMoreOptions.updateQuery;
+                        if (updateQuery) {
+                            cache.updateQuery({
+                                query: _this.query,
+                                variables: _this.variables,
+                                returnPartialData: true,
+                                optimistic: false,
+                            }, function (previous) { return updateQuery(previous, {
+                                fetchMoreResult: fetchMoreResult.data,
+                                variables: combinedOptions.variables,
+                            }); });
+                        }
+                        else {
+                            cache.writeQuery({
+                                query: combinedOptions.query,
+                                variables: combinedOptions.variables,
+                                data: fetchMoreResult.data,
+                            });
+                        }
+                    },
+                    onWatchUpdated: function (watch) {
+                        updatedQuerySet.add(watch.query);
+                    },
+                });
+                return fetchMoreResult;
+            }).finally(function () {
+                if (!updatedQuerySet.has(_this.query)) {
+                    reobserveCacheFirst(_this);
+                }
+            });
+        };
+        ObservableQuery.prototype.subscribeToMore = function (options) {
+            var _this = this;
+            var subscription = this.queryManager
+                .startGraphQLSubscription({
+                query: options.document,
+                variables: options.variables,
+                context: options.context,
+            })
+                .subscribe({
+                next: function (subscriptionData) {
+                    var updateQuery = options.updateQuery;
+                    if (updateQuery) {
+                        _this.updateQuery(function (previous, _a) {
+                            var variables = _a.variables;
+                            return updateQuery(previous, {
+                                subscriptionData: subscriptionData,
+                                variables: variables,
+                            });
+                        });
+                    }
+                },
+                error: function (err) {
+                    if (options.onError) {
+                        options.onError(err);
+                        return;
+                    }
+                    __DEV__ && invariant$1.error('Unhandled GraphQL subscription error', err);
+                },
+            });
+            this.subscriptions.add(subscription);
+            return function () {
+                if (_this.subscriptions.delete(subscription)) {
+                    subscription.unsubscribe();
+                }
+            };
+        };
+        ObservableQuery.prototype.setOptions = function (newOptions) {
+            return this.reobserve(newOptions);
+        };
+        ObservableQuery.prototype.setVariables = function (variables) {
+            if (equal(this.variables, variables)) {
+                return this.observers.size
+                    ? this.result()
+                    : Promise.resolve();
+            }
+            this.options.variables = variables;
+            if (!this.observers.size) {
+                return Promise.resolve();
+            }
+            return this.reobserve({
+                fetchPolicy: this.options.initialFetchPolicy,
+                variables: variables,
+            }, NetworkStatus.setVariables);
+        };
+        ObservableQuery.prototype.updateQuery = function (mapFn) {
+            var queryManager = this.queryManager;
+            var result = queryManager.cache.diff({
+                query: this.options.query,
+                variables: this.variables,
+                returnPartialData: true,
+                optimistic: false,
+            }).result;
+            var newResult = mapFn(result, {
+                variables: this.variables,
+            });
+            if (newResult) {
+                queryManager.cache.writeQuery({
+                    query: this.options.query,
+                    data: newResult,
+                    variables: this.variables,
+                });
+                queryManager.broadcastQueries();
+            }
+        };
+        ObservableQuery.prototype.startPolling = function (pollInterval) {
+            this.options.pollInterval = pollInterval;
+            this.updatePolling();
+        };
+        ObservableQuery.prototype.stopPolling = function () {
+            this.options.pollInterval = 0;
+            this.updatePolling();
+        };
+        ObservableQuery.prototype.applyNextFetchPolicy = function (reason, options) {
+            if (options.nextFetchPolicy) {
+                var _a = options.fetchPolicy, fetchPolicy = _a === void 0 ? "cache-first" : _a, _b = options.initialFetchPolicy, initialFetchPolicy = _b === void 0 ? fetchPolicy : _b;
+                if (fetchPolicy === "standby") ;
+                else if (typeof options.nextFetchPolicy === "function") {
+                    options.fetchPolicy = options.nextFetchPolicy(fetchPolicy, {
+                        reason: reason,
+                        options: options,
+                        observable: this,
+                        initialFetchPolicy: initialFetchPolicy,
+                    });
+                }
+                else if (reason === "variables-changed") {
+                    options.fetchPolicy = initialFetchPolicy;
+                }
+                else {
+                    options.fetchPolicy = options.nextFetchPolicy;
+                }
+            }
+            return options.fetchPolicy;
+        };
+        ObservableQuery.prototype.fetch = function (options, newNetworkStatus) {
+            this.queryManager.setObservableQuery(this);
+            return this.queryManager.fetchQueryObservable(this.queryId, options, newNetworkStatus);
+        };
+        ObservableQuery.prototype.updatePolling = function () {
+            var _this = this;
+            if (this.queryManager.ssrMode) {
+                return;
+            }
+            var _a = this, pollingInfo = _a.pollingInfo, pollInterval = _a.options.pollInterval;
+            if (!pollInterval) {
+                if (pollingInfo) {
+                    clearTimeout(pollingInfo.timeout);
+                    delete this.pollingInfo;
+                }
+                return;
+            }
+            if (pollingInfo &&
+                pollingInfo.interval === pollInterval) {
+                return;
+            }
+            __DEV__ ? invariant$1(pollInterval, 'Attempted to start a polling query without a polling interval.') : invariant$1(pollInterval, 10);
+            var info = pollingInfo || (this.pollingInfo = {});
+            info.interval = pollInterval;
+            var maybeFetch = function () {
+                if (_this.pollingInfo) {
+                    if (!isNetworkRequestInFlight(_this.queryInfo.networkStatus)) {
+                        _this.reobserve({
+                            fetchPolicy: "network-only",
+                        }, NetworkStatus.poll).then(poll, poll);
+                    }
+                    else {
+                        poll();
+                    }
+                }
+            };
+            var poll = function () {
+                var info = _this.pollingInfo;
+                if (info) {
+                    clearTimeout(info.timeout);
+                    info.timeout = setTimeout(maybeFetch, info.interval);
+                }
+            };
+            poll();
+        };
+        ObservableQuery.prototype.updateLastResult = function (newResult, variables) {
+            if (variables === void 0) { variables = this.variables; }
+            this.last = __assign(__assign({}, this.last), { result: this.queryManager.assumeImmutableResults
+                    ? newResult
+                    : cloneDeep(newResult), variables: variables });
+            if (!isNonEmptyArray(newResult.errors)) {
+                delete this.last.error;
+            }
+            return this.last;
+        };
+        ObservableQuery.prototype.reobserve = function (newOptions, newNetworkStatus) {
+            var _this = this;
+            this.isTornDown = false;
+            var useDisposableConcast = newNetworkStatus === NetworkStatus.refetch ||
+                newNetworkStatus === NetworkStatus.fetchMore ||
+                newNetworkStatus === NetworkStatus.poll;
+            var oldVariables = this.options.variables;
+            var oldFetchPolicy = this.options.fetchPolicy;
+            var mergedOptions = compact(this.options, newOptions || {});
+            var options = useDisposableConcast
+                ? mergedOptions
+                : assign(this.options, mergedOptions);
+            if (!useDisposableConcast) {
+                this.updatePolling();
+                if (newOptions &&
+                    newOptions.variables &&
+                    !equal(newOptions.variables, oldVariables) &&
+                    options.fetchPolicy !== "standby" &&
+                    options.fetchPolicy === oldFetchPolicy) {
+                    this.applyNextFetchPolicy("variables-changed", options);
+                    if (newNetworkStatus === void 0) {
+                        newNetworkStatus = NetworkStatus.setVariables;
+                    }
+                }
+            }
+            var variables = options.variables && __assign({}, options.variables);
+            var concast = this.fetch(options, newNetworkStatus);
+            var observer = {
+                next: function (result) {
+                    _this.reportResult(result, variables);
+                },
+                error: function (error) {
+                    _this.reportError(error, variables);
+                },
+            };
+            if (!useDisposableConcast) {
+                if (this.concast && this.observer) {
+                    this.concast.removeObserver(this.observer);
+                }
+                this.concast = concast;
+                this.observer = observer;
+            }
+            concast.addObserver(observer);
+            return concast.promise;
+        };
+        ObservableQuery.prototype.observe = function () {
+            this.reportResult(this.getCurrentResult(false), this.variables);
+        };
+        ObservableQuery.prototype.reportResult = function (result, variables) {
+            var lastError = this.getLastError();
+            if (lastError || this.isDifferentFromLastResult(result)) {
+                if (lastError || !result.partial || this.options.returnPartialData) {
+                    this.updateLastResult(result, variables);
+                }
+                iterateObserversSafely(this.observers, 'next', result);
+            }
+        };
+        ObservableQuery.prototype.reportError = function (error, variables) {
+            var errorResult = __assign(__assign({}, this.getLastResult()), { error: error, errors: error.graphQLErrors, networkStatus: NetworkStatus.error, loading: false });
+            this.updateLastResult(errorResult, variables);
+            iterateObserversSafely(this.observers, 'error', this.last.error = error);
+        };
+        ObservableQuery.prototype.hasObservers = function () {
+            return this.observers.size > 0;
+        };
+        ObservableQuery.prototype.tearDownQuery = function () {
+            if (this.isTornDown)
+                return;
+            if (this.concast && this.observer) {
+                this.concast.removeObserver(this.observer);
+                delete this.concast;
+                delete this.observer;
+            }
+            this.stopPolling();
+            this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
+            this.subscriptions.clear();
+            this.queryManager.stopQuery(this.queryId);
+            this.observers.clear();
+            this.isTornDown = true;
+        };
+        return ObservableQuery;
+    }(Observable));
+    fixObservableSubclass(ObservableQuery);
+    function reobserveCacheFirst(obsQuery) {
+        var _a = obsQuery.options, fetchPolicy = _a.fetchPolicy, nextFetchPolicy = _a.nextFetchPolicy;
+        if (fetchPolicy === "cache-and-network" ||
+            fetchPolicy === "network-only") {
+            return obsQuery.reobserve({
+                fetchPolicy: "cache-first",
+                nextFetchPolicy: function () {
+                    this.nextFetchPolicy = nextFetchPolicy;
+                    if (typeof nextFetchPolicy === "function") {
+                        return nextFetchPolicy.apply(this, arguments);
+                    }
+                    return fetchPolicy;
+                },
+            });
+        }
+        return obsQuery.reobserve();
+    }
+    function defaultSubscriptionObserverErrorCallback(error) {
+        __DEV__ && invariant$1.error('Unhandled error', error.message, error.stack);
+    }
+    function logMissingFieldErrors(missing) {
+        if (__DEV__ && missing) {
+            __DEV__ && invariant$1.debug("Missing cache result fields: ".concat(JSON.stringify(missing)), missing);
+        }
+    }
 
     var LocalState = (function () {
         function LocalState(_a) {
@@ -24241,8 +22346,7 @@ type Subscription {
         };
         LocalState.prototype.prepareContext = function (context) {
             var cache = this.cache;
-            return __assign(__assign({}, context), { cache: cache,
-                getCacheKey: function (obj) {
+            return __assign(__assign({}, context), { cache: cache, getCacheKey: function (obj) {
                     return cache.identify(obj);
                 } });
         };
@@ -24306,8 +22410,7 @@ type Subscription {
                     _a = this, cache = _a.cache, client = _a.client;
                     execContext = {
                         fragmentMap: fragmentMap,
-                        context: __assign(__assign({}, context), { cache: cache,
-                            client: client }),
+                        context: __assign(__assign({}, context), { cache: cache, client: client }),
                         variables: variables,
                         fragmentMatcher: fragmentMatcher,
                         defaultOperationType: defaultOperationType,
@@ -24349,7 +22452,7 @@ type Subscription {
                             }
                             else {
                                 fragment = fragmentMap[selection.name.value];
-                                process.env.NODE_ENV === "production" ? invariant$1(fragment, 11) : invariant$1(fragment, "No fragment named " + selection.name.value);
+                                __DEV__ ? invariant$1(fragment, "No fragment named ".concat(selection.name.value)) : invariant$1(fragment, 9);
                             }
                             if (fragment && fragment.typeCondition) {
                                 typeCondition = fragment.typeCondition.name.value;
@@ -24458,16 +22561,17 @@ type Subscription {
         }
     }
     var QueryInfo = (function () {
-        function QueryInfo(cache) {
-            this.cache = cache;
+        function QueryInfo(queryManager, queryId) {
+            if (queryId === void 0) { queryId = queryManager.generateQueryId(); }
+            this.queryId = queryId;
             this.listeners = new Set();
             this.document = null;
             this.lastRequestId = 1;
             this.subscriptions = new Set();
             this.stopped = false;
             this.dirty = false;
-            this.diff = null;
             this.observableQuery = null;
+            var cache = this.cache = queryManager.cache;
             if (!destructiveMethodCounts.has(cache)) {
                 destructiveMethodCounts.set(cache, 0);
                 wrapDestructiveCacheMethod(cache, "evict");
@@ -24483,7 +22587,7 @@ type Subscription {
                 networkStatus = NetworkStatus.setVariables;
             }
             if (!equal(query.variables, this.variables)) {
-                this.diff = null;
+                this.lastDiff = void 0;
             }
             Object.assign(this, {
                 document: query.document,
@@ -24502,28 +22606,47 @@ type Subscription {
         };
         QueryInfo.prototype.reset = function () {
             cancelNotifyTimeout(this);
-            this.diff = null;
+            this.lastDiff = void 0;
             this.dirty = false;
         };
         QueryInfo.prototype.getDiff = function (variables) {
             if (variables === void 0) { variables = this.variables; }
-            if (this.diff && equal(variables, this.variables)) {
-                return this.diff;
+            var options = this.getDiffOptions(variables);
+            if (this.lastDiff && equal(options, this.lastDiff.options)) {
+                return this.lastDiff.diff;
             }
             this.updateWatch(this.variables = variables);
-            return this.diff = this.cache.diff({
+            var oq = this.observableQuery;
+            if (oq && oq.options.fetchPolicy === "no-cache") {
+                return { complete: false };
+            }
+            var diff = this.cache.diff(options);
+            this.updateLastDiff(diff, options);
+            return diff;
+        };
+        QueryInfo.prototype.updateLastDiff = function (diff, options) {
+            this.lastDiff = diff ? {
+                diff: diff,
+                options: options || this.getDiffOptions(),
+            } : void 0;
+        };
+        QueryInfo.prototype.getDiffOptions = function (variables) {
+            var _a;
+            if (variables === void 0) { variables = this.variables; }
+            return {
                 query: this.document,
                 variables: variables,
                 returnPartialData: true,
                 optimistic: true,
-            });
+                canonizeResults: (_a = this.observableQuery) === null || _a === void 0 ? void 0 : _a.options.canonizeResults,
+            };
         };
         QueryInfo.prototype.setDiff = function (diff) {
             var _this = this;
-            var oldDiff = this.diff;
-            this.diff = diff;
+            var oldDiff = this.lastDiff && this.lastDiff.diff;
+            this.updateLastDiff(diff);
             if (!this.dirty &&
-                (diff && diff.result) !== (oldDiff && oldDiff.result)) {
+                !equal(oldDiff && oldDiff.result, diff && diff.result)) {
                 this.dirty = true;
                 if (!this.notifyTimeout) {
                     this.notifyTimeout = setTimeout(function () { return _this.notify(); }, 0);
@@ -24541,11 +22664,12 @@ type Subscription {
             if (oq) {
                 oq["queryInfo"] = this;
                 this.listeners.add(this.oqListener = function () {
-                    if (_this.getDiff().fromOptimisticTransaction) {
+                    var diff = _this.getDiff();
+                    if (diff.fromOptimisticTransaction) {
                         oq["observe"]();
                     }
                     else {
-                        oq.reobserve();
+                        reobserveCacheFirst(oq);
                     }
                 });
             }
@@ -24580,7 +22704,7 @@ type Subscription {
                 this.stopped = true;
                 this.reset();
                 this.cancel();
-                delete this.cancel;
+                this.cancel = QueryInfo.prototype.cancel;
                 this.subscriptions.forEach(function (sub) { return sub.unsubscribe(); });
                 var oq = this.observableQuery;
                 if (oq)
@@ -24595,17 +22719,15 @@ type Subscription {
             if (oq && oq.options.fetchPolicy === "no-cache") {
                 return;
             }
+            var watchOptions = __assign(__assign({}, this.getDiffOptions(variables)), { watcher: this, callback: function (diff) { return _this.setDiff(diff); } });
             if (!this.lastWatch ||
-                this.lastWatch.query !== this.document ||
-                !equal(variables, this.lastWatch.variables)) {
+                !equal(watchOptions, this.lastWatch)) {
                 this.cancel();
-                this.cancel = this.cache.watch(this.lastWatch = {
-                    query: this.document,
-                    variables: variables,
-                    optimistic: true,
-                    callback: function (diff) { return _this.setDiff(diff); },
-                });
+                this.cancel = this.cache.watch(this.lastWatch = watchOptions);
             }
+        };
+        QueryInfo.prototype.resetLastWrite = function () {
+            this.lastWrite = void 0;
         };
         QueryInfo.prototype.shouldWrite = function (result, variables) {
             var lastWrite = this.lastWrite;
@@ -24614,14 +22736,14 @@ type Subscription {
                 equal(variables, lastWrite.variables) &&
                 equal(result.data, lastWrite.result.data));
         };
-        QueryInfo.prototype.markResult = function (result, options, allowCacheWrite) {
+        QueryInfo.prototype.markResult = function (result, options, cacheWriteBehavior) {
             var _this = this;
             this.graphQLErrors = isNonEmptyArray(result.errors) ? result.errors : [];
             this.reset();
             if (options.fetchPolicy === 'no-cache') {
-                this.diff = { result: result.data, complete: true };
+                this.updateLastDiff({ result: result.data, complete: true }, this.getDiffOptions(options.variables));
             }
-            else if (!this.stopped && allowCacheWrite) {
+            else if (cacheWriteBehavior !== 0) {
                 if (shouldWriteResult(result, options.errorPolicy)) {
                     this.cache.performTransaction(function (cache) {
                         if (_this.shouldWrite(result, options.variables)) {
@@ -24629,6 +22751,7 @@ type Subscription {
                                 query: _this.document,
                                 data: result.data,
                                 variables: options.variables,
+                                overwrite: cacheWriteBehavior === 1,
                             });
                             _this.lastWrite = {
                                 result: result,
@@ -24637,21 +22760,18 @@ type Subscription {
                             };
                         }
                         else {
-                            if (_this.diff && _this.diff.complete) {
-                                result.data = _this.diff.result;
+                            if (_this.lastDiff &&
+                                _this.lastDiff.diff.complete) {
+                                result.data = _this.lastDiff.diff.result;
                                 return;
                             }
                         }
-                        var diff = cache.diff({
-                            query: _this.document,
-                            variables: options.variables,
-                            returnPartialData: true,
-                            optimistic: true,
-                        });
+                        var diffOptions = _this.getDiffOptions(options.variables);
+                        var diff = cache.diff(diffOptions);
                         if (!_this.stopped) {
                             _this.updateWatch(options.variables);
                         }
-                        _this.diff = diff;
+                        _this.updateLastDiff(diff, diffOptions);
                         if (diff.complete) {
                             result.data = diff.result;
                         }
@@ -24694,7 +22814,7 @@ type Subscription {
     var hasOwnProperty = Object.prototype.hasOwnProperty;
     var QueryManager = (function () {
         function QueryManager(_a) {
-            var cache = _a.cache, link = _a.link, _b = _a.queryDeduplication, queryDeduplication = _b === void 0 ? false : _b, onBroadcast = _a.onBroadcast, _c = _a.ssrMode, ssrMode = _c === void 0 ? false : _c, _d = _a.clientAwareness, clientAwareness = _d === void 0 ? {} : _d, localState = _a.localState, assumeImmutableResults = _a.assumeImmutableResults;
+            var cache = _a.cache, link = _a.link, defaultOptions = _a.defaultOptions, _b = _a.queryDeduplication, queryDeduplication = _b === void 0 ? false : _b, onBroadcast = _a.onBroadcast, _c = _a.ssrMode, ssrMode = _c === void 0 ? false : _c, _d = _a.clientAwareness, clientAwareness = _d === void 0 ? {} : _d, localState = _a.localState, assumeImmutableResults = _a.assumeImmutableResults;
             this.clientAwareness = {};
             this.queries = new Map();
             this.fetchCancelFns = new Map();
@@ -24705,6 +22825,7 @@ type Subscription {
             this.inFlightLinkObservables = new Map();
             this.cache = cache;
             this.link = link;
+            this.defaultOptions = defaultOptions || Object.create(null);
             this.queryDeduplication = queryDeduplication;
             this.clientAwareness = clientAwareness;
             this.localState = localState || new LocalState({ cache: cache });
@@ -24719,29 +22840,32 @@ type Subscription {
             this.queries.forEach(function (_info, queryId) {
                 _this.stopQueryNoBroadcast(queryId);
             });
-            this.cancelPendingFetches(process.env.NODE_ENV === "production" ? new InvariantError(12) : new InvariantError('QueryManager stopped while query was in flight'));
+            this.cancelPendingFetches(__DEV__ ? new InvariantError('QueryManager stopped while query was in flight') : new InvariantError(11));
         };
         QueryManager.prototype.cancelPendingFetches = function (error) {
             this.fetchCancelFns.forEach(function (cancel) { return cancel(error); });
             this.fetchCancelFns.clear();
         };
         QueryManager.prototype.mutate = function (_a) {
-            var mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, updateQueries = _a.updateQueries, _b = _a.refetchQueries, refetchQueries = _b === void 0 ? [] : _b, _c = _a.awaitRefetchQueries, awaitRefetchQueries = _c === void 0 ? false : _c, updateWithProxyFn = _a.update, _d = _a.errorPolicy, errorPolicy = _d === void 0 ? 'none' : _d, fetchPolicy = _a.fetchPolicy, _e = _a.context, context = _e === void 0 ? {} : _e;
+            var _b, _c;
+            var mutation = _a.mutation, variables = _a.variables, optimisticResponse = _a.optimisticResponse, updateQueries = _a.updateQueries, _d = _a.refetchQueries, refetchQueries = _d === void 0 ? [] : _d, _e = _a.awaitRefetchQueries, awaitRefetchQueries = _e === void 0 ? false : _e, updateWithProxyFn = _a.update, onQueryUpdated = _a.onQueryUpdated, _f = _a.fetchPolicy, fetchPolicy = _f === void 0 ? ((_b = this.defaultOptions.mutate) === null || _b === void 0 ? void 0 : _b.fetchPolicy) || "network-only" : _f, _g = _a.errorPolicy, errorPolicy = _g === void 0 ? ((_c = this.defaultOptions.mutate) === null || _c === void 0 ? void 0 : _c.errorPolicy) || "none" : _g, keepRootFields = _a.keepRootFields, context = _a.context;
             return __awaiter(this, void 0, void 0, function () {
                 var mutationId, mutationStoreValue, self;
-                return __generator(this, function (_f) {
-                    switch (_f.label) {
+                return __generator(this, function (_h) {
+                    switch (_h.label) {
                         case 0:
-                            process.env.NODE_ENV === "production" ? invariant$1(mutation, 13) : invariant$1(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.');
-                            process.env.NODE_ENV === "production" ? invariant$1(!fetchPolicy || fetchPolicy === 'no-cache', 14) : invariant$1(!fetchPolicy || fetchPolicy === 'no-cache', "Mutations only support a 'no-cache' fetchPolicy. If you don't want to disable the cache, remove your fetchPolicy setting to proceed with the default mutation behavior.");
+                            __DEV__ ? invariant$1(mutation, 'mutation option is required. You must specify your GraphQL document in the mutation option.') : invariant$1(mutation, 12);
+                            __DEV__ ? invariant$1(fetchPolicy === 'network-only' ||
+                                fetchPolicy === 'no-cache', "Mutations support only 'network-only' or 'no-cache' fetchPolicy strings. The default `network-only` behavior automatically writes mutation results to the cache. Passing `no-cache` skips the cache write.") : invariant$1(fetchPolicy === 'network-only' ||
+                                fetchPolicy === 'no-cache', 13);
                             mutationId = this.generateMutationId();
                             mutation = this.transform(mutation).document;
                             variables = this.getVariables(mutation, variables);
                             if (!this.transform(mutation).hasClientExports) return [3, 2];
                             return [4, this.localState.addExportedVariables(mutation, variables, context)];
                         case 1:
-                            variables = _f.sent();
-                            _f.label = 2;
+                            variables = (_h.sent());
+                            _h.label = 2;
                         case 2:
                             mutationStoreValue = this.mutationStore &&
                                 (this.mutationStore[mutationId] = {
@@ -24755,48 +22879,55 @@ type Subscription {
                                     mutationId: mutationId,
                                     document: mutation,
                                     variables: variables,
+                                    fetchPolicy: fetchPolicy,
                                     errorPolicy: errorPolicy,
+                                    context: context,
                                     updateQueries: updateQueries,
                                     update: updateWithProxyFn,
+                                    keepRootFields: keepRootFields,
                                 });
                             }
                             this.broadcastQueries();
                             self = this;
                             return [2, new Promise(function (resolve, reject) {
-                                    var storeResult;
-                                    var error;
-                                    self.getObservableFromLink(mutation, __assign(__assign({}, context), { optimisticResponse: optimisticResponse }), variables, false).subscribe({
-                                        next: function (result) {
-                                            if (graphQLResultHasError(result) && errorPolicy === 'none') {
-                                                error = new ApolloError({
-                                                    graphQLErrors: result.errors,
-                                                });
-                                                return;
-                                            }
-                                            if (mutationStoreValue) {
-                                                mutationStoreValue.loading = false;
-                                                mutationStoreValue.error = null;
-                                            }
-                                            if (fetchPolicy !== 'no-cache') {
-                                                try {
-                                                    self.markMutationResult({
-                                                        mutationId: mutationId,
-                                                        result: result,
-                                                        document: mutation,
-                                                        variables: variables,
-                                                        errorPolicy: errorPolicy,
-                                                        updateQueries: updateQueries,
-                                                        update: updateWithProxyFn,
-                                                    });
-                                                }
-                                                catch (e) {
-                                                    error = new ApolloError({
-                                                        networkError: e,
-                                                    });
-                                                    return;
-                                                }
-                                            }
-                                            storeResult = result;
+                                    return asyncMap(self.getObservableFromLink(mutation, __assign(__assign({}, context), { optimisticResponse: optimisticResponse }), variables, false), function (result) {
+                                        if (graphQLResultHasError(result) && errorPolicy === 'none') {
+                                            throw new ApolloError({
+                                                graphQLErrors: result.errors,
+                                            });
+                                        }
+                                        if (mutationStoreValue) {
+                                            mutationStoreValue.loading = false;
+                                            mutationStoreValue.error = null;
+                                        }
+                                        var storeResult = __assign({}, result);
+                                        if (typeof refetchQueries === "function") {
+                                            refetchQueries = refetchQueries(storeResult);
+                                        }
+                                        if (errorPolicy === 'ignore' &&
+                                            graphQLResultHasError(storeResult)) {
+                                            delete storeResult.errors;
+                                        }
+                                        return self.markMutationResult({
+                                            mutationId: mutationId,
+                                            result: storeResult,
+                                            document: mutation,
+                                            variables: variables,
+                                            fetchPolicy: fetchPolicy,
+                                            errorPolicy: errorPolicy,
+                                            context: context,
+                                            update: updateWithProxyFn,
+                                            updateQueries: updateQueries,
+                                            awaitRefetchQueries: awaitRefetchQueries,
+                                            refetchQueries: refetchQueries,
+                                            removeOptimistic: optimisticResponse ? mutationId : void 0,
+                                            onQueryUpdated: onQueryUpdated,
+                                            keepRootFields: keepRootFields,
+                                        });
+                                    }).subscribe({
+                                        next: function (storeResult) {
+                                            self.broadcastQueries();
+                                            resolve(storeResult);
                                         },
                                         error: function (err) {
                                             if (mutationStoreValue) {
@@ -24807,60 +22938,9 @@ type Subscription {
                                                 self.cache.removeOptimistic(mutationId);
                                             }
                                             self.broadcastQueries();
-                                            reject(new ApolloError({
+                                            reject(err instanceof ApolloError ? err : new ApolloError({
                                                 networkError: err,
                                             }));
-                                        },
-                                        complete: function () {
-                                            if (error && mutationStoreValue) {
-                                                mutationStoreValue.loading = false;
-                                                mutationStoreValue.error = error;
-                                            }
-                                            if (optimisticResponse) {
-                                                self.cache.removeOptimistic(mutationId);
-                                            }
-                                            self.broadcastQueries();
-                                            if (error) {
-                                                reject(error);
-                                                return;
-                                            }
-                                            if (typeof refetchQueries === 'function') {
-                                                refetchQueries = refetchQueries(storeResult);
-                                            }
-                                            var refetchQueryPromises = [];
-                                            if (isNonEmptyArray(refetchQueries)) {
-                                                refetchQueries.forEach(function (refetchQuery) {
-                                                    if (typeof refetchQuery === 'string') {
-                                                        self.queries.forEach(function (_a) {
-                                                            var observableQuery = _a.observableQuery;
-                                                            if (observableQuery &&
-                                                                observableQuery.hasObservers() &&
-                                                                observableQuery.queryName === refetchQuery) {
-                                                                refetchQueryPromises.push(observableQuery.refetch());
-                                                            }
-                                                        });
-                                                    }
-                                                    else {
-                                                        var queryOptions = {
-                                                            query: refetchQuery.query,
-                                                            variables: refetchQuery.variables,
-                                                            fetchPolicy: 'network-only',
-                                                        };
-                                                        if (refetchQuery.context) {
-                                                            queryOptions.context = refetchQuery.context;
-                                                        }
-                                                        refetchQueryPromises.push(self.query(queryOptions));
-                                                    }
-                                                });
-                                            }
-                                            Promise.all(awaitRefetchQueries ? refetchQueryPromises : []).then(function () {
-                                                if (errorPolicy === 'ignore' &&
-                                                    storeResult &&
-                                                    graphQLResultHasError(storeResult)) {
-                                                    delete storeResult.errors;
-                                                }
-                                                resolve(storeResult);
-                                            }, reject);
                                         },
                                     });
                                 })];
@@ -24871,13 +22951,16 @@ type Subscription {
         QueryManager.prototype.markMutationResult = function (mutation, cache) {
             var _this = this;
             if (cache === void 0) { cache = this.cache; }
-            if (shouldWriteResult(mutation.result, mutation.errorPolicy)) {
-                var cacheWrites_1 = [{
-                        result: mutation.result.data,
-                        dataId: 'ROOT_MUTATION',
-                        query: mutation.document,
-                        variables: mutation.variables,
-                    }];
+            var result = mutation.result;
+            var cacheWrites = [];
+            var skipCache = mutation.fetchPolicy === "no-cache";
+            if (!skipCache && shouldWriteResult(result, mutation.errorPolicy)) {
+                cacheWrites.push({
+                    result: result.data,
+                    dataId: 'ROOT_MUTATION',
+                    query: mutation.document,
+                    variables: mutation.variables,
+                });
                 var updateQueries_1 = mutation.updateQueries;
                 if (updateQueries_1) {
                     this.queries.forEach(function (_a, queryId) {
@@ -24896,12 +22979,12 @@ type Subscription {
                         }), currentQueryResult = _c.result, complete = _c.complete;
                         if (complete && currentQueryResult) {
                             var nextQueryResult = updater(currentQueryResult, {
-                                mutationResult: mutation.result,
+                                mutationResult: result,
                                 queryName: document && getOperationName(document) || void 0,
                                 queryVariables: variables,
                             });
                             if (nextQueryResult) {
-                                cacheWrites_1.push({
+                                cacheWrites.push({
                                     result: nextQueryResult,
                                     dataId: 'ROOT_QUERY',
                                     query: document,
@@ -24911,14 +22994,57 @@ type Subscription {
                         }
                     });
                 }
-                cache.performTransaction(function (c) {
-                    cacheWrites_1.forEach(function (write) { return c.write(write); });
-                    var update = mutation.update;
-                    if (update) {
-                        update(c, mutation.result);
-                    }
-                }, null);
             }
+            if (cacheWrites.length > 0 ||
+                mutation.refetchQueries ||
+                mutation.update ||
+                mutation.onQueryUpdated ||
+                mutation.removeOptimistic) {
+                var results_1 = [];
+                this.refetchQueries({
+                    updateCache: function (cache) {
+                        if (!skipCache) {
+                            cacheWrites.forEach(function (write) { return cache.write(write); });
+                        }
+                        var update = mutation.update;
+                        if (update) {
+                            if (!skipCache) {
+                                var diff = cache.diff({
+                                    id: "ROOT_MUTATION",
+                                    query: _this.transform(mutation.document).asQuery,
+                                    variables: mutation.variables,
+                                    optimistic: false,
+                                    returnPartialData: true,
+                                });
+                                if (diff.complete) {
+                                    result = __assign(__assign({}, result), { data: diff.result });
+                                }
+                            }
+                            update(cache, result, {
+                                context: mutation.context,
+                                variables: mutation.variables,
+                            });
+                        }
+                        if (!skipCache && !mutation.keepRootFields) {
+                            cache.modify({
+                                id: 'ROOT_MUTATION',
+                                fields: function (value, _a) {
+                                    var fieldName = _a.fieldName, DELETE = _a.DELETE;
+                                    return fieldName === "__typename" ? value : DELETE;
+                                },
+                            });
+                        }
+                    },
+                    include: mutation.refetchQueries,
+                    optimistic: false,
+                    removeOptimistic: mutation.removeOptimistic,
+                    onQueryUpdated: mutation.onQueryUpdated || null,
+                }).forEach(function (result) { return results_1.push(result); });
+                if (mutation.awaitRefetchQueries || mutation.onQueryUpdated) {
+                    return Promise.all(results_1).then(function () { return result; });
+                }
+            }
+            return Promise.resolve(result);
         };
         QueryManager.prototype.markMutationOptimistic = function (optimisticResponse, mutation) {
             var _this = this;
@@ -24930,7 +23056,7 @@ type Subscription {
                     _this.markMutationResult(__assign(__assign({}, mutation), { result: { data: data } }), cache);
                 }
                 catch (error) {
-                    process.env.NODE_ENV === "production" || invariant$1.error(error);
+                    __DEV__ && invariant$1.error(error);
                 }
             }, mutation.mutationId);
         };
@@ -24970,6 +23096,13 @@ type Subscription {
                     clientQuery: clientQuery,
                     serverQuery: serverQuery,
                     defaultVars: getDefaultValues(getOperationDefinition(transformed)),
+                    asQuery: __assign(__assign({}, transformed), { definitions: transformed.definitions.map(function (def) {
+                            if (def.kind === "OperationDefinition" &&
+                                def.operation !== "query") {
+                                return __assign(__assign({}, def), { operation: "query" });
+                            }
+                            return def;
+                        }) })
                 };
                 var add = function (doc) {
                     if (doc && !transformCache.has(doc)) {
@@ -24991,7 +23124,7 @@ type Subscription {
             if (typeof options.notifyOnNetworkStatusChange === 'undefined') {
                 options.notifyOnNetworkStatusChange = false;
             }
-            var queryInfo = new QueryInfo(this.cache);
+            var queryInfo = new QueryInfo(this);
             var observable = new ObservableQuery({
                 queryManager: this,
                 queryInfo: queryInfo,
@@ -24999,20 +23132,20 @@ type Subscription {
             });
             this.queries.set(observable.queryId, queryInfo);
             queryInfo.init({
-                document: options.query,
+                document: observable.query,
                 observableQuery: observable,
-                variables: options.variables,
+                variables: observable.variables,
             });
             return observable;
         };
-        QueryManager.prototype.query = function (options) {
+        QueryManager.prototype.query = function (options, queryId) {
             var _this = this;
-            process.env.NODE_ENV === "production" ? invariant$1(options.query, 15) : invariant$1(options.query, 'query option is required. You must specify your GraphQL document ' +
-                'in the query option.');
-            process.env.NODE_ENV === "production" ? invariant$1(options.query.kind === 'Document', 16) : invariant$1(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.');
-            process.env.NODE_ENV === "production" ? invariant$1(!options.returnPartialData, 17) : invariant$1(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.');
-            process.env.NODE_ENV === "production" ? invariant$1(!options.pollInterval, 18) : invariant$1(!options.pollInterval, 'pollInterval option only supported on watchQuery.');
-            var queryId = this.generateQueryId();
+            if (queryId === void 0) { queryId = this.generateQueryId(); }
+            __DEV__ ? invariant$1(options.query, 'query option is required. You must specify your GraphQL document ' +
+                'in the query option.') : invariant$1(options.query, 14);
+            __DEV__ ? invariant$1(options.query.kind === 'Document', 'You must wrap the query string in a "gql" tag.') : invariant$1(options.query.kind === 'Document', 15);
+            __DEV__ ? invariant$1(!options.returnPartialData, 'returnPartialData option only supported on watchQuery.') : invariant$1(!options.returnPartialData, 16);
+            __DEV__ ? invariant$1(!options.pollInterval, 'pollInterval option only supported on watchQuery.') : invariant$1(!options.pollInterval, 17);
             return this.fetchQuery(queryId, options).finally(function () { return _this.stopQuery(queryId); });
         };
         QueryManager.prototype.generateQueryId = function () {
@@ -25033,8 +23166,11 @@ type Subscription {
             if (queryInfo)
                 queryInfo.stop();
         };
-        QueryManager.prototype.clearStore = function () {
-            this.cancelPendingFetches(process.env.NODE_ENV === "production" ? new InvariantError(19) : new InvariantError('Store reset while query was in flight (not completed in link chain)'));
+        QueryManager.prototype.clearStore = function (options) {
+            if (options === void 0) { options = {
+                discardWatches: true,
+            }; }
+            this.cancelPendingFetches(__DEV__ ? new InvariantError('Store reset while query was in flight (not completed in link chain)') : new InvariantError(18));
             this.queries.forEach(function (queryInfo) {
                 if (queryInfo.observableQuery) {
                     queryInfo.networkStatus = NetworkStatus.loading;
@@ -25046,29 +23182,89 @@ type Subscription {
             if (this.mutationStore) {
                 this.mutationStore = Object.create(null);
             }
-            return this.cache.reset();
+            return this.cache.reset(options);
         };
-        QueryManager.prototype.resetStore = function () {
+        QueryManager.prototype.getObservableQueries = function (include) {
             var _this = this;
-            return this.clearStore().then(function () {
-                return _this.reFetchObservableQueries();
+            if (include === void 0) { include = "active"; }
+            var queries = new Map();
+            var queryNamesAndDocs = new Map();
+            var legacyQueryOptions = new Set();
+            if (Array.isArray(include)) {
+                include.forEach(function (desc) {
+                    if (typeof desc === "string") {
+                        queryNamesAndDocs.set(desc, false);
+                    }
+                    else if (isDocumentNode(desc)) {
+                        queryNamesAndDocs.set(_this.transform(desc).document, false);
+                    }
+                    else if (isNonNullObject(desc) && desc.query) {
+                        legacyQueryOptions.add(desc);
+                    }
+                });
+            }
+            this.queries.forEach(function (_a, queryId) {
+                var oq = _a.observableQuery, document = _a.document;
+                if (oq) {
+                    if (include === "all") {
+                        queries.set(queryId, oq);
+                        return;
+                    }
+                    var queryName = oq.queryName, fetchPolicy = oq.options.fetchPolicy;
+                    if (fetchPolicy === "standby" ||
+                        (include === "active" && !oq.hasObservers())) {
+                        return;
+                    }
+                    if (include === "active" ||
+                        (queryName && queryNamesAndDocs.has(queryName)) ||
+                        (document && queryNamesAndDocs.has(document))) {
+                        queries.set(queryId, oq);
+                        if (queryName)
+                            queryNamesAndDocs.set(queryName, true);
+                        if (document)
+                            queryNamesAndDocs.set(document, true);
+                    }
+                }
             });
+            if (legacyQueryOptions.size) {
+                legacyQueryOptions.forEach(function (options) {
+                    var queryId = makeUniqueId("legacyOneTimeQuery");
+                    var queryInfo = _this.getQuery(queryId).init({
+                        document: options.query,
+                        variables: options.variables,
+                    });
+                    var oq = new ObservableQuery({
+                        queryManager: _this,
+                        queryInfo: queryInfo,
+                        options: __assign(__assign({}, options), { fetchPolicy: "network-only" }),
+                    });
+                    invariant$1(oq.queryId === queryId);
+                    queryInfo.setObservableQuery(oq);
+                    queries.set(queryId, oq);
+                });
+            }
+            if (__DEV__ && queryNamesAndDocs.size) {
+                queryNamesAndDocs.forEach(function (included, nameOrDoc) {
+                    if (!included) {
+                        __DEV__ && invariant$1.warn("Unknown query ".concat(typeof nameOrDoc === "string" ? "named " : "").concat(JSON.stringify(nameOrDoc, null, 2), " requested in refetchQueries options.include array"));
+                    }
+                });
+            }
+            return queries;
         };
         QueryManager.prototype.reFetchObservableQueries = function (includeStandby) {
             var _this = this;
             if (includeStandby === void 0) { includeStandby = false; }
             var observableQueryPromises = [];
-            this.queries.forEach(function (_a, queryId) {
-                var observableQuery = _a.observableQuery;
-                if (observableQuery && observableQuery.hasObservers()) {
-                    var fetchPolicy = observableQuery.options.fetchPolicy;
-                    observableQuery.resetLastResults();
-                    if (fetchPolicy !== 'cache-only' &&
-                        (includeStandby || fetchPolicy !== 'standby')) {
-                        observableQueryPromises.push(observableQuery.refetch());
-                    }
-                    _this.getQuery(queryId).setDiff(null);
+            this.getObservableQueries(includeStandby ? "all" : "active").forEach(function (observableQuery, queryId) {
+                var fetchPolicy = observableQuery.options.fetchPolicy;
+                observableQuery.resetLastResults();
+                if (includeStandby ||
+                    (fetchPolicy !== "standby" &&
+                        fetchPolicy !== "cache-only")) {
+                    observableQueryPromises.push(observableQuery.refetch());
                 }
+                _this.getQuery(queryId).setDiff(null);
             });
             this.broadcastQueries();
             return Promise.all(observableQueryPromises);
@@ -25082,7 +23278,7 @@ type Subscription {
             query = this.transform(query).document;
             variables = this.getVariables(query, variables);
             var makeObservable = function (variables) {
-                return _this.getObservableFromLink(query, context, variables, false).map(function (result) {
+                return _this.getObservableFromLink(query, context, variables).map(function (result) {
                     if (fetchPolicy !== 'no-cache') {
                         if (shouldWriteResult(result, errorPolicy)) {
                             _this.cache.write({
@@ -25122,8 +23318,10 @@ type Subscription {
         };
         QueryManager.prototype.removeQuery = function (queryId) {
             this.fetchCancelFns.delete(queryId);
-            this.getQuery(queryId).stop();
-            this.queries.delete(queryId);
+            if (this.queries.has(queryId)) {
+                this.getQuery(queryId).stop();
+                this.queries.delete(queryId);
+            }
         };
         QueryManager.prototype.broadcastQueries = function () {
             if (this.onBroadcast)
@@ -25151,7 +23349,7 @@ type Subscription {
                 if (deduplication) {
                     var byVariables_1 = inFlightLinkObservables_1.get(serverQuery) || new Map();
                     inFlightLinkObservables_1.set(serverQuery, byVariables_1);
-                    var varJson_1 = JSON.stringify(variables);
+                    var varJson_1 = canonicalStringify(variables);
                     observable = byVariables_1.get(varJson_1);
                     if (!observable) {
                         var concast = new Concast([
@@ -25191,7 +23389,7 @@ type Subscription {
             }
             return observable;
         };
-        QueryManager.prototype.getResultsFromLink = function (queryInfo, allowCacheWrite, options) {
+        QueryManager.prototype.getResultsFromLink = function (queryInfo, cacheWriteBehavior, options) {
             var requestId = queryInfo.lastRequestId = this.generateRequestId();
             return asyncMap(this.getObservableFromLink(queryInfo.document, options.context, options.variables), function (result) {
                 var hasErrors = isNonEmptyArray(result.errors);
@@ -25201,16 +23399,17 @@ type Subscription {
                             graphQLErrors: result.errors,
                         }));
                     }
-                    queryInfo.markResult(result, options, allowCacheWrite);
+                    queryInfo.markResult(result, options, cacheWriteBehavior);
                     queryInfo.markReady();
                 }
                 var aqr = {
                     data: result.data,
                     loading: false,
-                    networkStatus: queryInfo.networkStatus || NetworkStatus.ready,
+                    networkStatus: NetworkStatus.ready,
                 };
                 if (hasErrors && options.errorPolicy !== "ignore") {
                     aqr.errors = result.errors;
+                    aqr.networkStatus = NetworkStatus.error;
                 }
                 return aqr;
             }, function (networkError) {
@@ -25229,22 +23428,8 @@ type Subscription {
             var query = this.transform(options.query).document;
             var variables = this.getVariables(query, options.variables);
             var queryInfo = this.getQuery(queryId);
-            var oldNetworkStatus = queryInfo.networkStatus;
-            var _a = options.fetchPolicy, fetchPolicy = _a === void 0 ? "cache-first" : _a, _b = options.errorPolicy, errorPolicy = _b === void 0 ? "none" : _b, _c = options.returnPartialData, returnPartialData = _c === void 0 ? false : _c, _d = options.notifyOnNetworkStatusChange, notifyOnNetworkStatusChange = _d === void 0 ? false : _d, _e = options.context, context = _e === void 0 ? {} : _e;
-            var mightUseNetwork = fetchPolicy === "cache-first" ||
-                fetchPolicy === "cache-and-network" ||
-                fetchPolicy === "network-only" ||
-                fetchPolicy === "no-cache";
-            if (mightUseNetwork &&
-                notifyOnNetworkStatusChange &&
-                typeof oldNetworkStatus === "number" &&
-                oldNetworkStatus !== networkStatus &&
-                isNetworkRequestInFlight(networkStatus)) {
-                if (fetchPolicy !== "cache-first") {
-                    fetchPolicy = "cache-and-network";
-                }
-                returnPartialData = true;
-            }
+            var defaults = this.defaultOptions.watchQuery;
+            var _a = options.fetchPolicy, fetchPolicy = _a === void 0 ? defaults && defaults.fetchPolicy || "cache-first" : _a, _b = options.errorPolicy, errorPolicy = _b === void 0 ? defaults && defaults.errorPolicy || "none" : _b, _c = options.returnPartialData, returnPartialData = _c === void 0 ? false : _c, _d = options.notifyOnNetworkStatusChange, notifyOnNetworkStatusChange = _d === void 0 ? false : _d, _e = options.context, context = _e === void 0 ? {} : _e;
             var normalized = Object.assign({}, options, {
                 query: query,
                 variables: variables,
@@ -25256,31 +23441,99 @@ type Subscription {
             });
             var fromVariables = function (variables) {
                 normalized.variables = variables;
-                return _this.fetchQueryByPolicy(queryInfo, normalized, networkStatus);
+                var concastSources = _this.fetchQueryByPolicy(queryInfo, normalized, networkStatus);
+                if (normalized.fetchPolicy !== "standby" &&
+                    concastSources.length > 0 &&
+                    queryInfo.observableQuery) {
+                    queryInfo.observableQuery["applyNextFetchPolicy"]("after-fetch", options);
+                }
+                return concastSources;
             };
+            var cleanupCancelFn = function () { return _this.fetchCancelFns.delete(queryId); };
             this.fetchCancelFns.set(queryId, function (reason) {
-                Promise.resolve().then(function () { return concast.cancel(reason); });
+                cleanupCancelFn();
+                setTimeout(function () { return concast.cancel(reason); });
             });
             var concast = new Concast(this.transform(normalized.query).hasClientExports
                 ? this.localState.addExportedVariables(normalized.query, normalized.variables, normalized.context).then(fromVariables)
                 : fromVariables(normalized.variables));
-            concast.cleanup(function () {
-                _this.fetchCancelFns.delete(queryId);
-                var nextFetchPolicy = options.nextFetchPolicy;
-                if (nextFetchPolicy) {
-                    options.nextFetchPolicy = void 0;
-                    options.fetchPolicy = typeof nextFetchPolicy === "function"
-                        ? nextFetchPolicy.call(options, options.fetchPolicy || "cache-first")
-                        : nextFetchPolicy;
-                }
-            });
+            concast.promise.then(cleanupCancelFn, cleanupCancelFn);
             return concast;
         };
-        QueryManager.prototype.fetchQueryByPolicy = function (queryInfo, options, networkStatus) {
+        QueryManager.prototype.refetchQueries = function (_a) {
             var _this = this;
-            var query = options.query, variables = options.variables, fetchPolicy = options.fetchPolicy, errorPolicy = options.errorPolicy, returnPartialData = options.returnPartialData, context = options.context;
+            var updateCache = _a.updateCache, include = _a.include, _b = _a.optimistic, optimistic = _b === void 0 ? false : _b, _c = _a.removeOptimistic, removeOptimistic = _c === void 0 ? optimistic ? makeUniqueId("refetchQueries") : void 0 : _c, onQueryUpdated = _a.onQueryUpdated;
+            var includedQueriesById = new Map();
+            if (include) {
+                this.getObservableQueries(include).forEach(function (oq, queryId) {
+                    includedQueriesById.set(queryId, {
+                        oq: oq,
+                        lastDiff: _this.getQuery(queryId).getDiff(),
+                    });
+                });
+            }
+            var results = new Map;
+            if (updateCache) {
+                this.cache.batch({
+                    update: updateCache,
+                    optimistic: optimistic && removeOptimistic || false,
+                    removeOptimistic: removeOptimistic,
+                    onWatchUpdated: function (watch, diff, lastDiff) {
+                        var oq = watch.watcher instanceof QueryInfo &&
+                            watch.watcher.observableQuery;
+                        if (oq) {
+                            if (onQueryUpdated) {
+                                includedQueriesById.delete(oq.queryId);
+                                var result = onQueryUpdated(oq, diff, lastDiff);
+                                if (result === true) {
+                                    result = oq.refetch();
+                                }
+                                if (result !== false) {
+                                    results.set(oq, result);
+                                }
+                                return result;
+                            }
+                            if (onQueryUpdated !== null) {
+                                includedQueriesById.set(oq.queryId, { oq: oq, lastDiff: lastDiff, diff: diff });
+                            }
+                        }
+                    },
+                });
+            }
+            if (includedQueriesById.size) {
+                includedQueriesById.forEach(function (_a, queryId) {
+                    var oq = _a.oq, lastDiff = _a.lastDiff, diff = _a.diff;
+                    var result;
+                    if (onQueryUpdated) {
+                        if (!diff) {
+                            var info = oq["queryInfo"];
+                            info.reset();
+                            diff = info.getDiff();
+                        }
+                        result = onQueryUpdated(oq, diff, lastDiff);
+                    }
+                    if (!onQueryUpdated || result === true) {
+                        result = oq.refetch();
+                    }
+                    if (result !== false) {
+                        results.set(oq, result);
+                    }
+                    if (queryId.indexOf("legacyOneTimeQuery") >= 0) {
+                        _this.stopQueryNoBroadcast(queryId);
+                    }
+                });
+            }
+            if (removeOptimistic) {
+                this.cache.removeOptimistic(removeOptimistic);
+            }
+            return results;
+        };
+        QueryManager.prototype.fetchQueryByPolicy = function (queryInfo, _a, networkStatus) {
+            var _this = this;
+            var query = _a.query, variables = _a.variables, fetchPolicy = _a.fetchPolicy, refetchWritePolicy = _a.refetchWritePolicy, errorPolicy = _a.errorPolicy, returnPartialData = _a.returnPartialData, context = _a.context, notifyOnNetworkStatusChange = _a.notifyOnNetworkStatusChange;
+            var oldNetworkStatus = queryInfo.networkStatus;
             queryInfo.init({
-                document: query,
+                document: this.transform(query).document,
                 variables: variables,
                 networkStatus: networkStatus,
             });
@@ -25288,32 +23541,37 @@ type Subscription {
             var resultsFromCache = function (diff, networkStatus) {
                 if (networkStatus === void 0) { networkStatus = queryInfo.networkStatus || NetworkStatus.loading; }
                 var data = diff.result;
-                if (process.env.NODE_ENV !== 'production' &&
-                    isNonEmptyArray(diff.missing) &&
-                    !equal(data, {}) &&
-                    !returnPartialData) {
-                    process.env.NODE_ENV === "production" || invariant$1.warn("Missing cache result fields: " + diff.missing.map(function (m) { return m.path.join('.'); }).join(', '), diff.missing);
+                if (__DEV__ &&
+                    !returnPartialData &&
+                    !equal(data, {})) {
+                    logMissingFieldErrors(diff.missing);
                 }
                 var fromData = function (data) { return Observable.of(__assign({ data: data, loading: isNetworkRequestInFlight(networkStatus), networkStatus: networkStatus }, (diff.complete ? null : { partial: true }))); };
-                if (_this.transform(query).hasForcedResolvers) {
+                if (data && _this.transform(query).hasForcedResolvers) {
                     return _this.localState.runResolvers({
                         document: query,
                         remoteResult: { data: data },
                         context: context,
                         variables: variables,
                         onlyRunForcedResolvers: true,
-                    }).then(function (resolved) { return fromData(resolved.data); });
+                    }).then(function (resolved) { return fromData(resolved.data || void 0); });
                 }
                 return fromData(data);
             };
-            var resultsFromLink = function (allowCacheWrite) {
-                return _this.getResultsFromLink(queryInfo, allowCacheWrite, {
-                    variables: variables,
-                    context: context,
-                    fetchPolicy: fetchPolicy,
-                    errorPolicy: errorPolicy,
-                });
-            };
+            var cacheWriteBehavior = fetchPolicy === "no-cache" ? 0 :
+                (networkStatus === NetworkStatus.refetch &&
+                    refetchWritePolicy !== "merge") ? 1
+                    : 2;
+            var resultsFromLink = function () { return _this.getResultsFromLink(queryInfo, cacheWriteBehavior, {
+                variables: variables,
+                context: context,
+                fetchPolicy: fetchPolicy,
+                errorPolicy: errorPolicy,
+            }); };
+            var shouldNotify = notifyOnNetworkStatusChange &&
+                typeof oldNetworkStatus === "number" &&
+                oldNetworkStatus !== networkStatus &&
+                isNetworkRequestInFlight(networkStatus);
             switch (fetchPolicy) {
                 default:
                 case "cache-first": {
@@ -25323,26 +23581,26 @@ type Subscription {
                             resultsFromCache(diff, queryInfo.markReady()),
                         ];
                     }
-                    if (returnPartialData) {
+                    if (returnPartialData || shouldNotify) {
                         return [
                             resultsFromCache(diff),
-                            resultsFromLink(true),
+                            resultsFromLink(),
                         ];
                     }
                     return [
-                        resultsFromLink(true),
+                        resultsFromLink(),
                     ];
                 }
                 case "cache-and-network": {
                     var diff = readCache();
-                    if (diff.complete || returnPartialData) {
+                    if (diff.complete || returnPartialData || shouldNotify) {
                         return [
                             resultsFromCache(diff),
-                            resultsFromLink(true),
+                            resultsFromLink(),
                         ];
                     }
                     return [
-                        resultsFromLink(true),
+                        resultsFromLink(),
                     ];
                 }
                 case "cache-only":
@@ -25350,16 +23608,28 @@ type Subscription {
                         resultsFromCache(readCache(), queryInfo.markReady()),
                     ];
                 case "network-only":
-                    return [resultsFromLink(true)];
+                    if (shouldNotify) {
+                        return [
+                            resultsFromCache(readCache()),
+                            resultsFromLink(),
+                        ];
+                    }
+                    return [resultsFromLink()];
                 case "no-cache":
-                    return [resultsFromLink(false)];
+                    if (shouldNotify) {
+                        return [
+                            resultsFromCache(queryInfo.getDiff()),
+                            resultsFromLink(),
+                        ];
+                    }
+                    return [resultsFromLink()];
                 case "standby":
                     return [];
             }
         };
         QueryManager.prototype.getQuery = function (queryId) {
             if (queryId && !this.queries.has(queryId)) {
-                this.queries.set(queryId, new QueryInfo(this.cache));
+                this.queries.set(queryId, new QueryInfo(this, queryId));
             }
             return this.queries.get(queryId);
         };
@@ -25372,20 +23642,14 @@ type Subscription {
     }());
 
     var hasSuggestedDevtools = false;
-    function mergeOptions(defaults, options) {
-        return compact(defaults, options, options.variables && {
-            variables: __assign(__assign({}, defaults.variables), options.variables),
-        });
-    }
     var ApolloClient = (function () {
         function ApolloClient(options) {
             var _this = this;
-            this.defaultOptions = {};
             this.resetStoreCallbacks = [];
             this.clearStoreCallbacks = [];
             var uri = options.uri, credentials = options.credentials, headers = options.headers, cache = options.cache, _a = options.ssrMode, ssrMode = _a === void 0 ? false : _a, _b = options.ssrForceFetchDelay, ssrForceFetchDelay = _b === void 0 ? 0 : _b, _c = options.connectToDevTools, connectToDevTools = _c === void 0 ? typeof window === 'object' &&
                 !window.__APOLLO_CLIENT__ &&
-                process.env.NODE_ENV !== 'production' : _c, _d = options.queryDeduplication, queryDeduplication = _d === void 0 ? true : _d, defaultOptions = options.defaultOptions, _e = options.assumeImmutableResults, assumeImmutableResults = _e === void 0 ? false : _e, resolvers = options.resolvers, typeDefs = options.typeDefs, fragmentMatcher = options.fragmentMatcher, clientAwarenessName = options.name, clientAwarenessVersion = options.version;
+                __DEV__ : _c, _d = options.queryDeduplication, queryDeduplication = _d === void 0 ? true : _d, defaultOptions = options.defaultOptions, _e = options.assumeImmutableResults, assumeImmutableResults = _e === void 0 ? false : _e, resolvers = options.resolvers, typeDefs = options.typeDefs, fragmentMatcher = options.fragmentMatcher, clientAwarenessName = options.name, clientAwarenessVersion = options.version;
             var link = options.link;
             if (!link) {
                 link = uri
@@ -25393,15 +23657,15 @@ type Subscription {
                     : ApolloLink.empty();
             }
             if (!cache) {
-                throw process.env.NODE_ENV === "production" ? new InvariantError(9) : new InvariantError("To initialize Apollo Client, you must specify a 'cache' property " +
+                throw __DEV__ ? new InvariantError("To initialize Apollo Client, you must specify a 'cache' property " +
                     "in the options object. \n" +
-                    "For more information, please visit: https://go.apollo.dev/c/docs");
+                    "For more information, please visit: https://go.apollo.dev/c/docs") : new InvariantError(7);
             }
             this.link = link;
             this.cache = cache;
             this.disableNetworkFetches = ssrMode || ssrForceFetchDelay > 0;
             this.queryDeduplication = queryDeduplication;
-            this.defaultOptions = defaultOptions || {};
+            this.defaultOptions = defaultOptions || Object.create(null);
             this.typeDefs = typeDefs;
             if (ssrForceFetchDelay) {
                 setTimeout(function () { return (_this.disableNetworkFetches = false); }, ssrForceFetchDelay);
@@ -25414,7 +23678,7 @@ type Subscription {
             if (connectToDevTools && typeof window === 'object') {
                 window.__APOLLO_CLIENT__ = this;
             }
-            if (!hasSuggestedDevtools && process.env.NODE_ENV !== 'production') {
+            if (!hasSuggestedDevtools && __DEV__) {
                 hasSuggestedDevtools = true;
                 if (typeof window !== 'undefined' &&
                     window.document &&
@@ -25433,7 +23697,7 @@ type Subscription {
                         }
                     }
                     if (url) {
-                        invariant$1.log("Download the Apollo DevTools for a better development " +
+                        __DEV__ && invariant$1.log("Download the Apollo DevTools for a better development " +
                             "experience: " + url);
                     }
                 }
@@ -25448,6 +23712,7 @@ type Subscription {
             this.queryManager = new QueryManager({
                 cache: this.cache,
                 link: this.link,
+                defaultOptions: this.defaultOptions,
                 queryDeduplication: queryDeduplication,
                 ssrMode: ssrMode,
                 clientAwareness: {
@@ -25488,10 +23753,10 @@ type Subscription {
             if (this.defaultOptions.query) {
                 options = mergeOptions(this.defaultOptions.query, options);
             }
-            process.env.NODE_ENV === "production" ? invariant$1(options.fetchPolicy !== 'cache-and-network', 10) : invariant$1(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
+            __DEV__ ? invariant$1(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
                 'client.query can only return a single result. Please use client.watchQuery ' +
                 'to receive multiple results from the cache and the network, or consider ' +
-                'using a different fetchPolicy, such as cache-first or network-only.');
+                'using a different fetchPolicy, such as cache-first or network-only.') : invariant$1(options.fetchPolicy !== 'cache-and-network', 8);
             if (this.disableNetworkFetches && options.fetchPolicy === 'network-only') {
                 options = __assign(__assign({}, options), { fetchPolicy: 'cache-first' });
             }
@@ -25531,14 +23796,18 @@ type Subscription {
         ApolloClient.prototype.resetStore = function () {
             var _this = this;
             return Promise.resolve()
-                .then(function () { return _this.queryManager.clearStore(); })
+                .then(function () { return _this.queryManager.clearStore({
+                discardWatches: false,
+            }); })
                 .then(function () { return Promise.all(_this.resetStoreCallbacks.map(function (fn) { return fn(); })); })
                 .then(function () { return _this.reFetchObservableQueries(); });
         };
         ApolloClient.prototype.clearStore = function () {
             var _this = this;
             return Promise.resolve()
-                .then(function () { return _this.queryManager.clearStore(); })
+                .then(function () { return _this.queryManager.clearStore({
+                discardWatches: true,
+            }); })
                 .then(function () { return Promise.all(_this.clearStoreCallbacks.map(function (fn) { return fn(); })); });
         };
         ApolloClient.prototype.onResetStore = function (cb) {
@@ -25557,6 +23826,26 @@ type Subscription {
         };
         ApolloClient.prototype.reFetchObservableQueries = function (includeStandby) {
             return this.queryManager.reFetchObservableQueries(includeStandby);
+        };
+        ApolloClient.prototype.refetchQueries = function (options) {
+            var map = this.queryManager.refetchQueries(options);
+            var queries = [];
+            var results = [];
+            map.forEach(function (result, obsQuery) {
+                queries.push(obsQuery);
+                results.push(result);
+            });
+            var result = Promise.all(results);
+            result.queries = queries;
+            result.results = results;
+            result.catch(function (error) {
+                __DEV__ && invariant$1.debug("In client.refetchQueries, Promise.all promise rejected with error ".concat(error));
+            });
+            return result;
+        };
+        ApolloClient.prototype.getObservableQueries = function (include) {
+            if (include === void 0) { include = "active"; }
+            return this.queryManager.getObservableQueries(include);
         };
         ApolloClient.prototype.extract = function (optimistic) {
             return this.cache.extract(optimistic);
@@ -25582,1116 +23871,734 @@ type Subscription {
         return ApolloClient;
     }());
 
-    /**
-     * Expose `Backoff`.
-     */
-
-    var backo2 = Backoff;
-
-    /**
-     * Initialize backoff timer with `opts`.
-     *
-     * - `min` initial timeout in milliseconds [100]
-     * - `max` max timeout [10000]
-     * - `jitter` [0]
-     * - `factor` [2]
-     *
-     * @param {Object} opts
-     * @api public
-     */
-
-    function Backoff(opts) {
-      opts = opts || {};
-      this.ms = opts.min || 100;
-      this.max = opts.max || 10000;
-      this.factor = opts.factor || 2;
-      this.jitter = opts.jitter > 0 && opts.jitter <= 1 ? opts.jitter : 0;
-      this.attempts = 0;
+    function isLikeCloseEvent(val) {
+        return isNonNullObject(val) && 'code' in val && 'reason' in val;
     }
-
-    /**
-     * Return the backoff duration.
-     *
-     * @return {Number}
-     * @api public
-     */
-
-    Backoff.prototype.duration = function(){
-      var ms = this.ms * Math.pow(this.factor, this.attempts++);
-      if (this.jitter) {
-        var rand =  Math.random();
-        var deviation = Math.floor(rand * this.jitter * ms);
-        ms = (Math.floor(rand * 10) & 1) == 0  ? ms - deviation : ms + deviation;
-      }
-      return Math.min(ms, this.max) | 0;
-    };
-
-    /**
-     * Reset the number of attempts.
-     *
-     * @api public
-     */
-
-    Backoff.prototype.reset = function(){
-      this.attempts = 0;
-    };
-
-    /**
-     * Set the minimum duration
-     *
-     * @api public
-     */
-
-    Backoff.prototype.setMin = function(min){
-      this.ms = min;
-    };
-
-    /**
-     * Set the maximum duration
-     *
-     * @api public
-     */
-
-    Backoff.prototype.setMax = function(max){
-      this.max = max;
-    };
-
-    /**
-     * Set the jitter
-     *
-     * @api public
-     */
-
-    Backoff.prototype.setJitter = function(jitter){
-      this.jitter = jitter;
-    };
-
-    var eventemitter3 = createCommonjsModule(function (module) {
-
-    var has = Object.prototype.hasOwnProperty
-      , prefix = '~';
-
-    /**
-     * Constructor to create a storage for our `EE` objects.
-     * An `Events` instance is a plain object whose properties are event names.
-     *
-     * @constructor
-     * @private
-     */
-    function Events() {}
-
-    //
-    // We try to not inherit from `Object.prototype`. In some engines creating an
-    // instance in this way is faster than calling `Object.create(null)` directly.
-    // If `Object.create(null)` is not supported we prefix the event names with a
-    // character to make sure that the built-in object properties are not
-    // overridden or used as an attack vector.
-    //
-    if (Object.create) {
-      Events.prototype = Object.create(null);
-
-      //
-      // This hack is needed because the `__proto__` property is still inherited in
-      // some old browsers like Android 4, iPhone 5.1, Opera 11 and Safari 5.
-      //
-      if (!new Events().__proto__) prefix = false;
-    }
-
-    /**
-     * Representation of a single event listener.
-     *
-     * @param {Function} fn The listener function.
-     * @param {*} context The context to invoke the listener with.
-     * @param {Boolean} [once=false] Specify if the listener is a one-time listener.
-     * @constructor
-     * @private
-     */
-    function EE(fn, context, once) {
-      this.fn = fn;
-      this.context = context;
-      this.once = once || false;
-    }
-
-    /**
-     * Add a listener for a given event.
-     *
-     * @param {EventEmitter} emitter Reference to the `EventEmitter` instance.
-     * @param {(String|Symbol)} event The event name.
-     * @param {Function} fn The listener function.
-     * @param {*} context The context to invoke the listener with.
-     * @param {Boolean} once Specify if the listener is a one-time listener.
-     * @returns {EventEmitter}
-     * @private
-     */
-    function addListener(emitter, event, fn, context, once) {
-      if (typeof fn !== 'function') {
-        throw new TypeError('The listener must be a function');
-      }
-
-      var listener = new EE(fn, context || emitter, once)
-        , evt = prefix ? prefix + event : event;
-
-      if (!emitter._events[evt]) emitter._events[evt] = listener, emitter._eventsCount++;
-      else if (!emitter._events[evt].fn) emitter._events[evt].push(listener);
-      else emitter._events[evt] = [emitter._events[evt], listener];
-
-      return emitter;
-    }
-
-    /**
-     * Clear event by name.
-     *
-     * @param {EventEmitter} emitter Reference to the `EventEmitter` instance.
-     * @param {(String|Symbol)} evt The Event name.
-     * @private
-     */
-    function clearEvent(emitter, evt) {
-      if (--emitter._eventsCount === 0) emitter._events = new Events();
-      else delete emitter._events[evt];
-    }
-
-    /**
-     * Minimal `EventEmitter` interface that is molded against the Node.js
-     * `EventEmitter` interface.
-     *
-     * @constructor
-     * @public
-     */
-    function EventEmitter() {
-      this._events = new Events();
-      this._eventsCount = 0;
-    }
-
-    /**
-     * Return an array listing the events for which the emitter has registered
-     * listeners.
-     *
-     * @returns {Array}
-     * @public
-     */
-    EventEmitter.prototype.eventNames = function eventNames() {
-      var names = []
-        , events
-        , name;
-
-      if (this._eventsCount === 0) return names;
-
-      for (name in (events = this._events)) {
-        if (has.call(events, name)) names.push(prefix ? name.slice(1) : name);
-      }
-
-      if (Object.getOwnPropertySymbols) {
-        return names.concat(Object.getOwnPropertySymbols(events));
-      }
-
-      return names;
-    };
-
-    /**
-     * Return the listeners registered for a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @returns {Array} The registered listeners.
-     * @public
-     */
-    EventEmitter.prototype.listeners = function listeners(event) {
-      var evt = prefix ? prefix + event : event
-        , handlers = this._events[evt];
-
-      if (!handlers) return [];
-      if (handlers.fn) return [handlers.fn];
-
-      for (var i = 0, l = handlers.length, ee = new Array(l); i < l; i++) {
-        ee[i] = handlers[i].fn;
-      }
-
-      return ee;
-    };
-
-    /**
-     * Return the number of listeners listening to a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @returns {Number} The number of listeners.
-     * @public
-     */
-    EventEmitter.prototype.listenerCount = function listenerCount(event) {
-      var evt = prefix ? prefix + event : event
-        , listeners = this._events[evt];
-
-      if (!listeners) return 0;
-      if (listeners.fn) return 1;
-      return listeners.length;
-    };
-
-    /**
-     * Calls each of the listeners registered for a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @returns {Boolean} `true` if the event had listeners, else `false`.
-     * @public
-     */
-    EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
-      var evt = prefix ? prefix + event : event;
-
-      if (!this._events[evt]) return false;
-
-      var listeners = this._events[evt]
-        , len = arguments.length
-        , args
-        , i;
-
-      if (listeners.fn) {
-        if (listeners.once) this.removeListener(event, listeners.fn, undefined, true);
-
-        switch (len) {
-          case 1: return listeners.fn.call(listeners.context), true;
-          case 2: return listeners.fn.call(listeners.context, a1), true;
-          case 3: return listeners.fn.call(listeners.context, a1, a2), true;
-          case 4: return listeners.fn.call(listeners.context, a1, a2, a3), true;
-          case 5: return listeners.fn.call(listeners.context, a1, a2, a3, a4), true;
-          case 6: return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
-        }
-
-        for (i = 1, args = new Array(len -1); i < len; i++) {
-          args[i - 1] = arguments[i];
-        }
-
-        listeners.fn.apply(listeners.context, args);
-      } else {
-        var length = listeners.length
-          , j;
-
-        for (i = 0; i < length; i++) {
-          if (listeners[i].once) this.removeListener(event, listeners[i].fn, undefined, true);
-
-          switch (len) {
-            case 1: listeners[i].fn.call(listeners[i].context); break;
-            case 2: listeners[i].fn.call(listeners[i].context, a1); break;
-            case 3: listeners[i].fn.call(listeners[i].context, a1, a2); break;
-            case 4: listeners[i].fn.call(listeners[i].context, a1, a2, a3); break;
-            default:
-              if (!args) for (j = 1, args = new Array(len -1); j < len; j++) {
-                args[j - 1] = arguments[j];
-              }
-
-              listeners[i].fn.apply(listeners[i].context, args);
-          }
-        }
-      }
-
-      return true;
-    };
-
-    /**
-     * Add a listener for a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @param {Function} fn The listener function.
-     * @param {*} [context=this] The context to invoke the listener with.
-     * @returns {EventEmitter} `this`.
-     * @public
-     */
-    EventEmitter.prototype.on = function on(event, fn, context) {
-      return addListener(this, event, fn, context, false);
-    };
-
-    /**
-     * Add a one-time listener for a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @param {Function} fn The listener function.
-     * @param {*} [context=this] The context to invoke the listener with.
-     * @returns {EventEmitter} `this`.
-     * @public
-     */
-    EventEmitter.prototype.once = function once(event, fn, context) {
-      return addListener(this, event, fn, context, true);
-    };
-
-    /**
-     * Remove the listeners of a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @param {Function} fn Only remove the listeners that match this function.
-     * @param {*} context Only remove the listeners that have this context.
-     * @param {Boolean} once Only remove one-time listeners.
-     * @returns {EventEmitter} `this`.
-     * @public
-     */
-    EventEmitter.prototype.removeListener = function removeListener(event, fn, context, once) {
-      var evt = prefix ? prefix + event : event;
-
-      if (!this._events[evt]) return this;
-      if (!fn) {
-        clearEvent(this, evt);
-        return this;
-      }
-
-      var listeners = this._events[evt];
-
-      if (listeners.fn) {
-        if (
-          listeners.fn === fn &&
-          (!once || listeners.once) &&
-          (!context || listeners.context === context)
-        ) {
-          clearEvent(this, evt);
-        }
-      } else {
-        for (var i = 0, events = [], length = listeners.length; i < length; i++) {
-          if (
-            listeners[i].fn !== fn ||
-            (once && !listeners[i].once) ||
-            (context && listeners[i].context !== context)
-          ) {
-            events.push(listeners[i]);
-          }
-        }
-
-        //
-        // Reset the array, or remove it completely if we have no more listeners.
-        //
-        if (events.length) this._events[evt] = events.length === 1 ? events[0] : events;
-        else clearEvent(this, evt);
-      }
-
-      return this;
-    };
-
-    /**
-     * Remove all listeners, or those of the specified event.
-     *
-     * @param {(String|Symbol)} [event] The event name.
-     * @returns {EventEmitter} `this`.
-     * @public
-     */
-    EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
-      var evt;
-
-      if (event) {
-        evt = prefix ? prefix + event : event;
-        if (this._events[evt]) clearEvent(this, evt);
-      } else {
-        this._events = new Events();
-        this._eventsCount = 0;
-      }
-
-      return this;
-    };
-
-    //
-    // Alias methods names because people roll like that.
-    //
-    EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
-    EventEmitter.prototype.addListener = EventEmitter.prototype.on;
-
-    //
-    // Expose the prefix.
-    //
-    EventEmitter.prefixed = prefix;
-
-    //
-    // Allow `EventEmitter` to be imported as module namespace.
-    //
-    EventEmitter.EventEmitter = EventEmitter;
-
-    //
-    // Expose the module.
-    //
-    {
-      module.exports = EventEmitter;
-    }
-    });
-
-    var isString_1 = createCommonjsModule(function (module, exports) {
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function isString(value) {
-        return typeof value === 'string';
-    }
-    exports.default = isString;
-
-    });
-
-    var isObject_1 = createCommonjsModule(function (module, exports) {
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function isObject(value) {
-        return ((value !== null) && (typeof value === 'object'));
-    }
-    exports.default = isObject;
-
-    });
-
-    function symbolObservablePonyfill(root) {
-    	var result;
-    	var Symbol = root.Symbol;
-
-    	if (typeof Symbol === 'function') {
-    		if (Symbol.observable) {
-    			result = Symbol.observable;
-    		} else {
-    			result = Symbol('observable');
-    			Symbol.observable = result;
-    		}
-    	} else {
-    		result = '@@observable';
-    	}
-
-    	return result;
-    }
-
-    /* global window */
-
-    var root;
-
-    if (typeof self !== 'undefined') {
-      root = self;
-    } else if (typeof window !== 'undefined') {
-      root = window;
-    } else if (typeof global !== 'undefined') {
-      root = global;
-    } else if (typeof module !== 'undefined') {
-      root = module;
-    } else {
-      root = Function('return this')();
-    }
-
-    var result = symbolObservablePonyfill(root);
-
-    var protocol = createCommonjsModule(function (module, exports) {
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.GRAPHQL_SUBSCRIPTIONS = exports.GRAPHQL_WS = void 0;
-    var GRAPHQL_WS = 'graphql-ws';
-    exports.GRAPHQL_WS = GRAPHQL_WS;
-    var GRAPHQL_SUBSCRIPTIONS = 'graphql-subscriptions';
-    exports.GRAPHQL_SUBSCRIPTIONS = GRAPHQL_SUBSCRIPTIONS;
-
-    });
-
-    var defaults = createCommonjsModule(function (module, exports) {
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.WS_TIMEOUT = exports.MIN_WS_TIMEOUT = void 0;
-    var MIN_WS_TIMEOUT = 1000;
-    exports.MIN_WS_TIMEOUT = MIN_WS_TIMEOUT;
-    var WS_TIMEOUT = 30000;
-    exports.WS_TIMEOUT = WS_TIMEOUT;
-
-    });
-
-    var messageTypes = createCommonjsModule(function (module, exports) {
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var MessageTypes = (function () {
-        function MessageTypes() {
-            throw new Error('Static Class');
-        }
-        MessageTypes.GQL_CONNECTION_INIT = 'connection_init';
-        MessageTypes.GQL_CONNECTION_ACK = 'connection_ack';
-        MessageTypes.GQL_CONNECTION_ERROR = 'connection_error';
-        MessageTypes.GQL_CONNECTION_KEEP_ALIVE = 'ka';
-        MessageTypes.GQL_CONNECTION_TERMINATE = 'connection_terminate';
-        MessageTypes.GQL_START = 'start';
-        MessageTypes.GQL_DATA = 'data';
-        MessageTypes.GQL_ERROR = 'error';
-        MessageTypes.GQL_COMPLETE = 'complete';
-        MessageTypes.GQL_STOP = 'stop';
-        MessageTypes.SUBSCRIPTION_START = 'subscription_start';
-        MessageTypes.SUBSCRIPTION_DATA = 'subscription_data';
-        MessageTypes.SUBSCRIPTION_SUCCESS = 'subscription_success';
-        MessageTypes.SUBSCRIPTION_FAIL = 'subscription_fail';
-        MessageTypes.SUBSCRIPTION_END = 'subscription_end';
-        MessageTypes.INIT = 'init';
-        MessageTypes.INIT_SUCCESS = 'init_success';
-        MessageTypes.INIT_FAIL = 'init_fail';
-        MessageTypes.KEEP_ALIVE = 'keepalive';
-        return MessageTypes;
-    }());
-    exports.default = MessageTypes;
-
-    });
-
-    var printer_1 = getCjsExportFromNamespace(printer);
-
-    var getOperationAST_1 = getCjsExportFromNamespace(getOperationAST$1);
-
-    var client = createCommonjsModule(function (module, exports) {
-    var __assign = (commonjsGlobal && commonjsGlobal.__assign) || function () {
-        __assign = Object.assign || function(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                    t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign.apply(this, arguments);
-    };
-    var __awaiter = (commonjsGlobal && commonjsGlobal.__awaiter) || function (thisArg, _arguments, P, generator) {
-        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-        return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-        });
-    };
-    var __generator = (commonjsGlobal && commonjsGlobal.__generator) || function (thisArg, body) {
-        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-        function verb(n) { return function (v) { return step([n, v]); }; }
-        function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-                if (y = 0, t) op = [op[0] & 2, t.value];
-                switch (op[0]) {
-                    case 0: case 1: t = op; break;
-                    case 4: _.label++; return { value: op[1], done: false };
-                    case 5: _.label++; y = op[1]; op = [0]; continue;
-                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                    default:
-                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                        if (t[2]) _.ops.pop();
-                        _.trys.pop(); continue;
-                }
-                op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-        }
-    };
-    var __spreadArrays = (commonjsGlobal && commonjsGlobal.__spreadArrays) || function () {
-        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-        for (var r = Array(s), k = 0, i = 0; i < il; i++)
-            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-                r[k] = a[j];
-        return r;
-    };
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.SubscriptionClient = void 0;
-    var _global = typeof commonjsGlobal !== 'undefined' ? commonjsGlobal : (typeof window !== 'undefined' ? window : {});
-    var NativeWebSocket = _global.WebSocket || _global.MozWebSocket;
-
-
-
-
-
-
-
-
-
-
-    var SubscriptionClient = (function () {
-        function SubscriptionClient(url, options, webSocketImpl, webSocketProtocols) {
-            var _a = (options || {}), _b = _a.connectionCallback, connectionCallback = _b === void 0 ? undefined : _b, _c = _a.connectionParams, connectionParams = _c === void 0 ? {} : _c, _d = _a.minTimeout, minTimeout = _d === void 0 ? defaults.MIN_WS_TIMEOUT : _d, _e = _a.timeout, timeout = _e === void 0 ? defaults.WS_TIMEOUT : _e, _f = _a.reconnect, reconnect = _f === void 0 ? false : _f, _g = _a.reconnectionAttempts, reconnectionAttempts = _g === void 0 ? Infinity : _g, _h = _a.lazy, lazy = _h === void 0 ? false : _h, _j = _a.inactivityTimeout, inactivityTimeout = _j === void 0 ? 0 : _j, _k = _a.wsOptionArguments, wsOptionArguments = _k === void 0 ? [] : _k;
-            this.wsImpl = webSocketImpl || NativeWebSocket;
-            if (!this.wsImpl) {
-                throw new Error('Unable to find native implementation, or alternative implementation for WebSocket!');
-            }
-            this.wsProtocols = webSocketProtocols || protocol.GRAPHQL_WS;
-            this.connectionCallback = connectionCallback;
-            this.url = url;
-            this.operations = {};
-            this.nextOperationId = 0;
-            this.minWsTimeout = minTimeout;
-            this.wsTimeout = timeout;
-            this.unsentMessagesQueue = [];
-            this.reconnect = reconnect;
-            this.reconnecting = false;
-            this.reconnectionAttempts = reconnectionAttempts;
-            this.lazy = !!lazy;
-            this.inactivityTimeout = inactivityTimeout;
-            this.closedByUser = false;
-            this.backoff = new backo2({ jitter: 0.5 });
-            this.eventEmitter = new eventemitter3.EventEmitter();
-            this.middlewares = [];
-            this.client = null;
-            this.maxConnectTimeGenerator = this.createMaxConnectTimeGenerator();
-            this.connectionParams = this.getConnectionParams(connectionParams);
-            this.wsOptionArguments = wsOptionArguments;
-            if (!this.lazy) {
-                this.connect();
-            }
-        }
-        Object.defineProperty(SubscriptionClient.prototype, "status", {
-            get: function () {
-                if (this.client === null) {
-                    return this.wsImpl.CLOSED;
-                }
-                return this.client.readyState;
-            },
-            enumerable: false,
-            configurable: true
-        });
-        SubscriptionClient.prototype.close = function (isForced, closedByUser) {
-            if (isForced === void 0) { isForced = true; }
-            if (closedByUser === void 0) { closedByUser = true; }
-            this.clearInactivityTimeout();
-            if (this.client !== null) {
-                this.closedByUser = closedByUser;
-                if (isForced) {
-                    this.clearCheckConnectionInterval();
-                    this.clearMaxConnectTimeout();
-                    this.clearTryReconnectTimeout();
-                    this.unsubscribeAll();
-                    this.sendMessage(undefined, messageTypes.default.GQL_CONNECTION_TERMINATE, null);
-                }
-                this.client.close();
-                this.client.onopen = null;
-                this.client.onclose = null;
-                this.client.onerror = null;
-                this.client.onmessage = null;
-                this.client = null;
-                this.eventEmitter.emit('disconnected');
-                if (!isForced) {
-                    this.tryReconnect();
-                }
-            }
-        };
-        SubscriptionClient.prototype.request = function (request) {
-            var _a;
-            var getObserver = this.getObserver.bind(this);
-            var executeOperation = this.executeOperation.bind(this);
-            var unsubscribe = this.unsubscribe.bind(this);
-            var opId;
-            this.clearInactivityTimeout();
-            return _a = {},
-                _a[result.default] = function () {
-                    return this;
-                },
-                _a.subscribe = function (observerOrNext, onError, onComplete) {
-                    var observer = getObserver(observerOrNext, onError, onComplete);
-                    opId = executeOperation(request, function (error, result) {
-                        if (error === null && result === null) {
-                            if (observer.complete) {
-                                observer.complete();
-                            }
-                        }
-                        else if (error) {
-                            if (observer.error) {
-                                observer.error(error[0]);
-                            }
-                        }
-                        else {
-                            if (observer.next) {
-                                observer.next(result);
-                            }
-                        }
-                    });
-                    return {
-                        unsubscribe: function () {
-                            if (opId) {
-                                unsubscribe(opId);
-                                opId = null;
-                            }
-                        },
-                    };
-                },
-                _a;
-        };
-        SubscriptionClient.prototype.on = function (eventName, callback, context) {
-            var handler = this.eventEmitter.on(eventName, callback, context);
-            return function () {
-                handler.off(eventName, callback, context);
-            };
-        };
-        SubscriptionClient.prototype.onConnected = function (callback, context) {
-            return this.on('connected', callback, context);
-        };
-        SubscriptionClient.prototype.onConnecting = function (callback, context) {
-            return this.on('connecting', callback, context);
-        };
-        SubscriptionClient.prototype.onDisconnected = function (callback, context) {
-            return this.on('disconnected', callback, context);
-        };
-        SubscriptionClient.prototype.onReconnected = function (callback, context) {
-            return this.on('reconnected', callback, context);
-        };
-        SubscriptionClient.prototype.onReconnecting = function (callback, context) {
-            return this.on('reconnecting', callback, context);
-        };
-        SubscriptionClient.prototype.onError = function (callback, context) {
-            return this.on('error', callback, context);
-        };
-        SubscriptionClient.prototype.unsubscribeAll = function () {
-            var _this = this;
-            Object.keys(this.operations).forEach(function (subId) {
-                _this.unsubscribe(subId);
-            });
-        };
-        SubscriptionClient.prototype.applyMiddlewares = function (options) {
-            var _this = this;
-            return new Promise(function (resolve, reject) {
-                var queue = function (funcs, scope) {
-                    var next = function (error) {
-                        if (error) {
-                            reject(error);
-                        }
-                        else {
-                            if (funcs.length > 0) {
-                                var f = funcs.shift();
-                                if (f) {
-                                    f.applyMiddleware.apply(scope, [options, next]);
-                                }
-                            }
-                            else {
-                                resolve(options);
-                            }
-                        }
-                    };
-                    next();
-                };
-                queue(__spreadArrays(_this.middlewares), _this);
-            });
-        };
-        SubscriptionClient.prototype.use = function (middlewares) {
-            var _this = this;
-            middlewares.map(function (middleware) {
-                if (typeof middleware.applyMiddleware === 'function') {
-                    _this.middlewares.push(middleware);
-                }
-                else {
-                    throw new Error('Middleware must implement the applyMiddleware function.');
-                }
-            });
-            return this;
-        };
-        SubscriptionClient.prototype.getConnectionParams = function (connectionParams) {
-            return function () { return new Promise(function (resolve, reject) {
-                if (typeof connectionParams === 'function') {
-                    try {
-                        return resolve(connectionParams.call(null));
-                    }
-                    catch (error) {
-                        return reject(error);
-                    }
-                }
-                resolve(connectionParams);
-            }); };
-        };
-        SubscriptionClient.prototype.executeOperation = function (options, handler) {
-            var _this = this;
-            if (this.client === null) {
-                this.connect();
-            }
-            var opId = this.generateOperationId();
-            this.operations[opId] = { options: options, handler: handler };
-            this.applyMiddlewares(options)
-                .then(function (processedOptions) {
-                _this.checkOperationOptions(processedOptions, handler);
-                if (_this.operations[opId]) {
-                    _this.operations[opId] = { options: processedOptions, handler: handler };
-                    _this.sendMessage(opId, messageTypes.default.GQL_START, processedOptions);
-                }
-            })
-                .catch(function (error) {
-                _this.unsubscribe(opId);
-                handler(_this.formatErrors(error));
-            });
-            return opId;
-        };
-        SubscriptionClient.prototype.getObserver = function (observerOrNext, error, complete) {
-            if (typeof observerOrNext === 'function') {
-                return {
-                    next: function (v) { return observerOrNext(v); },
-                    error: function (e) { return error && error(e); },
-                    complete: function () { return complete && complete(); },
-                };
-            }
-            return observerOrNext;
-        };
-        SubscriptionClient.prototype.createMaxConnectTimeGenerator = function () {
-            var minValue = this.minWsTimeout;
-            var maxValue = this.wsTimeout;
-            return new backo2({
-                min: minValue,
-                max: maxValue,
-                factor: 1.2,
-            });
-        };
-        SubscriptionClient.prototype.clearCheckConnectionInterval = function () {
-            if (this.checkConnectionIntervalId) {
-                clearInterval(this.checkConnectionIntervalId);
-                this.checkConnectionIntervalId = null;
-            }
-        };
-        SubscriptionClient.prototype.clearMaxConnectTimeout = function () {
-            if (this.maxConnectTimeoutId) {
-                clearTimeout(this.maxConnectTimeoutId);
-                this.maxConnectTimeoutId = null;
-            }
-        };
-        SubscriptionClient.prototype.clearTryReconnectTimeout = function () {
-            if (this.tryReconnectTimeoutId) {
-                clearTimeout(this.tryReconnectTimeoutId);
-                this.tryReconnectTimeoutId = null;
-            }
-        };
-        SubscriptionClient.prototype.clearInactivityTimeout = function () {
-            if (this.inactivityTimeoutId) {
-                clearTimeout(this.inactivityTimeoutId);
-                this.inactivityTimeoutId = null;
-            }
-        };
-        SubscriptionClient.prototype.setInactivityTimeout = function () {
-            var _this = this;
-            if (this.inactivityTimeout > 0 && Object.keys(this.operations).length === 0) {
-                this.inactivityTimeoutId = setTimeout(function () {
-                    if (Object.keys(_this.operations).length === 0) {
-                        _this.close();
-                    }
-                }, this.inactivityTimeout);
-            }
-        };
-        SubscriptionClient.prototype.checkOperationOptions = function (options, handler) {
-            var query = options.query, variables = options.variables, operationName = options.operationName;
-            if (!query) {
-                throw new Error('Must provide a query.');
-            }
-            if (!handler) {
-                throw new Error('Must provide an handler.');
-            }
-            if ((!isString_1.default(query) && !getOperationAST_1.getOperationAST(query, operationName)) ||
-                (operationName && !isString_1.default(operationName)) ||
-                (variables && !isObject_1.default(variables))) {
-                throw new Error('Incorrect option types. query must be a string or a document,' +
-                    '`operationName` must be a string, and `variables` must be an object.');
-            }
-        };
-        SubscriptionClient.prototype.buildMessage = function (id, type, payload) {
-            var payloadToReturn = payload && payload.query ? __assign(__assign({}, payload), { query: typeof payload.query === 'string' ? payload.query : printer_1.print(payload.query) }) :
-                payload;
-            return {
-                id: id,
-                type: type,
-                payload: payloadToReturn,
-            };
-        };
-        SubscriptionClient.prototype.formatErrors = function (errors) {
-            if (Array.isArray(errors)) {
-                return errors;
-            }
-            if (errors && errors.errors) {
-                return this.formatErrors(errors.errors);
-            }
-            if (errors && errors.message) {
-                return [errors];
-            }
-            return [{
-                    name: 'FormatedError',
-                    message: 'Unknown error',
-                    originalError: errors,
-                }];
-        };
-        SubscriptionClient.prototype.sendMessage = function (id, type, payload) {
-            this.sendMessageRaw(this.buildMessage(id, type, payload));
-        };
-        SubscriptionClient.prototype.sendMessageRaw = function (message) {
-            switch (this.status) {
-                case this.wsImpl.OPEN:
-                    var serializedMessage = JSON.stringify(message);
-                    try {
-                        JSON.parse(serializedMessage);
-                    }
-                    catch (e) {
-                        this.eventEmitter.emit('error', new Error("Message must be JSON-serializable. Got: " + message));
-                    }
-                    this.client.send(serializedMessage);
-                    break;
-                case this.wsImpl.CONNECTING:
-                    this.unsentMessagesQueue.push(message);
-                    break;
-                default:
-                    if (!this.reconnecting) {
-                        this.eventEmitter.emit('error', new Error('A message was not sent because socket is not connected, is closing or ' +
-                            'is already closed. Message was: ' + JSON.stringify(message)));
-                    }
-            }
-        };
-        SubscriptionClient.prototype.generateOperationId = function () {
-            return String(++this.nextOperationId);
-        };
-        SubscriptionClient.prototype.tryReconnect = function () {
-            var _this = this;
-            if (!this.reconnect || this.backoff.attempts >= this.reconnectionAttempts) {
-                return;
-            }
-            if (!this.reconnecting) {
-                Object.keys(this.operations).forEach(function (key) {
-                    _this.unsentMessagesQueue.push(_this.buildMessage(key, messageTypes.default.GQL_START, _this.operations[key].options));
-                });
-                this.reconnecting = true;
-            }
-            this.clearTryReconnectTimeout();
-            var delay = this.backoff.duration();
-            this.tryReconnectTimeoutId = setTimeout(function () {
-                _this.connect();
-            }, delay);
-        };
-        SubscriptionClient.prototype.flushUnsentMessagesQueue = function () {
-            var _this = this;
-            this.unsentMessagesQueue.forEach(function (message) {
-                _this.sendMessageRaw(message);
-            });
-            this.unsentMessagesQueue = [];
-        };
-        SubscriptionClient.prototype.checkConnection = function () {
-            if (this.wasKeepAliveReceived) {
-                this.wasKeepAliveReceived = false;
-                return;
-            }
-            if (!this.reconnecting) {
-                this.close(false, true);
-            }
-        };
-        SubscriptionClient.prototype.checkMaxConnectTimeout = function () {
-            var _this = this;
-            this.clearMaxConnectTimeout();
-            this.maxConnectTimeoutId = setTimeout(function () {
-                if (_this.status !== _this.wsImpl.OPEN) {
-                    _this.reconnecting = true;
-                    _this.close(false, true);
-                }
-            }, this.maxConnectTimeGenerator.duration());
-        };
-        SubscriptionClient.prototype.connect = function () {
-            var _a;
-            var _this = this;
-            this.client = new ((_a = this.wsImpl).bind.apply(_a, __spreadArrays([void 0, this.url, this.wsProtocols], this.wsOptionArguments)))();
-            this.checkMaxConnectTimeout();
-            this.client.onopen = function () { return __awaiter(_this, void 0, void 0, function () {
-                var connectionParams, error_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            if (!(this.status === this.wsImpl.OPEN)) return [3, 4];
-                            this.clearMaxConnectTimeout();
-                            this.closedByUser = false;
-                            this.eventEmitter.emit(this.reconnecting ? 'reconnecting' : 'connecting');
-                            _a.label = 1;
-                        case 1:
-                            _a.trys.push([1, 3, , 4]);
-                            return [4, this.connectionParams()];
-                        case 2:
-                            connectionParams = _a.sent();
-                            this.sendMessage(undefined, messageTypes.default.GQL_CONNECTION_INIT, connectionParams);
-                            this.flushUnsentMessagesQueue();
-                            return [3, 4];
-                        case 3:
-                            error_1 = _a.sent();
-                            this.sendMessage(undefined, messageTypes.default.GQL_CONNECTION_ERROR, error_1);
-                            this.flushUnsentMessagesQueue();
-                            return [3, 4];
-                        case 4: return [2];
-                    }
-                });
-            }); };
-            this.client.onclose = function () {
-                if (!_this.closedByUser) {
-                    _this.close(false, false);
-                }
-            };
-            this.client.onerror = function (err) {
-                _this.eventEmitter.emit('error', err);
-            };
-            this.client.onmessage = function (_a) {
-                var data = _a.data;
-                _this.processReceivedData(data);
-            };
-        };
-        SubscriptionClient.prototype.processReceivedData = function (receivedData) {
-            var parsedMessage;
-            var opId;
-            try {
-                parsedMessage = JSON.parse(receivedData);
-                opId = parsedMessage.id;
-            }
-            catch (e) {
-                throw new Error("Message must be JSON-parseable. Got: " + receivedData);
-            }
-            if ([messageTypes.default.GQL_DATA,
-                messageTypes.default.GQL_COMPLETE,
-                messageTypes.default.GQL_ERROR,
-            ].indexOf(parsedMessage.type) !== -1 && !this.operations[opId]) {
-                this.unsubscribe(opId);
-                return;
-            }
-            switch (parsedMessage.type) {
-                case messageTypes.default.GQL_CONNECTION_ERROR:
-                    if (this.connectionCallback) {
-                        this.connectionCallback(parsedMessage.payload);
-                    }
-                    break;
-                case messageTypes.default.GQL_CONNECTION_ACK:
-                    this.eventEmitter.emit(this.reconnecting ? 'reconnected' : 'connected', parsedMessage.payload);
-                    this.reconnecting = false;
-                    this.backoff.reset();
-                    this.maxConnectTimeGenerator.reset();
-                    if (this.connectionCallback) {
-                        this.connectionCallback();
-                    }
-                    break;
-                case messageTypes.default.GQL_COMPLETE:
-                    var handler = this.operations[opId].handler;
-                    delete this.operations[opId];
-                    handler.call(this, null, null);
-                    break;
-                case messageTypes.default.GQL_ERROR:
-                    this.operations[opId].handler(this.formatErrors(parsedMessage.payload), null);
-                    delete this.operations[opId];
-                    break;
-                case messageTypes.default.GQL_DATA:
-                    var parsedPayload = !parsedMessage.payload.errors ?
-                        parsedMessage.payload : __assign(__assign({}, parsedMessage.payload), { errors: this.formatErrors(parsedMessage.payload.errors) });
-                    this.operations[opId].handler(null, parsedPayload);
-                    break;
-                case messageTypes.default.GQL_CONNECTION_KEEP_ALIVE:
-                    var firstKA = typeof this.wasKeepAliveReceived === 'undefined';
-                    this.wasKeepAliveReceived = true;
-                    if (firstKA) {
-                        this.checkConnection();
-                    }
-                    if (this.checkConnectionIntervalId) {
-                        clearInterval(this.checkConnectionIntervalId);
-                        this.checkConnection();
-                    }
-                    this.checkConnectionIntervalId = setInterval(this.checkConnection.bind(this), this.wsTimeout);
-                    break;
-                default:
-                    throw new Error('Invalid message type!');
-            }
-        };
-        SubscriptionClient.prototype.unsubscribe = function (opId) {
-            if (this.operations[opId]) {
-                delete this.operations[opId];
-                this.setInactivityTimeout();
-                this.sendMessage(opId, messageTypes.default.GQL_STOP, undefined);
-            }
-        };
-        return SubscriptionClient;
-    }());
-    exports.SubscriptionClient = SubscriptionClient;
-
-    });
-
-    var WebSocketLink = (function (_super) {
-        __extends$1(WebSocketLink, _super);
-        function WebSocketLink(paramsOrClient) {
+    var GraphQLWsLink = (function (_super) {
+        __extends(GraphQLWsLink, _super);
+        function GraphQLWsLink(client) {
             var _this = _super.call(this) || this;
-            if (paramsOrClient instanceof client.SubscriptionClient) {
-                _this.subscriptionClient = paramsOrClient;
-            }
-            else {
-                _this.subscriptionClient = new client.SubscriptionClient(paramsOrClient.uri, paramsOrClient.options, paramsOrClient.webSocketImpl);
-            }
+            _this.client = client;
             return _this;
         }
-        WebSocketLink.prototype.request = function (operation) {
-            return this.subscriptionClient.request(operation);
+        GraphQLWsLink.prototype.request = function (operation) {
+            var _this = this;
+            return new Observable(function (observer) {
+                return _this.client.subscribe(__assign(__assign({}, operation), { query: print(operation.query) }), {
+                    next: observer.next.bind(observer),
+                    complete: observer.complete.bind(observer),
+                    error: function (err) {
+                        if (err instanceof Error) {
+                            return observer.error(err);
+                        }
+                        if (isLikeCloseEvent(err)) {
+                            return observer.error(new Error("Socket closed with event ".concat(err.code, " ").concat(err.reason || "")));
+                        }
+                        return observer.error(new ApolloError({
+                            graphQLErrors: Array.isArray(err) ? err : [err],
+                        }));
+                    },
+                });
+            });
         };
-        return WebSocketLink;
+        return GraphQLWsLink;
     }(ApolloLink));
+
+    var graphqlWs = createCommonjsModule(function (module, exports) {
+    (function (global, factory) {
+        factory(exports) ;
+    })(commonjsGlobal, (function (exports) {
+        /** @private */
+        function extendedTypeof(val) {
+            if (val === null) {
+                return 'null';
+            }
+            if (Array.isArray(val)) {
+                return 'array';
+            }
+            return typeof val;
+        }
+        /** @private */
+        function isObject(val) {
+            return extendedTypeof(val) === 'object';
+        }
+        /** @private */
+        function areGraphQLErrors(obj) {
+            return (Array.isArray(obj) &&
+                // must be at least one error
+                obj.length > 0 &&
+                // error has at least a message
+                obj.every((ob) => 'message' in ob));
+        }
+        /**
+         * Limits the WebSocket close event reason to not exceed a length of one frame.
+         * Reference: https://datatracker.ietf.org/doc/html/rfc6455#section-5.2.
+         *
+         * @private
+         */
+        function limitCloseReason(reason, whenTooLong) {
+            return reason.length < 124 ? reason : whenTooLong;
+        }
+
+        /**
+         *
+         * common
+         *
+         */
+        /**
+         * The WebSocket sub-protocol used for the [GraphQL over WebSocket Protocol](/PROTOCOL.md).
+         *
+         * @category Common
+         */
+        const GRAPHQL_TRANSPORT_WS_PROTOCOL = 'graphql-transport-ws';
+        /**
+         * The deprecated subprotocol used by [subscriptions-transport-ws](https://github.com/apollographql/subscriptions-transport-ws).
+         *
+         * @private
+         */
+        const DEPRECATED_GRAPHQL_WS_PROTOCOL = 'graphql-ws';
+        /**
+         * `graphql-ws` expected and standard close codes of the [GraphQL over WebSocket Protocol](/PROTOCOL.md).
+         *
+         * @category Common
+         */
+        exports.CloseCode = void 0;
+        (function (CloseCode) {
+            CloseCode[CloseCode["InternalServerError"] = 4500] = "InternalServerError";
+            CloseCode[CloseCode["InternalClientError"] = 4005] = "InternalClientError";
+            CloseCode[CloseCode["BadRequest"] = 4400] = "BadRequest";
+            CloseCode[CloseCode["BadResponse"] = 4004] = "BadResponse";
+            /** Tried subscribing before connect ack */
+            CloseCode[CloseCode["Unauthorized"] = 4401] = "Unauthorized";
+            CloseCode[CloseCode["Forbidden"] = 4403] = "Forbidden";
+            CloseCode[CloseCode["SubprotocolNotAcceptable"] = 4406] = "SubprotocolNotAcceptable";
+            CloseCode[CloseCode["ConnectionInitialisationTimeout"] = 4408] = "ConnectionInitialisationTimeout";
+            CloseCode[CloseCode["ConnectionAcknowledgementTimeout"] = 4504] = "ConnectionAcknowledgementTimeout";
+            /** Subscriber distinction is very important */
+            CloseCode[CloseCode["SubscriberAlreadyExists"] = 4409] = "SubscriberAlreadyExists";
+            CloseCode[CloseCode["TooManyInitialisationRequests"] = 4429] = "TooManyInitialisationRequests";
+        })(exports.CloseCode || (exports.CloseCode = {}));
+        /**
+         * Types of messages allowed to be sent by the client/server over the WS protocol.
+         *
+         * @category Common
+         */
+        exports.MessageType = void 0;
+        (function (MessageType) {
+            MessageType["ConnectionInit"] = "connection_init";
+            MessageType["ConnectionAck"] = "connection_ack";
+            MessageType["Ping"] = "ping";
+            MessageType["Pong"] = "pong";
+            MessageType["Subscribe"] = "subscribe";
+            MessageType["Next"] = "next";
+            MessageType["Error"] = "error";
+            MessageType["Complete"] = "complete";
+        })(exports.MessageType || (exports.MessageType = {}));
+        /**
+         * Validates the message against the GraphQL over WebSocket Protocol.
+         *
+         * Invalid messages will throw descriptive errors.
+         *
+         * @category Common
+         */
+        function validateMessage(val) {
+            if (!isObject(val)) {
+                throw new Error(`Message is expected to be an object, but got ${extendedTypeof(val)}`);
+            }
+            if (!val.type) {
+                throw new Error(`Message is missing the 'type' property`);
+            }
+            if (typeof val.type !== 'string') {
+                throw new Error(`Message is expects the 'type' property to be a string, but got ${extendedTypeof(val.type)}`);
+            }
+            switch (val.type) {
+                case exports.MessageType.ConnectionInit:
+                case exports.MessageType.ConnectionAck:
+                case exports.MessageType.Ping:
+                case exports.MessageType.Pong: {
+                    if ('payload' in val && !isObject(val.payload)) {
+                        throw new Error(`"${val.type}" message expects the 'payload' property to be an object or missing, but got "${val.payload}"`);
+                    }
+                    break;
+                }
+                case exports.MessageType.Subscribe: {
+                    if (typeof val.id !== 'string') {
+                        throw new Error(`"${val.type}" message expects the 'id' property to be a string, but got ${extendedTypeof(val.id)}`);
+                    }
+                    if (!val.id) {
+                        throw new Error(`"${val.type}" message requires a non-empty 'id' property`);
+                    }
+                    if (!isObject(val.payload)) {
+                        throw new Error(`"${val.type}" message expects the 'payload' property to be an object, but got ${extendedTypeof(val.payload)}`);
+                    }
+                    if (typeof val.payload.query !== 'string') {
+                        throw new Error(`"${val.type}" message payload expects the 'query' property to be a string, but got ${extendedTypeof(val.payload.query)}`);
+                    }
+                    if (val.payload.variables != null && !isObject(val.payload.variables)) {
+                        throw new Error(`"${val.type}" message payload expects the 'variables' property to be a an object or nullish or missing, but got ${extendedTypeof(val.payload.variables)}`);
+                    }
+                    if (val.payload.operationName != null &&
+                        extendedTypeof(val.payload.operationName) !== 'string') {
+                        throw new Error(`"${val.type}" message payload expects the 'operationName' property to be a string or nullish or missing, but got ${extendedTypeof(val.payload.operationName)}`);
+                    }
+                    if (val.payload.extensions != null && !isObject(val.payload.extensions)) {
+                        throw new Error(`"${val.type}" message payload expects the 'extensions' property to be a an object or nullish or missing, but got ${extendedTypeof(val.payload.extensions)}`);
+                    }
+                    break;
+                }
+                case exports.MessageType.Next: {
+                    if (typeof val.id !== 'string') {
+                        throw new Error(`"${val.type}" message expects the 'id' property to be a string, but got ${extendedTypeof(val.id)}`);
+                    }
+                    if (!val.id) {
+                        throw new Error(`"${val.type}" message requires a non-empty 'id' property`);
+                    }
+                    if (!isObject(val.payload)) {
+                        throw new Error(`"${val.type}" message expects the 'payload' property to be an object, but got ${extendedTypeof(val.payload)}`);
+                    }
+                    break;
+                }
+                case exports.MessageType.Error: {
+                    if (typeof val.id !== 'string') {
+                        throw new Error(`"${val.type}" message expects the 'id' property to be a string, but got ${extendedTypeof(val.id)}`);
+                    }
+                    if (!val.id) {
+                        throw new Error(`"${val.type}" message requires a non-empty 'id' property`);
+                    }
+                    if (!areGraphQLErrors(val.payload)) {
+                        throw new Error(`"${val.type}" message expects the 'payload' property to be an array of GraphQL errors, but got ${JSON.stringify(val.payload)}`);
+                    }
+                    break;
+                }
+                case exports.MessageType.Complete: {
+                    if (typeof val.id !== 'string') {
+                        throw new Error(`"${val.type}" message expects the 'id' property to be a string, but got ${extendedTypeof(val.id)}`);
+                    }
+                    if (!val.id) {
+                        throw new Error(`"${val.type}" message requires a non-empty 'id' property`);
+                    }
+                    break;
+                }
+                default:
+                    throw new Error(`Invalid message 'type' property "${val.type}"`);
+            }
+            return val;
+        }
+        /**
+         * Checks if the provided value is a valid GraphQL over WebSocket message.
+         *
+         * @deprecated Use `validateMessage` instead.
+         *
+         * @category Common
+         */
+        function isMessage(val) {
+            try {
+                validateMessage(val);
+                return true;
+            }
+            catch (_a) {
+                return false;
+            }
+        }
+        /**
+         * Parses the raw websocket message data to a valid message.
+         *
+         * @category Common
+         */
+        function parseMessage(data, reviver) {
+            try {
+                return validateMessage(data);
+            }
+            catch (_a) {
+                if (typeof data !== 'string') {
+                    throw new Error('Only strings are parsable messages');
+                }
+                const message = JSON.parse(data, reviver);
+                return validateMessage(message);
+            }
+        }
+        /**
+         * Stringifies a valid message ready to be sent through the socket.
+         *
+         * @category Common
+         */
+        function stringifyMessage(msg, replacer) {
+            validateMessage(msg);
+            return JSON.stringify(msg, replacer);
+        }
+
+        /**
+         *
+         * client
+         *
+         */
+        /**
+         * Creates a disposable GraphQL over WebSocket client.
+         *
+         * @category Client
+         */
+        function createClient(options) {
+            const { url, connectionParams, lazy = true, onNonLazyError = console.error, lazyCloseTimeout = 0, keepAlive = 0, disablePong, connectionAckWaitTimeout = 0, retryAttempts = 5, retryWait = async function randomisedExponentialBackoff(retries) {
+                let retryDelay = 1000; // start with 1s delay
+                for (let i = 0; i < retries; i++) {
+                    retryDelay *= 2;
+                }
+                await new Promise((resolve) => setTimeout(resolve, retryDelay +
+                    // add random timeout from 300ms to 3s
+                    Math.floor(Math.random() * (3000 - 300) + 300)));
+            }, shouldRetry = isLikeCloseEvent, isFatalConnectionProblem, on, webSocketImpl, 
+            /**
+             * Generates a v4 UUID to be used as the ID using `Math`
+             * as the random number generator. Supply your own generator
+             * in case you need more uniqueness.
+             *
+             * Reference: https://gist.github.com/jed/982883
+             */
+            generateID = function generateUUID() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+                    const r = (Math.random() * 16) | 0, v = c == 'x' ? r : (r & 0x3) | 0x8;
+                    return v.toString(16);
+                });
+            }, jsonMessageReplacer: replacer, jsonMessageReviver: reviver, } = options;
+            let ws;
+            if (webSocketImpl) {
+                if (!isWebSocket(webSocketImpl)) {
+                    throw new Error('Invalid WebSocket implementation provided');
+                }
+                ws = webSocketImpl;
+            }
+            else if (typeof WebSocket !== 'undefined') {
+                ws = WebSocket;
+            }
+            else if (typeof commonjsGlobal !== 'undefined') {
+                ws =
+                    commonjsGlobal.WebSocket ||
+                        // @ts-expect-error: Support more browsers
+                        commonjsGlobal.MozWebSocket;
+            }
+            else if (typeof window !== 'undefined') {
+                ws =
+                    window.WebSocket ||
+                        // @ts-expect-error: Support more browsers
+                        window.MozWebSocket;
+            }
+            if (!ws)
+                throw new Error("WebSocket implementation missing; on Node you can `import WebSocket from 'ws';` and pass `webSocketImpl: WebSocket` to `createClient`");
+            const WebSocketImpl = ws;
+            // websocket status emitter, subscriptions are handled differently
+            const emitter = (() => {
+                const message = (() => {
+                    const listeners = {};
+                    return {
+                        on(id, listener) {
+                            listeners[id] = listener;
+                            return () => {
+                                delete listeners[id];
+                            };
+                        },
+                        emit(message) {
+                            var _a;
+                            if ('id' in message)
+                                (_a = listeners[message.id]) === null || _a === void 0 ? void 0 : _a.call(listeners, message);
+                        },
+                    };
+                })();
+                const listeners = {
+                    connecting: (on === null || on === void 0 ? void 0 : on.connecting) ? [on.connecting] : [],
+                    opened: (on === null || on === void 0 ? void 0 : on.opened) ? [on.opened] : [],
+                    connected: (on === null || on === void 0 ? void 0 : on.connected) ? [on.connected] : [],
+                    ping: (on === null || on === void 0 ? void 0 : on.ping) ? [on.ping] : [],
+                    pong: (on === null || on === void 0 ? void 0 : on.pong) ? [on.pong] : [],
+                    message: (on === null || on === void 0 ? void 0 : on.message) ? [message.emit, on.message] : [message.emit],
+                    closed: (on === null || on === void 0 ? void 0 : on.closed) ? [on.closed] : [],
+                    error: (on === null || on === void 0 ? void 0 : on.error) ? [on.error] : [],
+                };
+                return {
+                    onMessage: message.on,
+                    on(event, listener) {
+                        const l = listeners[event];
+                        l.push(listener);
+                        return () => {
+                            l.splice(l.indexOf(listener), 1);
+                        };
+                    },
+                    emit(event, ...args) {
+                        // we copy the listeners so that unlistens dont "pull the rug under our feet"
+                        for (const listener of [...listeners[event]]) {
+                            // @ts-expect-error: The args should fit
+                            listener(...args);
+                        }
+                    },
+                };
+            })();
+            // invokes the callback either when an error or closed event is emitted,
+            // first one that gets called prevails, other emissions are ignored
+            function errorOrClosed(cb) {
+                const listening = [
+                    // errors are fatal and more critical than close events, throw them first
+                    emitter.on('error', (err) => {
+                        listening.forEach((unlisten) => unlisten());
+                        cb(err);
+                    }),
+                    // closes can be graceful and not fatal, throw them second (if error didnt throw)
+                    emitter.on('closed', (event) => {
+                        listening.forEach((unlisten) => unlisten());
+                        cb(event);
+                    }),
+                ];
+            }
+            let connecting, locks = 0, retrying = false, retries = 0, disposed = false;
+            async function connect() {
+                const [socket, throwOnClose] = await (connecting !== null && connecting !== void 0 ? connecting : (connecting = new Promise((connected, denied) => (async () => {
+                    if (retrying) {
+                        await retryWait(retries);
+                        // subscriptions might complete while waiting for retry
+                        if (!locks) {
+                            connecting = undefined;
+                            return denied({ code: 1000, reason: 'All Subscriptions Gone' });
+                        }
+                        retries++;
+                    }
+                    emitter.emit('connecting');
+                    const socket = new WebSocketImpl(typeof url === 'function' ? await url() : url, GRAPHQL_TRANSPORT_WS_PROTOCOL);
+                    let connectionAckTimeout, queuedPing;
+                    function enqueuePing() {
+                        if (isFinite(keepAlive) && keepAlive > 0) {
+                            clearTimeout(queuedPing); // in case where a pong was received before a ping (this is valid behaviour)
+                            queuedPing = setTimeout(() => {
+                                if (socket.readyState === WebSocketImpl.OPEN) {
+                                    socket.send(stringifyMessage({ type: exports.MessageType.Ping }));
+                                    emitter.emit('ping', false, undefined);
+                                }
+                            }, keepAlive);
+                        }
+                    }
+                    errorOrClosed((errOrEvent) => {
+                        connecting = undefined;
+                        clearTimeout(connectionAckTimeout);
+                        clearTimeout(queuedPing);
+                        denied(errOrEvent);
+                        if (isLikeCloseEvent(errOrEvent) && errOrEvent.code === 4499) {
+                            socket.close(4499, 'Terminated'); // close event is artificial and emitted manually, see `Client.terminate()` below
+                            socket.onerror = null;
+                            socket.onclose = null;
+                        }
+                    });
+                    socket.onerror = (err) => emitter.emit('error', err);
+                    socket.onclose = (event) => emitter.emit('closed', event);
+                    socket.onopen = async () => {
+                        try {
+                            emitter.emit('opened', socket);
+                            const payload = typeof connectionParams === 'function'
+                                ? await connectionParams()
+                                : connectionParams;
+                            // connectionParams might take too long causing the server to kick off the client
+                            // the necessary error/close event is already reported - simply stop execution
+                            if (socket.readyState !== WebSocketImpl.OPEN)
+                                return;
+                            socket.send(stringifyMessage(payload
+                                ? {
+                                    type: exports.MessageType.ConnectionInit,
+                                    payload,
+                                }
+                                : {
+                                    type: exports.MessageType.ConnectionInit,
+                                    // payload is completely absent if not provided
+                                }, replacer));
+                            if (isFinite(connectionAckWaitTimeout) &&
+                                connectionAckWaitTimeout > 0) {
+                                connectionAckTimeout = setTimeout(() => {
+                                    socket.close(exports.CloseCode.ConnectionAcknowledgementTimeout, 'Connection acknowledgement timeout');
+                                }, connectionAckWaitTimeout);
+                            }
+                            enqueuePing(); // enqueue ping (noop if disabled)
+                        }
+                        catch (err) {
+                            emitter.emit('error', err);
+                            socket.close(exports.CloseCode.InternalClientError, limitCloseReason(err instanceof Error ? err.message : new Error(err).message, 'Internal client error'));
+                        }
+                    };
+                    let acknowledged = false;
+                    socket.onmessage = ({ data }) => {
+                        try {
+                            const message = parseMessage(data, reviver);
+                            emitter.emit('message', message);
+                            if (message.type === 'ping' || message.type === 'pong') {
+                                emitter.emit(message.type, true, message.payload); // received
+                                if (message.type === 'pong') {
+                                    enqueuePing(); // enqueue next ping (noop if disabled)
+                                }
+                                else if (!disablePong) {
+                                    // respond with pong on ping
+                                    socket.send(stringifyMessage(message.payload
+                                        ? {
+                                            type: exports.MessageType.Pong,
+                                            payload: message.payload,
+                                        }
+                                        : {
+                                            type: exports.MessageType.Pong,
+                                            // payload is completely absent if not provided
+                                        }));
+                                    emitter.emit('pong', false, message.payload);
+                                }
+                                return; // ping and pongs can be received whenever
+                            }
+                            if (acknowledged)
+                                return; // already connected and acknowledged
+                            if (message.type !== exports.MessageType.ConnectionAck)
+                                throw new Error(`First message cannot be of type ${message.type}`);
+                            clearTimeout(connectionAckTimeout);
+                            acknowledged = true;
+                            emitter.emit('connected', socket, message.payload); // connected = socket opened + acknowledged
+                            retrying = false; // future lazy connects are not retries
+                            retries = 0; // reset the retries on connect
+                            connected([
+                                socket,
+                                new Promise((_, reject) => errorOrClosed(reject)),
+                            ]);
+                        }
+                        catch (err) {
+                            socket.onmessage = null; // stop reading messages as soon as reading breaks once
+                            emitter.emit('error', err);
+                            socket.close(exports.CloseCode.BadResponse, limitCloseReason(err instanceof Error ? err.message : new Error(err).message, 'Bad response'));
+                        }
+                    };
+                })())));
+                // if the provided socket is in a closing state, wait for the throw on close
+                if (socket.readyState === WebSocketImpl.CLOSING)
+                    await throwOnClose;
+                let release = () => {
+                    // releases this connection
+                };
+                const released = new Promise((resolve) => (release = resolve));
+                return [
+                    socket,
+                    release,
+                    Promise.race([
+                        // wait for
+                        released.then(() => {
+                            if (!locks) {
+                                // and if no more locks are present, complete the connection
+                                const complete = () => socket.close(1000, 'Normal Closure');
+                                if (isFinite(lazyCloseTimeout) && lazyCloseTimeout > 0) {
+                                    // if the keepalive is set, allow for the specified calmdown time and
+                                    // then complete. but only if no lock got created in the meantime and
+                                    // if the socket is still open
+                                    setTimeout(() => {
+                                        if (!locks && socket.readyState === WebSocketImpl.OPEN)
+                                            complete();
+                                    }, lazyCloseTimeout);
+                                }
+                                else {
+                                    // otherwise complete immediately
+                                    complete();
+                                }
+                            }
+                        }),
+                        // or
+                        throwOnClose,
+                    ]),
+                ];
+            }
+            /**
+             * Checks the `connect` problem and evaluates if the client should retry.
+             */
+            function shouldRetryConnectOrThrow(errOrCloseEvent) {
+                // some close codes are worth reporting immediately
+                if (isLikeCloseEvent(errOrCloseEvent) &&
+                    (isFatalInternalCloseCode(errOrCloseEvent.code) ||
+                        [
+                            exports.CloseCode.InternalServerError,
+                            exports.CloseCode.InternalClientError,
+                            exports.CloseCode.BadRequest,
+                            exports.CloseCode.BadResponse,
+                            exports.CloseCode.Unauthorized,
+                            // CloseCode.Forbidden, might grant access out after retry
+                            exports.CloseCode.SubprotocolNotAcceptable,
+                            // CloseCode.ConnectionInitialisationTimeout, might not time out after retry
+                            // CloseCode.ConnectionAcknowledgementTimeout, might not time out after retry
+                            exports.CloseCode.SubscriberAlreadyExists,
+                            exports.CloseCode.TooManyInitialisationRequests,
+                            // 4499, // Terminated, probably because the socket froze, we want to retry
+                        ].includes(errOrCloseEvent.code)))
+                    throw errOrCloseEvent;
+                // client was disposed, no retries should proceed regardless
+                if (disposed)
+                    return false;
+                // normal closure (possibly all subscriptions have completed)
+                // if no locks were acquired in the meantime, shouldnt try again
+                if (isLikeCloseEvent(errOrCloseEvent) && errOrCloseEvent.code === 1000)
+                    return locks > 0;
+                // retries are not allowed or we tried to many times, report error
+                if (!retryAttempts || retries >= retryAttempts)
+                    throw errOrCloseEvent;
+                // throw non-retryable connection problems
+                if (!shouldRetry(errOrCloseEvent))
+                    throw errOrCloseEvent;
+                // @deprecated throw fatal connection problems immediately
+                if (isFatalConnectionProblem === null || isFatalConnectionProblem === void 0 ? void 0 : isFatalConnectionProblem(errOrCloseEvent))
+                    throw errOrCloseEvent;
+                // looks good, start retrying
+                return (retrying = true);
+            }
+            // in non-lazy (hot?) mode always hold one connection lock to persist the socket
+            if (!lazy) {
+                (async () => {
+                    locks++;
+                    for (;;) {
+                        try {
+                            const [, , throwOnClose] = await connect();
+                            await throwOnClose; // will always throw because releaser is not used
+                        }
+                        catch (errOrCloseEvent) {
+                            try {
+                                if (!shouldRetryConnectOrThrow(errOrCloseEvent))
+                                    return;
+                            }
+                            catch (errOrCloseEvent) {
+                                // report thrown error, no further retries
+                                return onNonLazyError === null || onNonLazyError === void 0 ? void 0 : onNonLazyError(errOrCloseEvent);
+                            }
+                        }
+                    }
+                })();
+            }
+            return {
+                on: emitter.on,
+                subscribe(payload, sink) {
+                    const id = generateID();
+                    let done = false, errored = false, releaser = () => {
+                        // for handling completions before connect
+                        locks--;
+                        done = true;
+                    };
+                    (async () => {
+                        locks++;
+                        for (;;) {
+                            try {
+                                const [socket, release, waitForReleaseOrThrowOnClose] = await connect();
+                                // if done while waiting for connect, release the connection lock right away
+                                if (done)
+                                    return release();
+                                const unlisten = emitter.onMessage(id, (message) => {
+                                    switch (message.type) {
+                                        case exports.MessageType.Next: {
+                                            sink.next(message.payload);
+                                            return;
+                                        }
+                                        case exports.MessageType.Error: {
+                                            (errored = true), (done = true);
+                                            sink.error(message.payload);
+                                            releaser();
+                                            return;
+                                        }
+                                        case exports.MessageType.Complete: {
+                                            done = true;
+                                            releaser(); // release completes the sink
+                                            return;
+                                        }
+                                    }
+                                });
+                                socket.send(stringifyMessage({
+                                    id,
+                                    type: exports.MessageType.Subscribe,
+                                    payload,
+                                }, replacer));
+                                releaser = () => {
+                                    if (!done && socket.readyState === WebSocketImpl.OPEN)
+                                        // if not completed already and socket is open, send complete message to server on release
+                                        socket.send(stringifyMessage({
+                                            id,
+                                            type: exports.MessageType.Complete,
+                                        }, replacer));
+                                    locks--;
+                                    done = true;
+                                    release();
+                                };
+                                // either the releaser will be called, connection completed and
+                                // the promise resolved or the socket closed and the promise rejected.
+                                // whatever happens though, we want to stop listening for messages
+                                await waitForReleaseOrThrowOnClose.finally(unlisten);
+                                return; // completed, shouldnt try again
+                            }
+                            catch (errOrCloseEvent) {
+                                if (!shouldRetryConnectOrThrow(errOrCloseEvent))
+                                    return;
+                            }
+                        }
+                    })()
+                        .then(() => {
+                        // delivering either an error or a complete terminates the sequence
+                        if (!errored)
+                            sink.complete();
+                    }) // resolves on release or normal closure
+                        .catch((err) => {
+                        sink.error(err);
+                    }); // rejects on close events and errors
+                    return () => {
+                        // dispose only of active subscriptions
+                        if (!done)
+                            releaser();
+                    };
+                },
+                async dispose() {
+                    disposed = true;
+                    if (connecting) {
+                        // if there is a connection, close it
+                        const [socket] = await connecting;
+                        socket.close(1000, 'Normal Closure');
+                    }
+                },
+                terminate() {
+                    if (connecting) {
+                        // only if there is a connection
+                        emitter.emit('closed', {
+                            code: 4499,
+                            reason: 'Terminated',
+                            wasClean: false,
+                        });
+                    }
+                },
+            };
+        }
+        function isLikeCloseEvent(val) {
+            return isObject(val) && 'code' in val && 'reason' in val;
+        }
+        function isFatalInternalCloseCode(code) {
+            if ([
+                1000,
+                1001,
+                1006,
+                1005,
+                1012,
+                1013,
+                1013, // Bad Gateway
+            ].includes(code))
+                return false;
+            // all other internal errors are fatal
+            return code >= 1000 && code <= 1999;
+        }
+        function isWebSocket(val) {
+            return (typeof val === 'function' &&
+                'constructor' in val &&
+                'CLOSED' in val &&
+                'CLOSING' in val &&
+                'CONNECTING' in val &&
+                'OPEN' in val);
+        }
+
+        exports.DEPRECATED_GRAPHQL_WS_PROTOCOL = DEPRECATED_GRAPHQL_WS_PROTOCOL;
+        exports.GRAPHQL_TRANSPORT_WS_PROTOCOL = GRAPHQL_TRANSPORT_WS_PROTOCOL;
+        exports.createClient = createClient;
+        exports.isMessage = isMessage;
+        exports.parseMessage = parseMessage;
+        exports.stringifyMessage = stringifyMessage;
+        exports.validateMessage = validateMessage;
+
+        Object.defineProperty(exports, '__esModule', { value: true });
+
+    }));
+    });
 
     /* src/Ad4mConnectDialog.svelte generated by Svelte v3.49.0 */
 
@@ -26701,7 +24608,7 @@ type Subscription {
     	return child_ctx;
     }
 
-    // (124:8) {#if !requestId}
+    // (123:8) {#if !requestId}
     function create_if_block_1(ctx) {
     	let span;
     	let t0;
@@ -26862,7 +24769,7 @@ type Subscription {
     	};
     }
 
-    // (127:12) {#if capabilities && capabilities.length}
+    // (126:12) {#if capabilities && capabilities.length}
     function create_if_block_5(ctx) {
     	let ul;
     	let each_value = /*capabilities*/ ctx[3];
@@ -26918,7 +24825,7 @@ type Subscription {
     	};
     }
 
-    // (129:20) {#each capabilities as cap}
+    // (128:20) {#each capabilities as cap}
     function create_each_block(ctx) {
     	let li;
     	let t0_value = /*cap*/ ctx[24].can + "";
@@ -26958,7 +24865,7 @@ type Subscription {
     	};
     }
 
-    // (135:12) {#if appIconPath}
+    // (134:12) {#if appIconPath}
     function create_if_block_4(ctx) {
     	let div;
     	let img0;
@@ -27006,7 +24913,7 @@ type Subscription {
     	};
     }
 
-    // (147:16) {#if showQrScanner}
+    // (146:16) {#if showQrScanner}
     function create_if_block_3(ctx) {
     	let div;
     	let mounted;
@@ -27034,7 +24941,7 @@ type Subscription {
     	};
     }
 
-    // (153:12) {#if requestError}
+    // (152:12) {#if requestError}
     function create_if_block_2(ctx) {
     	let span;
     	let t;
@@ -27058,7 +24965,7 @@ type Subscription {
     	};
     }
 
-    // (166:8) {#if requestId}
+    // (165:8) {#if requestId}
     function create_if_block(ctx) {
     	let t0;
     	let span0;
@@ -27298,16 +25205,12 @@ type Subscription {
     	let requestError = false;
 
     	function generateCient(uri, authorization) {
-    		const wsLink = new WebSocketLink({
-    				uri,
-    				options: {
-    					reconnect: true,
-    					connectionParams: () => __awaiter(this, void 0, void 0, function* () {
-    						return { headers: { authorization } };
-    					})
-    				},
-    				webSocketImpl: WebSocket
-    			});
+    		const wsLink = new GraphQLWsLink(graphqlWs.createClient({
+    				url: uri,
+    				connectionParams: () => {
+    					return { headers: { authorization } };
+    				}
+    			}));
 
     		let apolloClient = new ApolloClient({
     				link: wsLink,
