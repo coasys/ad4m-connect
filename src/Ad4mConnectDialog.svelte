@@ -4,7 +4,6 @@
     import { ApolloClient, InMemoryCache } from "@apollo/client/core";
     import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
     import { createClient } from 'graphql-ws';
-import { userInfo } from "os";
     
     export let executorUrl: string
     export let capToken: string
@@ -12,6 +11,7 @@ import { userInfo } from "os";
     export let appIconPath: string
     export let capabilities: Array<object>
     export let showQrScanner: string|void
+    export let searchAvailablePort: boolean
     export let resolve: (executorUrl: string, capToken: string, client: Ad4mClient)=>void
     export let reject: ()=>void
     export let qrScanRequest: ()=>string
@@ -96,7 +96,12 @@ import { userInfo } from "os";
         catch (e) {
             console.log(e)
         }
-    } 
+    }
+
+    function searchPort() {
+        // TODO do we really want low performance port search, even we have set executor available
+        executorUrl = 'ws://localhost:12000/graphql'
+    }
 </script>
 
 <div class="right material-icons pointer" on:click={reject}>close</div>
@@ -133,6 +138,9 @@ import { userInfo } from "os";
             
             <div class="textfield">
                 <input class:error={requestError} bind:value={executorUrl} id="executor-url" />
+                {#if !executorUrl && searchAvailablePort }
+                    { searchPort() }
+                {/if}
                 {#if showQrScanner}
                     <div on:click={()=>{executorUrl = qrScanRequest()}}>
                         <span class="material-icons">qr_code</span>

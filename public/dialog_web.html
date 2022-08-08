@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>AD4M Connection Wizard</title>
+
+	<link rel='icon' type='image/png' href='favicon.png'>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script>var exports = {};</script>
+	<script src='Ad4mConnectDialog.js'></script>
+		
+</head>
+
+<body>
+	<div id="container">
+	</div>
+</body>
+
+<script>
+	function run() {
+		const tempTarget = document.createElement('div')
+		const dialog = new Ad4mConnectDialog({ target: tempTarget });
+		dialog.appName = 'demo app';
+		dialog.appIconPath = 'Ad4mLogo.png';
+		dialog.searchAvailablePort = true;
+		dialog.executorUrl = localStorage.getItem('executorUrl');
+		dialog.capToken = localStorage.getItem('capabilityToken');
+		dialog.capabilities = [{"with":{"domain":"*","pointers":["*"]},"can":["*"]}];
+		//dialog.showQrScanner = true
+		dialog.resolve = (executorUrl, capabilityToken, client) => {
+			console.log("resolve:", executorUrl, capabilityToken);
+			localStorage.setItem('capabilityToken', capabilityToken);
+			localStorage.setItem('executorUrl', executorUrl);
+		};
+		dialog.reject = () => {
+			console.log('rejected');
+		}
+		const container = document.getElementById("container")
+		container.appendChild(tempTarget)  
+		dialog.run();
+	}
+	run()
+</script>
+</html>
