@@ -100,20 +100,30 @@
         }
     }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     async function searchPort() {
-        for (let p = 12000; p <= 12010; p++) {
-            const controller = new AbortController();
-            setTimeout(() => controller.abort(), 2000);
+        console.log("start port search...")
+        let port = 12000
+        const endPort = 12010
+        let found = false
 
-            const res = await fetch(`http://localhost:${p}/graphql`, {
-                signal: controller.signal,
-                mode: 'no-cors'
-            });
-
-            if (res.status == 0) {
-                executorUrl = `ws://localhost:${p}/graphql`
-                return
+        while (!found && port <= endPort) {
+            console.log("search port: ", port)
+            let url = `ws://localhost:${port}/graphql`
+            if(!found) {
+                const ws = new WebSocket(url)
+                ws.onopen = (_event) => {
+                    executorUrl = url
+                    console.log("search port success: ", executorUrl)
+                    found = true
+                }
             }
+            
+            port++
+            await sleep(1000)
         }
     }
 </script>

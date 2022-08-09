@@ -24723,7 +24723,7 @@ type Subscription {
     	return child_ctx;
     }
 
-    // (143:8) {#if !requestId}
+    // (150:8) {#if !requestId}
     function create_if_block_1(ctx) {
     	let span;
     	let t0;
@@ -24904,7 +24904,7 @@ type Subscription {
     	};
     }
 
-    // (146:12) {#if capabilities && capabilities.length}
+    // (153:12) {#if capabilities && capabilities.length}
     function create_if_block_6(ctx) {
     	let ul;
     	let each_value = /*capabilities*/ ctx[3];
@@ -24960,7 +24960,7 @@ type Subscription {
     	};
     }
 
-    // (148:20) {#each capabilities as cap}
+    // (155:20) {#each capabilities as cap}
     function create_each_block(ctx) {
     	let li;
     	let t0_value = /*cap*/ ctx[28].can + "";
@@ -25000,7 +25000,7 @@ type Subscription {
     	};
     }
 
-    // (154:12) {#if appIconPath}
+    // (161:12) {#if appIconPath}
     function create_if_block_5(ctx) {
     	let div;
     	let img0;
@@ -25048,7 +25048,7 @@ type Subscription {
     	};
     }
 
-    // (166:16) {#if !executorUrl && searchAvailablePort }
+    // (173:16) {#if !executorUrl && searchAvailablePort }
     function create_if_block_4(ctx) {
     	let await_block_anchor;
 
@@ -25097,12 +25097,12 @@ type Subscription {
     	return { c: noop, m: noop, d: noop };
     }
 
-    // (167:41)                      {/await}
+    // (174:41)                      {/await}
     function create_pending_block(ctx) {
     	return { c: noop, m: noop, d: noop };
     }
 
-    // (170:16) {#if showQrScanner}
+    // (177:16) {#if showQrScanner}
     function create_if_block_3(ctx) {
     	let div;
     	let mounted;
@@ -25130,7 +25130,7 @@ type Subscription {
     	};
     }
 
-    // (176:12) {#if requestError}
+    // (183:12) {#if requestError}
     function create_if_block_2(ctx) {
     	let span;
     	let t;
@@ -25154,7 +25154,7 @@ type Subscription {
     	};
     }
 
-    // (189:8) {#if requestId}
+    // (196:8) {#if requestId}
     function create_if_block(ctx) {
     	let t0;
     	let span0;
@@ -25342,6 +25342,10 @@ type Subscription {
     	};
     }
 
+    function sleep(ms) {
+    	return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
     		function adopt(value) {
@@ -25481,21 +25485,27 @@ type Subscription {
 
     	function searchPort() {
     		return __awaiter(this, void 0, void 0, function* () {
-    			for (let p = 12000; p <= 12010; p++) {
-    				console.log("start search ..", p);
-    				const controller = new AbortController();
-    				setTimeout(() => controller.abort(), 2000);
+    			console.log("start port search...");
+    			let port = 12000;
+    			const endPort = 12010;
+    			let found = false;
 
-    				const res = yield fetch(`http://localhost:${p}/graphql`, {
-    					signal: controller.signal,
-    					mode: 'no-cors'
-    				});
+    			while (!found && port <= endPort) {
+    				console.log("search port: ", port);
+    				let url = `ws://localhost:${port}/graphql`;
 
-    				if (res.status == 0) {
-    					$$invalidate(0, executorUrl = `ws://localhost:${p}/graphql`);
-    					console.log("port: ---", p, res);
-    					return;
+    				if (!found) {
+    					const ws = new WebSocket(url);
+
+    					ws.onopen = _event => {
+    						$$invalidate(0, executorUrl = url);
+    						console.log("search port success: ", executorUrl);
+    						found = true;
+    					};
     				}
+
+    				port++;
+    				yield sleep(1000);
     			}
     		});
     	}
