@@ -2,6 +2,9 @@ var Ad4mConnectDialog = (function () {
     'use strict';
 
     function noop() { }
+    function is_promise(value) {
+        return value && typeof value === 'object' && typeof value.then === 'function';
+    }
     function run(fn) {
         return fn();
     }
@@ -52,6 +55,9 @@ var Ad4mConnectDialog = (function () {
     function space() {
         return text(' ');
     }
+    function empty() {
+        return text('');
+    }
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
@@ -95,6 +101,11 @@ var Ad4mConnectDialog = (function () {
     let current_component;
     function set_current_component(component) {
         current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
     }
 
     const dirty_components = [];
@@ -179,10 +190,114 @@ var Ad4mConnectDialog = (function () {
         }
     }
     const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
     function transition_in(block, local) {
         if (block && block.i) {
             outroing.delete(block);
             block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+        else if (callback) {
+            callback();
+        }
+    }
+
+    function handle_promise(promise, info) {
+        const token = info.token = {};
+        function update(type, index, key, value) {
+            if (info.token !== token)
+                return;
+            info.resolved = value;
+            let child_ctx = info.ctx;
+            if (key !== undefined) {
+                child_ctx = child_ctx.slice();
+                child_ctx[key] = value;
+            }
+            const block = type && (info.current = type)(child_ctx);
+            let needs_flush = false;
+            if (info.block) {
+                if (info.blocks) {
+                    info.blocks.forEach((block, i) => {
+                        if (i !== index && block) {
+                            group_outros();
+                            transition_out(block, 1, 1, () => {
+                                if (info.blocks[i] === block) {
+                                    info.blocks[i] = null;
+                                }
+                            });
+                            check_outros();
+                        }
+                    });
+                }
+                else {
+                    info.block.d(1);
+                }
+                block.c();
+                transition_in(block, 1);
+                block.m(info.mount(), info.anchor);
+                needs_flush = true;
+            }
+            info.block = block;
+            if (info.blocks)
+                info.blocks[index] = block;
+            if (needs_flush) {
+                flush();
+            }
+        }
+        if (is_promise(promise)) {
+            const current_component = get_current_component();
+            promise.then(value => {
+                set_current_component(current_component);
+                update(info.then, 1, info.value, value);
+                set_current_component(null);
+            }, error => {
+                set_current_component(current_component);
+                update(info.catch, 2, info.error, error);
+                set_current_component(null);
+                if (!info.hasCatch) {
+                    throw error;
+                }
+            });
+            // if we previously had a then/catch block, destroy it
+            if (info.current !== info.pending) {
+                update(info.pending, 0);
+                return true;
+            }
+        }
+        else {
+            if (info.current !== info.then) {
+                update(info.then, 1, info.value, promise);
+                return true;
+            }
+            info.resolved = promise;
         }
     }
     function mount_component(component, target, anchor, customElement) {
@@ -24604,11 +24719,11 @@ type Subscription {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[26] = list[i];
+    	child_ctx[28] = list[i];
     	return child_ctx;
     }
 
-    // (128:8) {#if !requestId}
+    // (143:8) {#if !requestId}
     function create_if_block_1(ctx) {
     	let span;
     	let t0;
@@ -24684,7 +24799,7 @@ type Subscription {
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler*/ ctx[18]),
+    					listen(input, "input", /*input_input_handler*/ ctx[20]),
     					listen(button, "click", /*requestCapability*/ ctx[12])
     				];
 
@@ -24789,7 +24904,7 @@ type Subscription {
     	};
     }
 
-    // (131:12) {#if capabilities && capabilities.length}
+    // (146:12) {#if capabilities && capabilities.length}
     function create_if_block_6(ctx) {
     	let ul;
     	let each_value = /*capabilities*/ ctx[3];
@@ -24845,16 +24960,16 @@ type Subscription {
     	};
     }
 
-    // (133:20) {#each capabilities as cap}
+    // (148:20) {#each capabilities as cap}
     function create_each_block(ctx) {
     	let li;
-    	let t0_value = /*cap*/ ctx[26].can + "";
+    	let t0_value = /*cap*/ ctx[28].can + "";
     	let t0;
     	let t1;
-    	let t2_value = /*cap*/ ctx[26].with.domain + "";
+    	let t2_value = /*cap*/ ctx[28].with.domain + "";
     	let t2;
     	let t3;
-    	let t4_value = /*cap*/ ctx[26].with.pointers + "";
+    	let t4_value = /*cap*/ ctx[28].with.pointers + "";
     	let t4;
 
     	return {
@@ -24875,9 +24990,9 @@ type Subscription {
     			append(li, t4);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*capabilities*/ 8 && t0_value !== (t0_value = /*cap*/ ctx[26].can + "")) set_data(t0, t0_value);
-    			if (dirty & /*capabilities*/ 8 && t2_value !== (t2_value = /*cap*/ ctx[26].with.domain + "")) set_data(t2, t2_value);
-    			if (dirty & /*capabilities*/ 8 && t4_value !== (t4_value = /*cap*/ ctx[26].with.pointers + "")) set_data(t4, t4_value);
+    			if (dirty & /*capabilities*/ 8 && t0_value !== (t0_value = /*cap*/ ctx[28].can + "")) set_data(t0, t0_value);
+    			if (dirty & /*capabilities*/ 8 && t2_value !== (t2_value = /*cap*/ ctx[28].with.domain + "")) set_data(t2, t2_value);
+    			if (dirty & /*capabilities*/ 8 && t4_value !== (t4_value = /*cap*/ ctx[28].with.pointers + "")) set_data(t4, t4_value);
     		},
     		d(detaching) {
     			if (detaching) detach(li);
@@ -24885,7 +25000,7 @@ type Subscription {
     	};
     }
 
-    // (139:12) {#if appIconPath}
+    // (154:12) {#if appIconPath}
     function create_if_block_5(ctx) {
     	let div;
     	let img0;
@@ -24933,26 +25048,61 @@ type Subscription {
     	};
     }
 
-    // (151:16) {#if !executorUrl && searchAvailablePort }
+    // (166:16) {#if !executorUrl && searchAvailablePort }
     function create_if_block_4(ctx) {
-    	let t_value = /*searchPort*/ ctx[14]() + "";
-    	let t;
+    	let await_block_anchor;
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		hasCatch: false,
+    		pending: create_pending_block,
+    		then: create_then_block,
+    		catch: create_catch_block
+    	};
+
+    	handle_promise(/*searchPort*/ ctx[14](), info);
 
     	return {
     		c() {
-    			t = text(t_value);
+    			await_block_anchor = empty();
+    			info.block.c();
     		},
     		m(target, anchor) {
-    			insert(target, t, anchor);
+    			insert(target, await_block_anchor, anchor);
+    			info.block.m(target, info.anchor = anchor);
+    			info.mount = () => await_block_anchor.parentNode;
+    			info.anchor = await_block_anchor;
     		},
-    		p: noop,
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+    		},
     		d(detaching) {
-    			if (detaching) detach(t);
+    			if (detaching) detach(await_block_anchor);
+    			info.block.d(detaching);
+    			info.token = null;
+    			info = null;
     		}
     	};
     }
 
-    // (154:16) {#if showQrScanner}
+    // (1:0) <svelte:options tag="ad4m-connect-dialog"></svelte:options> <script lang="ts">var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }
+    function create_catch_block(ctx) {
+    	return { c: noop, m: noop, d: noop };
+    }
+
+    // (1:0) <svelte:options tag="ad4m-connect-dialog"></svelte:options> <script lang="ts">var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }
+    function create_then_block(ctx) {
+    	return { c: noop, m: noop, d: noop };
+    }
+
+    // (167:41)                      {/await}
+    function create_pending_block(ctx) {
+    	return { c: noop, m: noop, d: noop };
+    }
+
+    // (170:16) {#if showQrScanner}
     function create_if_block_3(ctx) {
     	let div;
     	let mounted;
@@ -24967,7 +25117,7 @@ type Subscription {
     			insert(target, div, anchor);
 
     			if (!mounted) {
-    				dispose = listen(div, "click", /*click_handler*/ ctx[19]);
+    				dispose = listen(div, "click", /*click_handler*/ ctx[21]);
     				mounted = true;
     			}
     		},
@@ -24980,7 +25130,7 @@ type Subscription {
     	};
     }
 
-    // (160:12) {#if requestError}
+    // (176:12) {#if requestError}
     function create_if_block_2(ctx) {
     	let span;
     	let t;
@@ -25004,7 +25154,7 @@ type Subscription {
     	};
     }
 
-    // (173:8) {#if requestId}
+    // (189:8) {#if requestId}
     function create_if_block(ctx) {
     	let t0;
     	let span0;
@@ -25064,8 +25214,8 @@ type Subscription {
 
     			if (!mounted) {
     				dispose = [
-    					listen(input, "input", /*input_input_handler_1*/ ctx[20]),
-    					listen(button0, "click", /*click_handler_1*/ ctx[21]),
+    					listen(input, "input", /*input_input_handler_1*/ ctx[22]),
+    					listen(button0, "click", /*click_handler_1*/ ctx[23]),
     					listen(button1, "click", /*generateJwt*/ ctx[13])
     				];
 
@@ -25232,6 +25382,8 @@ type Subscription {
     	let { executorUrl } = $$props;
     	let { capToken } = $$props;
     	let { appName } = $$props;
+    	let { appDesc } = $$props;
+    	let { appUrl } = $$props;
     	let { appIconPath } = $$props;
     	let { capabilities } = $$props;
     	let { showQrScanner } = $$props;
@@ -25281,7 +25433,7 @@ type Subscription {
     		return __awaiter(this, void 0, void 0, function* () {
     			try {
     				let ad4mClientWithoutJwt = generateCient(executorUrl, '');
-    				$$invalidate(8, requestId = yield ad4mClientWithoutJwt.agent.requestCapability("perspect3ve", "general purpose ad4m browser", "https://github.com/perspect3vism/perspect3ve", JSON.stringify(capabilities)));
+    				$$invalidate(8, requestId = yield ad4mClientWithoutJwt.agent.requestCapability(appName, appDesc, appUrl, JSON.stringify(capabilities)));
     				console.log("auth request id: ", requestId);
     				$$invalidate(11, requestError = undefined);
     			} catch(err) {
@@ -25328,8 +25480,24 @@ type Subscription {
     	}
 
     	function searchPort() {
-    		// TODO do we really want low performance port search, even we have set executor available
-    		$$invalidate(0, executorUrl = 'ws://localhost:12000/graphql');
+    		return __awaiter(this, void 0, void 0, function* () {
+    			for (let p = 12000; p <= 12010; p++) {
+    				console.log("start search ..", p);
+    				const controller = new AbortController();
+    				setTimeout(() => controller.abort(), 2000);
+
+    				const res = yield fetch(`http://localhost:${p}/graphql`, {
+    					signal: controller.signal,
+    					mode: 'no-cors'
+    				});
+
+    				if (res.status == 0) {
+    					$$invalidate(0, executorUrl = `ws://localhost:${p}/graphql`);
+    					console.log("port: ---", p, res);
+    					return;
+    				}
+    			}
+    		});
     	}
 
     	function input_input_handler() {
@@ -25352,11 +25520,13 @@ type Subscription {
     		if ('executorUrl' in $$props) $$invalidate(0, executorUrl = $$props.executorUrl);
     		if ('capToken' in $$props) $$invalidate(15, capToken = $$props.capToken);
     		if ('appName' in $$props) $$invalidate(1, appName = $$props.appName);
+    		if ('appDesc' in $$props) $$invalidate(16, appDesc = $$props.appDesc);
+    		if ('appUrl' in $$props) $$invalidate(17, appUrl = $$props.appUrl);
     		if ('appIconPath' in $$props) $$invalidate(2, appIconPath = $$props.appIconPath);
     		if ('capabilities' in $$props) $$invalidate(3, capabilities = $$props.capabilities);
     		if ('showQrScanner' in $$props) $$invalidate(4, showQrScanner = $$props.showQrScanner);
     		if ('searchAvailablePort' in $$props) $$invalidate(5, searchAvailablePort = $$props.searchAvailablePort);
-    		if ('resolve' in $$props) $$invalidate(16, resolve = $$props.resolve);
+    		if ('resolve' in $$props) $$invalidate(18, resolve = $$props.resolve);
     		if ('reject' in $$props) $$invalidate(6, reject = $$props.reject);
     		if ('qrScanRequest' in $$props) $$invalidate(7, qrScanRequest = $$props.qrScanRequest);
     	};
@@ -25378,6 +25548,8 @@ type Subscription {
     		generateJwt,
     		searchPort,
     		capToken,
+    		appDesc,
+    		appUrl,
     		resolve,
     		run,
     		input_input_handler,
@@ -25406,14 +25578,16 @@ type Subscription {
     				executorUrl: 0,
     				capToken: 15,
     				appName: 1,
+    				appDesc: 16,
+    				appUrl: 17,
     				appIconPath: 2,
     				capabilities: 3,
     				showQrScanner: 4,
     				searchAvailablePort: 5,
-    				resolve: 16,
+    				resolve: 18,
     				reject: 6,
     				qrScanRequest: 7,
-    				run: 17
+    				run: 19
     			},
     			null
     		);
@@ -25435,6 +25609,8 @@ type Subscription {
     			"executorUrl",
     			"capToken",
     			"appName",
+    			"appDesc",
+    			"appUrl",
     			"appIconPath",
     			"capabilities",
     			"showQrScanner",
@@ -25470,6 +25646,24 @@ type Subscription {
 
     	set appName(appName) {
     		this.$$set({ appName });
+    		flush();
+    	}
+
+    	get appDesc() {
+    		return this.$$.ctx[16];
+    	}
+
+    	set appDesc(appDesc) {
+    		this.$$set({ appDesc });
+    		flush();
+    	}
+
+    	get appUrl() {
+    		return this.$$.ctx[17];
+    	}
+
+    	set appUrl(appUrl) {
+    		this.$$set({ appUrl });
     		flush();
     	}
 
@@ -25510,7 +25704,7 @@ type Subscription {
     	}
 
     	get resolve() {
-    		return this.$$.ctx[16];
+    		return this.$$.ctx[18];
     	}
 
     	set resolve(resolve) {
@@ -25537,7 +25731,7 @@ type Subscription {
     	}
 
     	get run() {
-    		return this.$$.ctx[17];
+    		return this.$$.ctx[19];
     	}
     }
 

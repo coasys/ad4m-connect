@@ -100,9 +100,21 @@
         }
     }
 
-    function searchPort() {
-        // TODO do we really want low performance port search, even we have set executor available
-        executorUrl = 'ws://localhost:12000/graphql'
+    async function searchPort() {
+        for (let p = 12000; p <= 12010; p++) {
+            const controller = new AbortController();
+            setTimeout(() => controller.abort(), 2000);
+
+            const res = await fetch(`http://localhost:${p}/graphql`, {
+                signal: controller.signal,
+                mode: 'no-cors'
+            });
+
+            if (res.status == 0) {
+                executorUrl = `ws://localhost:${p}/graphql`
+                return
+            }
+        }
     }
 </script>
 
@@ -141,7 +153,8 @@
             <div class="textfield">
                 <input class:error={requestError} bind:value={executorUrl} id="executor-url" />
                 {#if !executorUrl && searchAvailablePort }
-                    { searchPort() }
+                    {#await searchPort()}
+                    {/await}
                 {/if}
                 {#if showQrScanner}
                     <div on:click={()=>{executorUrl = qrScanRequest()}}>
