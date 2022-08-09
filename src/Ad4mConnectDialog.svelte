@@ -113,13 +113,11 @@
         while (!found && port <= endPort) {
             console.log("search port: ", port)
             let url = `ws://localhost:${port}/graphql`
-            if(!found) {
-                const ws = new WebSocket(url)
-                ws.onopen = (_event) => {
-                    executorUrl = url
-                    console.log("search port success: ", executorUrl)
-                    found = true
-                }
+            const ws = new WebSocket(url)
+            ws.onopen = (_event) => {
+                executorUrl = url
+                console.log("search port success: ", executorUrl)
+                found = true
             }
             
             port++
