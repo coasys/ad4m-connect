@@ -59,14 +59,14 @@ function getCapToken(dataPath) {
 
 
 export function ad4mConnect(args){
-    const {appName, appIconPath, capabilities, dataPath} = args
+    const {appName, appDesc, appUrl, appIconPath, capabilities, dataPath} = args
     return new Promise((resolve, reject) => {
         const executorUrl = getExecutorUrl(dataPath)
         const capabilityToken = getCapToken(dataPath)
         let win
 
         ipcMain.on('get', (event, arg) => {
-            event.returnValue = {appName, appIconPath, executorUrl, capabilityToken, capabilities}
+            event.returnValue = {appName, appDesc, appUrl, appIconPath, executorUrl, capabilityToken, capabilities}
         })
     
         ipcMain.on('resolve', (event, arg) => {

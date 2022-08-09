@@ -22,7 +22,11 @@ and then just call that function with parameters of your app:
 ```js
 ad4mConnect({
     // Provide the name of your app to be displayed in the dialog
-    appName: "Perspect3ve", 
+    appName: "Perspect3ve",
+    // Provide the description of your app
+    appDesc: "A general browser for AD4M apps",
+    // Provide the website or source code link of your app
+    appUrl: "https://github.com/perspect3vism/perspect3ve",
     // Provide an icon to be displayed in the dialog as well
     appIconPath: path.join(__dirname, "graphics", "Logo.png"), 
     // Name the capabilities your app needs
@@ -79,6 +83,8 @@ function reject() {
 <Ad4mConnectDialog
     bind:this={connectDialog}
     appName="Perspect3ve"
+    appDesc="A general browser for AD4M apps"
+    appUrl="https://github.com/perspect3vism/perspect3ve"
     appIconPath="Perspect3veLogo.png"
     executorUrl={executorUrl} 
     capToken={capToken}
@@ -100,6 +106,8 @@ import `@perspect3vism/ad4m-connect/public/Ad4mConnectDialog.js`
 const tempTarget = document.createElement('div')
 const dialog = new Ad4mConnectDialog({ target: tempTarget });
 dialog.appName = appName;
+dialog.appDesc = appDesc;
+dialog.appUrl = appUrl;
 dialog.appIconPath = appIconPath;
 dialog.executorUrl = executorUrl;
 dialog.capToken = capabilityToken;

@@ -24,7 +24,9 @@
 	function run() {
 		const tempTarget = document.createElement('div')
 		const dialog = new Ad4mConnectDialog({ target: tempTarget });
-		dialog.appName = 'demo app';
+		dialog.appName = 'DemoApp';
+		dialog.appDesc = 'A simple web demo app';
+		dialog.appUrl = 'https://example.com';
 		dialog.appIconPath = 'Ad4mLogo.png';
 		dialog.searchAvailablePort = true;
 		dialog.executorUrl = localStorage.getItem('executorUrl');

@@ -8,6 +8,8 @@
     export let executorUrl: string
     export let capToken: string
     export let appName: string
+    export let appDesc: string
+    export let appUrl: string
     export let appIconPath: string
     export let capabilities: Array<object>
     export let showQrScanner: string|void
@@ -65,7 +67,7 @@
     async function requestCapability() {
         try {
             let ad4mClientWithoutJwt = generateCient(executorUrl, '')
-            requestId = await ad4mClientWithoutJwt.agent.requestCapability("perspect3ve", "general purpose ad4m browser", "https://github.com/perspect3vism/perspect3ve", JSON.stringify(capabilities));
+            requestId = await ad4mClientWithoutJwt.agent.requestCapability(appName, appDesc, appUrl, JSON.stringify(capabilities));
             console.log("auth request id: ", requestId);
             requestError = undefined
         } catch (err) {
