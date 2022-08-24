@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
-const { ad4mConnect } = require('../../dist/electron.js')
+const { ad4mConnect } = require('ad4m-connect/electron')
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
