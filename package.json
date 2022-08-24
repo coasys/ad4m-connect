@@ -14,7 +14,8 @@
     "build": "npm run build:core && npm run build:web && npm run build:electron",
     "build:core": "node scripts/esbuild.js",
     "build:web": "node scripts/esbuild_web.js",
-    "build:electron": "node scripts/esbuild_electron.js"
+    "build:electron": "node scripts/esbuild_electron.js",
+    "postinstall": "npm run build"
   },
   "author": {
     "name": "Nicolas Luck",
