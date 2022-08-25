@@ -39,9 +39,9 @@
       isConnected().then(async () => {
         const client = await getAd4mClient();
         const status = await client.agent.status();
+        
         const ele = document.createElement('div')
         ele.innerHTML = JSON.stringify(status);
-        console.log('arr', JSON.stringify(status))
         document.body.appendChild(ele)
       })
     </script>
