@@ -125,7 +125,7 @@ class Client {
   async connectToPort() {
     try {
       this.callListener('loading');
-      const port = 12000; //await checkPort(this.port);
+      const port = await checkPort(this.port);
       if (port) {
         this.callListener('port_found', port);
         this.setPort(port);
@@ -147,9 +147,6 @@ class Client {
         // Show wrong capability message.
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
-        console.log("Requesting capabilities...");
-
-        // await this.requestCapability(true);
       } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
         // Show agent is locked message.
         this.callListener('agent_locked');
@@ -157,9 +154,6 @@ class Client {
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
-        console.log("Requesting capabilities...");
-
-        // await this.requestCapability(true);
       } else if (error.message === "Couldn't find an open port") {
         console.log('arrr')
         // show no open port error & ask to retry
@@ -266,9 +260,6 @@ class Client {
         // Show wrong capability message.
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
-        console.log("Requesting capabilities...");
-
-        // await this.requestCapability(true);
       } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
         // Show agent is locked message.
         this.callListener('agent_locked');
@@ -276,9 +267,6 @@ class Client {
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
-        console.log("Requesting capabilities...");
-
-        // await this.requestCapability(true);
       } else if (error.message === "Couldn't find an open port") {
         // show no open port error & ask to retry
         this.setPortSearchState("not_found");
