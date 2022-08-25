@@ -3,7 +3,10 @@ import { customElement, property, state } from "lit/decorators.js";
 import { ad4mConnect } from './core';
 
 const styles = css`
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
 .ad4mConnect {
+  font-family: 'Comfortaa', cursive;
 	position: relative;
 	height: 100vh;
 	width: 100vw;
@@ -14,14 +17,23 @@ const styles = css`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #fff;
 	z-index: 10;
 	border-radius: 4px;
 	padding: 36px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 600px;
+	width: 100%;
+  max-width: 600px;
+  max-height: 400px;
+  min-height: 200px;
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(38,3,23,1) 41%, rgba(51,4,31,1) 100%);
+}
+
+@media only screen and (max-width: 600px) {
+  .ad4mConnect__backdrop {
+    display: none;
+  }
 }
 
 .ad4mConnect__backdrop {
@@ -42,6 +54,7 @@ const styles = css`
 	font-weight: bold;
 	font-size: 24px;
 	margin-left: 20px;
+  color: #fff;
 }
 
 .ad4mConnect__dailog__header {
@@ -50,11 +63,33 @@ const styles = css`
 }
 
 .ad4mConnect__dailog__subtitle {
-	margin: 12px 0;
+	margin: 18px 0;
+  color: #fff;
 }
 
 .ad4mConnect__dailog__caps {
 	align-self: flex-start;
+  color: #fff;
+  width: 100%;
+}
+
+.ad4mConnect__dailog__input {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 24px 0;
+  align-self: flex-start;
+}
+
+.ad4mConnect__dailog__input input {
+  font-size: 16px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 12px;
+  margin-left: 12px;
+  max-width: 400px;
 }
 
 .ad4mConnect__dailog__connection {
@@ -78,13 +113,14 @@ const styles = css`
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: #fff;
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(38,3,23,1) 41%, rgba(51,4,31,1) 100%);
 	height: 100vh;
 	width: 100vw;
 	padding: 36px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+  font-family: 'Comfortaa', cursive;
 }
 
 .ad4mConnect__dailog__options {
@@ -102,6 +138,48 @@ const styles = css`
 	font-size: 18px;
   cursor: pointer;
 }
+
+.ad4mConnect__dailog__option__text {
+  font-weight: bold;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-top: 24px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 `
 
 @customElement("ad4m-connect")
@@ -141,13 +219,25 @@ export default class Ad4mConnect extends LitElement {
   @property({ type: String, reflect: true })
   port
 
+  @property({ type: String, reflect: true })
+  appiconpath
+
   getClient() {
     console.log('client', this._client)
     return this._client;
   }
 
   connectedCallback() {
-    super.connectedCallback()
+    super.connectedCallback();
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.crossOrigin = "anonymous";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap";
+    document.head.appendChild(link);
+
     const client = ad4mConnect({
       appName: this.appname,
       appDesc: this.appdesc,
@@ -206,7 +296,7 @@ export default class Ad4mConnect extends LitElement {
                 <div class="ad4mConnect__dailog__header">
                     <img 
                         class="ad4mConnect__dailog__header__logo"
-                        src="../public/Ad4mLogo.png" 
+                        src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                         alt="Logo" 
                     />
                     <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -214,7 +304,7 @@ export default class Ad4mConnect extends LitElement {
                 <div
                     class="ad4mConnect__dailog__subtitle"
                 >trying to connect to the executor, please wait</div>
-                <CircularProgress />
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
             </div>
             <div class="ad4mConnect__backdrop" />
           </div>
@@ -228,7 +318,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="../public/Ad4mLogo.png" 
+                      src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -236,7 +326,7 @@ export default class Ad4mConnect extends LitElement {
               <div
                   class="ad4mConnect__dailog__subtitle"
               >Please enter the url you want to connect too.</div>
-              <div class="ad4mConnect__dailog__caps">
+              <div class="ad4mConnect__dailog__input">
                   URL: <input value=${this._url} @change=${(e: any) => this._url = e.target.value} />
               </div>
               <div style="height: 12px"></div>
@@ -262,7 +352,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="../public/Ad4mLogo.png" 
+                      src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -281,7 +371,7 @@ export default class Ad4mConnect extends LitElement {
                       class="ad4mConnect__dailog__option"
                       @click=${() => this._state = 'remote_url'}
                   >
-                      <div class="ad4mConnect__dailog__options__text">Connect remote</div>
+                      <div class="ad4mConnect__dailog__option__text">Connect remote</div>
                   </div>
               </div>
           </div>
@@ -296,7 +386,7 @@ export default class Ad4mConnect extends LitElement {
           <div class="ad4mConnect__dailog__header">
               <img 
                   class="ad4mConnect__dailog__header__logo"
-                  src="../public/Ad4mLogo.png" 
+                  src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                   alt="Logo" 
               />
               <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -315,7 +405,7 @@ export default class Ad4mConnect extends LitElement {
           <div class="ad4mConnect__dailog__header">
               <img 
                   class="ad4mConnect__dailog__header__logo"
-                  src="../public/Ad4mLogo.png" 
+                  src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                   alt="Logo" 
               />
               <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -334,27 +424,24 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="../public/Ad4mLogo.png" 
+                      src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
               </div>
               <div
                   class="ad4mConnect__dailog__subtitle"
-              >{'ad4m-react-example' needs to connect to your AD4M node/executor and request a capability token for the following capabilities:</div>
+              >${this.appname} needs to connect to your AD4M node/executor and request a capability token for the following capabilities:</div>
               <div class="ad4mConnect__dailog__caps">
                   ${JSON.parse(this.capabilities).map(e => (
                       html`<li>${e.can} => ${e.with.domain}.${e.with.pointers}</li>`
                   ))}
               </div>
-              <div class="ad4mConnect__dailog__connection">
-                  <img src="../public/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
-                  <LinkOutlined sx={{
-                      fontSize: 48,
-                      margin: '0 24px'
-                  }} />
-                  <img src="../public/Ad4mLogo.png" alt="Logo" style="width: 120px" />
-              </div>
+              ${ this.appiconpath && html`<div class="ad4mConnect__dailog__connection">
+                  <img src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
+                  <img src="https://i.ibb.co/BG0Dz2v/link.png alt="chain" width="40px" style="margin: 0 24px;" />
+                  <img src=${this.appiconpath} alt="Logo" style="width: 120px" />
+              </div>`}
               <div style="height: 12px" ></div>
               <button class="ad4mConnect__dailog__btn" @click=${() => this._client.requestCapability(true)}>
                   Continue
@@ -372,7 +459,7 @@ export default class Ad4mConnect extends LitElement {
                 <div class="ad4mConnect__dailog__header">
                     <img 
                         class="ad4mConnect__dailog__header__logo"
-                        src="../public/Ad4mLogo.png" 
+                        src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
                         alt="Logo" 
                     />
                     <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -380,7 +467,7 @@ export default class Ad4mConnect extends LitElement {
                 <div
                     class="ad4mConnect__dailog__subtitle"
                 >Capability request was successfully sent. Please check your AD4M admin UI (AD4Min), confirm the request there and enter the 6-digit security code below, that AD4Min displays to you.</div>
-                <div class="ad4mConnect__dailog__caps">
+                <div class="ad4mConnect__dailog__input">
                     Security code: <input value=${this._code} @change=${(e: any) => this._code = e.target.value} />
                 </div>
                 <div style="height: 12px"></div>
