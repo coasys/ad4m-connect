@@ -25,7 +25,7 @@ function runBrowser(args: Ad4mConnectOptions): Client {
   }
 
   const setExecutorPort = (port: string) => {
-    localStorage.setItem("ad4minToken", port);
+    localStorage.setItem("ad4minPort", port);
   }
 
   const setExecutorToken = (token: string) => {
@@ -94,8 +94,7 @@ class Client {
     this.setExecutorToken = setExecutorToken;
     if (port) this.port = port!;
     if (url) this.url = url;
-    console.log('gg', port, url)
-    if (token){
+    if (token && token.length > 0){
       this.setToken(token!);
     }
 
