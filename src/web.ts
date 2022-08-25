@@ -7,7 +7,9 @@ const styles = css`
 
 .ad4mConnect {
   font-family: 'Comfortaa', cursive;
-	position: relative;
+	position: fixed;
+  top: 0;
+  left: 0;
 	height: 100vh;
 	width: 100vw;
 }
@@ -284,6 +286,12 @@ export default class Ad4mConnect extends LitElement {
       console.log('connected_with_capabilities');
       this._state = 'connected_with_capabilities';
     })
+
+    document.addEventListener('fetch-ad4m-client', () => {
+      console.log('lul')
+      const event = new CustomEvent('return-fetch-ad4m-client', { detail: this._client });
+      document.dispatchEvent(event);
+    });
   }
 
   render() {
@@ -487,4 +495,38 @@ export default class Ad4mConnect extends LitElement {
       )
     } 
   }
+}
+
+export function getAd4mClient() {
+  return new Promise((resolve, reject) => {
+    document.addEventListener('return-fetch-ad4m-client', (event) => {
+      console.log('event', event);
+      
+      // @ts-ignore
+      resolve(event.detail.ad4mClient)
+    });
+
+    const event = new CustomEvent('fetch-ad4m-client');
+    document.dispatchEvent(event);
+
+    setTimeout(() => {
+      reject('No Ad4mClient found')
+    }, 5000)
+  })
+}
+
+export function isConnected() {
+  return new Promise((resolve, reject) => {
+    document.addEventListener('return-fetch-ad4m-client', (event) => {
+      // @ts-ignore
+      event.detail.addEventListener('connected_with_capabilities', () => {
+        console.log('connected_with_capabilities');
+
+        resolve(true)
+      })
+    });
+
+    const event = new CustomEvent('fetch-ad4m-client');
+    document.dispatchEvent(event);
+  });
 }

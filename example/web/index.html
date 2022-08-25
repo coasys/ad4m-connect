@@ -27,7 +27,6 @@
   </head>
   <body>
     <ad4m-connect 
-      style="height: 100vh; display: block"
       appName="ad4m-react-example"
       appDesc="ad4m-react-example"
       appDomain="http://localhost:3000"
@@ -35,8 +34,16 @@
       appiconpath="./Ad4mLogo.png"
       ></ad4m-connect>
     <script type="module">
-      // import MiniChatView from "../../dist/web.js";
-      import './node_modules/@perspect3vism/ad4m-connect/dist/web.js'
+      import {getAd4mClient, isConnected} from './node_modules/@perspect3vism/ad4m-connect/dist/web.js'
+
+      isConnected().then(async () => {
+        const client = await getAd4mClient();
+        const status = await client.agent.status();
+        const ele = document.createElement('div')
+        ele.innerHTML = JSON.stringify(status);
+        console.log('arr', JSON.stringify(status))
+        document.body.appendChild(ele)
+      })
     </script>
   </body>
 </html>
