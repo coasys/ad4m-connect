@@ -296,7 +296,7 @@ export default class Ad4mConnect extends LitElement {
 
   render() {
     const state = this._state;
-    if (state === 'loading' || state === 'na') {
+    if (state === 'loading') {
       return (
         html`
           <div class="ad4mConnect">

@@ -4,48 +4,22 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { Ad4mClient } from "@perspect3vism/ad4m";
 import { checkPort } from "./utils";
 
-if (window === undefined) {
-  console.log('Running ad4m-connect in node.js');
-} else {
-  console.log('Running ad4m-connect in browser');
-}
-
-
-function runNode() {
-  
-}
-
 function runBrowser(args: Ad4mConnectOptions): Client {
   const port = args.port || parseInt(localStorage.getItem("ad4minPort") || "12000");
   const token = args.token || localStorage.getItem("ad4minToken") || "";
   const url = args.url || localStorage.getItem("ad4minURL") || "";
-
-  const setExecutorUrl = (url: string) => {
-    localStorage.setItem("ad4minURL", url);
-  }
-
-  const setExecutorPort = (port: string) => {
-    localStorage.setItem("ad4minPort", port);
-  }
-
-  const setExecutorToken = (token: string) => {
-    localStorage.setItem("ad4minToken", token);
-  }
 
   const client = new Client({
     ...args,
     port,
     token,
     url,
-    setExecutorUrl: args.setExecutorUrl || setExecutorUrl,
-    setExecutorPort: args.setExecutorPort || setExecutorPort,
-    setExecutorToken: args.setExecutorToken || setExecutorToken
   });
 
   return client;
 }
 
-type Ad4mConnectOptions = {
+export type Ad4mConnectOptions = {
   appName: string,
   appDesc: string,
   appDomain: string,
@@ -54,10 +28,7 @@ type Ad4mConnectOptions = {
   dataPath?: string,
   port?: number,
   token?: string,
-  url?: string,
-  setExecutorUrl?: (val: string) => void,
-  setExecutorPort?: (val: string) => void,
-  setExecutorToken?: (val: string) => void
+  url?: string
 }
 
 type PortSearchStateType = "na" | "searching" | "found" | "not_found";
@@ -78,20 +49,14 @@ class Client {
   url: string;
   capabilities: {[x: string]: any}[];
   listeners: {[x: ClientEvents]: [(...args: any[]) => void]} = {};
-  setExecutorUrl: (val: string) => void;
-  setExecutorPort: (val: string) => void;
-  setExecutorToken: (val: string) => void;
 
   // @fayeed - params
-  constructor({ appName, appDesc, appDomain, capabilities, port, token, url, setExecutorUrl, setExecutorPort, setExecutorToken }: Ad4mConnectOptions) {
+  constructor({ appName, appDesc, appDomain, capabilities, port, token, url }: Ad4mConnectOptions) {
     //! @fayeed - make it support node.js
     this.appName = appName;
     this.appDesc = appDesc;
     this.appDomain = appDomain;
     this.capabilities = capabilities;
-    this.setExecutorUrl = setExecutorUrl;
-    this.setExecutorPort = setExecutorPort;
-    this.setExecutorToken = setExecutorToken;
     if (port) this.port = port!;
     if (url) this.url = url;
     if (token && token.length > 0){
@@ -113,7 +78,7 @@ class Client {
 
   async connectRemote(url: string) {
     this.url = url;
-    this.setExecutorUrl(url);
+    localStorage.setItem("ad4minURL", url);
 
     this.callListener('loading');
 
@@ -202,14 +167,14 @@ class Client {
     console.warn("Setting client port to", port);
     this.portSearchState = "found";
     this.port = port;
-    this.setExecutorPort(port.toString());
+    localStorage.setItem("ad4minPort", port.toString());
     this.url = `ws://localhost:${this.port}/graphql`;
-    this.setExecutorUrl(this.url)
+    localStorage.setItem("ad4minURL", this.url);
     this.buildClient();
   }
 
   setToken(jwt: string) {
-    this.setExecutorToken(jwt)
+    localStorage.setItem("ad4minToken", jwt);
     this.buildClient();
   }
 

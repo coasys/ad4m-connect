@@ -1,4 +1,5 @@
 import electron = require("electron");
+import { Ad4mConnectOptions } from "./core";
 
 const { ipcMain, BrowserWindow } = require('electron');
 const path = require("path");
@@ -58,22 +59,7 @@ function getCapToken(dataPath) {
   }
 }
 
-const createWindow = () => {
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-  })
-
-  mainWindow.loadFile(`file://${__dirname}/../public/dialog.html`)
-}
-
-function Timeout() {
-  const controller = new AbortController();
-  setTimeout(() => controller.abort(), 20);
-  return controller;
-}
-
-export function ad4mConnect(args) {
+export function ad4mConnect(args: Ad4mConnectOptions) {
   const {appName, appDesc, appIconPath, capabilities, dataPath} = args
   return new Promise(async (resolve, reject) => {
     const executorUrl = getExecutorUrl(dataPath)
@@ -103,7 +89,6 @@ export function ad4mConnect(args) {
       height: 800,
       webPreferences: {
         nodeIntegration: true,
-        //enableRemoteModule: true,
         contextIsolation: false,
         webSecurity: false
       },
@@ -113,7 +98,7 @@ export function ad4mConnect(args) {
       transparent: false,
       icon: path.join(__dirname, '../public', 'Ad4mLogo.png')
     })
- 
+
     win.loadURL(`file://${__dirname}/../public/dialog.html`)  
   })
 }
