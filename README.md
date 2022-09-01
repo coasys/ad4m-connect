@@ -11,11 +11,11 @@ Install the package:
 
 Import `ad4mConnect()`:
 ```js
-import { ad4mConnect } from '@perspect3vism/ad4m-connect'
+import { ad4mConnect } from '@perspect3vism/ad4m-connect/electron'
 ```
 or
 ```js
-const { ad4mConnect } = require('@perspect3vism/ad4m-connect')
+const { ad4mConnect } = require('@perspect3vism/ad4m-connect/electron')
 ```
 
 and then just call that function with parameters of your app:
@@ -55,62 +55,33 @@ ad4mConnect({
 
 ## Usage (from a pure web context)
 
-### Svelte project
-If it is a Svelte app, easiest solution would be to import the Svelte component directly from source:
+`ad4m-connect` provides a web-component that you can use just by importing the package.
+Properties exposed:
+- `appName(required)`: Name of the application using ad4m-connect.
+- `appDesc(required)`: Description of the application using ad4m-connect.
+- `appDomain(required)`: Domain of the application using ad4m-connect.
+- `capabilities(required)`: Capabilities requested by the application.
+- `appiconpath`: Icon for the app using ad4m-connect.
 
-```svelte
-import { Ad4mConnectDialog } from '@perspect3vism/ad4m-connect/src/Ad4mConnectDialog'
-import { onMount } from 'svelte'
-//...
-
-let connectDialog
-onMount(() => {
-    connectDialog.run()
-})
-
-function resolve(executorUrl, capToken, ad4mClient) {
-   //... 
-}
-
-function reject() {
-    app.exit(0)
-}
-
-<Ad4mConnectDialog
-    bind:this={connectDialog}
-    appName="Perspect3ve"
-    appIconPath="Perspect3veLogo.png"
-    executorUrl={executorUrl} 
-    capToken={capToken}
-    showQrScanner=true
-    qrScanRequest={()=>getQrCodeFromCamera()}
-    resolve={resolve}
-    reject={reject}
-></Ad4mConnectDialog>
+```html
+<ad4m-connect 
+    appName="ad4m-react-example"
+    appDesc="ad4m-react-example"
+    appDomain="http://localhost:3000"
+    capabilities='[{"with":{"domain":"*","pointers":["*"]},"can": ["*"]}]'
+    appiconpath="./Ad4mLogo.png"
+></ad4m-connect>
 ```
-
-### Other (non-Svelte) project
-
-`Ad4mConnectDialog` compiles to a custom web component in [public/Ad4mConnectDialog.js](public/Ad4mConnectDialog.js).
-That can be used in any web view / browser, as done in [public/dialog.html](public/dialog.html) which is used in the the `BrowserWindow` opened by `ad4mConnect` in the Node/Electron case.
-
+`ad4m-connect` also provides helper methods to check if the client is connected to executor called `isConnected` & `getAd4mClient` to get the client itself to use across the app.
 ```js
-import `@perspect3vism/ad4m-connect/public/Ad4mConnectDialog.js`
+import {getAd4mClient, isConnected} from '@perspect3vism/ad4m-connect/web'
 
-const tempTarget = document.createElement('div')
-const dialog = new Ad4mConnectDialog({ target: tempTarget });
-dialog.appName = appName;
-dialog.appIconPath = appIconPath;
-dialog.executorUrl = executorUrl;
-dialog.capToken = capabilityToken;
-dialog.capabilities = capabilities
-//dialog.showQrScanner = true
-dialog.resolve = (executorUrl, capabilityToken, client) => {
-    //...
-};
-dialog.reject = () => {
-    //...
-}
-document.getElementById("container").appendChild(tempTarget)  
-dialog.run();
+isConnected().then(async () => {
+    const client = await getAd4mClient();
+    const status = await client.agent.status();
+    
+    const ele = document.createElement('div')
+    ele.innerHTML = JSON.stringify(status);
+    document.body.appendChild(ele)
+})
 ```
