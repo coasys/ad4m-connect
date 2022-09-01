@@ -304,7 +304,7 @@ export default class Ad4mConnect extends LitElement {
                 <div class="ad4mConnect__dailog__header">
                     <img 
                         class="ad4mConnect__dailog__header__logo"
-                        src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                        src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                         alt="Logo" 
                     />
                     <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -326,7 +326,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                      src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -360,7 +360,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                      src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -394,7 +394,7 @@ export default class Ad4mConnect extends LitElement {
           <div class="ad4mConnect__dailog__header">
               <img 
                   class="ad4mConnect__dailog__header__logo"
-                  src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                  src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                   alt="Logo" 
               />
               <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -413,7 +413,7 @@ export default class Ad4mConnect extends LitElement {
           <div class="ad4mConnect__dailog__header">
               <img 
                   class="ad4mConnect__dailog__header__logo"
-                  src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                  src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                   alt="Logo" 
               />
               <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -432,7 +432,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                      src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -446,7 +446,7 @@ export default class Ad4mConnect extends LitElement {
                   ))}
               </div>
               ${ this.appiconpath && html`<div class="ad4mConnect__dailog__connection">
-                  <img src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
+                  <img src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
                   <img src="https://i.ibb.co/BG0Dz2v/link.png alt="chain" width="40px" style="margin: 0 24px;" />
                   <img src=${this.appiconpath} alt="Logo" style="width: 120px" />
               </div>`}
@@ -467,7 +467,7 @@ export default class Ad4mConnect extends LitElement {
                 <div class="ad4mConnect__dailog__header">
                     <img 
                         class="ad4mConnect__dailog__header__logo"
-                        src="https://i.ibb.co/SJHfPNr/Ad4mLogo.png" 
+                        src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
                         alt="Logo" 
                     />
                     <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
