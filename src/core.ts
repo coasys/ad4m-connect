@@ -106,7 +106,7 @@ class Client {
           await this.checkConnection();
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       console.log('error', error);
       if (error.message.includes("Capability is not matched, you have capabilities:")) {
         // Show wrong capability message.
@@ -115,7 +115,7 @@ class Client {
       } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
         // Show agent is locked message.
         this.callListener('agent_locked');
-      } else if (error.message === "signature verification failed") {
+      } else if (error.message.includes("signature verification failed")) {
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
@@ -219,7 +219,7 @@ class Client {
       const status = await this.ad4mClient?.agent.status();
       console.log('status', status);
       this.callListener('connected_with_capabilities');
-    } catch (error: any) {
+    } catch (error) {
       console.log('error', error);
       if (error.message.includes("Capability is not matched, you have capabilities:")) {
         // Show wrong capability message.
@@ -228,7 +228,8 @@ class Client {
       } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
         // Show agent is locked message.
         this.callListener('agent_locked');
-      } else if (error.message === "signature verification failed") {
+      } else if (error.message.includes("signature verification failed")) {
+        console.log('wow')
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 

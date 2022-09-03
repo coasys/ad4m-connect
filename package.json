@@ -3,15 +3,10 @@
   "version": "0.0.3",
   "description": "Lib for handling everything needed to setup a connection to a local or remote ad4m-executor",
   "license": "CAL-1.0",
-  "main": "src/main.js",
-  "exports": {
-    ".": "./dist/index.js",
-    "./electron": "./dist/electron.js",
-    "./web": "./dist/web.js"
-  },
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:core && npm run build:web && npm run build:electron",
+    "build": "npm run build:core && npm run build:web && npm run build:electron && tsc",
     "build:core": "node scripts/esbuild.js",
     "build:web": "node scripts/esbuild_web.js",
     "build:electron": "node scripts/esbuild_electron.js",

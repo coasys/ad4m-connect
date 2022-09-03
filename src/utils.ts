@@ -16,7 +16,7 @@ export async function checkPort(port: number) {
     } else {
       return null
     }
-  } catch (e: any) {
+  } catch (e) {
     console.error("failed", e);
 
     if (Array.isArray(e)) {

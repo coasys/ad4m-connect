@@ -1,4 +1,3 @@
-import electron = require("electron");
 import { Ad4mConnectOptions } from "./core";
 
 const { ipcMain, BrowserWindow } = require('electron');
