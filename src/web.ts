@@ -183,6 +183,16 @@ const styles = css`
   }
 }
 
+.ad4mConnect__disconnect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 10px 0;
+  text-align: center;
+  background: red;
+}
+
 `
 
 @customElement("ad4m-connect")
@@ -225,8 +235,10 @@ export default class Ad4mConnect extends LitElement {
   @property({ type: String, reflect: true })
   appiconpath
 
+  @property({ type: String, reflect: true })
+  openonshortcut
+
   getClient() {
-    console.log('client', this._client)
     return this._client;
   }
 
@@ -293,6 +305,15 @@ export default class Ad4mConnect extends LitElement {
       const event = new CustomEvent('return-fetch-ad4m-client', { detail: this._client });
       document.dispatchEvent(event);
     });
+
+    if (this.openonshortcut !== undefined) {
+      document.addEventListener('keydown', (event) => {
+        console.log('event', event, event.ctrlKey && event.altKey && event.code === 'KeyA')
+        if (event.ctrlKey && event.altKey && event.code === 'KeyA') {
+          this._state = "init";
+        }
+      })
+    }
   }
 
   render() {
@@ -425,7 +446,7 @@ export default class Ad4mConnect extends LitElement {
         </div>
         `
       )
-    } else if (state === 'capabilties_not_matched_first' || state === 'capabilties_not_matched') {
+    } else if (state === 'capabilties_not_matched_first') {
       return (
         html`
         <div class="ad4mConnect">
@@ -494,7 +515,15 @@ export default class Ad4mConnect extends LitElement {
         </div>
         `
       )
-    } 
+    } else if (state === 'capabilties_not_matched') {
+      return(
+        html`
+          <div class="ad4mConnect__disconnect">
+            Disconnected from Ad4min, please check if ad4min is still runnning.
+          </div>
+        `
+      )
+    }
   }
 }
 
