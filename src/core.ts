@@ -66,7 +66,14 @@ class Client {
     if (localStorage.getItem("ad4minURL") && token.length > 0) {
       setTimeout(() => {
         this.callListener('loading');
-      }, 0)
+      }, 0);
+
+      setInterval(() => {
+        console.log('test')
+        this.buildClient();
+        this.checkConnection();
+      }, 10000);
+      
       this.buildClient();
       this.checkConnection();
     } else {
@@ -219,6 +226,7 @@ class Client {
       const status = await this.ad4mClient?.agent.status();
       console.log('status', status);
       this.callListener('connected_with_capabilities');
+      this.isFullyInitialized = true;
     } catch (error) {
       console.log('error', error);
       if (error.message.includes("Capability is not matched, you have capabilities:")) {
@@ -239,7 +247,11 @@ class Client {
         this.callListener('port_notfound');
         this.callListener('not_connected');
       } else {
-        this.callListener('not_connected');
+        if (this.isFullyInitialized) {
+          this.callListener('capabilties_not_matched', false);
+        } else {
+          this.callListener('not_connected');
+        }
       }
     }
   }
