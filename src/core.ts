@@ -69,8 +69,6 @@ class Client {
       }, 0);
 
       setInterval(() => {
-        console.log('test')
-        this.buildClient();
         this.checkConnection();
       }, 10000);
       
@@ -127,7 +125,6 @@ class Client {
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
       } else if (error.message === "Couldn't find an open port") {
-        console.log('arrr')
         // show no open port error & ask to retry
         this.setPortSearchState("not_found");
         this.callListener('port_notfound');
@@ -237,7 +234,6 @@ class Client {
         // Show agent is locked message.
         this.callListener('agent_locked');
       } else if (error.message.includes("signature verification failed")) {
-        console.log('wow')
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 

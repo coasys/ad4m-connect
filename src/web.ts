@@ -268,17 +268,14 @@ export default class Ad4mConnect extends LitElement {
     this._client = client;
 
     client?.addEventListener('loading', () => {
-      console.log('loading');
       this._state = 'loading';
     })
 
     client?.addEventListener('not_connected', () => {
-      console.log('not_connected');
       this._state = 'not_connected';
     })
 
     client?.addEventListener('init', () => {
-      console.log('init');
       this._state = 'init';
     })
 
@@ -291,24 +288,20 @@ export default class Ad4mConnect extends LitElement {
     })
 
     client?.addEventListener('request_capability', (requestId) => {
-      console.log('request_capability', requestId);
       this._state = 'request_capability';
     })
 
     client?.addEventListener('connected_with_capabilities', () => {
-      console.log('connected_with_capabilities');
       this._state = 'connected_with_capabilities';
     })
 
     document.addEventListener('fetch-ad4m-client', () => {
-      console.log('lul')
       const event = new CustomEvent('return-fetch-ad4m-client', { detail: this._client });
       document.dispatchEvent(event);
     });
 
     if (this.openonshortcut !== undefined) {
       document.addEventListener('keydown', (event) => {
-        console.log('event', event, event.ctrlKey && event.altKey && event.code === 'KeyA')
         if (event.ctrlKey && event.altKey && event.code === 'KeyA') {
           this._state = "init";
         }
@@ -529,7 +522,8 @@ export default class Ad4mConnect extends LitElement {
 
 export function getAd4mClient(): Promise<Ad4mClient> {
   return new Promise((resolve, reject) => {
-    document.addEventListener('return-fetch-ad4m-client', (event) => {
+    document.addEventListener('return-fetch-ad4m-client', function listener(event) {
+      this.removeEventListener('return-fetch-ad4m-client', listener)
       // @ts-ignore
       resolve(event.detail.ad4mClient)
     });
@@ -545,10 +539,10 @@ export function getAd4mClient(): Promise<Ad4mClient> {
 
 export function isConnected() {
   return new Promise((resolve, reject) => {
-    document.addEventListener('return-fetch-ad4m-client', (event) => {
+    document.addEventListener('return-fetch-ad4m-client', function listener(event) {
       // @ts-ignore
       event.detail.addEventListener('connected_with_capabilities', () => {
-        console.log('connected_with_capabilities');
+        this.removeEventListener('return-fetch-ad4m-client', listener)
 
         resolve(true)
       })
