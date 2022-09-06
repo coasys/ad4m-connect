@@ -83,6 +83,7 @@ class Client {
 
   async connectRemote(url: string) {
     this.url = url;
+    localStorage.setItem("ad4minToken", '')
     localStorage.setItem("ad4minURL", url);
 
     this.callListener('loading');

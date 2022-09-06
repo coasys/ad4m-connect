@@ -46,6 +46,7 @@
   "dependencies": {
     "electron": "^20.0.3",
     "esbuild-plugin-inline-image": "^0.0.8",
+    "html5-qrcode": "^2.2.1",
     "lit": "^2.3.1"
   }
 }

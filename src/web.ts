@@ -2,6 +2,23 @@ import { Ad4mClient } from '@perspect3vism/ad4m';
 import { html, css, LitElement } from 'lit';
 import { customElement, property, state } from "lit/decorators.js";
 import { ad4mConnect } from './core';
+import {Html5Qrcode} from "html5-qrcode"
+
+function detectMob() {
+  const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+  ];
+  
+  return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+  });
+}
 
 const styles = css`
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
@@ -211,6 +228,9 @@ export default class Ad4mConnect extends LitElement {
   @state()
   private _url = null;
 
+  @state()
+  private _isMobile = null;
+
   @property({ type: String, reflect: true })
   appname = null
 
@@ -242,8 +262,47 @@ export default class Ad4mConnect extends LitElement {
     return this._client;
   }
 
+  scanQrcode() {
+    const html5QrCode = new Html5Qrcode("reader");
+    const ele = document.getElementById('camera-id');
+    ele.style.display = 'block';
+
+    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+      this._client.connectRemote(`${decodedText.replace('http', 'ws')}/graphql`);
+      html5QrCode.stop();
+      ele.style.display = 'none';
+    };
+    function onScanFailure(error) {
+      console.warn(`Code scan error = ${error}`);
+    }
+
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const aspectRatio = width / height
+    const reverseAspectRatio = height / width
+
+    const mobileAspectRatio = reverseAspectRatio > 1.5
+      ? reverseAspectRatio + (reverseAspectRatio * 12 / 100)
+      : reverseAspectRatio
+
+      console.log('wow', aspectRatio, reverseAspectRatio, mobileAspectRatio)
+
+    const config = {
+      fps: 20, // frame per seconds for qr code scanning
+      qrbox: { width: 250, height: 250 },
+      videoConstraints: {
+        facingMode: 'environment',
+        aspectRatio: mobileAspectRatio,
+      },
+    }
+
+    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback, onScanFailure);
+  }
+
   connectedCallback() {
     super.connectedCallback();
+
+    this._isMobile = detectMob();
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -307,6 +366,25 @@ export default class Ad4mConnect extends LitElement {
         }
       })
     }
+
+    const containerEle = document.createElement('div');
+    containerEle.id = 'camera-id'
+    containerEle.style.position = 'absolute';
+    containerEle.style.top = '0';
+    containerEle.style.left = '0';
+    containerEle.style.width = '100vw'
+    containerEle.style.height = '100vh'
+    containerEle.style.zIndex = '10000';
+    containerEle.style.display = 'none';
+
+    const ele = document.createElement('div');
+    ele.id = 'reader'
+    // @ts-ignore
+    ele.width = '100%'
+    ele.style.height = '100vh'
+    
+    containerEle.appendChild(ele)
+    document.body.appendChild(containerEle)
   }
 
   render() {
@@ -384,12 +462,20 @@ export default class Ad4mConnect extends LitElement {
                   class="ad4mConnect__dailog__subtitle"
               >Select a way to connect to executor</div>
               <div class="ad4mConnect__dailog__options">
-                  <div 
+                  ${!this._isMobile ? 
+                    html`<div 
                       class="ad4mConnect__dailog__option"
                       @click=${() => this._client.connectToPort()}
-                  >
+                    >
                       <div class="ad4mConnect__dailog__option__text">Connect locally</div>
-                  </div>
+                    </div>` 
+                  : html`<div 
+                      class="ad4mConnect__dailog__option"
+                      @click=${() => this.scanQrcode()}
+                    >
+                      <div class="ad4mConnect__dailog__option__text">Connect using qrcode</div>
+                    </div>
+                  `}
                   <div 
                       class="ad4mConnect__dailog__option"
                       @click=${() => this._state = 'remote_url'}
@@ -398,7 +484,7 @@ export default class Ad4mConnect extends LitElement {
                   </div>
               </div>
           </div>
-          <div class="ad4mConnect__backdrop" />
+          <div class="ad4mConnect__backdrop"></div>
         </div> 
         `
       )
