@@ -222,7 +222,6 @@ class Client {
   async checkConnection() {
     try {
       const status = await this.ad4mClient?.agent.status();
-      console.log('status', status);
       this.callListener('connected_with_capabilities');
       this.isFullyInitialized = true;
     } catch (error) {

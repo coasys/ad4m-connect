@@ -285,8 +285,6 @@ export default class Ad4mConnect extends LitElement {
       ? reverseAspectRatio + (reverseAspectRatio * 12 / 100)
       : reverseAspectRatio
 
-      console.log('wow', aspectRatio, reverseAspectRatio, mobileAspectRatio)
-
     const config = {
       fps: 20, // frame per seconds for qr code scanning
       qrbox: { width: 250, height: 250 },
@@ -321,8 +319,6 @@ export default class Ad4mConnect extends LitElement {
       token: this.token,
       url: this.url
     });
-
-    console.log(this.appname, this.appdesc, this.appdomain, JSON.parse(this.capabilities))
 
     this._client = client;
 
