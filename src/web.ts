@@ -50,9 +50,9 @@ const styles = css`
   background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(38,3,23,1) 41%, rgba(51,4,31,1) 100%);
 }
 
-@media only screen and (max-width: 600px) {
-  .ad4mConnect__backdrop {
-    display: none;
+@media only screen and (max-width: 600px) {  
+  .ad4mConnect__dailog {
+    width: 75%;
   }
 }
 
