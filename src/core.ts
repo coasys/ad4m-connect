@@ -66,7 +66,12 @@ class Client {
     if (localStorage.getItem("ad4minURL") && token.length > 0) {
       setTimeout(() => {
         this.callListener('loading');
-      }, 0)
+      }, 0);
+
+      setInterval(() => {
+        this.checkConnection();
+      }, 10000);
+      
       this.buildClient();
       this.checkConnection();
     } else {
@@ -78,6 +83,7 @@ class Client {
 
   async connectRemote(url: string) {
     this.url = url;
+    localStorage.setItem("ad4minToken", '')
     localStorage.setItem("ad4minURL", url);
 
     this.callListener('loading');
@@ -106,7 +112,7 @@ class Client {
           await this.checkConnection();
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       console.log('error', error);
       if (error.message.includes("Capability is not matched, you have capabilities:")) {
         // Show wrong capability message.
@@ -115,12 +121,11 @@ class Client {
       } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
         // Show agent is locked message.
         this.callListener('agent_locked');
-      } else if (error.message === "signature verification failed") {
+      } else if (error.message.includes("signature verification failed")) {
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
       } else if (error.message === "Couldn't find an open port") {
-        console.log('arrr')
         // show no open port error & ask to retry
         this.setPortSearchState("not_found");
         this.callListener('port_notfound');
@@ -217,9 +222,9 @@ class Client {
   async checkConnection() {
     try {
       const status = await this.ad4mClient?.agent.status();
-      console.log('status', status);
       this.callListener('connected_with_capabilities');
-    } catch (error: any) {
+      this.isFullyInitialized = true;
+    } catch (error) {
       console.log('error', error);
       if (error.message.includes("Capability is not matched, you have capabilities:")) {
         // Show wrong capability message.
@@ -228,7 +233,7 @@ class Client {
       } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
         // Show agent is locked message.
         this.callListener('agent_locked');
-      } else if (error.message === "signature verification failed") {
+      } else if (error.message.includes("signature verification failed")) {
         // wrong agent error
         this.callListener('capabilties_not_matched', !this.isFullyInitialized);
 
@@ -238,7 +243,11 @@ class Client {
         this.callListener('port_notfound');
         this.callListener('not_connected');
       } else {
-        this.callListener('not_connected');
+        if (this.isFullyInitialized) {
+          this.callListener('capabilties_not_matched', false);
+        } else {
+          this.callListener('not_connected');
+        }
       }
     }
   }

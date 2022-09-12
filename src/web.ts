@@ -1,6 +1,24 @@
+import { Ad4mClient } from '@perspect3vism/ad4m';
 import { html, css, LitElement } from 'lit';
 import { customElement, property, state } from "lit/decorators.js";
 import { ad4mConnect } from './core';
+import {Html5Qrcode} from "html5-qrcode"
+
+function detectMob() {
+  const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+  ];
+  
+  return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+  });
+}
 
 const styles = css`
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
@@ -32,9 +50,9 @@ const styles = css`
   background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(38,3,23,1) 41%, rgba(51,4,31,1) 100%);
 }
 
-@media only screen and (max-width: 600px) {
-  .ad4mConnect__backdrop {
-    display: none;
+@media only screen and (max-width: 600px) {  
+  .ad4mConnect__dailog {
+    width: 75%;
   }
 }
 
@@ -182,6 +200,16 @@ const styles = css`
   }
 }
 
+.ad4mConnect__disconnect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 10px 0;
+  text-align: center;
+  background: red;
+}
+
 `
 
 @customElement("ad4m-connect")
@@ -199,6 +227,9 @@ export default class Ad4mConnect extends LitElement {
 
   @state()
   private _url = null;
+
+  @state()
+  private _isMobile = null;
 
   @property({ type: String, reflect: true })
   appname = null
@@ -224,13 +255,52 @@ export default class Ad4mConnect extends LitElement {
   @property({ type: String, reflect: true })
   appiconpath
 
+  @property({ type: String, reflect: true })
+  openonshortcut
+
   getClient() {
-    console.log('client', this._client)
     return this._client;
+  }
+
+  scanQrcode() {
+    const html5QrCode = new Html5Qrcode("reader");
+    const ele = document.getElementById('camera-id');
+    ele.style.display = 'block';
+
+    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+      this._client.connectRemote(`${decodedText.replace('http', 'ws')}/graphql`);
+      html5QrCode.stop();
+      ele.style.display = 'none';
+    };
+    function onScanFailure(error) {
+      console.warn(`Code scan error = ${error}`);
+    }
+
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const aspectRatio = width / height
+    const reverseAspectRatio = height / width
+
+    const mobileAspectRatio = reverseAspectRatio > 1.5
+      ? reverseAspectRatio + (reverseAspectRatio * 12 / 100)
+      : reverseAspectRatio
+
+    const config = {
+      fps: 20, // frame per seconds for qr code scanning
+      qrbox: { width: 250, height: 250 },
+      videoConstraints: {
+        facingMode: 'environment',
+        aspectRatio: mobileAspectRatio,
+      },
+    }
+
+    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback, onScanFailure);
   }
 
   connectedCallback() {
     super.connectedCallback();
+
+    this._isMobile = detectMob();
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -250,22 +320,17 @@ export default class Ad4mConnect extends LitElement {
       url: this.url
     });
 
-    console.log(this.appname, this.appdesc, this.appdomain, JSON.parse(this.capabilities))
-
     this._client = client;
 
     client?.addEventListener('loading', () => {
-      console.log('loading');
       this._state = 'loading';
     })
 
     client?.addEventListener('not_connected', () => {
-      console.log('not_connected');
       this._state = 'not_connected';
     })
 
     client?.addEventListener('init', () => {
-      console.log('init');
       this._state = 'init';
     })
 
@@ -278,20 +343,44 @@ export default class Ad4mConnect extends LitElement {
     })
 
     client?.addEventListener('request_capability', (requestId) => {
-      console.log('request_capability', requestId);
       this._state = 'request_capability';
     })
 
     client?.addEventListener('connected_with_capabilities', () => {
-      console.log('connected_with_capabilities');
       this._state = 'connected_with_capabilities';
     })
 
     document.addEventListener('fetch-ad4m-client', () => {
-      console.log('lul')
       const event = new CustomEvent('return-fetch-ad4m-client', { detail: this._client });
       document.dispatchEvent(event);
     });
+
+    if (this.openonshortcut !== undefined) {
+      document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && event.altKey && event.code === 'KeyA') {
+          this._state = "init";
+        }
+      })
+    }
+
+    const containerEle = document.createElement('div');
+    containerEle.id = 'camera-id'
+    containerEle.style.position = 'absolute';
+    containerEle.style.top = '0';
+    containerEle.style.left = '0';
+    containerEle.style.width = '100vw'
+    containerEle.style.height = '100vh'
+    containerEle.style.zIndex = '10000';
+    containerEle.style.display = 'none';
+
+    const ele = document.createElement('div');
+    ele.id = 'reader'
+    // @ts-ignore
+    ele.width = '100%'
+    ele.style.height = '100vh'
+    
+    containerEle.appendChild(ele)
+    document.body.appendChild(containerEle)
   }
 
   render() {
@@ -304,7 +393,7 @@ export default class Ad4mConnect extends LitElement {
                 <div class="ad4mConnect__dailog__header">
                     <img 
                         class="ad4mConnect__dailog__header__logo"
-                        src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                        src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                         alt="Logo" 
                     />
                     <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -326,7 +415,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                      src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -360,7 +449,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                      src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -369,12 +458,20 @@ export default class Ad4mConnect extends LitElement {
                   class="ad4mConnect__dailog__subtitle"
               >Select a way to connect to executor</div>
               <div class="ad4mConnect__dailog__options">
-                  <div 
+                  ${!this._isMobile ? 
+                    html`<div 
                       class="ad4mConnect__dailog__option"
                       @click=${() => this._client.connectToPort()}
-                  >
+                    >
                       <div class="ad4mConnect__dailog__option__text">Connect locally</div>
-                  </div>
+                    </div>` 
+                  : html`<div 
+                      class="ad4mConnect__dailog__option"
+                      @click=${() => this.scanQrcode()}
+                    >
+                      <div class="ad4mConnect__dailog__option__text">Connect using qrcode</div>
+                    </div>
+                  `}
                   <div 
                       class="ad4mConnect__dailog__option"
                       @click=${() => this._state = 'remote_url'}
@@ -383,7 +480,7 @@ export default class Ad4mConnect extends LitElement {
                   </div>
               </div>
           </div>
-          <div class="ad4mConnect__backdrop" />
+          <div class="ad4mConnect__backdrop"></div>
         </div> 
         `
       )
@@ -394,7 +491,7 @@ export default class Ad4mConnect extends LitElement {
           <div class="ad4mConnect__dailog__header">
               <img 
                   class="ad4mConnect__dailog__header__logo"
-                  src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                  src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                   alt="Logo" 
               />
               <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -413,7 +510,7 @@ export default class Ad4mConnect extends LitElement {
           <div class="ad4mConnect__dailog__header">
               <img 
                   class="ad4mConnect__dailog__header__logo"
-                  src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                  src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                   alt="Logo" 
               />
               <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -424,7 +521,7 @@ export default class Ad4mConnect extends LitElement {
         </div>
         `
       )
-    } else if (state === 'capabilties_not_matched_first' || state === 'capabilties_not_matched') {
+    } else if (state === 'capabilties_not_matched_first') {
       return (
         html`
         <div class="ad4mConnect">
@@ -432,7 +529,7 @@ export default class Ad4mConnect extends LitElement {
               <div class="ad4mConnect__dailog__header">
                   <img 
                       class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                      src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                       alt="Logo" 
                   />
                   <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -446,7 +543,7 @@ export default class Ad4mConnect extends LitElement {
                   ))}
               </div>
               ${ this.appiconpath && html`<div class="ad4mConnect__dailog__connection">
-                  <img src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
+                  <img src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
                   <img src="https://i.ibb.co/BG0Dz2v/link.png alt="chain" width="40px" style="margin: 0 24px;" />
                   <img src=${this.appiconpath} alt="Logo" style="width: 120px" />
               </div>`}
@@ -467,7 +564,7 @@ export default class Ad4mConnect extends LitElement {
                 <div class="ad4mConnect__dailog__header">
                     <img 
                         class="ad4mConnect__dailog__header__logo"
-                        src="https://i.ibb.co/Lv3DmtQ/Ad4mLogo.png" 
+                        src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
                         alt="Logo" 
                     />
                     <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
@@ -493,15 +590,22 @@ export default class Ad4mConnect extends LitElement {
         </div>
         `
       )
-    } 
+    } else if (state === 'capabilties_not_matched') {
+      return(
+        html`
+          <div class="ad4mConnect__disconnect">
+            Disconnected from Ad4min, please check if ad4min is still runnning.
+          </div>
+        `
+      )
+    }
   }
 }
 
-export function getAd4mClient() {
+export function getAd4mClient(): Promise<Ad4mClient> {
   return new Promise((resolve, reject) => {
-    document.addEventListener('return-fetch-ad4m-client', (event) => {
-      console.log('event', event);
-      
+    document.addEventListener('return-fetch-ad4m-client', function listener(event) {
+      this.removeEventListener('return-fetch-ad4m-client', listener)
       // @ts-ignore
       resolve(event.detail.ad4mClient)
     });
@@ -517,10 +621,10 @@ export function getAd4mClient() {
 
 export function isConnected() {
   return new Promise((resolve, reject) => {
-    document.addEventListener('return-fetch-ad4m-client', (event) => {
+    document.addEventListener('return-fetch-ad4m-client', function listener(event) {
       // @ts-ignore
       event.detail.addEventListener('connected_with_capabilities', () => {
-        console.log('connected_with_capabilities');
+        this.removeEventListener('return-fetch-ad4m-client', listener)
 
         resolve(true)
       })
