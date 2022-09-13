@@ -1,6 +1,6 @@
 {
   "name": "@perspect3vism/ad4m-connect",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Lib for handling everything needed to setup a connection to a local or remote ad4m-executor",
   "license": "CAL-1.0",
   "main": "dist/index.js",
@@ -9,8 +9,7 @@
     "build": "npm run build:core && npm run build:web && npm run build:electron && tsc",
     "build:core": "node scripts/esbuild.js",
     "build:web": "node scripts/esbuild_web.js",
-    "build:electron": "node scripts/esbuild_electron.js",
-    "postinstall": "npm run build"
+    "build:electron": "node scripts/esbuild_electron.js"
   },
   "author": {
     "name": "Nicolas Luck",
