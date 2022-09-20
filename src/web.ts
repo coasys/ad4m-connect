@@ -372,6 +372,10 @@ export default class Ad4mConnect extends LitElement {
       this._state = "not_connected";
     });
 
+    client?.addEventListener("agent_locked", () => {
+      this._state = "agent_locked";
+    });
+
     client?.addEventListener("init", () => {
       this._state = "init";
     });
