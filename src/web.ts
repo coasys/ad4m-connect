@@ -39,7 +39,7 @@ const styles = css`
     --background-color: white;
   }
 
-  :host {
+  .wrapper {
     font-family: "Comfortaa", Helvetica, Arial, sans-serif;
     position: fixed;
     top: 0;
@@ -272,7 +272,7 @@ const styles = css`
     }
   }
 
-  .ad4mConnect__disconnect {
+  .disconnected {
     position: fixed;
     top: 0;
     left: 0;
@@ -543,25 +543,30 @@ export default class Ad4mConnect extends LitElement {
           changeState: this.changeState,
           verifyCode: this.verifyCode,
         });
-      case "capabilties_not_matched":
-        return html`
-          <div class="disconnected">
-            Disconnected from Ad4min, please check if ad4min is still runnning.
-          </div>
-        `;
       default:
         return Loading();
     }
   }
 
   render() {
-    return html`
-      <div class="dialog">
-        ${Header()}
-        <main class="dialog__content">${this.renderViews()}</main>
-      </div>
-      <div class="ad4mConnect__backdrop" />
-    `;
+    if (this._state === "capabilties_not_matched") {
+      return html`<div class="disconnected">
+        Disconnected from Ad4min, please check if ad4min is still runnning.
+      </div>`;
+    }
+    if (this._state === "connected_with_capabilities") {
+      return null;
+    } else {
+      return html`
+        <div class="wrapper">
+          <div class="dialog">
+            ${Header()}
+            <main class="dialog__content">${this.renderViews()}</main>
+          </div>
+          <div class="ad4mConnect__backdrop" />
+        </div>
+      `;
+    }
   }
 }
 
