@@ -2,32 +2,32 @@ import { html } from "lit";
 
 export default function Request({ code, changeState, verifyCode, changeCode }) {
   return html`
-    <div>
-      <div class="ad4mConnect__dailog__subtitle">
-        Capability request was successfully sent. Please check your AD4M admin
-        UI (AD4Min), confirm the request there and enter the 6-digit security
-        code below, that AD4Min displays to you.
+    <div class="items">
+      <div class="text-center">
+        <div class="heading">Please check Ad4m</div>
+        <p class="body">
+          Please check AD4M, confirm the request there and enter the 6-digit
+          security code below.
+        </p>
       </div>
-      <div class="ad4mConnect__dailog__input">
-        Security code:
+      <div class="input">
+        <label class="input__label">Security code</label>
+
         <input
+          placeholder="XXXXXX"
+          class="input__field"
           value=${code}
           @change=${(e: any) => changeCode(e.target.value)}
         />
       </div>
-      <div style="height: 12px"></div>
-      <div class="ad4mConnect__dailog__btns">
+      <div class="buttons">
         <button
-          class="ad4mConnect__dailog__btn"
+          class="button button--full button--secondary"
           @click=${() => changeState("capabilties_not_matched_first")}
         >
-          Back
+          Cancel
         </button>
-        <div style="width: 24px"></div>
-        <button
-          class="ad4mConnect__dailog__btn"
-          @click=${() => verifyCode(code)}
-        >
+        <button class="button button--full" @click=${() => verifyCode(code)}>
           Continue
         </button>
       </div>

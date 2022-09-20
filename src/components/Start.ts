@@ -7,7 +7,14 @@ export default function Start({
   scanQrcode,
 }) {
   return html`
-    <div>
+    <div class="items">
+      <div class="text-center">
+        <h1 class="heading">Connect to Ad4m</h1>
+        <p class="body">
+          Let's connect to your ad4m service, and start surfing the web
+          completely decentralized and secure.
+        </p>
+      </div>
       <div>
         ${!isMobile
           ? html`<button
@@ -22,13 +29,15 @@ export default function Start({
             >
               Connect to ad4m
             </button> `}
-        or
-        <button
-          class="button button--link "
-          @click=${() => changeState("remote_url")}
-        >
-          Connect remote
-        </button>
+        <div class="text-center">
+          or
+          <button
+            class="button button--link "
+            @click=${() => changeState("remote_url")}
+          >
+            Connect to a remote host
+          </button>
+        </div>
       </div>
     </div>
   `;

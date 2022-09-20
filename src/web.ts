@@ -10,6 +10,7 @@ import NotConnected from "./components/NotConnected";
 import AgentLocked from "./components/AgentLocked";
 import CapNotMatchedFirst from "./components/CapNotMatchedFirst";
 import Request from "./components/Request";
+import Header from "./components/Header";
 
 function detectMob() {
   const toMatch = [
@@ -31,43 +32,89 @@ const styles = css`
   @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
 
   :host {
+    --primary-color: #0a33ff;
+    --success-color: #52d652;
+    --heading-color: #252525;
+    --body-color: #707070;
+    --background-color: white;
+  }
+
+  :host {
     font-family: "Comfortaa", Helvetica, Arial, sans-serif;
     position: fixed;
     top: 0;
     left: 0;
-    color: #707070;
+    color: var(--body-color);
     height: 100vh;
     width: 100vw;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
   .button {
+    text-decoration: none;
     cursor: pointer;
     border: 0;
-    background: #2f69fe;
-    padding: 20px 30px;
+    background: var(--primary-color);
+    height: 60px;
+    padding: 0px 30px;
     border-radius: 8px;
-    display: inline-block;
-    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     text-align: center;
     font-family: inherit;
     font-size: 15px;
   }
 
+  .heading {
+    color: var(--heading-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
   .button--full {
     width: 100%;
-    display: block;
+    display: flex;
   }
 
   .button--link {
-    background: none;
     padding: 0;
-    color: #2f69fe;
-    text-decoration: underline;
+    background: none;
+    color: var(--primary-color);
+    text-decoration: none;
   }
 
   .button--link:hover {
     text-decoration: underline;
+  }
+
+  .button--secondary {
+    background: var(--background-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
   }
 
   .dialog {
@@ -78,20 +125,84 @@ const styles = css`
     transform: translate(-50%, -50%);
     z-index: 10;
     border-radius: 4px;
-    padding: 36px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
-    max-width: 600px;
-    max-height: 400px;
-    min-height: 200px;
+    max-width: 500px;
+    min-height: 400px;
   }
 
   @media only screen and (max-width: 600px) {
-    .ad4mConnect__dailog {
+    .dialog {
       width: 75%;
     }
+  }
+
+  .dialog__header {
+    text-align: center;
+    padding: 30px;
+  }
+
+  .dialog__connect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+  }
+
+  .dialog__logo svg {
+    margin: 0 auto;
+    width: 100px;
+    text-align: center;
+  }
+
+  .dialog__connect-check:before {
+    content: "";
+    display: block;
+    width: 120px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+  .dialog__connect-check svg {
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .dialog__content {
+    padding-top: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input__label {
+    font-size: 12px;
+  }
+
+  .input__field {
+    border-radius: 8px;
+    outline: 0;
+    height: 60px;
+    padding: 0px 30px;
+    font-size: 20px;
+    border: 1px solid var(--body-color);
+  }
+
+  .input__field:focus {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0px 0px 0px 1px var(--primary-color);
   }
 
   .ad4mConnect__backdrop {
@@ -100,71 +211,8 @@ const styles = css`
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .ad4mConnect__dailog__header__logo {
-    height: 30px;
-    width: 30px;
-  }
-
-  .ad4mConnect__dailog__title {
-    font-weight: bold;
-    font-size: 24px;
-    margin-left: 20px;
-    color: #fff;
-  }
-
-  .ad4mConnect__dailog__header {
-    display: flex;
-    align-items: center;
-  }
-
-  .ad4mConnect__dailog__subtitle {
-    margin: 18px 0;
-    color: #fff;
-  }
-
-  .ad4mConnect__dailog__caps {
-    align-self: flex-start;
-    color: #fff;
-    width: 100%;
-  }
-
-  .ad4mConnect__dailog__input {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 24px 0;
-    align-self: flex-start;
-  }
-
-  .ad4mConnect__dailog__input input {
-    font-size: 16px;
-    background: transparent;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    padding: 12px;
-    margin-left: 12px;
-    max-width: 400px;
-  }
-
-  .ad4mConnect__dailog__connection {
-    display: flex;
-    align-items: center;
-    margin: 24px 0;
-  }
-
-  .ad4mConnect__dailog__btn {
-    padding: 12px 24px;
-    border-radius: 4px;
-    border: 1px solid #fff;
-  }
-
-  .ad4mConnect__dailog__btns {
-    display: flex;
-    align-self: flex-end;
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 1);
   }
 
   .ad4mConnect__locked {
@@ -186,31 +234,12 @@ const styles = css`
     font-family: "Comfortaa", cursive;
   }
 
-  .ad4mConnect__dailog__options {
-    width: 100%;
-  }
-
-  .ad4mConnect__dailog__option {
-    background-color: #eee;
-    width: calc(100% - 48px);
-    display: flex;
-    align-items: center;
-    padding: 24px 24px;
-    margin-top: 12px;
-    border-radius: 4px;
-    font-size: 18px;
-    cursor: pointer;
-  }
-
-  .ad4mConnect__dailog__option__text {
-    font-weight: bold;
-  }
-
   .lds-ring {
-    display: inline-block;
+    display: block;
     position: relative;
     width: 80px;
     height: 80px;
+    margin: 0 auto;
     margin-top: 24px;
   }
   .lds-ring div {
@@ -219,11 +248,11 @@ const styles = css`
     position: absolute;
     width: 64px;
     height: 64px;
-    margin: 8px;
-    border: 8px solid #fff;
+    margin: 4px;
+    border: 4px solid var(--primary-color);
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: var(--primary-color) transparent transparent transparent;
   }
   .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
@@ -487,7 +516,7 @@ export default class Ad4mConnect extends LitElement {
       case "remote_url":
         return RemoteUrl({
           url: this.url,
-          state: this._state,
+          changeState: this.changeState,
           changeUrl: this.changeUrl,
           connectRemote: this.connectRemote,
         });
@@ -497,6 +526,7 @@ export default class Ad4mConnect extends LitElement {
         return AgentLocked();
       case "capabilties_not_matched_first":
         return CapNotMatchedFirst({
+          changeState: this.changeState,
           requestCapability: this.requestCapability,
           capabilities: this.capabilities,
           appname: this.appname,
@@ -507,23 +537,24 @@ export default class Ad4mConnect extends LitElement {
           code: this._code,
           changeCode: this.changeCode,
           changeState: this.changeState,
-          verifyCoode: this.verifyCode,
+          verifyCode: this.verifyCode,
         });
       case "capabilties_not_matched":
         return html`
-          <div class="ad4mConnect__disconnect">
+          <div class="disconnected">
             Disconnected from Ad4min, please check if ad4min is still runnning.
           </div>
         `;
+      default:
+        return Loading();
     }
   }
 
   render() {
     return html`
       <div class="dialog">
-        <header>Header</header>
-        <main>${this.renderViews()}</main>
-        <footer>Footer</footer>
+        ${Header()}
+        <main class="dialog__content">${this.renderViews()}</main>
       </div>
       <div class="ad4mConnect__backdrop" />
     `;
