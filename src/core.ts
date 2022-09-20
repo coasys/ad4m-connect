@@ -1,11 +1,16 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from "@apollo/client/core";
+import {
+  ApolloClient,
+  InMemoryCache,
+  NormalizedCacheObject,
+} from "@apollo/client/core";
 import { createClient } from "graphql-ws";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { Ad4mClient } from "@perspect3vism/ad4m";
 import { checkPort } from "./utils";
 
 function runBrowser(args: Ad4mConnectOptions): Client {
-  const port = args.port || parseInt(localStorage.getItem("ad4minPort") || "12000");
+  const port =
+    args.port || parseInt(localStorage.getItem("ad4minPort") || "12000");
   const token = args.token || localStorage.getItem("ad4minToken") || "";
   const url = args.url || localStorage.getItem("ad4minURL") || "";
 
@@ -20,21 +25,30 @@ function runBrowser(args: Ad4mConnectOptions): Client {
 }
 
 export type Ad4mConnectOptions = {
-  appName: string,
-  appDesc: string,
-  appDomain: string,
-  appIconPath?: string,
-  capabilities: {[x: string]: any}[],
-  dataPath?: string,
-  port?: number,
-  token?: string,
-  url?: string
-}
+  appName: string;
+  appDesc: string;
+  appDomain: string;
+  appIconPath?: string;
+  capabilities: { [x: string]: any }[];
+  dataPath?: string;
+  port?: number;
+  token?: string;
+  url?: string;
+};
 
 type PortSearchStateType = "na" | "searching" | "found" | "not_found";
-type ClientEvents = 'port_found' | 'port_searching' | 'port_notfound' | 'connected_without_capabilities' 
-  | 'connected_with_capabilities' | 'disconnected' | 'agent_locked' | 'capabilties_not_matched' 
-  | 'not_connected' | 'loading' | string;
+type ClientEvents =
+  | "port_found"
+  | "port_searching"
+  | "port_notfound"
+  | "connected_without_capabilities"
+  | "connected_with_capabilities"
+  | "disconnected"
+  | "agent_locked"
+  | "capabilties_not_matched"
+  | "not_connected"
+  | "loading"
+  | string;
 
 class Client {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
@@ -47,11 +61,19 @@ class Client {
   appDesc: string;
   appDomain: string;
   url: string;
-  capabilities: {[x: string]: any}[];
-  listeners: {[x: ClientEvents]: [(...args: any[]) => void]} = {};
+  capabilities: { [x: string]: any }[];
+  listeners: { [x: ClientEvents]: [(...args: any[]) => void] } = {};
 
   // @fayeed - params
-  constructor({ appName, appDesc, appDomain, capabilities, port, token, url }: Ad4mConnectOptions) {
+  constructor({
+    appName,
+    appDesc,
+    appDomain,
+    capabilities,
+    port,
+    token,
+    url,
+  }: Ad4mConnectOptions) {
     //! @fayeed - make it support node.js
     this.appName = appName;
     this.appDesc = appDesc;
@@ -59,34 +81,34 @@ class Client {
     this.capabilities = capabilities;
     if (port) this.port = port!;
     if (url) this.url = url;
-    if (token && token.length > 0){
+    if (token && token.length > 0) {
       this.setToken(token!);
     }
 
     if (localStorage.getItem("ad4minURL") && token.length > 0) {
       setTimeout(() => {
-        this.callListener('loading');
+        this.callListener("loading");
       }, 0);
 
       setInterval(() => {
         this.checkConnection();
       }, 10000);
-      
+
       this.buildClient();
       this.checkConnection();
     } else {
       setTimeout(() => {
-        this.callListener('init');
-      }, 500)
+        this.callListener("init");
+      }, 500);
     }
   }
 
   async connectRemote(url: string) {
     this.url = url;
-    localStorage.setItem("ad4minToken", '')
+    localStorage.setItem("ad4minToken", "");
     localStorage.setItem("ad4minURL", url);
 
-    this.callListener('loading');
+    this.callListener("loading");
 
     this.buildClient();
 
@@ -95,10 +117,10 @@ class Client {
 
   async connectToPort() {
     try {
-      this.callListener('loading');
+      this.callListener("loading");
       const port = await checkPort(this.port);
       if (port) {
-        this.callListener('port_found', port);
+        this.callListener("port_found", port);
         this.setPort(port);
         await this.checkConnection();
       } else {
@@ -107,31 +129,36 @@ class Client {
         const port = await this.findPort();
 
         if (port) {
-          this.callListener('port_found', port);
+          this.callListener("port_found", port);
           this.setPort(port);
           await this.checkConnection();
         }
       }
     } catch (error) {
-      console.log('error', error);
-      if (error.message.includes("Capability is not matched, you have capabilities:")) {
+      console.log("error in connect to port", error.message);
+      if (
+        error.message.includes(
+          "Capability is not matched, you have capabilities:"
+        )
+      ) {
         // Show wrong capability message.
-        this.callListener('capabilties_not_matched', !this.isFullyInitialized);
-
-      } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
+        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+      } else if (
+        error.message ===
+        "Cannot extractByTags from a ciphered wallet. You must unlock first."
+      ) {
         // Show agent is locked message.
-        this.callListener('agent_locked');
+        this.callListener("agent_locked");
       } else if (error.message.includes("signature verification failed")) {
         // wrong agent error
-        this.callListener('capabilties_not_matched', !this.isFullyInitialized);
-
+        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
       } else if (error.message === "Couldn't find an open port") {
         // show no open port error & ask to retry
         this.setPortSearchState("not_found");
-        this.callListener('port_notfound');
-        this.callListener('not_connected');
+        this.callListener("port_notfound");
+        this.callListener("not_connected");
       } else {
-        this.callListener('not_connected');
+        this.callListener("not_connected");
       }
     }
   }
@@ -143,15 +170,15 @@ class Client {
       this.listeners[event] = [listener];
     }
   }
-  
+
   private callListener(event: ClientEvents, ...args: any[]) {
     if (this.listeners[event]) {
-      this.listeners[event].forEach(e => e(...args));
+      this.listeners[event].forEach((e) => e(...args));
     }
   }
 
   async findPort() {
-    this.callListener('port_searching');
+    this.callListener("port_searching");
 
     for (let i = 12000; i <= 12010; i++) {
       const status = await checkPort(i);
@@ -192,28 +219,30 @@ class Client {
   }
 
   buildClient() {
-    const wsLink = new GraphQLWsLink(createClient({
+    const wsLink = new GraphQLWsLink(
+      createClient({
         url: this.url,
         connectionParams: () => {
-            return {
-                headers: {
-                    authorization: this.token()
-                }
-            }
+          return {
+            headers: {
+              authorization: this.token(),
+            },
+          };
         },
-    }));
+      })
+    );
 
     this.apolloClient = new ApolloClient({
-        link: wsLink,
-        cache: new InMemoryCache({ resultCaching: false, addTypename: false }),
-        defaultOptions: {
-            watchQuery: {
-                fetchPolicy: "no-cache",
-            },
-            query: {
-                fetchPolicy: "no-cache",
-            }
+      link: wsLink,
+      cache: new InMemoryCache({ resultCaching: false, addTypename: false }),
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: "no-cache",
         },
+        query: {
+          fetchPolicy: "no-cache",
+        },
+      },
     });
 
     this.ad4mClient = new Ad4mClient(this.apolloClient);
@@ -222,31 +251,36 @@ class Client {
   async checkConnection() {
     try {
       const status = await this.ad4mClient?.agent.status();
-      this.callListener('connected_with_capabilities');
+      this.callListener("connected_with_capabilities");
       this.isFullyInitialized = true;
     } catch (error) {
-      console.log('error', error);
-      if (error.message.includes("Capability is not matched, you have capabilities:")) {
+      console.log("error in check connection", error.message);
+      if (
+        error.message.includes(
+          "Capability is not matched, you have capabilities:"
+        )
+      ) {
         // Show wrong capability message.
-        this.callListener('capabilties_not_matched', !this.isFullyInitialized);
-
-      } else if (error.message === "Cannot extractByTags from a ciphered wallet. You must unlock first.") {
+        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+      } else if (
+        error.message ===
+        "Cannot extractByTags from a ciphered wallet. You must unlock first."
+      ) {
         // Show agent is locked message.
-        this.callListener('agent_locked');
+        this.callListener("agent_locked");
       } else if (error.message.includes("signature verification failed")) {
         // wrong agent error
-        this.callListener('capabilties_not_matched', !this.isFullyInitialized);
-
+        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
       } else if (error.message === "Couldn't find an open port") {
         // show no open port error & ask to retry
         this.setPortSearchState("not_found");
-        this.callListener('port_notfound');
-        this.callListener('not_connected');
+        this.callListener("port_notfound");
+        this.callListener("not_connected");
       } else {
         if (this.isFullyInitialized) {
-          this.callListener('capabilties_not_matched', false);
+          this.callListener("capabilties_not_matched", false);
         } else {
-          this.callListener('not_connected');
+          this.callListener("not_connected");
         }
       }
     }
@@ -265,7 +299,7 @@ class Client {
         JSON.stringify(this.capabilities)
       );
 
-      this.callListener('request_capability', this.requestId);
+      this.callListener("request_capability", this.requestId);
 
       return true;
     } else {
@@ -274,15 +308,15 @@ class Client {
   }
 
   async verifyCode(code: string) {
-    console.log('verifyCode',this.requestId, code);
+    console.log("verifyCode", this.requestId, code);
 
     const jwt = await this.ad4mClient?.agent.generateJwt(this.requestId!, code);
-    
+
     this.setToken(jwt!);
-    
+
     this.isFullyInitialized = true;
 
-    this.callListener('connected_with_capabilities', {
+    this.callListener("connected_with_capabilities", {
       executorUrl: this.url,
       capabilityToken: this.token,
       client: this.ad4mClient,
@@ -290,12 +324,11 @@ class Client {
   }
 }
 
-
 export function ad4mConnect(args: Ad4mConnectOptions) {
   if (window === undefined) {
-    console.log('Running ad4m-connect in node.js');
+    console.log("Running ad4m-connect in node.js");
   } else {
-    console.log('Running ad4m-connect in browser');
+    console.log("Running ad4m-connect in browser");
     return runBrowser(args);
   }
 }
