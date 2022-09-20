@@ -135,31 +135,7 @@ class Client {
         }
       }
     } catch (error) {
-      console.log("error in connect to port", error.message);
-      if (
-        error.message.includes(
-          "Capability is not matched, you have capabilities:"
-        )
-      ) {
-        // Show wrong capability message.
-        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
-      } else if (
-        error.message ===
-        "Cannot extractByTags from a ciphered wallet. You must unlock first."
-      ) {
-        // Show agent is locked message.
-        this.callListener("agent_locked");
-      } else if (error.message.includes("signature verification failed")) {
-        // wrong agent error
-        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
-      } else if (error.message === "Couldn't find an open port") {
-        // show no open port error & ask to retry
-        this.setPortSearchState("not_found");
-        this.callListener("port_notfound");
-        this.callListener("not_connected");
-      } else {
-        this.callListener("not_connected");
-      }
+      this.handleErrorMessage(error.message);
     }
   }
 
@@ -168,6 +144,34 @@ class Client {
       this.listeners[event].push(listener);
     } else {
       this.listeners[event] = [listener];
+    }
+  }
+
+  private handleErrorMessage(message) {
+    console.log("error message", message);
+    if (message.includes("Capability is not matched, you have capabilities:")) {
+      // Show wrong capability message.
+      this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+    } else if (
+      message ===
+      "Cannot extractByTags from a ciphered wallet. You must unlock first."
+    ) {
+      // Show agent is locked message.
+      this.callListener("agent_locked");
+    } else if (message.includes("signature verification failed")) {
+      // wrong agent error
+      this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+    } else if (message === "Couldn't find an open port") {
+      // show no open port error & ask to retry
+      this.setPortSearchState("not_found");
+      this.callListener("port_notfound");
+      this.callListener("not_connected");
+    } else {
+      if (this.isFullyInitialized) {
+        this.callListener("capabilties_not_matched", false);
+      } else {
+        this.callListener("not_connected");
+      }
     }
   }
 
@@ -181,12 +185,16 @@ class Client {
     this.callListener("port_searching");
 
     for (let i = 12000; i <= 12010; i++) {
-      const status = await checkPort(i);
-      if (!status) {
-        continue;
-      } else {
-        this.setPort(status);
-        return status;
+      try {
+        const status = await checkPort(i);
+        if (!status) {
+          continue;
+        } else {
+          this.setPort(status);
+          return status;
+        }
+      } catch (e) {
+        this.handleErrorMessage(e.message);
       }
     }
 
@@ -250,39 +258,11 @@ class Client {
 
   async checkConnection() {
     try {
-      const status = await this.ad4mClient?.agent.status();
+      await this.ad4mClient?.agent.status();
       this.callListener("connected_with_capabilities");
       this.isFullyInitialized = true;
     } catch (error) {
-      console.log("error in check connection", error.message);
-      if (
-        error.message.includes(
-          "Capability is not matched, you have capabilities:"
-        )
-      ) {
-        // Show wrong capability message.
-        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
-      } else if (
-        error.message ===
-        "Cannot extractByTags from a ciphered wallet. You must unlock first."
-      ) {
-        // Show agent is locked message.
-        this.callListener("agent_locked");
-      } else if (error.message.includes("signature verification failed")) {
-        // wrong agent error
-        this.callListener("capabilties_not_matched", !this.isFullyInitialized);
-      } else if (error.message === "Couldn't find an open port") {
-        // show no open port error & ask to retry
-        this.setPortSearchState("not_found");
-        this.callListener("port_notfound");
-        this.callListener("not_connected");
-      } else {
-        if (this.isFullyInitialized) {
-          this.callListener("capabilties_not_matched", false);
-        } else {
-          this.callListener("not_connected");
-        }
-      }
+      this.handleErrorMessage(error.message);
     }
   }
 
@@ -292,14 +272,18 @@ class Client {
 
       this.buildClient();
 
-      this.requestId = await this.ad4mClient?.agent.requestCapability(
-        this.appName,
-        this.appDesc,
-        this.appDomain,
-        JSON.stringify(this.capabilities)
-      );
+      try {
+        this.requestId = await this.ad4mClient?.agent.requestCapability(
+          this.appName,
+          this.appDesc,
+          this.appDomain,
+          JSON.stringify(this.capabilities)
+        );
 
-      this.callListener("request_capability", this.requestId);
+        this.callListener("request_capability", this.requestId);
+      } catch (e) {
+        this.handleErrorMessage(e.message);
+      }
 
       return true;
     } else {
@@ -310,17 +294,24 @@ class Client {
   async verifyCode(code: string) {
     console.log("verifyCode", this.requestId, code);
 
-    const jwt = await this.ad4mClient?.agent.generateJwt(this.requestId!, code);
+    try {
+      const jwt = await this.ad4mClient?.agent.generateJwt(
+        this.requestId!,
+        code
+      );
 
-    this.setToken(jwt!);
+      this.setToken(jwt!);
 
-    this.isFullyInitialized = true;
+      this.isFullyInitialized = true;
 
-    this.callListener("connected_with_capabilities", {
-      executorUrl: this.url,
-      capabilityToken: this.token,
-      client: this.ad4mClient,
-    });
+      this.callListener("connected_with_capabilities", {
+        executorUrl: this.url,
+        capabilityToken: this.token,
+        client: this.ad4mClient,
+      });
+    } catch (e) {
+      this.handleErrorMessage(e.message);
+    }
   }
 }
 
