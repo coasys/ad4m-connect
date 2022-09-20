@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ad4m-connect
+      appName="ad4m-react-example"
+      appDesc="ad4m-react-example"
+      appDomain="http://localhost:3000"
+      capabilities='[{"with":{"domain":"*","pointers":["*"]},"can": ["*"]}]'
+      appiconpath="./Ad4mLogo.png"
+    ></ad4m-connect>
+    <script type="module">
+      import Ad4mConnnect from "../dist/web.js";
+      customElements.define("ad4m-connect", Ad4mConnnect);
+    </script>
+  </body>
+</html>

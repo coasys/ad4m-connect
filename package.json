@@ -6,6 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=dev run-p build:* serve",
+    "serve": "npx serve",
     "build": "npm run build:core && npm run build:web && npm run build:electron && tsc",
     "build:core": "node scripts/esbuild.js",
     "build:web": "node scripts/esbuild_web.js",
