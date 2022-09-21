@@ -462,7 +462,7 @@ export default class Ad4mConnect extends LitElement {
 
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
       this._client.connectRemote(
-        `${decodedText.replace("http", "ws")}/graphql`
+        `${decodedText.replace("http", "wss")}/graphql`
       );
       html5QrCode.stop();
       ele.style.display = "none";
