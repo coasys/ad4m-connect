@@ -56,7 +56,7 @@ const styles = css`
   .items {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
   }
 
   .button {
@@ -80,10 +80,13 @@ const styles = css`
     color: var(--heading-color);
     font-size: 18px;
     font-weight: 600;
+    margin: 0;
     margin-bottom: 15px;
   }
 
   .body {
+    padding: 0;
+    margin: 0;
     font-size: 14px;
     line-height: 1.5;
   }
@@ -127,7 +130,7 @@ const styles = css`
     border-radius: 4px;
     width: 100%;
     max-width: 500px;
-    min-height: 400px;
+    min-height: 500px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -137,8 +140,11 @@ const styles = css`
   }
 
   .dialog__header {
-    text-align: center;
-    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding: 0 30px;
   }
 
   .dialog__connect {
@@ -153,6 +159,21 @@ const styles = css`
     margin: 0 auto;
     width: 100px;
     text-align: center;
+  }
+
+  .dialog__connect-ad4m {
+    width: 100px;
+    height: 100px;
+    color: var(--primary-color);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 7px 0px rgb(0 0 0 / 8%);
+    border-radius: 50%;
+  }
+
+  .dialog__connect-app {
+    width: 80px;
+    height: 80px;
   }
 
   .dialog__connect-check:before {

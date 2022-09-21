@@ -1,4 +1,5 @@
 import { html } from "lit";
+import Logo from "./Logo";
 
 export default function CapNotMatchedFirst({
   capabilities,
@@ -21,12 +22,7 @@ export default function CapNotMatchedFirst({
       </div>
       ${appiconpath &&
       html`<div class="dialog__connect">
-        <img
-          class="dialog__connect-ad4m"
-          src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png"
-          alt="App Logo"
-          style="width: 120px"
-        />
+        <img class="dialog__connect-app" src=${appiconpath} alt="Logo" />
         <div class="dialog__connect-check">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,12 +36,7 @@ export default function CapNotMatchedFirst({
             />
           </svg>
         </div>
-        <img
-          class="dialog__connect-app"
-          src=${appiconpath}
-          alt="Logo"
-          style="width: 120px"
-        />
+        <div class="dialog__connect-ad4m">${Logo()}</div>
       </div>`}
       <div class="buttons">
         <button

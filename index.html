@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>This is a mockup app</h1>
+    <h1 id="title">This is a mockup app</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
       doloribus saepe maxime quis modi nemo sint earum dolore obcaecati! Quasi
@@ -37,8 +37,12 @@
       appiconpath="https://i.ibb.co/GnqjPJP/icon.png"
     ></ad4m-connect>
     <script type="module">
-      import Ad4mConnnect from "../dist/web.js";
-      customElements.define("ad4m-connect", Ad4mConnnect);
+      import { isConnected } from "../dist/web.js";
+
+      isConnected().then(async () => {
+        document.getElementById("title").innerText = "Connected  to Ad4m!"
+      })
+
     </script>
   </body>
 </html>
