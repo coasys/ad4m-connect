@@ -11,13 +11,20 @@ export default function NotConnected() {
           running. If it doesn't, connect automatically refresh the page.
         </div>
       </div>
+
+      <div class="buttons">
+      <button class="button button--full button--secondary" @click=${() =>
+        location.reload()}>
+        Try again
+      </button>
         <a
-          class="button"
+          class="button button--full"
           target="_blank"
           href="https://github.com/perspect3vism/ad4min/releases/latest"
         >
           Download Ad4m
         </a>
+      </div>
       </div>
     </div>
   `;
