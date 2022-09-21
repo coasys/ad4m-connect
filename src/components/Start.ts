@@ -27,7 +27,7 @@ export default function Start({
               class="button button--full"
               @click=${() => scanQrcode()}
             >
-              Connect to ad4m
+              Connect with QR
             </button> `}
         <div class="text-center">
           or
