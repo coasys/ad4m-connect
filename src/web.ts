@@ -121,16 +121,15 @@ const styles = css`
   }
 
   .dialog {
-    background: white;
+    background-color: var(--background-color);
     position: absolute;
-    top: 50%;
+    top: 20vh;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     z-index: 10;
-    border-radius: 4px;
+    border-radius: 8px;
     width: 100%;
     max-width: 500px;
-    min-height: 500px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -233,7 +232,7 @@ const styles = css`
     height: 100vh;
     width: 100vw;
     backdrop-filter: blur(6px);
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
   .ad4mConnect__locked {
