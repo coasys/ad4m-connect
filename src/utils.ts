@@ -6,7 +6,7 @@ function Timeout() {
 
 export async function checkPort(port: number) {
   try {
-    const res = await fetch(`http://localhost:${port}/graphql`, {
+    const res = await fetch(`http://localhost:${port}/graphql/`, {
       signal: Timeout().signal,
       mode: "no-cors",
     });
