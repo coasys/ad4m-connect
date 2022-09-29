@@ -268,7 +268,8 @@ export default class Ad4mConnect extends LitElement {
     ele.style.display = 'block';
 
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-      this._client.connectRemote(`${decodedText.replace('http', 'ws')}/graphql`);
+      console.log("Trying to connect with text: ", decodedText);
+      this._client.connectRemote(decodedText);
       html5QrCode.stop();
       ele.style.display = 'none';
     };
