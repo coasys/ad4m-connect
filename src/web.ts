@@ -461,9 +461,8 @@ export default class Ad4mConnect extends LitElement {
     ele.style.display = "block";
 
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-      this._client.connectRemote(
-        `${decodedText.replace("http", "wss")}/graphql`
-      );
+      console.log("Got connection URL from QR code: ", decodedText);
+      this._client.connectRemote(decodedText);
       html5QrCode.stop();
       ele.style.display = "none";
     };
