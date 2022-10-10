@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="title">This is a mockup app</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      doloribus saepe maxime quis modi nemo sint earum dolore obcaecati! Quasi
+      quo quod ut. Repellendus sed, saepe a quo quos mollitia.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      doloribus saepe maxime quis modi nemo sint earum dolore obcaecati! Quasi
+      quo quod ut. Repellendus sed, saepe a quo quos mollitia.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      doloribus saepe maxime quis modi nemo sint earum dolore obcaecati! Quasi
+      quo quod ut. Repellendus sed, saepe a quo quos mollitia.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      doloribus saepe maxime quis modi nemo sint earum dolore obcaecati! Quasi
+      quo quod ut. Repellendus sed, saepe a quo quos mollitia.
+    </p>
+
+    <ad4m-connect
+      appName="ad4m-react-example"
+      appDesc="ad4m-react-example"
+      appDomain="http://localhost:3000"
+      capabilities='[{"with":{"domain":"*","pointers":["*"]},"can": ["*"]}]'
+      appiconpath="https://i.ibb.co/GnqjPJP/icon.png"
+    ></ad4m-connect>
+    <script type="module">
+      import { isConnected } from "../dist/web.js";
+
+      isConnected().then(async () => {
+        document.getElementById("title").innerText = "Connected  to Ad4m!"
+      })
+
+    </script>
+  </body>
+</html>

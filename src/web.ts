@@ -1,216 +1,307 @@
-import { Ad4mClient } from '@perspect3vism/ad4m';
-import { html, css, LitElement } from 'lit';
+import { Ad4mClient } from "@perspect3vism/ad4m";
+import { html, css, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { ad4mConnect } from './core';
-import {Html5Qrcode} from "html5-qrcode"
+import { ad4mConnect } from "./core";
+import { Html5Qrcode } from "html5-qrcode";
+import Loading from "./components/Loading";
+import RemoteUrl from "./components/RemoteUrl";
+import Start from "./components/Start";
+import NotConnected from "./components/NotConnected";
+import AgentLocked from "./components/AgentLocked";
+import CapNotMatchedFirst from "./components/CapNotMatchedFirst";
+import Request from "./components/Request";
+import Header from "./components/Header";
 
 function detectMob() {
   const toMatch = [
-      /Android/i,
-      /webOS/i,
-      /iPhone/i,
-      /iPad/i,
-      /iPod/i,
-      /BlackBerry/i,
-      /Windows Phone/i
+    /Android/i,
+    /webOS/i,
+    /iPhone/i,
+    /iPad/i,
+    /iPod/i,
+    /BlackBerry/i,
+    /Windows Phone/i,
   ];
-  
+
   return toMatch.some((toMatchItem) => {
-      return navigator.userAgent.match(toMatchItem);
+    return navigator.userAgent.match(toMatchItem);
   });
 }
 
 const styles = css`
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
 
-.ad4mConnect {
-  font-family: 'Comfortaa', cursive;
-	position: fixed;
-  top: 0;
-  left: 0;
-	height: 100vh;
-	width: 100vw;
-}
-
-.ad4mConnect__dailog {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 10;
-	border-radius: 4px;
-	padding: 36px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-  max-width: 600px;
-  max-height: 400px;
-  min-height: 200px;
-  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(38,3,23,1) 41%, rgba(51,4,31,1) 100%);
-}
-
-@media only screen and (max-width: 600px) {  
-  .ad4mConnect__dailog {
-    width: 75%;
+  :host {
+    --primary-color: #0a33ff;
+    --success-color: #52d652;
+    --heading-color: #252525;
+    --body-color: #707070;
+    --background-color: white;
   }
-}
 
-.ad4mConnect__backdrop {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 100vw;
-	background-color: rgba(0, 0, 0, 0.4);
-}
-
-.ad4mConnect__dailog__header__logo {
-	height: 30px;
-	width: 30px;
-}
-
-.ad4mConnect__dailog__title {
-	font-weight: bold;
-	font-size: 24px;
-	margin-left: 20px;
-  color: #fff;
-}
-
-.ad4mConnect__dailog__header {
-	display: flex;
-	align-items: center;
-}
-
-.ad4mConnect__dailog__subtitle {
-	margin: 18px 0;
-  color: #fff;
-}
-
-.ad4mConnect__dailog__caps {
-	align-self: flex-start;
-  color: #fff;
-  width: 100%;
-}
-
-.ad4mConnect__dailog__input {
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 24px 0;
-  align-self: flex-start;
-}
-
-.ad4mConnect__dailog__input input {
-  font-size: 16px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  padding: 12px;
-  margin-left: 12px;
-  max-width: 400px;
-}
-
-.ad4mConnect__dailog__connection {
-	display: flex;
-	align-items: center;
-	margin: 24px 0;
-}
-
-.ad4mConnect__dailog__btn {
-	padding: 12px 24px;
-	border-radius: 4px;
-	border: 1px solid #fff;
-}
-
-.ad4mConnect__dailog__btns {
-	display: flex;
-	align-self: flex-end;
-}
-
-.ad4mConnect__locked {
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(38,3,23,1) 41%, rgba(51,4,31,1) 100%);
-	height: 100vh;
-	width: 100vw;
-	padding: 36px;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-  font-family: 'Comfortaa', cursive;
-}
-
-.ad4mConnect__dailog__options {
-	width: 100%;
-}
-
-.ad4mConnect__dailog__option {
-	background-color: #eee;
-  width: calc(100% - 48px);
-	display: flex;
-	align-items: center;
-	padding: 24px 24px;
-	margin-top: 12px;
-	border-radius: 4px;
-	font-size: 18px;
-  cursor: pointer;
-}
-
-.ad4mConnect__dailog__option__text {
-  font-weight: bold;
-}
-
-.lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-  margin-top: 24px;
-}
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
+  .wrapper {
+    font-family: "Comfortaa", Helvetica, Arial, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: var(--body-color);
+    height: 100vh;
+    width: 100vw;
   }
-  100% {
-    transform: rotate(360deg);
+
+  * {
+    box-sizing: border-box;
   }
-}
 
-.ad4mConnect__disconnect {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  padding: 10px 0;
-  text-align: center;
-  background: red;
-}
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
 
-`
+  .button {
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    background: var(--primary-color);
+    height: 60px;
+    padding: 0px 30px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    font-family: inherit;
+    font-size: 15px;
+  }
+
+  .heading {
+    color: var(--heading-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  .body {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .button--full {
+    width: 100%;
+    display: flex;
+  }
+
+  .button--link {
+    padding: 0;
+    background: none;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .button--link:hover {
+    text-decoration: underline;
+  }
+
+  .button--secondary {
+    background: var(--background-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  .dialog {
+    background-color: var(--background-color);
+    position: absolute;
+    top: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .dialog {
+      width: 75%;
+    }
+  }
+
+  .dialog__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding: 0 30px;
+  }
+
+  .dialog__connect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+  }
+
+  .dialog__logo svg {
+    margin: 0 auto;
+    width: 100px;
+    text-align: center;
+  }
+
+  .dialog__connect-ad4m {
+    width: 100px;
+    height: 100px;
+    color: var(--primary-color);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 7px 0px rgb(0 0 0 / 8%);
+    border-radius: 50%;
+  }
+
+  .dialog__connect-app {
+    width: 80px;
+    height: 80px;
+  }
+
+  .dialog__connect-check:before {
+    content: "";
+    display: block;
+    width: 120px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+  .dialog__connect-check svg {
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .dialog__content {
+    padding-top: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input__label {
+    font-size: 12px;
+  }
+
+  .input__field {
+    border-radius: 8px;
+    outline: 0;
+    height: 60px;
+    padding: 0px 30px;
+    font-size: 20px;
+    border: 1px solid var(--body-color);
+  }
+
+  .input__field:focus {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0px 0px 0px 1px var(--primary-color);
+  }
+
+  .ad4mConnect__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .ad4mConnect__locked {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(38, 3, 23, 1) 41%,
+      rgba(51, 4, 31, 1) 100%
+    );
+    height: 100vh;
+    width: 100vw;
+    padding: 36px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Comfortaa", cursive;
+  }
+
+  .lds-ring {
+    display: block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 24px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 4px;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--primary-color) transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .disconnected {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 10px 0;
+    text-align: center;
+    background: red;
+  }
+`;
 
 @customElement("ad4m-connect")
 export default class Ad4mConnect extends LitElement {
@@ -232,73 +323,44 @@ export default class Ad4mConnect extends LitElement {
   private _isMobile = null;
 
   @property({ type: String, reflect: true })
-  appname = null
+  appname = null;
 
   @property({ type: String, reflect: true })
-  appdesc = null
+  appdesc = null;
 
   @property({ type: String, reflect: true })
-  appdomain = null
+  appdomain = null;
 
   @property({ type: String, reflect: true })
-  capabilities
+  capabilities;
 
   @property({ type: String, reflect: true })
-  token
+  token;
 
   @property({ type: String, reflect: true })
-  url
+  url;
 
   @property({ type: String, reflect: true })
-  port
+  port;
 
   @property({ type: String, reflect: true })
-  appiconpath
+  appiconpath;
 
   @property({ type: String, reflect: true })
-  openonshortcut
-
-  getClient() {
-    return this._client;
-  }
-
-  scanQrcode() {
-    const html5QrCode = new Html5Qrcode("reader");
-    const ele = document.getElementById('camera-id');
-    ele.style.display = 'block';
-
-    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-      this._client.connectRemote(`${decodedText.replace('http', 'ws')}/graphql`);
-      html5QrCode.stop();
-      ele.style.display = 'none';
-    };
-    function onScanFailure(error) {
-      console.warn(`Code scan error = ${error}`);
-    }
-
-    const width = window.innerWidth
-    const height = window.innerHeight
-    const aspectRatio = width / height
-    const reverseAspectRatio = height / width
-
-    const mobileAspectRatio = reverseAspectRatio > 1.5
-      ? reverseAspectRatio + (reverseAspectRatio * 12 / 100)
-      : reverseAspectRatio
-
-    const config = {
-      fps: 20, // frame per seconds for qr code scanning
-      qrbox: { width: 250, height: 250 },
-      videoConstraints: {
-        facingMode: 'environment',
-        aspectRatio: mobileAspectRatio,
-      },
-    }
-
-    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback, onScanFailure);
-  }
+  openonshortcut;
 
   connectedCallback() {
     super.connectedCallback();
+
+    this.changeUrl = this.changeUrl.bind(this);
+    this.connectRemote = this.connectRemote.bind(this);
+    this.scanQrcode = this.scanQrcode.bind(this);
+    this.connectToPort = this.connectToPort.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.renderViews = this.renderViews.bind(this);
+    this.requestCapability = this.requestCapability.bind(this);
+    this.verifyCode = this.verifyCode.bind(this);
+    this.changeCode = this.changeCode.bind(this);
 
     this._isMobile = detectMob();
 
@@ -317,320 +379,251 @@ export default class Ad4mConnect extends LitElement {
       capabilities: JSON.parse(this.capabilities),
       port: this.port,
       token: this.token,
-      url: this.url
+      url: this.url,
     });
 
     this._client = client;
 
-    client?.addEventListener('loading', () => {
-      this._state = 'loading';
-    })
+    client?.addEventListener("loading", () => {
+      this._state = "loading";
+    });
 
-    client?.addEventListener('not_connected', () => {
-      this._state = 'not_connected';
-    })
+    client?.addEventListener("not_connected", () => {
+      this._state = "not_connected";
+    });
 
-    client?.addEventListener('init', () => {
-      this._state = 'init';
-    })
+    client?.addEventListener("agent_locked", () => {
+      this._state = "agent_locked";
+    });
 
-    client?.addEventListener('capabilties_not_matched', (isFirst) => {
+    client?.addEventListener("init", () => {
+      this._state = "init";
+    });
+
+    client?.addEventListener("capabilties_not_matched", (isFirst) => {
       if (isFirst) {
-        this._state = 'capabilties_not_matched_first';
+        this._state = "capabilties_not_matched_first";
       } else {
-        this._state = 'capabilties_not_matched';
+        this._state = "capabilties_not_matched";
       }
-    })
+    });
 
-    client?.addEventListener('request_capability', (requestId) => {
-      this._state = 'request_capability';
-    })
+    client?.addEventListener("request_capability", (requestId) => {
+      this._state = "request_capability";
+    });
 
-    client?.addEventListener('connected_with_capabilities', () => {
-      this._state = 'connected_with_capabilities';
-    })
+    client?.addEventListener("connected_with_capabilities", () => {
+      this._state = "connected_with_capabilities";
+    });
 
-    document.addEventListener('fetch-ad4m-client', () => {
-      const event = new CustomEvent('return-fetch-ad4m-client', { detail: this._client });
+    document.addEventListener("fetch-ad4m-client", () => {
+      const event = new CustomEvent("return-fetch-ad4m-client", {
+        detail: this._client,
+      });
       document.dispatchEvent(event);
     });
 
     if (this.openonshortcut !== undefined) {
-      document.addEventListener('keydown', (event) => {
-        if (event.ctrlKey && event.altKey && event.code === 'KeyA') {
+      document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey && event.altKey && event.code === "KeyA") {
           this._state = "init";
         }
-      })
+      });
     }
 
-    const containerEle = document.createElement('div');
-    containerEle.id = 'camera-id'
-    containerEle.style.position = 'absolute';
-    containerEle.style.top = '0';
-    containerEle.style.left = '0';
-    containerEle.style.width = '100vw'
-    containerEle.style.height = '100vh'
-    containerEle.style.zIndex = '10000';
-    containerEle.style.display = 'none';
+    const containerEle = document.createElement("div");
+    containerEle.id = "camera-id";
+    containerEle.style.position = "absolute";
+    containerEle.style.top = "0";
+    containerEle.style.left = "0";
+    containerEle.style.width = "100vw";
+    containerEle.style.height = "100vh";
+    containerEle.style.zIndex = "10000";
+    containerEle.style.display = "none";
 
-    const ele = document.createElement('div');
-    ele.id = 'reader'
+    const ele = document.createElement("div");
+    ele.id = "reader";
     // @ts-ignore
-    ele.width = '100%'
-    ele.style.height = '100vh'
-    
-    containerEle.appendChild(ele)
-    document.body.appendChild(containerEle)
+    ele.width = "100%";
+    ele.style.height = "100vh";
+
+    containerEle.appendChild(ele);
+    document.body.appendChild(containerEle);
+  }
+
+  getClient() {
+    return this._client;
+  }
+
+  scanQrcode() {
+    const html5QrCode = new Html5Qrcode("reader");
+    const ele = document.getElementById("camera-id");
+    ele.style.display = "block";
+
+    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+      console.log("Got connection URL from QR code: ", decodedText);
+      this._client.connectRemote(decodedText);
+      html5QrCode.stop();
+      ele.style.display = "none";
+    };
+    function onScanFailure(error) {
+      console.warn(`Code scan error = ${error}`);
+    }
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const aspectRatio = width / height;
+    const reverseAspectRatio = height / width;
+
+    const mobileAspectRatio =
+      reverseAspectRatio > 1.5
+        ? reverseAspectRatio + (reverseAspectRatio * 12) / 100
+        : reverseAspectRatio;
+
+    const config = {
+      fps: 20, // frame per seconds for qr code scanning
+      qrbox: { width: 250, height: 250 },
+      videoConstraints: {
+        facingMode: "environment",
+        aspectRatio: mobileAspectRatio,
+      },
+    };
+
+    html5QrCode.start(
+      { facingMode: "environment" },
+      config,
+      qrCodeSuccessCallback,
+      onScanFailure
+    );
+  }
+
+  changeUrl(url) {
+    this.setAttribute("url", url);
+  }
+
+  connectRemote(url) {
+    this._client.connectRemote(url);
+  }
+
+  requestCapability(bool) {
+    this._client.requestCapability(bool);
+  }
+
+  connectToPort() {
+    this._client.connectToPort();
+  }
+
+  changeState(state) {
+    this._state = state;
+  }
+
+  changeCode(code) {
+    this._code = code;
+  }
+
+  verifyCode(code) {
+    this._client.verifyCode(code);
+  }
+
+  renderViews() {
+    switch (this._state) {
+      case "loading":
+        return Loading();
+      case "init":
+        return Start({
+          scanQrcode: this.scanQrcode,
+          connectToPort: this.connectToPort,
+          isMobile: this._isMobile,
+          changeState: this.changeState,
+        });
+      case "remote_url":
+        return RemoteUrl({
+          url: this.url,
+          changeState: this.changeState,
+          changeUrl: this.changeUrl,
+          connectRemote: this.connectRemote,
+        });
+      case "not_connected":
+        return NotConnected();
+      case "agent_locked":
+        return AgentLocked();
+      case "capabilties_not_matched_first":
+        return CapNotMatchedFirst({
+          changeState: this.changeState,
+          requestCapability: this.requestCapability,
+          capabilities: this.capabilities,
+          appname: this.appname,
+          appiconpath: this.appiconpath,
+        });
+      case "request_capability":
+        return Request({
+          code: this._code,
+          changeCode: this.changeCode,
+          changeState: this.changeState,
+          verifyCode: this.verifyCode,
+        });
+      default:
+        return Loading();
+    }
   }
 
   render() {
-    const state = this._state;
-    if (state === 'loading') {
-      return (
-        html`
-          <div class="ad4mConnect">
-            <div class="ad4mConnect__dailog">
-                <div class="ad4mConnect__dailog__header">
-                    <img 
-                        class="ad4mConnect__dailog__header__logo"
-                        src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                        alt="Logo" 
-                    />
-                    <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-                </div>
-                <div
-                    class="ad4mConnect__dailog__subtitle"
-                >trying to connect to the executor, please wait</div>
-                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-            </div>
-            <div class="ad4mConnect__backdrop" />
-          </div>
-        `
-      )
-    } else if (state === 'remote_url') {
-      return (
-        html`
-        <div class="ad4mConnect">
-          <div class="ad4mConnect__dailog">
-              <div class="ad4mConnect__dailog__header">
-                  <img 
-                      class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                      alt="Logo" 
-                  />
-                  <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-              </div>
-              <div
-                  class="ad4mConnect__dailog__subtitle"
-              >Please enter the url you want to connect too.</div>
-              <div class="ad4mConnect__dailog__input">
-                  URL: <input value=${this._url} @change=${(e: any) => this._url = e.target.value} />
-              </div>
-              <div style="height: 12px"></div>
-              <div class="ad4mConnect__dailog__btns">
-                  <button class="ad4mConnect__dailog__btn" @click=${() => this._state = 'init'}>
-                      Back
-                  </button>
-                  <div style="width: 24px"></div>
-                  <button class="ad4mConnect__dailog__btn" @click=${() => this._client.connectRemote(this._url)}>
-                      Continue
-                  </button>
-              </div>
+    if (this._state === "capabilties_not_matched") {
+      return html`<div class="disconnected">
+        Disconnected from Ad4min, please check if ad4min is still runnning.
+      </div>`;
+    }
+    if (this._state === "connected_with_capabilities") {
+      return null;
+    } else {
+      return html`
+        <div class="wrapper">
+          <div class="dialog">
+            ${Header()}
+            <main class="dialog__content">${this.renderViews()}</main>
           </div>
           <div class="ad4mConnect__backdrop" />
         </div>
-        `
-      )
-    } else if (state === 'init') {
-      return (
-        html`
-        <div class="ad4mConnect">
-          <div class="ad4mConnect__dailog">
-              <div class="ad4mConnect__dailog__header">
-                  <img 
-                      class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                      alt="Logo" 
-                  />
-                  <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-              </div>
-              <div
-                  class="ad4mConnect__dailog__subtitle"
-              >Select a way to connect to executor</div>
-              <div class="ad4mConnect__dailog__options">
-                  ${!this._isMobile ? 
-                    html`<div 
-                      class="ad4mConnect__dailog__option"
-                      @click=${() => this._client.connectToPort()}
-                    >
-                      <div class="ad4mConnect__dailog__option__text">Connect locally</div>
-                    </div>` 
-                  : html`<div 
-                      class="ad4mConnect__dailog__option"
-                      @click=${() => this.scanQrcode()}
-                    >
-                      <div class="ad4mConnect__dailog__option__text">Connect using qrcode</div>
-                    </div>
-                  `}
-                  <div 
-                      class="ad4mConnect__dailog__option"
-                      @click=${() => this._state = 'remote_url'}
-                  >
-                      <div class="ad4mConnect__dailog__option__text">Connect remote</div>
-                  </div>
-              </div>
-          </div>
-          <div class="ad4mConnect__backdrop"></div>
-        </div> 
-        `
-      )
-    } else if (state === 'not_connected') {
-      return (
-        html`
-        <div class="ad4mConnect__locked">
-          <div class="ad4mConnect__dailog__header">
-              <img 
-                  class="ad4mConnect__dailog__header__logo"
-                  src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                  alt="Logo" 
-              />
-              <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-          </div>
-          <div class="ad4mConnect__dailog__title">Are you sure ad4m is downloaded and running?</div>
-          <div class="ad4mConnect__dailog__subtitle" style="width: 700px">
-          Download the latest version <a target="_blank" href="https://github.com/perspect3vism/ad4min/releases/latest">here</a>. We will automatically detect when it is running, if it doesn't connect automatically refresh the page.
-          </div>
-        </div>
-        `
-      )
-    } else if (state === 'agent_locked') {
-      return (
-        html`
-        <div class="ad4mConnect__locked">
-          <div class="ad4mConnect__dailog__header">
-              <img 
-                  class="ad4mConnect__dailog__header__logo"
-                  src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                  alt="Logo" 
-              />
-              <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-          </div>
-          <div class="ad4mConnect__dailog__subtitle">
-              Your agent is locked, please unlock it & refresh the page to continue.
-          </div>
-        </div>
-        `
-      )
-    } else if (state === 'capabilties_not_matched_first') {
-      return (
-        html`
-        <div class="ad4mConnect">
-          <div class="ad4mConnect__dailog">
-              <div class="ad4mConnect__dailog__header">
-                  <img 
-                      class="ad4mConnect__dailog__header__logo"
-                      src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                      alt="Logo" 
-                  />
-                  <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-              </div>
-              <div
-                  class="ad4mConnect__dailog__subtitle"
-              >${this.appname} needs to connect to your AD4M node/executor and request a capability token for the following capabilities:</div>
-              <div class="ad4mConnect__dailog__caps">
-                  ${JSON.parse(this.capabilities).map(e => (
-                      html`<li>${e.can} => ${e.with.domain}.${e.with.pointers}</li>`
-                  ))}
-              </div>
-              ${ this.appiconpath && html`<div class="ad4mConnect__dailog__connection">
-                  <img src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" alt="App Logo" style="width: 120px" />
-                  <img src="https://i.ibb.co/BG0Dz2v/link.png alt="chain" width="40px" style="margin: 0 24px;" />
-                  <img src=${this.appiconpath} alt="Logo" style="width: 120px" />
-              </div>`}
-              <div style="height: 12px" ></div>
-              <button class="ad4mConnect__dailog__btn" @click=${() => this._client.requestCapability(true)}>
-                  Continue
-              </button>
-          </div>
-          <div class="ad4mConnect__backdrop" />
-        </div>
-        `
-      )
-    } else if (state === 'request_capability') {
-      return (
-        html`
-        <div class="ad4mConnect">
-            <div class="ad4mConnect__dailog">
-                <div class="ad4mConnect__dailog__header">
-                    <img 
-                        class="ad4mConnect__dailog__header__logo"
-                        src="https://i.ibb.co/ydXzRwS/Ad4mLogo.png" 
-                        alt="Logo" 
-                    />
-                    <div class="ad4mConnect__dailog__title">AD4M Connection Wizard</div>
-                </div>
-                <div
-                    class="ad4mConnect__dailog__subtitle"
-                >Capability request was successfully sent. Please check your AD4M admin UI (AD4Min), confirm the request there and enter the 6-digit security code below, that AD4Min displays to you.</div>
-                <div class="ad4mConnect__dailog__input">
-                    Security code: <input value=${this._code} @change=${(e: any) => this._code = e.target.value} />
-                </div>
-                <div style="height: 12px"></div>
-                <div class="ad4mConnect__dailog__btns">
-                    <button class="ad4mConnect__dailog__btn" @click=${() => this._state = 'capabilties_not_matched_first'}>
-                        Back
-                    </button>
-                    <div style="width: 24px"></div>
-                    <button class="ad4mConnect__dailog__btn" @click=${() => this._client.verifyCode(this._code)}>
-                        Continue
-                    </button>
-                </div>
-            </div>
-            <div class="ad4mConnect__backdrop" />
-        </div>
-        `
-      )
-    } else if (state === 'capabilties_not_matched') {
-      return(
-        html`
-          <div class="ad4mConnect__disconnect">
-            Disconnected from Ad4min, please check if ad4min is still runnning.
-          </div>
-        `
-      )
+      `;
     }
   }
 }
 
 export function getAd4mClient(): Promise<Ad4mClient> {
   return new Promise((resolve, reject) => {
-    document.addEventListener('return-fetch-ad4m-client', function listener(event) {
-      this.removeEventListener('return-fetch-ad4m-client', listener)
-      // @ts-ignore
-      resolve(event.detail.ad4mClient)
-    });
+    document.addEventListener(
+      "return-fetch-ad4m-client",
+      function listener(event) {
+        this.removeEventListener("return-fetch-ad4m-client", listener);
+        // @ts-ignore
+        resolve(event.detail.ad4mClient);
+      }
+    );
 
-    const event = new CustomEvent('fetch-ad4m-client');
+    const event = new CustomEvent("fetch-ad4m-client");
     document.dispatchEvent(event);
 
     setTimeout(() => {
-      reject('No Ad4mClient found')
-    }, 5000)
-  })
+      reject("No Ad4mClient found");
+    }, 5000);
+  });
 }
 
 export function isConnected() {
   return new Promise((resolve, reject) => {
-    document.addEventListener('return-fetch-ad4m-client', function listener(event) {
-      // @ts-ignore
-      event.detail.addEventListener('connected_with_capabilities', () => {
-        this.removeEventListener('return-fetch-ad4m-client', listener)
+    document.addEventListener(
+      "return-fetch-ad4m-client",
+      function listener(event) {
+        // @ts-ignore
+        event.detail.addEventListener("connected_with_capabilities", () => {
+          this.removeEventListener("return-fetch-ad4m-client", listener);
 
-        resolve(true)
-      })
-    });
+          resolve(true);
+        });
+      }
+    );
 
-    const event = new CustomEvent('fetch-ad4m-client');
+    const event = new CustomEvent("fetch-ad4m-client");
     document.dispatchEvent(event);
   });
 }
