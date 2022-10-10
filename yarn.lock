@@ -168,10 +168,10 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@perspect3vism/ad4m@0.1.34":
-  version "0.1.34"
-  resolved "https://registry.yarnpkg.com/@perspect3vism/ad4m/-/ad4m-0.1.34.tgz#4669ca8d92ea713b0789b23f6c05e634deb7ff5b"
-  integrity sha512-7+0iy3ZASoQ9dPBfQ6iz0oXuS2jESu2igTwtWgwVq3x3CcNEP5h97HiqAMiR0O3K+tAPT3+lZ80ZccyIkWDK6g==
+"@perspect3vism/ad4m@0.1.37":
+  version "0.1.37"
+  resolved "https://registry.yarnpkg.com/@perspect3vism/ad4m/-/ad4m-0.1.37.tgz#40530e93cd81e027695a11c8b1a8b9c4956474a6"
+  integrity sha512-TRYCUPKXvAmpp66DcE4xjQVCcZnHth4sCKXLaWwEyexUb24Z5T8RJ6aR8rINbbJh5ewBIpCxflxJt9GO07EuNA==
   dependencies:
     "@apollo/client" "3.6.9"
     "@holochain/client" "0.3.2"
