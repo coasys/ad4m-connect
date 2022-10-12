@@ -12,18 +12,10 @@ export default function CouldNotMakeRequest() {
       </div>
 
       <div class="buttons">
-      <button class="button button--full button--secondary" @click=${() =>
-        location.reload()}>
-        Try again
-      </button>
-        <a
-          class="button button--full"
-          target="_blank"
-          href="https://github.com/perspect3vism/ad4min/releases/latest"
-        >
-          Download Ad4m
-        </a>
-      </div>
+        <button class="button button--full button--secondary" @click=${() =>
+            location.reload()}>
+            Try again
+        </button>
       </div>
     </div>
   `;
