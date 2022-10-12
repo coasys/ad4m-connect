@@ -161,6 +161,8 @@ class Client {
     } else if (message.includes("signature verification failed")) {
       // wrong agent error
       this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+    } else if (message.includes("Failed to fetch")) {
+      this.callListener("could_not_make_request");
     } else if (message === "Couldn't find an open port") {
       // show no open port error & ask to retry
       this.setPortSearchState("not_found");
@@ -218,7 +220,7 @@ class Client {
     this.buildClient();
   }
 
-  token() {
+  token(): string {
     return localStorage.getItem("ad4minToken") || "";
   }
 
