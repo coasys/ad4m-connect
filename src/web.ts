@@ -11,6 +11,7 @@ import AgentLocked from "./components/AgentLocked";
 import CapNotMatchedFirst from "./components/CapNotMatchedFirst";
 import Request from "./components/Request";
 import Header from "./components/Header";
+import CouldNotMakeRequest from "./components/CouldNotMakeRequest";
 
 function detectMob() {
   const toMatch = [
@@ -423,6 +424,10 @@ export default class Ad4mConnect extends LitElement {
       document.dispatchEvent(event);
     });
 
+    document.addEventListener("could_not_make_request", () => {
+      this._state = "could_not_make_request";
+    })
+
     if (this.openonshortcut !== undefined) {
       document.addEventListener("keydown", (event) => {
         if (event.ctrlKey && event.altKey && event.code === "KeyA") {
@@ -562,6 +567,8 @@ export default class Ad4mConnect extends LitElement {
           changeState: this.changeState,
           verifyCode: this.verifyCode,
         });
+      case "could_not_make_request":
+          return CouldNotMakeRequest();
       default:
         return Loading();
     }
