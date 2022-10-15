@@ -1,4 +1,5 @@
 import { Ad4mClient } from "@perspect3vism/ad4m";
+import { ClientStates } from "./core";
 
 function Timeout() {
   const controller = new AbortController();
@@ -41,13 +42,9 @@ export function getAd4mClient(): Promise<Ad4mClient> {
 export function onAuthStateChanged(callback) {
   const el = document.querySelector("ad4m-connect");
 
-  el?.addEventListener("connected", (e: CustomEvent) => {
-    callback(e.detail);
+  el?.addEventListener("authStateChange", (e: CustomEvent) => {
+    callback(e.detail as ClientStates);
   });
-
-  console.log(el);
-
-  callback(el.connected());
 }
 
 export function isConnected() {

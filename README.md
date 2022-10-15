@@ -87,8 +87,8 @@ import {
   onAuthStateChanged,
 } from "@perspect3vism/ad4m-connect/web";
 
-onAuthStateChanged(async (connected) => {
-  if (connected) {
+onAuthStateChanged(async (status) => {
+  if (status === "connected_with_capabilities") {
     alert("Connected  to Ad4m!");
   } else {
     alert("Not connected to Ad4m!");

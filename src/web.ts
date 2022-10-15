@@ -13,6 +13,8 @@ import CapNotMatched from "./components/CapNotMatching";
 import Request from "./components/Request";
 import Header from "./components/Header";
 import CouldNotMakeRequest from "./components/CouldNotMakeRequest";
+import { ClientStates } from "./core.ts";
+import { Client } from "graphql-ws";
 
 function detectMob() {
   const toMatch = [
@@ -313,7 +315,7 @@ export default class Ad4mConnect extends LitElement {
   private _client = null;
 
   @state()
-  private _state = null;
+  private _state: ClientStates = null;
 
   @state()
   private _code = null;
@@ -376,15 +378,12 @@ export default class Ad4mConnect extends LitElement {
       port: this.port,
       token: this.token,
       url: this.url,
-      onStateChange: ({ message }) => {
-        console.log("hello inside stateChange", message);
-        this._state = message;
-        if (message === "connected_with_capabilities") {
-          const event = new CustomEvent("connected", {
-            detail: true,
-          });
-          this.dispatchEvent(event);
-        }
+      onStateChange: (event: ClientStates) => {
+        this._state = event;
+        const customEvent = new CustomEvent("authStateChange", {
+          detail: event,
+        });
+        this.dispatchEvent(customEvent);
       },
     });
 

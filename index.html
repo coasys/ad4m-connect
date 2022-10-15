@@ -44,17 +44,11 @@
         getAd4mClient,
       } from "../dist/utils.js";
 
-      onAuthStateChanged(async (connected) => {
-        console.log("connected", connected);
-        if (connected) {
-          const client = await getAd4mClient();
-          console.log(client);
-
-          document.getElementById("title").innerText = "Connected  to Ad4m!";
-        } else {
-          document.getElementById("title").innerText =
-            "Disconnected from Ad4m!";
-        }
+      onAuthStateChanged(async (event) => {
+        const isConnnected = event === "connected_with_capabilities";
+        document.getElementById("title").innerText = isConnected
+          ? "Is Connected to AD4M"
+          : "Is Not Connected to AD4M";
       });
     </script>
   </body>
