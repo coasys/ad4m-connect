@@ -378,6 +378,7 @@ export default class Ad4mConnect extends LitElement {
       token: this.token,
       url: this.url,
       onStateChange: (event: ClientStates) => {
+        if (this._state === event) return;
         this._state = event;
         const customEvent = new CustomEvent("authStateChange", {
           detail: event,
