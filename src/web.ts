@@ -364,7 +364,7 @@ export default class Ad4mConnect extends LitElement {
     this.requestCapability = this.requestCapability.bind(this);
     this.verifyCode = this.verifyCode.bind(this);
     this.changeCode = this.changeCode.bind(this);
-    this.getClient = this.getClient.bind(this);
+    this.getAd4mClient = this.getAd4mClient.bind(this);
     this.connected = this.connected.bind(this);
 
     this._isMobile = detectMob();
