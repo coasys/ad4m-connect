@@ -29,7 +29,7 @@ export function getAd4mClient(): Promise<Ad4mClient> {
     const el = document.querySelector("ad4m-connect");
 
     // @ts-ignore
-    const client = el?.getClient();
+    const client = el?.getAd4mClient();
 
     if (client) {
       resolve(client);

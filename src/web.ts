@@ -392,8 +392,8 @@ export default class Ad4mConnect extends LitElement {
     this.constructQR();
   }
 
-  getClient() {
-    return this._client;
+  getAd4mClient() {
+    return this._client.ad4mClient;
   }
 
   loadFont() {
