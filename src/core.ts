@@ -184,14 +184,6 @@ class Client {
     }
   }
 
-  private callListener(event: ClientStates, ...args: any[]) {
-    if (this.listeners[event]) {
-      this.listeners[event].forEach((e) => {
-        e(...args);
-      });
-    }
-  }
-
   async findPort() {
     this.onStateChange("loading");
 
