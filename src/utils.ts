@@ -25,40 +25,42 @@ export async function checkPort(port: number) {
 
 export function getAd4mClient(): Promise<Ad4mClient> {
   return new Promise((resolve, reject) => {
-    document.addEventListener(
-      "return-fetch-ad4m-client",
-      function listener(event) {
-        this.removeEventListener("return-fetch-ad4m-client", listener);
-        // @ts-ignore
-        resolve(event.detail.ad4mClient);
-      }
-    );
+    const el = document.querySelector("ad4m-connect");
 
-    const event = new CustomEvent("fetch-ad4m-client");
-    document.dispatchEvent(event);
+    // @ts-ignore
+    const client = el?.getClient();
 
-    setTimeout(() => {
+    if (client) {
+      resolve(client);
+    } else {
       reject("No Ad4mClient found");
-    }, 5000);
+    }
   });
+}
+
+export function onAuthStateChanged(callback) {
+  const el = document.querySelector("ad4m-connect");
+
+  el?.addEventListener("connected", (e: CustomEvent) => {
+    callback(e.detail);
+  });
+
+  console.log(el);
+
+  callback(el.connected());
 }
 
 export function isConnected() {
   return new Promise((resolve, reject) => {
-    document.addEventListener(
-      "return-fetch-ad4m-client",
-      function listener(event) {
-        // @ts-ignore
-        event.detail.addEventListener("connected_with_capabilities", () => {
-          this.removeEventListener("return-fetch-ad4m-client", listener);
+    const el = document.querySelector("ad4m-connect");
 
-          resolve(true);
-        });
-      }
-    );
+    // @ts-ignore
+    const connected = el?.connected();
 
-    const event = new CustomEvent("fetch-ad4m-client");
-    document.dispatchEvent(event);
+    if (connected) {
+      resolve(true);
+    } else {
+      resolve(false);
+    }
   });
 }
-

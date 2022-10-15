@@ -37,12 +37,25 @@
       appiconpath="https://i.ibb.co/GnqjPJP/icon.png"
     ></ad4m-connect>
     <script type="module">
-      import { isConnected } from "../dist/web.js";
+      import "../dist/web.js";
+      import {
+        isConnected,
+        onAuthStateChanged,
+        getAd4mClient,
+      } from "../dist/utils.js";
 
-      isConnected().then(async () => {
-        document.getElementById("title").innerText = "Connected  to Ad4m!"
-      })
+      onAuthStateChanged(async (connected) => {
+        console.log("connected", connected);
+        if (connected) {
+          const client = await getAd4mClient();
+          console.log(client);
 
+          document.getElementById("title").innerText = "Connected  to Ad4m!";
+        } else {
+          document.getElementById("title").innerText =
+            "Disconnected from Ad4m!";
+        }
+      });
     </script>
   </body>
 </html>

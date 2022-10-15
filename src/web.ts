@@ -9,6 +9,7 @@ import Start from "./components/Start";
 import NotConnected from "./components/NotConnected";
 import AgentLocked from "./components/AgentLocked";
 import CapNotMatchedFirst from "./components/CapNotMatchedFirst";
+import CapNotMatched from "./components/CapNotMatching";
 import Request from "./components/Request";
 import Header from "./components/Header";
 import CouldNotMakeRequest from "./components/CouldNotMakeRequest";
@@ -362,16 +363,10 @@ export default class Ad4mConnect extends LitElement {
     this.requestCapability = this.requestCapability.bind(this);
     this.verifyCode = this.verifyCode.bind(this);
     this.changeCode = this.changeCode.bind(this);
+    this.getClient = this.getClient.bind(this);
+    this.connected = this.connected.bind(this);
 
     this._isMobile = detectMob();
-
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.crossOrigin = "anonymous";
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap";
-    document.head.appendChild(link);
 
     const client = ad4mConnect({
       appName: this.appname,
@@ -381,53 +376,39 @@ export default class Ad4mConnect extends LitElement {
       port: this.port,
       token: this.token,
       url: this.url,
+      onStateChange: ({ message }) => {
+        console.log("hello inside stateChange", message);
+        this._state = message;
+        if (message === "connected_with_capabilities") {
+          const event = new CustomEvent("connected", {
+            detail: true,
+          });
+          this.dispatchEvent(event);
+        }
+      },
     });
 
     this._client = client;
 
-    client?.addEventListener("loading", () => {
-      this._state = "loading";
-    });
+    this.addShortCut();
+    this.constructQR();
+  }
 
-    client?.addEventListener("not_connected", () => {
-      this._state = "not_connected";
-    });
+  getClient() {
+    return this._client;
+  }
 
-    client?.addEventListener("agent_locked", () => {
-      this._state = "agent_locked";
-    });
+  loadFont() {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.crossOrigin = "anonymous";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap";
+    document.head.appendChild(link);
+  }
 
-    client?.addEventListener("init", () => {
-      this._state = "init";
-    });
-
-    client?.addEventListener("capabilties_not_matched", (isFirst) => {
-      if (isFirst) {
-        this._state = "capabilties_not_matched_first";
-      } else {
-        this._state = "capabilties_not_matched";
-      }
-    });
-
-    client?.addEventListener("request_capability", (requestId) => {
-      this._state = "request_capability";
-    });
-
-    client?.addEventListener("connected_with_capabilities", () => {
-      this._state = "connected_with_capabilities";
-    });
-
-    document.addEventListener("fetch-ad4m-client", () => {
-      const event = new CustomEvent("return-fetch-ad4m-client", {
-        detail: this._client,
-      });
-      document.dispatchEvent(event);
-    });
-
-    document.addEventListener("could_not_make_request", () => {
-      this._state = "could_not_make_request";
-    })
-
+  addShortCut() {
     if (this.openonshortcut !== undefined) {
       document.addEventListener("keydown", (event) => {
         if (event.ctrlKey && event.altKey && event.code === "KeyA") {
@@ -435,7 +416,9 @@ export default class Ad4mConnect extends LitElement {
         }
       });
     }
+  }
 
+  constructQR() {
     const containerEle = document.createElement("div");
     containerEle.id = "camera-id";
     containerEle.style.position = "absolute";
@@ -454,10 +437,6 @@ export default class Ad4mConnect extends LitElement {
 
     containerEle.appendChild(ele);
     document.body.appendChild(containerEle);
-  }
-
-  getClient() {
-    return this._client;
   }
 
   scanQrcode() {
@@ -530,6 +509,10 @@ export default class Ad4mConnect extends LitElement {
     this._client.verifyCode(code);
   }
 
+  connected() {
+    return this._state === "connected_with_capabilities";
+  }
+
   renderViews() {
     switch (this._state) {
       case "loading":
@@ -549,9 +532,17 @@ export default class Ad4mConnect extends LitElement {
           connectRemote: this.connectRemote,
         });
       case "not_connected":
-        return NotConnected();
+        return NotConnected({ connectToPort: this.connectToPort });
       case "agent_locked":
         return AgentLocked();
+      case "capabilties_not_matched":
+        return CapNotMatchedFirst({
+          changeState: this.changeState,
+          requestCapability: this.requestCapability,
+          capabilities: this.capabilities,
+          appname: this.appname,
+          appiconpath: this.appiconpath,
+        });
       case "capabilties_not_matched_first":
         return CapNotMatchedFirst({
           changeState: this.changeState,
@@ -568,18 +559,13 @@ export default class Ad4mConnect extends LitElement {
           verifyCode: this.verifyCode,
         });
       case "could_not_make_request":
-          return CouldNotMakeRequest();
+        return CouldNotMakeRequest();
       default:
         return Loading();
     }
   }
 
   render() {
-    if (this._state === "capabilties_not_matched") {
-      return html`<div class="disconnected">
-        Disconnected from Ad4min, please check if ad4min is still runnning.
-      </div>`;
-    }
     if (this._state === "connected_with_capabilities") {
       return null;
     } else {

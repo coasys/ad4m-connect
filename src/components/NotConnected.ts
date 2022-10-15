@@ -1,6 +1,6 @@
 import { html } from "lit";
 
-export default function NotConnected() {
+export default function NotConnected({ connectToPort }) {
   return html`
     <div class="items">
       <div class="text-center">
@@ -13,8 +13,9 @@ export default function NotConnected() {
       </div>
 
       <div class="buttons">
-      <button class="button button--full button--secondary" @click=${() =>
-        location.reload()}>
+      <button 
+        class="button button--full button--secondary" 
+        @click=${() => connectToPort()}>
         Try again
       </button>
         <a

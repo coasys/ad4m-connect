@@ -34,6 +34,7 @@ export type Ad4mConnectOptions = {
   port?: number;
   token?: string;
   url?: string;
+  onStateChange?: any;
 };
 
 type PortSearchStateType = "na" | "searching" | "found" | "not_found";
@@ -48,7 +49,7 @@ type ClientEvents =
   | "capabilties_not_matched"
   | "not_connected"
   | "loading"
-  | string;
+  | "state_change";
 
 class Client {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
@@ -63,6 +64,7 @@ class Client {
   url: string;
   capabilities: { [x: string]: any }[];
   listeners: { [x: ClientEvents]: [(...args: any[]) => void] } = {};
+  onStateChange: (val: any) => {};
 
   // @fayeed - params
   constructor({
@@ -73,23 +75,22 @@ class Client {
     port,
     token,
     url,
+    onStateChange,
   }: Ad4mConnectOptions) {
     //! @fayeed - make it support node.js
     this.appName = appName;
     this.appDesc = appDesc;
     this.appDomain = appDomain;
     this.capabilities = capabilities;
-    if (port) this.port = port!;
-    if (url) this.url = url;
+    this.port = port || this.port;
+    this.url = url || this.url;
+    this.onStateChange = onStateChange || this.onStateChange;
+
     if (token && token.length > 0) {
-      this.setToken(token!);
+      this.setToken(token);
     }
 
     if (localStorage.getItem("ad4minURL") && token.length > 0) {
-      setTimeout(() => {
-        this.callListener("loading");
-      }, 0);
-
       setInterval(() => {
         this.checkConnection();
       }, 10000);
@@ -97,9 +98,11 @@ class Client {
       this.buildClient();
       this.checkConnection();
     } else {
-      setTimeout(() => {
-        this.callListener("init");
-      }, 500);
+      this.onStateChange({
+        message: "init",
+        status: 200,
+      });
+      this.callListener("state_change");
     }
   }
 
@@ -108,19 +111,29 @@ class Client {
     localStorage.setItem("ad4minToken", "");
     localStorage.setItem("ad4minURL", url);
 
-    this.callListener("loading");
+    this.onStateChange({
+      message: "loading",
+      status: 102,
+    });
 
     this.buildClient();
-
-    await this.checkConnection();
+    this.checkConnection();
   }
 
   async connectToPort() {
     try {
-      this.callListener("loading");
+      this.onStateChange({
+        message: "loading",
+        status: 102,
+      });
       const port = await checkPort(this.port);
       if (port) {
-        this.callListener("port_found", port);
+        this.onStateChange({
+          message: "port_found",
+          status: 200,
+          port,
+        });
+
         this.setPort(port);
         await this.checkConnection();
       } else {
@@ -129,7 +142,6 @@ class Client {
         const port = await this.findPort();
 
         if (port) {
-          this.callListener("port_found", port);
           this.setPort(port);
           await this.checkConnection();
         }
@@ -151,40 +163,74 @@ class Client {
     console.log("error message", message);
     if (message.includes("Capability is not matched, you have capabilities:")) {
       // Show wrong capability message.
-      this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+      if (this.isFullyInitialized) {
+        this.onStateChange({
+          message: "capabilties_not_matched",
+          status: 401,
+        });
+      } else {
+        this.onStateChange({
+          message: "capabilties_not_matched_first",
+          status: 401,
+        });
+      }
     } else if (
-      message ===
-      "Cannot extractByTags from a ciphered wallet. You must unlock first."
+      message.includes(
+        "Cannot extractByTags from a ciphered wallet. You must unlock first."
+      )
     ) {
       // Show agent is locked message.
-      this.callListener("agent_locked");
+      this.onStateChange({
+        message: "agent_locked",
+        status: 401,
+      });
     } else if (message.includes("signature verification failed")) {
       // wrong agent error
-      this.callListener("capabilties_not_matched", !this.isFullyInitialized);
+      this.onStateChange({
+        message: "capabilties_not_matched",
+        status: 401,
+      });
     } else if (message.includes("Failed to fetch")) {
-      this.callListener("could_not_make_request");
+      // wrong agent error
+      this.onStateChange({
+        message: "could_not_make_request",
+        status: 404,
+      });
     } else if (message === "Couldn't find an open port") {
       // show no open port error & ask to retry
       this.setPortSearchState("not_found");
-      this.callListener("port_notfound");
-      this.callListener("not_connected");
+      this.onStateChange({
+        message: "port_notfound",
+        status: 404,
+      });
     } else {
       if (this.isFullyInitialized) {
-        this.callListener("capabilties_not_matched", false);
+        this.onStateChange({
+          message: "capabilties_not_matched",
+          status: 401,
+        });
       } else {
-        this.callListener("not_connected");
+        this.onStateChange({
+          message: "not_connected",
+          status: 404,
+        });
       }
     }
   }
 
   private callListener(event: ClientEvents, ...args: any[]) {
     if (this.listeners[event]) {
-      this.listeners[event].forEach((e) => e(...args));
+      this.listeners[event].forEach((e) => {
+        e(...args);
+      });
     }
   }
 
   async findPort() {
-    this.callListener("port_searching");
+    this.onStateChange({
+      message: "loading",
+      status: 102,
+    });
 
     for (let i = 12000; i <= 12010; i++) {
       try {
@@ -206,7 +252,6 @@ class Client {
   }
 
   setPort(port: number) {
-    console.warn("Setting client port to", port);
     this.portSearchState = "found";
     this.port = port;
     localStorage.setItem("ad4minPort", port.toString());
@@ -260,11 +305,22 @@ class Client {
 
   async checkConnection() {
     try {
-      await this.ad4mClient?.agent.status();
-      this.callListener("connected_with_capabilities");
+      const status = await this.ad4mClient?.agent.status();
+      console.log(status);
       this.isFullyInitialized = true;
+      this.onStateChange({
+        message: "connected_with_capabilities",
+        status: 200,
+      });
     } catch (error) {
-      this.handleErrorMessage(error.message);
+      if (error.message === undefined) {
+        this.onStateChange({
+          message: "not_connected",
+          status: 404,
+        });
+      } else {
+        this.handleErrorMessage(error.message);
+      }
     }
   }
 
@@ -282,7 +338,13 @@ class Client {
           JSON.stringify(this.capabilities)
         );
 
-        this.callListener("request_capability", this.requestId);
+        this.onStateChange({
+          message: "request_capability",
+          code: 200,
+          executorUrl: this.url,
+          capabilityToken: this.token,
+          requestId: this.requestId,
+        });
       } catch (e) {
         this.handleErrorMessage(e.message);
       }
@@ -294,8 +356,6 @@ class Client {
   }
 
   async verifyCode(code: string) {
-    console.log("verifyCode", this.requestId, code);
-
     try {
       const jwt = await this.ad4mClient?.agent.generateJwt(
         this.requestId!,
@@ -306,7 +366,9 @@ class Client {
 
       this.isFullyInitialized = true;
 
-      this.callListener("connected_with_capabilities", {
+      this.onStateChange({
+        message: "connected_with_capabilities",
+        code: 200,
         executorUrl: this.url,
         capabilityToken: this.token,
         client: this.ad4mClient,
