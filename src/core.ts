@@ -48,8 +48,13 @@ export type ClientStates =
   | "disconnected"
   | "agent_locked"
   | "capabilties_not_matched"
+  | "capabilties_not_matched_first"
   | "not_connected"
-  | "loading";
+  | "loading"
+  | "remote_url"
+  | "request_capability"
+  | "could_not_make_request"
+  | "init";
 
 class Client {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
@@ -99,7 +104,6 @@ class Client {
       this.checkConnection();
     } else {
       this.onStateChange("init");
-      this.callListener("state_change");
     }
   }
 

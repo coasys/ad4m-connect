@@ -13,8 +13,7 @@ import CapNotMatched from "./components/CapNotMatching";
 import Request from "./components/Request";
 import Header from "./components/Header";
 import CouldNotMakeRequest from "./components/CouldNotMakeRequest";
-import { ClientStates } from "./core.ts";
-import { Client } from "graphql-ws";
+import { ClientStates } from "./core";
 
 function detectMob() {
   const toMatch = [
