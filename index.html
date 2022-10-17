@@ -46,6 +46,10 @@
         getAd4mClient,
       } from "../dist/utils.js";
 
+      document.getElementById("connectButton").addEventListener("click", () => {
+        document.querySelector("ad4m-connect").connect();
+      });
+
       onAuthStateChanged((state) => {
         const isConnected = state === "connected_with_capabilities";
         document.getElementById("title").innerText = isConnected
