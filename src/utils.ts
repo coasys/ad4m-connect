@@ -48,16 +48,7 @@ export function onAuthStateChanged(callback) {
 }
 
 export function isConnected() {
-  return new Promise((resolve, reject) => {
-    const el = document.querySelector("ad4m-connect");
-
-    // @ts-ignore
-    const connected = el?.connected();
-
-    if (connected) {
-      resolve(true);
-    } else {
-      resolve(false);
-    }
-  });
+  const el = document.querySelector("ad4m-connect");
+  //@ts-ignore
+  return el.connected();
 }

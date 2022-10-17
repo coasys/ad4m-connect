@@ -40,21 +40,14 @@ export type Ad4mConnectOptions = {
 type PortSearchStateType = "na" | "searching" | "found" | "not_found";
 
 export type ClientStates =
-  | "port_found"
-  | "port_searching"
-  | "port_notfound"
-  | "connected_without_capabilities"
   | "connected_with_capabilities"
-  | "disconnected"
   | "agent_locked"
-  | "capabilties_not_matched"
-  | "capabilties_not_matched_first"
+  | "capabilities_not_matched"
+  | "verify_code"
   | "not_connected"
   | "loading"
-  | "remote_url"
-  | "request_capability"
-  | "could_not_make_request"
-  | "init";
+  | "disconnected"
+  | "remote_url";
 
 class Client {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
@@ -68,8 +61,7 @@ class Client {
   appDomain: string;
   url: string;
   capabilities: { [x: string]: any }[];
-  listeners: { [x: ClientStates]: [(...args: any[]) => void] } = {};
-  onStateChange: (val: any) => {};
+  stateListeners: Function[];
 
   // @fayeed - params
   constructor({
@@ -80,7 +72,6 @@ class Client {
     port,
     token,
     url,
-    onStateChange,
   }: Ad4mConnectOptions) {
     //! @fayeed - make it support node.js
     this.appName = appName;
@@ -88,43 +79,47 @@ class Client {
     this.appDomain = appDomain;
     this.capabilities = capabilities;
     this.port = port || this.port;
-    this.url = url || this.url;
-    this.onStateChange = onStateChange || this.onStateChange;
-
-    if (token && token.length > 0) {
-      this.setToken(token);
-    }
-
-    if (localStorage.getItem("ad4minURL") && token.length > 0) {
-      setInterval(() => {
-        this.checkConnection();
-      }, 10000);
-
-      this.buildClient();
-      this.checkConnection();
-    } else {
-      this.onStateChange("init");
-    }
-  }
-
-  async connectRemote(url: string) {
-    this.url = url;
-    localStorage.setItem("ad4minToken", "");
-    localStorage.setItem("ad4minURL", url);
-
-    this.onStateChange("loading");
+    this.url =
+      url ||
+      localStorage.getItem("ad4minUrl") ||
+      `ws://localhost:${this.port}/graphql`;
+    this.token = token || this.token;
+    this.stateListeners = [];
 
     this.buildClient();
+
+    this.ad4mClient.agent.status().then(() => {
+      this.notifyStateChange("connected_with_capabilities");
+    });
+
+    this.ad4mClient.agent.addAgentStatusChangedListener(() => {
+      this.checkConnection();
+    });
+  }
+
+  onStateChange(listener: (...args: any[]) => void) {
+    this.stateListeners.push(listener);
+  }
+
+  notifyStateChange(val: ClientStates) {
+    this.stateListeners.forEach((listener) => {
+      listener(val);
+    });
+  }
+
+  async connect(url?: string) {
+    if (url) {
+      this.url = url;
+    }
+    this.notifyStateChange("loading");
     this.checkConnection();
   }
 
   async connectToPort() {
     try {
-      this.onStateChange("loading");
+      this.notifyStateChange("loading");
       const port = await checkPort(this.port);
       if (port) {
-        this.onStateChange("port_found");
-
         this.setPort(port);
         await this.checkConnection();
       } else {
@@ -142,50 +137,34 @@ class Client {
     }
   }
 
-  addEventListener(event: ClientStates, listener: (...args: any[]) => void) {
-    if (this.listeners[event]) {
-      this.listeners[event].push(listener);
-    } else {
-      this.listeners[event] = [listener];
-    }
-  }
-
   private handleErrorMessage(message) {
     if (message.includes("Capability is not matched, you have capabilities:")) {
       // Show wrong capability message.
-      if (this.isFullyInitialized) {
-        this.onStateChange("capabilties_not_matched");
-      } else {
-        this.onStateChange("capabilties_not_matched_first");
-      }
+      this.notifyStateChange("capabilities_not_matched");
     } else if (
       message.includes(
         "Cannot extractByTags from a ciphered wallet. You must unlock first."
       )
     ) {
       // Show agent is locked message.
-      this.onStateChange("agent_locked");
+      this.notifyStateChange("agent_locked");
     } else if (message.includes("signature verification failed")) {
       // wrong agent error
-      this.onStateChange("capabilties_not_matched");
+      this.notifyStateChange("capabilities_not_matched");
     } else if (message.includes("Failed to fetch")) {
       // wrong agent error
-      this.onStateChange("could_not_make_request");
+      this.notifyStateChange("not_connected");
     } else if (message === "Couldn't find an open port") {
       // show no open port error & ask to retry
       this.setPortSearchState("not_found");
-      this.onStateChange("port_notfound");
+      this.notifyStateChange("not_connected");
     } else {
-      if (this.isFullyInitialized) {
-        this.onStateChange("capabilties_not_matched");
-      } else {
-        this.onStateChange("not_connected");
-      }
+      this.notifyStateChange("not_connected");
     }
   }
 
   async findPort() {
-    this.onStateChange("loading");
+    this.notifyStateChange("loading");
 
     for (let i = 12000; i <= 12010; i++) {
       try {
@@ -215,13 +194,16 @@ class Client {
     this.buildClient();
   }
 
-  setToken(jwt: string) {
-    localStorage.setItem("ad4minToken", jwt);
-    this.buildClient();
+  get token(): string | null {
+    return localStorage.getItem("ad4minToken");
   }
 
-  token(): string {
-    return localStorage.getItem("ad4minToken") || "";
+  set token(token: string) {
+    if (token) {
+      localStorage.setItem("ad4minToken", token);
+    } else {
+      localStorage.removeItem("ad4minToken");
+    }
   }
 
   setPortSearchState(state: PortSearchStateType) {
@@ -232,12 +214,19 @@ class Client {
     const wsLink = new GraphQLWsLink(
       createClient({
         url: this.url,
-        connectionParams: () => {
-          return {
-            headers: {
-              authorization: this.token(),
-            },
-          };
+        connectionParams: {
+          headers: {
+            authorization: this.token,
+          },
+        },
+        on: {
+          closed: () => {
+            if (this.isFullyInitialized) {
+              this.notifyStateChange("disconnected");
+            } else {
+              this.notifyStateChange("not_connected");
+            }
+          },
         },
       })
     );
@@ -260,13 +249,12 @@ class Client {
 
   async checkConnection() {
     try {
-      const status = await this.ad4mClient?.agent.status();
-      console.log(status);
+      await this.ad4mClient.agent.status();
       this.isFullyInitialized = true;
-      this.onStateChange("connected_with_capabilities");
+      this.notifyStateChange("connected_with_capabilities");
     } catch (error) {
       if (error.message === undefined) {
-        this.onStateChange("not_connected");
+        this.notifyStateChange("not_connected");
       } else {
         this.handleErrorMessage(error.message);
       }
@@ -274,42 +262,39 @@ class Client {
   }
 
   async requestCapability(invalidateToken = false) {
-    if (invalidateToken || !this.token()) {
-      localStorage.removeItem("ad4minToken");
+    if (invalidateToken) {
+      this.token = null;
+    }
 
-      this.buildClient();
-
-      try {
-        this.requestId = await this.ad4mClient?.agent.requestCapability(
-          this.appName,
-          this.appDesc,
-          this.appDomain,
-          JSON.stringify(this.capabilities)
-        );
-
-        this.onStateChange("request_capability");
-      } catch (e) {
-        this.handleErrorMessage(e.message);
-      }
-
-      return true;
-    } else {
-      return false;
+    try {
+      this.requestId = await this.ad4mClient?.agent.requestCapability(
+        this.appName,
+        this.appDesc,
+        this.appDomain,
+        JSON.stringify(this.capabilities)
+      );
+      this.notifyStateChange("verify_code");
+    } catch (e) {
+      this.handleErrorMessage(e.message);
     }
   }
 
   async verifyCode(code: string) {
     try {
+      this.notifyStateChange("loading");
+
       const jwt = await this.ad4mClient?.agent.generateJwt(
         this.requestId!,
         code
       );
 
-      this.setToken(jwt!);
+      this.token = jwt;
 
       this.isFullyInitialized = true;
 
-      this.onStateChange("connected_with_capabilities");
+      this.buildClient();
+
+      this.notifyStateChange("connected_with_capabilities");
     } catch (e) {
       this.handleErrorMessage(e.message);
     }

@@ -29,6 +29,8 @@
       quo quod ut. Repellendus sed, saepe a quo quos mollitia.
     </p>
 
+    <button id="connectButton">Connect with ad4m</button>
+
     <ad4m-connect
       appName="ad4m-react-example"
       appDesc="ad4m-react-example"
@@ -44,8 +46,8 @@
         getAd4mClient,
       } from "../dist/utils.js";
 
-      onAuthStateChanged(async (event) => {
-        const isConnnected = event === "connected_with_capabilities";
+      onAuthStateChanged((state) => {
+        const isConnected = state === "connected_with_capabilities";
         document.getElementById("title").innerText = isConnected
           ? "Is Connected to AD4M"
           : "Is Not Connected to AD4M";

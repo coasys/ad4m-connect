@@ -6,14 +6,13 @@ import { Html5Qrcode } from "html5-qrcode";
 import Loading from "./components/Loading";
 import RemoteUrl from "./components/RemoteUrl";
 import Start from "./components/Start";
-import NotConnected from "./components/NotConnected";
+import Disconnected from "./components/Disconnected";
 import AgentLocked from "./components/AgentLocked";
-import CapNotMatchedFirst from "./components/CapNotMatchedFirst";
-import CapNotMatched from "./components/CapNotMatching";
-import Request from "./components/Request";
+import RequestCapability from "./components/RequestCapability";
+import VerifyCode from "./components/VerifyCode";
 import Header from "./components/Header";
-import CouldNotMakeRequest from "./components/CouldNotMakeRequest";
 import { ClientStates } from "./core";
+import autoBind from "auto-bind";
 
 function detectMob() {
   const toMatch = [
@@ -32,8 +31,6 @@ function detectMob() {
 }
 
 const styles = css`
-  @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
-
   :host {
     --primary-color: #0a33ff;
     --success-color: #52d652;
@@ -43,7 +40,7 @@ const styles = css`
   }
 
   .wrapper {
-    font-family: "Comfortaa", Helvetica, Arial, sans-serif;
+    font-family: "DM Sans", Helvetica, Arial, sans-serif;
     position: fixed;
     top: 0;
     left: 0;
@@ -62,13 +59,18 @@ const styles = css`
     gap: 50px;
   }
 
+  .items--small {
+    gap: 20px;
+  }
+
   .button {
     text-decoration: none;
     cursor: pointer;
     border: 0;
     background: var(--primary-color);
     height: 60px;
-    padding: 0px 30px;
+    min-width: 200px;
+    padding: 0px 40px;
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
@@ -76,7 +78,7 @@ const styles = css`
     color: white;
     text-align: center;
     font-family: inherit;
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .heading {
@@ -108,8 +110,11 @@ const styles = css`
 
   .button--link {
     padding: 0;
+    height: auto;
     background: none;
     color: var(--primary-color);
+    font-size: inherit;
+    min-width: auto;
     text-decoration: none;
   }
 
@@ -126,9 +131,9 @@ const styles = css`
   .dialog {
     background-color: var(--background-color);
     position: absolute;
-    top: 20vh;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
     z-index: 10;
     border-radius: 8px;
     width: 100%;
@@ -234,8 +239,7 @@ const styles = css`
     left: 0;
     height: 100vh;
     width: 100vw;
-    backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   .ad4mConnect__locked {
@@ -354,18 +358,7 @@ export default class Ad4mConnect extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-
-    this.changeUrl = this.changeUrl.bind(this);
-    this.connectRemote = this.connectRemote.bind(this);
-    this.scanQrcode = this.scanQrcode.bind(this);
-    this.connectToPort = this.connectToPort.bind(this);
-    this.changeState = this.changeState.bind(this);
-    this.renderViews = this.renderViews.bind(this);
-    this.requestCapability = this.requestCapability.bind(this);
-    this.verifyCode = this.verifyCode.bind(this);
-    this.changeCode = this.changeCode.bind(this);
-    this.getAd4mClient = this.getAd4mClient.bind(this);
-    this.connected = this.connected.bind(this);
+    autoBind(this);
 
     this._isMobile = detectMob();
 
@@ -377,24 +370,40 @@ export default class Ad4mConnect extends LitElement {
       port: this.port,
       token: this.token,
       url: this.url,
-      onStateChange: (event: ClientStates) => {
-        if (this._state === event) return;
-        this._state = event;
-        const customEvent = new CustomEvent("authStateChange", {
-          detail: event,
-        });
-        this.dispatchEvent(customEvent);
-      },
+    });
+
+    client.onStateChange((event: ClientStates) => {
+      console.log(event);
+      if (this._state === event) return;
+      this._state = event;
+      const customEvent = new CustomEvent("authStateChange", {
+        detail: event,
+      });
+      this.dispatchEvent(customEvent);
     });
 
     this._client = client;
 
+    this.loadFont();
     this.addShortCut();
     this.constructQR();
   }
 
+  connect() {
+    this._client.connect();
+  }
+
+  async connected() {
+    try {
+      await this.getAd4mClient().agent.status();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   getAd4mClient() {
-    return this._client.ad4mClient;
+    return this._client.ad4mClient as Ad4mClient;
   }
 
   loadFont() {
@@ -403,7 +412,7 @@ export default class Ad4mConnect extends LitElement {
     link.type = "text/css";
     link.crossOrigin = "anonymous";
     link.href =
-      "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap";
+      "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap";
     document.head.appendChild(link);
   }
 
@@ -411,7 +420,7 @@ export default class Ad4mConnect extends LitElement {
     if (this.openonshortcut !== undefined) {
       document.addEventListener("keydown", (event) => {
         if (event.ctrlKey && event.altKey && event.code === "KeyA") {
-          this._state = "init";
+          this._state = "not_connected";
         }
       });
     }
@@ -485,7 +494,7 @@ export default class Ad4mConnect extends LitElement {
   }
 
   connectRemote(url) {
-    this._client.connectRemote(url);
+    this._client.connect(url);
   }
 
   requestCapability(bool) {
@@ -494,6 +503,10 @@ export default class Ad4mConnect extends LitElement {
 
   connectToPort() {
     this._client.connectToPort();
+  }
+
+  async unlockAgent(passcode) {
+    await this._client.ad4mClient.agent.unlock(passcode);
   }
 
   changeState(state) {
@@ -508,21 +521,10 @@ export default class Ad4mConnect extends LitElement {
     this._client.verifyCode(code);
   }
 
-  connected() {
-    return this._state === "connected_with_capabilities";
-  }
-
   renderViews() {
     switch (this._state) {
       case "loading":
         return Loading();
-      case "init":
-        return Start({
-          scanQrcode: this.scanQrcode,
-          connectToPort: this.connectToPort,
-          isMobile: this._isMobile,
-          changeState: this.changeState,
-        });
       case "remote_url":
         return RemoteUrl({
           url: this.url,
@@ -531,40 +533,38 @@ export default class Ad4mConnect extends LitElement {
           connectRemote: this.connectRemote,
         });
       case "not_connected":
-        return NotConnected({ connectToPort: this.connectToPort });
+        return Start({
+          scanQrcode: this.scanQrcode,
+          connectToPort: this.connectToPort,
+          isMobile: this._isMobile,
+          changeState: this.changeState,
+        });
       case "agent_locked":
-        return AgentLocked();
-      case "capabilties_not_matched":
-        return CapNotMatchedFirst({
+        return AgentLocked({ unlockAgent: this.unlockAgent });
+      case "capabilities_not_matched":
+        return RequestCapability({
           changeState: this.changeState,
           requestCapability: this.requestCapability,
           capabilities: this.capabilities,
           appname: this.appname,
           appiconpath: this.appiconpath,
         });
-      case "capabilties_not_matched_first":
-        return CapNotMatchedFirst({
-          changeState: this.changeState,
-          requestCapability: this.requestCapability,
-          capabilities: this.capabilities,
-          appname: this.appname,
-          appiconpath: this.appiconpath,
-        });
-      case "request_capability":
-        return Request({
+      case "disconnected":
+        return Disconnected({ connectToPort: this.connectToPort });
+      case "verify_code":
+        return VerifyCode({
           code: this._code,
           changeCode: this.changeCode,
           changeState: this.changeState,
           verifyCode: this.verifyCode,
         });
-      case "could_not_make_request":
-        return CouldNotMakeRequest();
       default:
         return Loading();
     }
   }
 
   render() {
+    if (!this._state) return null;
     if (this._state === "connected_with_capabilities") {
       return null;
     } else {

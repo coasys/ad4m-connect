@@ -1,6 +1,12 @@
 import { html } from "lit";
+import { getAd4mClient } from "../utils";
 
-export default function AgentLocked() {
+function handleSubmit(e) {
+  const form = e.target;
+  const input = form.elements["password"];
+}
+
+export default function AgentLocked({ unlockAgent }) {
   return html`
     <div>
       <h1 class="heading">Agent locked</h1>

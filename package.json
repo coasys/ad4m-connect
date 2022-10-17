@@ -52,6 +52,7 @@
     "uint8arrays": "^3.0.0"
   },
   "dependencies": {
+    "auto-bind": "^5.0.1",
     "electron": "^20.0.3",
     "esbuild-plugin-inline-image": "^0.0.8",
     "html5-qrcode": "^2.2.1",
