@@ -223,8 +223,6 @@ class Client {
           closed: () => {
             if (this.isFullyInitialized) {
               this.notifyStateChange("disconnected");
-            } else {
-              this.notifyStateChange("not_connected");
             }
           },
         },
