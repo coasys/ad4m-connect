@@ -40,6 +40,13 @@ const styles = css`
     --background-color: white;
   }
 
+  .wrapper[theme="dark"] {
+    --primary-color: #4343f0;
+    --heading-color: white;
+    --body-color: #b0adad;
+    --background-color: #070d28;
+  }
+
   .wrapper {
     font-family: "DM Sans", Helvetica, Arial, sans-serif;
     position: fixed;
@@ -188,7 +195,7 @@ const styles = css`
     content: "";
     display: block;
     width: 120px;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    border-bottom: 1px dashed var(--body-color);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -224,6 +231,8 @@ const styles = css`
     border-radius: 8px;
     outline: 0;
     height: 60px;
+    color: var(--heading-color);
+    background-color: var(--background-color);
     padding: 0px 30px;
     font-size: 20px;
     border: 1px solid var(--body-color);
@@ -356,6 +365,9 @@ export default class Ad4mConnect extends LitElement {
 
   @property({ type: String, reflect: true })
   openonshortcut;
+
+  @property({ type: String, reflect: true })
+  theme = "light";
 
   connectedCallback() {
     super.connectedCallback();
@@ -577,7 +589,7 @@ export default class Ad4mConnect extends LitElement {
       return null;
     } else {
       return html`
-        <div class="wrapper">
+        <div class="wrapper" theme=${this.theme}>
           <div class="dialog">
             ${Header()}
             <main class="dialog__content">${this.renderViews()}</main>
