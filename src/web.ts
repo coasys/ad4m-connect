@@ -249,7 +249,7 @@ const styles = css`
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .ad4mConnect__locked {
