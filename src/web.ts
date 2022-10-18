@@ -41,10 +41,10 @@ const styles = css`
   }
 
   .wrapper[theme="dark"] {
-    --primary-color: #4343f0;
+    --primary-color: #4454ee;
     --heading-color: white;
     --body-color: #b0adad;
-    --background-color: #070d28;
+    --background-color: #141416;
   }
 
   .wrapper {
