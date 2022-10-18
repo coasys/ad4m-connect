@@ -455,7 +455,7 @@ export default class Ad4mConnect extends LitElement {
 
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
       console.log("Got connection URL from QR code: ", decodedText);
-      this._client.connectRemote(decodedText);
+      this._client.connect(decodedText);
       html5QrCode.stop();
       ele.style.display = "none";
     };
