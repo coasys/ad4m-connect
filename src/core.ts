@@ -60,7 +60,6 @@ class Client {
   appName: string;
   appDesc: string;
   appDomain: string;
-  url: string;
   capabilities: { [x: string]: any }[];
   stateListeners: Function[];
 
@@ -80,10 +79,7 @@ class Client {
     this.appDomain = appDomain;
     this.capabilities = capabilities;
     this.port = port || this.port;
-    this.url =
-      url ||
-      localStorage.getItem("ad4minUrl") ||
-      `ws://localhost:${this.port}/graphql`;
+    this.url = url || this.url;
     this.token = token || this.token;
     this.stateListeners = [];
 
@@ -96,6 +92,32 @@ class Client {
     this.ad4mClient.agent.addAgentStatusChangedListener(() => {
       this.checkConnection();
     });
+  }
+
+  get token(): string | null {
+    return localStorage.getItem("ad4minToken");
+  }
+
+  set token(token: string) {
+    if (token) {
+      localStorage.setItem("ad4minToken", token);
+    } else {
+      localStorage.removeItem("ad4minToken");
+    }
+  }
+
+  get url(): string | null {
+    return (
+      localStorage.getItem("ad4minURL") || `ws://localhost:${this.port}/graphql`
+    );
+  }
+
+  set url(url: string) {
+    if (url) {
+      localStorage.setItem("ad4minURL", url);
+    } else {
+      localStorage.removeItem("ad4minURL");
+    }
   }
 
   onStateChange(listener: (...args: any[]) => void) {
@@ -111,6 +133,7 @@ class Client {
   async connect(url?: string) {
     if (url) {
       this.url = url;
+      this.buildClient();
     }
     this.notifyStateChange("loading");
     this.checkConnection();
@@ -193,20 +216,7 @@ class Client {
     this.port = port;
     localStorage.setItem("ad4minPort", port.toString());
     this.url = `ws://localhost:${this.port}/graphql`;
-    localStorage.setItem("ad4minURL", this.url);
     this.buildClient();
-  }
-
-  get token(): string | null {
-    return localStorage.getItem("ad4minToken");
-  }
-
-  set token(token: string) {
-    if (token) {
-      localStorage.setItem("ad4minToken", token);
-    } else {
-      localStorage.removeItem("ad4minToken");
-    }
   }
 
   setPortSearchState(state: PortSearchStateType) {
@@ -214,6 +224,7 @@ class Client {
   }
 
   buildClient() {
+    console.log("building client", this.url);
     const wsLink = new GraphQLWsLink(
       createClient({
         url: this.url,
@@ -292,9 +303,9 @@ class Client {
 
       this.token = jwt;
 
-      this.isFullyInitialized = true;
-
       this.buildClient();
+
+      this.isFullyInitialized = true;
 
       this.notifyStateChange("connected_with_capabilities");
     } catch (e) {

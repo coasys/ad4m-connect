@@ -76,9 +76,9 @@ const styles = css`
     cursor: pointer;
     border: 0;
     background: var(--primary-color);
-    height: 60px;
-    min-width: 200px;
-    padding: 0px 40px;
+    height: 50px;
+    min-width: 100px;
+    padding: 0px 30px;
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
@@ -86,7 +86,15 @@ const styles = css`
     color: white;
     text-align: center;
     font-family: inherit;
-    font-size: 17px;
+    font-size: 15px;
+  }
+
+  @media (min-width: 800px) {
+    .button {
+      min-width: 200px;
+      padding: 0px 40px;
+      font-size: 17px;
+    }
   }
 
   .heading {
@@ -144,13 +152,14 @@ const styles = css`
     transform: translateX(-50%) translateY(-50%);
     z-index: 10;
     border-radius: 8px;
-    width: 100%;
+    width: calc(100vw - 10px);
     max-width: 500px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media (min-width: 800px) {
     .dialog {
-      width: 75%;
+      width: 100%;
+      max-width: 500px;
     }
   }
 
