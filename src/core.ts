@@ -42,6 +42,7 @@ type PortSearchStateType = "na" | "searching" | "found" | "not_found";
 export type ClientStates =
   | "connected_with_capabilities"
   | "agent_locked"
+  | "invalid_token"
   | "capabilities_not_matched"
   | "verify_code"
   | "not_connected"
@@ -150,7 +151,9 @@ class Client {
       this.notifyStateChange("agent_locked");
     } else if (message.includes("signature verification failed")) {
       // wrong agent error
-      this.notifyStateChange("capabilities_not_matched");
+      this.notifyStateChange("invalid_token");
+    } else if (message.includes("JWS Protected Header is invalid")) {
+      this.notifyStateChange("invalid_token");
     } else if (message.includes("Failed to fetch")) {
       // wrong agent error
       this.notifyStateChange("not_connected");
@@ -262,6 +265,7 @@ class Client {
   async requestCapability(invalidateToken = false) {
     if (invalidateToken) {
       this.token = null;
+      this.buildClient();
     }
 
     try {

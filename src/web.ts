@@ -9,6 +9,7 @@ import Start from "./components/Start";
 import Disconnected from "./components/Disconnected";
 import AgentLocked from "./components/AgentLocked";
 import RequestCapability from "./components/RequestCapability";
+import InvalidToken from "./components/InvalidToken";
 import VerifyCode from "./components/VerifyCode";
 import Header from "./components/Header";
 import { ClientStates } from "./core";
@@ -540,7 +541,14 @@ export default class Ad4mConnect extends LitElement {
           changeState: this.changeState,
         });
       case "agent_locked":
-        return AgentLocked({ unlockAgent: this.unlockAgent });
+        return AgentLocked({
+          unlockAgent: this.unlockAgent,
+          connectToPort: this.connectToPort,
+        });
+      case "invalid_token":
+        return InvalidToken({
+          requestCapability: this.requestCapability,
+        });
       case "capabilities_not_matched":
         return RequestCapability({
           changeState: this.changeState,

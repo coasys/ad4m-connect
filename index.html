@@ -51,6 +51,7 @@
       });
 
       onAuthStateChanged((state) => {
+        console.log(state);
         const isConnected = state === "connected_with_capabilities";
         document.getElementById("title").innerText = isConnected
           ? "Is Connected to AD4M"
