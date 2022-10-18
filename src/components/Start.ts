@@ -24,7 +24,7 @@ export default function Start({
 
       <div class="text-center">
         <button class="button button--link " @click=${() => connectToPort()}>
-          Connect again
+          Reconnect
         </button>
         or
         <button
