@@ -27,6 +27,7 @@
       const { ipcRenderer } = require("electron");
 
       import Ad4mConnect from "../dist/web.js";
+      import { onAuthStateChanged, getAd4mClient } from "../dist/utils.js";
       const {
         appName,
         appIconPath,
@@ -42,9 +43,9 @@
       ele.token = capabilityToken;
       ele.capabilities = JSON.stringify(capabilities);
       document.body.appendChild(ele);
-      ele.addEventListener("authStateChanged", (event) => {
+      onAuthStateChanged(async (event) => {
         if (event === "connected_with_capabilities") {
-          ipcRenderer.send("resolve", { executorUrl, capabilityToken, client });
+          ipcRenderer.send("resolve", { executorUrl, capabilityToken });
         }
       });
       ele.connect();

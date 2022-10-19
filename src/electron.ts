@@ -59,7 +59,7 @@ function getCapToken(dataPath) {
 }
 
 export function ad4mConnect(args: Ad4mConnectOptions) {
-  const {appName, appDesc, appIconPath, capabilities, dataPath} = args
+  const {appName, appDesc, appIconPath, capabilities, dataPath = ad4mDir} = args
   return new Promise(async (resolve, reject) => {
     const executorUrl = getExecutorUrl(dataPath)
     const capabilityToken = getCapToken(dataPath)
