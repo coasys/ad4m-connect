@@ -61,7 +61,7 @@ class Client {
   appDesc: string;
   appDomain: string;
   capabilities: { [x: string]: any }[];
-  stateListeners: Function[];
+  listeners: { [x: string]: [(...args: any[]) => void] } = {};
 
   // @fayeed - params
   constructor({
