@@ -30,6 +30,8 @@
       import { onAuthStateChanged, getAd4mClient } from "../dist/utils.js";
       const {
         appName,
+        appDesc = "",
+        appDomain = "",
         appIconPath,
         executorUrl,
         capabilityToken,
@@ -40,7 +42,9 @@
       ele.appname = appName;
       ele.appiconpath = appIconPath;
       ele.url = executorUrl;
+      ele.appdomain = appDomain;
       ele.token = capabilityToken;
+      ele.appdesc = appDesc;
       ele.capabilities = JSON.stringify(capabilities);
       document.body.appendChild(ele);
       onAuthStateChanged(async (event) => {

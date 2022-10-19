@@ -14,7 +14,7 @@ export async function checkPort(port: number) {
       mode: "no-cors",
     });
 
-    if (res.status === 0) {
+    if (res.status === 400) {
       return port;
     } else {
       return null;
