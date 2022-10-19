@@ -41,9 +41,9 @@ export default function CapNotMatchedFirst({
       <div class="buttons">
         <button
           class="button button--full button--secondary"
-          @click=${() => changeState("init")}
+          @click=${() => changeState(null)}
         >
-          Cancel
+          Close
         </button>
         <button
           class="button button--full"

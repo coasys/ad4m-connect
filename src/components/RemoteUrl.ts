@@ -6,10 +6,8 @@ export default function RemoveUrl({
   changeState,
   changeUrl,
 }) {
-  console.log("reload");
-
   return html`
-    <div class="items">
+    <div class="items items--small">
       <div class="text-center">
         <h1 class="heading">Connect to a remote host</h1>
         <p class="body">Please enter the url you want to connect to</p>
@@ -26,7 +24,7 @@ export default function RemoveUrl({
       <div class="buttons">
         <button
           class="button button--full button--secondary"
-          @click=${() => changeState("init")}
+          @click=${() => changeState("not_connected")}
         >
           Back
         </button>

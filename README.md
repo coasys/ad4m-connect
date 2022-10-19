@@ -4,30 +4,35 @@ This package makes it easy for AD4M apps to connect to a local or remote AD4M ex
 
 ![](screenshots/Screenshot_executor_url.png)
 ![](screenshots/Screenshot_security_code.png)
+
 ## Usage (from Node / Electron)
 
 Install the package:
-```npm install -s @perspect3vism/ad4m-connect```
+`npm install -s @perspect3vism/ad4m-connect`
 
 Import `ad4mConnect()`:
+
 ```js
 import { ad4mConnect } from '@perspect3vism/ad4m-connect/dist/electron'
 ```
+
 or
+
 ```js
 const { ad4mConnect } = require('@perspect3vism/ad4m-connect/dist/electron')
 ```
 
 and then just call that function with parameters of your app:
+
 ```js
 ad4mConnect({
     // Provide the name of your app to be displayed in the dialog
-    appName: "Perspect3ve", 
+    appName: "Perspect3ve",
     // Provide an icon to be displayed in the dialog as well
-    appIconPath: path.join(__dirname, "graphics", "Logo.png"), 
+    appIconPath: path.join(__dirname, "graphics", "Logo.png"),
     // Name the capabilities your app needs
     // (this is an example with all capabilities)
-    capabilities: [{"with":{"domain":"*","pointers":["*"]},"can":["*"]}], 
+    capabilities: [{"with":{"domain":"*","pointers":["*"]},"can":["*"]}],
     // Provide a directory in which the capability token and the executor
     // URL will be stored such that future calls won't even open a dialog
     // but try the token against that URL and resolve immediately
@@ -49,7 +54,7 @@ ad4mConnect({
         console.log("User closed AD4M connection wizard. Exiting...")
         app.exit(0)
         process.exit(0)
-    }) 
+    })
 }
 ```
 
@@ -57,6 +62,7 @@ ad4mConnect({
 
 `ad4m-connect` provides a web-component that you can use just by importing the package.
 Properties exposed:
+
 - `appName(required)`: Name of the application using ad4m-connect.
 - `appDesc(required)`: Description of the application using ad4m-connect.
 - `appDomain(required)`: Domain of the application using ad4m-connect.
@@ -64,24 +70,28 @@ Properties exposed:
 - `appiconpath`: Icon for the app using ad4m-connect.
 
 ```html
-<ad4m-connect 
-    appName="ad4m-react-example"
-    appDesc="ad4m-react-example"
-    appDomain="http://localhost:3000"
-    capabilities='[{"with":{"domain":"*","pointers":["*"]},"can": ["*"]}]'
-    appiconpath="./Ad4mLogo.png"
+<ad4m-connect
+  appName="ad4m-react-example"
+  appDesc="ad4m-react-example"
+  appDomain="http://localhost:3000"
+  capabilities='[{"with":{"domain":"*","pointers":["*"]},"can": ["*"]}]'
+  appiconpath="./Ad4mLogo.png"
 ></ad4m-connect>
 ```
-`ad4m-connect` also provides helper methods to check if the client is connected to executor called `isConnected` & `getAd4mClient` to get the client itself to use across the app.
-```js
-import {getAd4mClient, isConnected} from '@perspect3vism/ad4m-connect/web'
 
-isConnected().then(async () => {
-    const client = await getAd4mClient();
-    const status = await client.agent.status();
-    
-    const ele = document.createElement('div')
-    ele.innerHTML = JSON.stringify(status);
-    document.body.appendChild(ele)
-})
+`ad4m-connect` also provides helper methods to check if the client is connected to executor called `isConnected` & `getAd4mClient` to get the client itself to use across the app.
+
+```js
+import {
+  getAd4mClient,
+  onAuthStateChanged,
+} from "@perspect3vism/ad4m-connect/web";
+
+onAuthStateChanged(async (status) => {
+  if (status === "connected_with_capabilities") {
+    alert("Connected  to Ad4m!");
+  } else {
+    alert("Not connected to Ad4m!");
+  }
+});
 ```

@@ -1,12 +1,20 @@
 import { html } from "lit";
 
-export default function AgentLocked() {
+export default function AgentLocked({ unlockAgent, connectToPort }) {
   return html`
-    <div>
-      <h1 class="heading">Agent locked</h1>
-      <p class="body">
-        Your agent is locked, please unlock it & refresh the page to continue.
-      </p>
+    <div class="text-center">
+      <div class="items">
+        <div>
+          <h1 class="heading">Agent locked</h1>
+          <p class="body">
+            Your agent is locked, please unlock it & refresh the page to
+            continue.
+          </p>
+        </div>
+        <button class="button" @click=${() => connectToPort()}>
+          Reconnect
+        </button>
+      </div>
     </div>
   `;
 }

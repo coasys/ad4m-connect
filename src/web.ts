@@ -6,12 +6,14 @@ import { Html5Qrcode } from "html5-qrcode";
 import Loading from "./components/Loading";
 import RemoteUrl from "./components/RemoteUrl";
 import Start from "./components/Start";
-import NotConnected from "./components/NotConnected";
+import Disconnected from "./components/Disconnected";
 import AgentLocked from "./components/AgentLocked";
-import CapNotMatchedFirst from "./components/CapNotMatchedFirst";
-import Request from "./components/Request";
+import RequestCapability from "./components/RequestCapability";
+import InvalidToken from "./components/InvalidToken";
+import VerifyCode from "./components/VerifyCode";
 import Header from "./components/Header";
-import CouldNotMakeRequest from "./components/CouldNotMakeRequest";
+import { ClientStates } from "./core";
+import autoBind from "auto-bind";
 
 function detectMob() {
   const toMatch = [
@@ -30,8 +32,6 @@ function detectMob() {
 }
 
 const styles = css`
-  @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
-
   :host {
     --primary-color: #0a33ff;
     --success-color: #52d652;
@@ -40,8 +40,15 @@ const styles = css`
     --background-color: white;
   }
 
+  .wrapper[theme="dark"] {
+    --primary-color: #4454ee;
+    --heading-color: white;
+    --body-color: #b0adad;
+    --background-color: #141416;
+  }
+
   .wrapper {
-    font-family: "Comfortaa", Helvetica, Arial, sans-serif;
+    font-family: "DM Sans", Helvetica, Arial, sans-serif;
     position: fixed;
     top: 0;
     left: 0;
@@ -60,12 +67,17 @@ const styles = css`
     gap: 50px;
   }
 
+  .items--small {
+    gap: 20px;
+  }
+
   .button {
     text-decoration: none;
     cursor: pointer;
     border: 0;
     background: var(--primary-color);
-    height: 60px;
+    height: 50px;
+    min-width: 100px;
     padding: 0px 30px;
     border-radius: 8px;
     display: inline-flex;
@@ -75,6 +87,14 @@ const styles = css`
     text-align: center;
     font-family: inherit;
     font-size: 15px;
+  }
+
+  @media (min-width: 800px) {
+    .button {
+      min-width: 200px;
+      padding: 0px 40px;
+      font-size: 17px;
+    }
   }
 
   .heading {
@@ -106,8 +126,11 @@ const styles = css`
 
   .button--link {
     padding: 0;
+    height: auto;
     background: none;
     color: var(--primary-color);
+    font-size: inherit;
+    min-width: auto;
     text-decoration: none;
   }
 
@@ -124,18 +147,19 @@ const styles = css`
   .dialog {
     background-color: var(--background-color);
     position: absolute;
-    top: 20vh;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
     z-index: 10;
     border-radius: 8px;
-    width: 100%;
+    width: calc(100vw - 10px);
     max-width: 500px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media (min-width: 800px) {
     .dialog {
-      width: 75%;
+      width: 100%;
+      max-width: 500px;
     }
   }
 
@@ -180,7 +204,7 @@ const styles = css`
     content: "";
     display: block;
     width: 120px;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    border-bottom: 1px dashed var(--body-color);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -216,6 +240,8 @@ const styles = css`
     border-radius: 8px;
     outline: 0;
     height: 60px;
+    color: var(--heading-color);
+    background-color: var(--background-color);
     padding: 0px 30px;
     font-size: 20px;
     border: 1px solid var(--body-color);
@@ -232,8 +258,7 @@ const styles = css`
     left: 0;
     height: 100vh;
     width: 100vw;
-    backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .ad4mConnect__locked {
@@ -312,7 +337,7 @@ export default class Ad4mConnect extends LitElement {
   private _client = null;
 
   @state()
-  private _state = null;
+  private _state: ClientStates = null;
 
   @state()
   private _code = null;
@@ -350,28 +375,14 @@ export default class Ad4mConnect extends LitElement {
   @property({ type: String, reflect: true })
   openonshortcut;
 
+  @property({ type: String, reflect: true })
+  theme = "light";
+
   connectedCallback() {
     super.connectedCallback();
-
-    this.changeUrl = this.changeUrl.bind(this);
-    this.connectRemote = this.connectRemote.bind(this);
-    this.scanQrcode = this.scanQrcode.bind(this);
-    this.connectToPort = this.connectToPort.bind(this);
-    this.changeState = this.changeState.bind(this);
-    this.renderViews = this.renderViews.bind(this);
-    this.requestCapability = this.requestCapability.bind(this);
-    this.verifyCode = this.verifyCode.bind(this);
-    this.changeCode = this.changeCode.bind(this);
+    autoBind(this);
 
     this._isMobile = detectMob();
-
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.crossOrigin = "anonymous";
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap";
-    document.head.appendChild(link);
 
     const client = ad4mConnect({
       appName: this.appname,
@@ -383,59 +394,60 @@ export default class Ad4mConnect extends LitElement {
       url: this.url,
     });
 
+    client.onStateChange((event: ClientStates) => {
+      if (this._state === event) return;
+      this._state = event;
+      const customEvent = new CustomEvent("authStateChange", {
+        detail: event,
+      });
+      this.dispatchEvent(customEvent);
+    });
+
     this._client = client;
 
-    client?.addEventListener("loading", () => {
-      this._state = "loading";
-    });
+    this.loadFont();
+    this.addShortCut();
+    this.constructQR();
+  }
 
-    client?.addEventListener("not_connected", () => {
-      this._state = "not_connected";
-    });
+  connect() {
+    this._client.connect();
+  }
 
-    client?.addEventListener("agent_locked", () => {
-      this._state = "agent_locked";
-    });
+  async connected() {
+    try {
+      await this.getAd4mClient().agent.status();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
-    client?.addEventListener("init", () => {
-      this._state = "init";
-    });
+  getAd4mClient() {
+    return this._client.ad4mClient as Ad4mClient;
+  }
 
-    client?.addEventListener("capabilties_not_matched", (isFirst) => {
-      if (isFirst) {
-        this._state = "capabilties_not_matched_first";
-      } else {
-        this._state = "capabilties_not_matched";
-      }
-    });
+  loadFont() {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.crossOrigin = "anonymous";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap";
+    document.head.appendChild(link);
+  }
 
-    client?.addEventListener("request_capability", (requestId) => {
-      this._state = "request_capability";
-    });
-
-    client?.addEventListener("connected_with_capabilities", () => {
-      this._state = "connected_with_capabilities";
-    });
-
-    document.addEventListener("fetch-ad4m-client", () => {
-      const event = new CustomEvent("return-fetch-ad4m-client", {
-        detail: this._client,
-      });
-      document.dispatchEvent(event);
-    });
-
-    document.addEventListener("could_not_make_request", () => {
-      this._state = "could_not_make_request";
-    })
-
+  addShortCut() {
     if (this.openonshortcut !== undefined) {
       document.addEventListener("keydown", (event) => {
         if (event.ctrlKey && event.altKey && event.code === "KeyA") {
-          this._state = "init";
+          this._state = "not_connected";
         }
       });
     }
+  }
 
+  constructQR() {
     const containerEle = document.createElement("div");
     containerEle.id = "camera-id";
     containerEle.style.position = "absolute";
@@ -456,10 +468,6 @@ export default class Ad4mConnect extends LitElement {
     document.body.appendChild(containerEle);
   }
 
-  getClient() {
-    return this._client;
-  }
-
   scanQrcode() {
     const html5QrCode = new Html5Qrcode("reader");
     const ele = document.getElementById("camera-id");
@@ -467,7 +475,7 @@ export default class Ad4mConnect extends LitElement {
 
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
       console.log("Got connection URL from QR code: ", decodedText);
-      this._client.connectRemote(decodedText);
+      this._client.connect(decodedText);
       html5QrCode.stop();
       ele.style.display = "none";
     };
@@ -507,7 +515,7 @@ export default class Ad4mConnect extends LitElement {
   }
 
   connectRemote(url) {
-    this._client.connectRemote(url);
+    this._client.connect(url);
   }
 
   requestCapability(bool) {
@@ -516,6 +524,10 @@ export default class Ad4mConnect extends LitElement {
 
   connectToPort() {
     this._client.connectToPort();
+  }
+
+  async unlockAgent(passcode) {
+    await this._client.ad4mClient.agent.unlock(passcode);
   }
 
   changeState(state) {
@@ -534,13 +546,6 @@ export default class Ad4mConnect extends LitElement {
     switch (this._state) {
       case "loading":
         return Loading();
-      case "init":
-        return Start({
-          scanQrcode: this.scanQrcode,
-          connectToPort: this.connectToPort,
-          isMobile: this._isMobile,
-          changeState: this.changeState,
-        });
       case "remote_url":
         return RemoteUrl({
           url: this.url,
@@ -549,42 +554,50 @@ export default class Ad4mConnect extends LitElement {
           connectRemote: this.connectRemote,
         });
       case "not_connected":
-        return NotConnected();
+        return Start({
+          scanQrcode: this.scanQrcode,
+          connectToPort: this.connectToPort,
+          isMobile: this._isMobile,
+          changeState: this.changeState,
+        });
       case "agent_locked":
-        return AgentLocked();
-      case "capabilties_not_matched_first":
-        return CapNotMatchedFirst({
+        return AgentLocked({
+          unlockAgent: this.unlockAgent,
+          connectToPort: this.connectToPort,
+        });
+      case "invalid_token":
+        return InvalidToken({
+          requestCapability: this.requestCapability,
+        });
+      case "capabilities_not_matched":
+        return RequestCapability({
           changeState: this.changeState,
           requestCapability: this.requestCapability,
           capabilities: this.capabilities,
           appname: this.appname,
           appiconpath: this.appiconpath,
         });
-      case "request_capability":
-        return Request({
+      case "disconnected":
+        return Disconnected({ connectToPort: this.connectToPort });
+      case "verify_code":
+        return VerifyCode({
           code: this._code,
           changeCode: this.changeCode,
           changeState: this.changeState,
           verifyCode: this.verifyCode,
         });
-      case "could_not_make_request":
-          return CouldNotMakeRequest();
       default:
         return Loading();
     }
   }
 
   render() {
-    if (this._state === "capabilties_not_matched") {
-      return html`<div class="disconnected">
-        Disconnected from Ad4min, please check if ad4min is still runnning.
-      </div>`;
-    }
+    if (!this._state) return null;
     if (this._state === "connected_with_capabilities") {
       return null;
     } else {
       return html`
-        <div class="wrapper">
+        <div class="wrapper" theme=${this.theme}>
           <div class="dialog">
             ${Header()}
             <main class="dialog__content">${this.renderViews()}</main>
