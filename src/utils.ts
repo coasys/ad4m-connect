@@ -1,5 +1,4 @@
 import { Ad4mClient } from "@perspect3vism/ad4m";
-import { ClientStates } from "./core";
 
 function Timeout() {
   const controller = new AbortController();
@@ -14,7 +13,7 @@ export async function checkPort(port: number) {
       mode: "no-cors",
     });
 
-    if (res.status === 400) {
+    if (res.status === 0) {
       return port;
     } else {
       return null;
@@ -26,29 +25,40 @@ export async function checkPort(port: number) {
 
 export function getAd4mClient(): Promise<Ad4mClient> {
   return new Promise((resolve, reject) => {
-    const el = document.querySelector("ad4m-connect");
+    document.addEventListener(
+      "return-fetch-ad4m-client",
+      function listener(event) {
+        this.removeEventListener("return-fetch-ad4m-client", listener);
+        // @ts-ignore
+        resolve(event.detail.ad4mClient);
+      }
+    );
 
-    // @ts-ignore
-    const client = el?.getAd4mClient();
+    const event = new CustomEvent("fetch-ad4m-client");
+    document.dispatchEvent(event);
 
-    if (client) {
-      resolve(client);
-    } else {
+    setTimeout(() => {
       reject("No Ad4mClient found");
-    }
-  });
-}
-
-export function onAuthStateChanged(callback) {
-  const el = document.querySelector("ad4m-connect");
-
-  el?.addEventListener("authStateChange", (e: CustomEvent) => {
-    callback(e.detail as ClientStates);
+    }, 5000);
   });
 }
 
 export function isConnected() {
-  const el = document.querySelector("ad4m-connect");
-  //@ts-ignore
-  return el.connected();
+  return new Promise((resolve, reject) => {
+    document.addEventListener(
+      "return-fetch-ad4m-client",
+      function listener(event) {
+        // @ts-ignore
+        event.detail.addEventListener("connected_with_capabilities", () => {
+          this.removeEventListener("return-fetch-ad4m-client", listener);
+
+          resolve(true);
+        });
+      }
+    );
+
+    const event = new CustomEvent("fetch-ad4m-client");
+    document.dispatchEvent(event);
+  });
 }
+

@@ -9,30 +9,35 @@ export default function Start({
   return html`
     <div class="items">
       <div class="text-center">
+        <h1 class="heading">Connect to Ad4m</h1>
+        <p class="body">
+          Let's connect to your ad4m service, and start surfing the web
+          completely decentralized and secure.
+        </p>
+      </div>
+      <div>
         ${!isMobile
-          ? html`<a
-              class="button"
-              target="_blank"
-              href="https://github.com/perspect3vism/ad4min/releases/latest"
+          ? html`<button
+              class="button button--full"
+              @click=${() => connectToPort()}
             >
-              Install AD4M Extension
-            </a>`
-          : html`<button class="button" @click=${() => scanQrcode()}>
+              Connect
+            </button>`
+          : html`<button
+              class="button button--full"
+              @click=${() => scanQrcode()}
+            >
               Connect with QR
             </button> `}
-      </div>
-
-      <div class="text-center">
-        <button class="button button--link " @click=${() => connectToPort()}>
-          Reconnect
-        </button>
-        or
-        <button
-          class="button button--link "
-          @click=${() => changeState("remote_url")}
-        >
-          Connect to a remote host
-        </button>
+        <div class="text-center">
+          or
+          <button
+            class="button button--link "
+            @click=${() => changeState("remote_url")}
+          >
+            Connect to a remote host
+          </button>
+        </div>
       </div>
     </div>
   `;
