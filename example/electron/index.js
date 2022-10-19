@@ -31,6 +31,7 @@ app
 
     await ad4mConnect({
       appName: "Ad4m",
+      appIconPath: "https://avatars.githubusercontent.com/u/37603804?s=200&v=4",
       appDesc:
         "Ad4m is a simple and easy to use application for managing your files and folders.",
       capabilities: [{ with: { domain: "*", pointers: ["*"] }, can: ["*"] }],
