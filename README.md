@@ -11,11 +11,11 @@ Install the package:
 
 Import `ad4mConnect()`:
 ```js
-import { ad4mConnect } from '@perspect3vism/ad4m-connect/electron'
+import { ad4mConnect } from '@perspect3vism/ad4m-connect/dist/electron'
 ```
 or
 ```js
-const { ad4mConnect } = require('@perspect3vism/ad4m-connect/electron')
+const { ad4mConnect } = require('@perspect3vism/ad4m-connect/dist/electron')
 ```
 
 and then just call that function with parameters of your app:
