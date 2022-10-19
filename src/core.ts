@@ -62,7 +62,7 @@ class Client {
   appDomain: string;
   url: string;
   capabilities: { [x: string]: any }[];
-  listeners: { [x: ClientEvents]: [(...args: any[]) => void] } = {};
+  listeners: { [x: string]: [(...args: any[]) => void] } = {};
 
   // @fayeed - params
   constructor({
