@@ -11,6 +11,7 @@ app
       appDesc:
         "Ad4m is a simple and easy to use application for managing your files and folders.",
       capabilities: [{ with: { domain: "*", pointers: ["*"] }, can: ["*"] }],
+      dataPath: path.join(__dirname, "config")
     });
   })
   .catch((e) => console.log(e));
