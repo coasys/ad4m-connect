@@ -25,7 +25,8 @@
     <div id="container"></div>
     <script type="module">
       const { ipcRenderer } = require("electron");
-
+	  localStorage.clear()
+	  
       import Ad4mConnect from "../dist/web.js";
       import { onAuthStateChanged, getAd4mClient } from "../dist/utils.js";
       const {
@@ -49,7 +50,7 @@
       document.body.appendChild(ele);
       onAuthStateChanged(async (event) => {
         if (event === "connected_with_capabilities") {
-          ipcRenderer.send("resolve", { executorUrl, capabilityToken });
+          ipcRenderer.send("resolve", { executorUrl: ele.url, capabilityToken: localStorage.getItem("ad4minToken") });
         }
       });
       ele.connect();
