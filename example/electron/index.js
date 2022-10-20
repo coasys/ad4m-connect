@@ -1,5 +1,4 @@
-const { app, BrowserWindow } = require("electron");
-const path = require("path");
+const { app } = require("electron");
 const { ad4mConnect } = require("ad4m-connect/dist/electron.js");
 
 app
