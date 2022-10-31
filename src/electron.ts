@@ -101,7 +101,7 @@ export function ad4mConnect(args: Ad4mConnectOptions) {
       console.log({ executorUrl, capabilityToken });
       setExecutorUrl(executorUrl, dataPath);
       setCapToken(capabilityToken, dataPath);
-      //win.close();
+      win.close();
       resolve({ executorUrl, capabilityToken, client });
     });
 
