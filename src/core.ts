@@ -50,10 +50,14 @@ export type ClientStates =
   | "disconnected"
   | "remote_url";
 
+export type ConfigStates = "port" | "url" | "token";
+
 class Client {
   apolloClient?: ApolloClient<NormalizedCacheObject>;
   ad4mClient?: Ad4mClient;
   requestId?: string;
+  url: string;
+  token: string;
   isFullyInitialized = false;
   port = 12000;
   portSearchState: PortSearchStateType = "na";
@@ -62,6 +66,7 @@ class Client {
   appDomain: string;
   capabilities: { [x: string]: any }[];
   stateListeners: Function[];
+  configListeners: Function[];
 
   // @fayeed - params
   constructor({
@@ -79,9 +84,10 @@ class Client {
     this.appDomain = appDomain;
     this.capabilities = capabilities;
     this.port = port || this.port;
-    this.url = url || this.url;
+    this.url = url || `ws://localhost:${this.port}/graphql`;
     this.token = token || this.token;
     this.stateListeners = [];
+    this.configListeners = [];
 
     this.buildClient();
 
@@ -94,32 +100,6 @@ class Client {
     });
   }
 
-  get token(): string | null {
-    return localStorage.getItem("ad4minToken");
-  }
-
-  set token(token: string) {
-    if (token) {
-      localStorage.setItem("ad4minToken", token);
-    } else {
-      localStorage.removeItem("ad4minToken");
-    }
-  }
-
-  get url(): string | null {
-    return (
-      localStorage.getItem("ad4minURL") || `ws://localhost:${this.port}/graphql`
-    );
-  }
-
-  set url(url: string) {
-    if (url) {
-      localStorage.setItem("ad4minURL", url);
-    } else {
-      localStorage.removeItem("ad4minURL");
-    }
-  }
-
   onStateChange(listener: (...args: any[]) => void) {
     this.stateListeners.push(listener);
   }
@@ -130,10 +110,41 @@ class Client {
     });
   }
 
+  onConfigChange(listener: (...args: any[]) => void) {
+    this.configListeners.push(listener);
+  }
+
+  notifyConfigChange(val: ConfigStates, data: any) {
+    this.configListeners.forEach((listener) => {
+      listener(val, data);
+    });
+  }
+
+  setPort(port: number) {
+    if (this.port === port) return;
+    this.portSearchState = "found";
+    this.port = port;
+    this.notifyConfigChange("port", port);
+    this.setUrl(`ws://localhost:${this.port}/graphql`);
+  }
+
+  setUrl(url: string) {
+    if (this.url === url) return;
+    this.url = url;
+    this.notifyConfigChange("url", url);
+    this.buildClient();
+  }
+
+  setToken(token: string) {
+    if (this.token === token) return;
+    this.token = token;
+    this.buildClient();
+    this.notifyConfigChange("token", token);
+  }
+
   async connect(url?: string) {
     if (url) {
-      this.url = url;
-      this.buildClient();
+      this.setUrl(url);
     }
     this.notifyStateChange("loading");
     this.checkConnection();
@@ -175,6 +186,8 @@ class Client {
     } else if (message.includes("signature verification failed")) {
       // wrong agent error
       this.notifyStateChange("invalid_token");
+    } else if (message.includes("Invalid Compact JWS")) {
+      this.notifyStateChange("invalid_token");
     } else if (message.includes("JWS Protected Header is invalid")) {
       this.notifyStateChange("invalid_token");
     } else if (message.includes("Failed to fetch")) {
@@ -211,20 +224,11 @@ class Client {
     throw Error("Couldn't find an open port");
   }
 
-  setPort(port: number) {
-    this.portSearchState = "found";
-    this.port = port;
-    localStorage.setItem("ad4minPort", port.toString());
-    this.url = `ws://localhost:${this.port}/graphql`;
-    this.buildClient();
-  }
-
   setPortSearchState(state: PortSearchStateType) {
     this.portSearchState = state;
   }
 
   buildClient() {
-    console.log("building client", this.url);
     const wsLink = new GraphQLWsLink(
       createClient({
         url: this.url,
@@ -275,8 +279,7 @@ class Client {
 
   async requestCapability(invalidateToken = false) {
     if (invalidateToken) {
-      this.token = null;
-      this.buildClient();
+      this.setToken(null);
     }
 
     try {
@@ -301,9 +304,7 @@ class Client {
         code
       );
 
-      this.token = jwt;
-
-      this.buildClient();
+      this.setToken(jwt);
 
       this.isFullyInitialized = true;
 

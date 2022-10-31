@@ -343,9 +343,6 @@ export default class Ad4mConnect extends LitElement {
   private _code = null;
 
   @state()
-  private _url = null;
-
-  @state()
   private _isMobile = null;
 
   @property({ type: String, reflect: true })
@@ -389,9 +386,18 @@ export default class Ad4mConnect extends LitElement {
       appDesc: this.appdesc,
       appDomain: this.appdomain,
       capabilities: JSON.parse(this.capabilities),
-      port: this.port,
-      token: this.token,
-      url: this.url,
+      port: this.port || localStorage.getItem("ad4mport"),
+      token: this.token || localStorage.getItem("ad4mtoken"),
+      url: this.url || localStorage.getItem("ad4murl"),
+    });
+
+    client.onConfigChange((name, val) => {
+      this[name] = val;
+      if (val) {
+        localStorage.setItem("ad4m" + name, val);
+      } else {
+        localStorage.removeItem("ad4m" + name);
+      }
     });
 
     client.onStateChange((event: ClientStates) => {

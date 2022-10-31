@@ -37,7 +37,7 @@
         capabilityToken,
         capabilities,
       } = ipcRenderer.sendSync("get");
-      console.log("capabilities", capabilities);
+
       const ele = document.createElement("ad4m-connect");
       ele.appname = appName;
       ele.appiconpath = appIconPath;
@@ -49,7 +49,10 @@
       document.body.appendChild(ele);
       onAuthStateChanged(async (event) => {
         if (event === "connected_with_capabilities") {
-          ipcRenderer.send("resolve", { executorUrl, capabilityToken });
+          ipcRenderer.send("resolve", {
+            executorUrl,
+            capabilityToken: ele.token,
+          });
         }
       });
       ele.connect();
